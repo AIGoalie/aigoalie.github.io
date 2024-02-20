@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+.certainty {
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
+/* Add some basic styling for the table */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Define classes for different color ranges */
+.red {
+  background-color: red;
+  color: white;
+}
+
+.green {
+  background-color: green;
+  color: white;
+}
+
+.odds {
+  text-align: center; /* Centering the content of Odds column */
+}
+
+.warnings {
+  text-align: center; /* Centering the content of Odds column */
+}
+ul {
+    list-style-type: none; /* Remove default bullet points */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #f1f1f1;
+}
+li {
+    float: left;
+}
+li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+li a:hover {
+    background-color: #ddd;
+}
+.active {
+    background-color: #ccc;
+}
+
+</style>
+<script>
+window.addEventListener("DOMContentLoaded", (event) => {
+  // Get all the elements with class "total-color"
+  const totalCells = document.querySelectorAll(".total-color");
+
+  // Loop through each "Total" cell and set background color based on the value gradient
+  totalCells.forEach((cell) => {
+    const value = parseFloat(cell.textContent);
+    const gradientColor = calculateGradientColor(value);
+    cell.style.backgroundColor = gradientColor;
+  });
+
+  // Get all the elements with class "team"
+  const teamCells = document.querySelectorAll(".team");
+  const certaintyCells = document.querySelectorAll(".certainty");
+
+    // Loop through each "Team" cell and make the team with the largest certainty value bold
+    teamCells.forEach((cell, index) => {
+        // Get the certainty value by index
+        const certaintyCell = certaintyCells[index];
+        const [certainty1, certainty2] = certaintyCell.textContent.split(" vs ");
+
+
+    // Extract values from certainty
+    const value1 = parseFloat(certainty1);
+    const value2 = parseFloat(certainty2);
+
+    // Determine which team has the largest value and make it bold
+    if (value1 > value2) {
+        cell.innerHTML = `<strong>${cell.textContent.split(' vs ')[0]}</strong> vs ${cell.textContent.split(' vs ')[1]}`;
+    } else if (value2 > value1) {
+        cell.innerHTML = `${cell.textContent.split(' vs ')[0]} vs <strong>${cell.textContent.split(' vs ')[1]}</strong>`;
+    }
+  })
+
+
+  // Get all the elements with class "result"
+  const correctCells = document.querySelectorAll(".correct");
+  // Loop through each "Result" cell and display checkmarks and crosses based on the result value
+    correctCells.forEach((cell, index) => {
+    const correctValue = parseFloat(cell.textContent);
+    if (correctValue === 1.0) {
+      cell.innerHTML = `<span class="green">&#10003;</span>`;
+    } else if (correctValue === 0.0) {
+      cell.innerHTML = `<span>&#10060;</span>`
+    } else if (correctValue === 0.5) {
+      cell.innerHTML = `<span style="color: orange; font-size: 36px;">&#x2043;</span>`; // Set the color to dark yellow using rgb
+    } else {
+       cell.innerHTML = `<span class="black"; font-size: 36px;>&#x2043;</span>`;
+    }
+  });
+  // Function to calculate the gradient color
+  function calculateGradientColor(value) {
+    if (value <= 0) {
+      return "red";
+    } else if (value >= 2) {
+      return "green";
+    } else if (value < 0.7) {
+      const red = 255;
+      const green = 255 * (value * 2);
+      return `rgb(${red}, ${green}, 0)`;
+    } else if ((value >= 0.7) && (value<1.5)) {
+      const red = 255 * (1 - (value - 0.7));
+      const green = 255;
+      return `rgb(${red}, ${green}, 0)`;
+    } else if (value >= 1.5) {
+        const green = 255 * (1 - (value - 1.5));
+        return `rgb(0, ${green}, 0)`;
+    }
+  }
+});
+window.addEventListener("DOMContentLoaded", (event) => {
+  // Get all the tabs
+  const tabs = document.querySelectorAll("ul li a");
+
+  // Function to handle tab click
+  const handleTabClick = (event) => {
+    // Remove "active" class from all tabs
+    tabs.forEach(t => t.classList.remove("active"));
+    // Add "active" class to the clicked tab
+    event.target.classList.add("active");
+  };
+
+  // Loop through each tab
+  tabs.forEach(tab => {
+    // Add click event listener to each tab
+    tab.addEventListener("click", handleTabClick);
+    // Check if this tab should be active based on the current URL
+    if (tab.href === window.location.href) {
+      // If yes, add "active" class to the tab
+      tab.classList.add("active");
+    }
+  });
+});
+</script>
+
+
+
+</head>
+<body>
+<ul>
+    <li><a href="all.html">All</a></li>
+    <li><a href="Feb16.html">16 Feb</a></li>
+    <li><a href="Feb17.html">17 Feb</a></li>
+    <li><a href="Feb18.html">18 Feb</a></li>
+    <li><a href="Feb19.html">19 Feb</a></li>
+</ul>
+<table>
+  <tr>
+    <th>Date</th>
+<!--    <th>Time</th>-->
+    <th>Fixture</th>
+<!--    <th>Certainty</th>-->
+<!--    <th>ML</th>-->
+    <th>Certainty</th>
+<!--    <th>Pick</th>-->
+<!--    <th>Odd</th>-->
+<!--      <th>Avg Odds</th>-->
+<!--      <th>Value</th>-->
+
+      <th>Result</th>
+        <th>Score</th>
+    <th>Considerations (Beta)</th>
+<!--    <th>Stake</th>-->
+<!--    <th>Profit</th>-->
+  </tr>
+  
+  <tr class="match">
+<!--    <td>Feb 16</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 16</td>
+    <td class="team" data-match-index="0">Inter vs Salernitana</td>
+      <td class="certainty">3.0 vs -3.7</td>
+<!--      <td class="hidden">91% vs 3%</td>-->
+      <td class="total-color">3.0 (91%)</td>
+
+<!--      <td class="odds">n/a</td>-->
+<!--      <td class="value">n/a</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">4:0</td> <!-- New Result cell -->
+      <td class="warnings"></td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>4:0</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 16.0 | Scoring: 2.35 | Lineup Strength: -0.01 | Team Value: 0.96</li>-->
+<!--          <li>Away Team - Form: 2.0 | Scoring: 0.6 | Lineup Strength: -0.19 | Team Value: 0.17</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 16</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 16</td>
+    <td class="team" data-match-index="1">PSV Eindhoven vs Heracles</td>
+      <td class="certainty">2.68 vs -3.56</td>
+<!--      <td class="hidden">92% vs 3%</td>-->
+      <td class="total-color">2.68 (92%)</td>
+
+<!--      <td class="odds">n/a</td>-->
+<!--      <td class="value">n/a</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">2:0</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 Injuries &#127973;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>2:0</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 18.0 | Scoring: 3.3 | Lineup Strength: -0.16 | Team Value: 0.91</li>-->
+<!--          <li>Away Team - Form: 6.0 | Scoring: 0.5 | Lineup Strength: -0.21 | Team Value: 0.07</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 16</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 16</td>
+    <td class="team" data-match-index="2">Torino vs Lecce</td>
+      <td class="certainty">0.38 vs -1.46</td>
+<!--      <td class="hidden">62% vs 18%</td>-->
+      <td class="total-color">0.38 (62%)</td>
+
+<!--      <td class="odds">n/a</td>-->
+<!--      <td class="value">n/a</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">2:0</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 MAJOR Injuries &#127973; + &#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>2:0</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 7.0 | Scoring: 0.95 | Lineup Strength: -0.45 | Team Value: 0.32</li>-->
+<!--          <li>Away Team - Form: 3.0 | Scoring: 0.8 | Lineup Strength: -0.13 | Team Value: 0.14</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 16</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 16</td>
+    <td class="team" data-match-index="3">Lyon vs Nice</td>
+      <td class="certainty">-0.94 vs 0.35</td>
+<!--      <td class="hidden">25% vs 52%</td>-->
+      <td class="total-color">0.35 (52%)</td>
+
+<!--      <td class="odds">n/a</td>-->
+<!--      <td class="value">n/a</td>-->
+
+      <td class="correct">0</td> <!-- New Result cell -->
+      <td class="result">1:0</td> <!-- New Result cell -->
+      <td class="warnings">&#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:0</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 6.0 | Scoring: 1.05 | Lineup Strength: -0.07 | Team Value: 0.19</li>-->
+<!--          <li>Away Team - Form: 11.0 | Scoring: 1.6 | Lineup Strength: -0.02 | Team Value: 0.22</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 16</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 16</td>
+    <td class="team" data-match-index="4">Kasimpasa vs Karagumruk</td>
+      <td class="certainty">0.34 vs -1.2</td>
+<!--      <td class="hidden">52% vs 25%</td>-->
+      <td class="total-color">0.34 (52%)</td>
+
+<!--      <td class="odds">n/a</td>-->
+<!--      <td class="value">n/a</td>-->
+
+      <td class="correct">0.5</td> <!-- New Result cell -->
+      <td class="result">1:1</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 Injuries &#127973;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:1</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 10.0 | Scoring: 1.9 | Lineup Strength: -0.25 | Team Value: 0.08</li>-->
+<!--          <li>Away Team - Form: 6.0 | Scoring: 1.8 | Lineup Strength: -0.11 | Team Value: 0.11</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 16</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 16</td>
+    <td class="team" data-match-index="5">Famalicao vs Rio Ave</td>
+      <td class="certainty">0.06 vs -0.91</td>
+<!--      <td class="hidden">50% vs 26%</td>-->
+      <td class="total-color">0.06 (50%)</td>
+
+<!--      <td class="odds">n/a</td>-->
+<!--      <td class="value">n/a</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">2:1</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 MAJOR Injuries &#127973; + &#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>2:1</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 5.0 | Scoring: 0.95 | Lineup Strength: -0.33 | Team Value: 0.12</li>-->
+<!--          <li>Away Team - Form: 3.0 | Scoring: 1.2 | Lineup Strength: -0.02 | Team Value: 0.04</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 16</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 16</td>
+    <td class="team" data-match-index="6">Westerlo vs Standard</td>
+      <td class="certainty">-0.27 vs -0.72</td>
+<!--      <td class="hidden">43% vs 33%</td>-->
+      <td class="total-color">-0.27 (43%)</td>
+
+<!--      <td class="odds">n/a</td>-->
+<!--      <td class="value">n/a</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">2:1</td> <!-- New Result cell -->
+      <td class="warnings">&#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>2:1</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 6.0 | Scoring: 1.6 | Lineup Strength: -0.13 | Team Value: 0.27</li>-->
+<!--          <li>Away Team - Form: 6.0 | Scoring: 1.8 | Lineup Strength: -0.35 | Team Value: 0.47</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 16</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 16</td>
+    <td class="team" data-match-index="7">Villarreal vs Getafe</td>
+      <td class="certainty">-0.78 vs -0.27</td>
+<!--      <td class="hidden">35% vs 41%</td>-->
+      <td class="total-color">-0.27 (41%)</td>
+
+<!--      <td class="odds">n/a</td>-->
+<!--      <td class="value">n/a</td>-->
+
+      <td class="correct">0.5</td> <!-- New Result cell -->
+      <td class="result">1:1</td> <!-- New Result cell -->
+      <td class="warnings">&#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:1</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 5.0 | Scoring: 1.4 | Lineup Strength: -0.49 | Team Value: 0.18</li>-->
+<!--          <li>Away Team - Form: 7.0 | Scoring: 1.85 | Lineup Strength: -0.07 | Team Value: 0.11</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 16</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 16</td>
+    <td class="team" data-match-index="8">FC Koln vs Werder Bremen</td>
+      <td class="certainty">-1.01 vs -0.28</td>
+<!--      <td class="hidden">27% vs 49%</td>-->
+      <td class="total-color">-0.28 (49%)</td>
+
+<!--      <td class="odds">n/a</td>-->
+<!--      <td class="value">n/a</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">0:1</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 MAJOR Injuries &#127973;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>0:1</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 3.0 | Scoring: 0.75 | Lineup Strength: -0.32 | Team Value: 0.11</li>-->
+<!--          <li>Away Team - Form: 7.0 | Scoring: 1.7 | Lineup Strength: -0.47 | Team Value: 0.1</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+</table>
+
+</body>
+</html>
