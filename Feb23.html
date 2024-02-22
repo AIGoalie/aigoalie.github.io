@@ -187,13 +187,14 @@ window.addEventListener("DOMContentLoaded", (event) => {
 <!--    <th>ML</th>-->
     <th>Certainty</th>
 <!--    <th>Pick</th>-->
-<!--    <th>Odd</th>-->
+
 <!--      <th>Avg Odds</th>-->
 <!--      <th>Value</th>-->
 
       <th>Result</th>
         <th>Score</th>
-    <th>Considerations (Beta)</th>
+            <th>Odds (Beta)</th>
+    <th>Favourite Team Alerts (Beta)</th>
 <!--    <th>Stake</th>-->
 <!--    <th>Profit</th>-->
   </tr>
@@ -207,11 +208,12 @@ window.addEventListener("DOMContentLoaded", (event) => {
 <!--      <td class="hidden">89% vs 4%</td>-->
       <td class="total-color">2.44 (89%)</td>
 
-<!--      <td class="odds">1.4</td>-->
-<!--      <td class="value">0.28</td>-->
+
+<!--      <td class="value">0.19</td>-->
 
       <td class="correct">None</td> <!-- New Result cell -->
       <td class="result">TBD</td> <!-- New Result cell -->
+      <td class="odds">1.24</td>
       <td class="warnings">&#127973 Injuries &#127973;</td>
 <!--    <td></td>-->
 <!--    <td></td>-->
@@ -239,11 +241,12 @@ window.addEventListener("DOMContentLoaded", (event) => {
 <!--      <td class="hidden">73% vs 12%</td>-->
       <td class="total-color">1.42 (73%)</td>
 
-<!--      <td class="odds">3.5</td>-->
-<!--      <td class="value">0.29</td>-->
+
+<!--      <td class="value">-0.05</td>-->
 
       <td class="correct">None</td> <!-- New Result cell -->
       <td class="result">TBD</td> <!-- New Result cell -->
+      <td class="odds">1.6</td>
       <td class="warnings">&#127973 Injuries &#127973;</td>
 <!--    <td></td>-->
 <!--    <td></td>-->
@@ -271,11 +274,12 @@ window.addEventListener("DOMContentLoaded", (event) => {
 <!--      <td class="hidden">65% vs 16%</td>-->
       <td class="total-color">0.9 (65%)</td>
 
-<!--      <td class="odds">2.62</td>-->
-<!--      <td class="value">-0.01</td>-->
+
+<!--      <td class="value">-0.19</td>-->
 
       <td class="correct">None</td> <!-- New Result cell -->
       <td class="result">TBD</td> <!-- New Result cell -->
+      <td class="odds">1.81</td>
       <td class="warnings">&#128201; Form Dip &#128201;</td>
 <!--    <td></td>-->
 <!--    <td></td>-->
@@ -303,11 +307,12 @@ window.addEventListener("DOMContentLoaded", (event) => {
 <!--      <td class="hidden">60% vs 20%</td>-->
       <td class="total-color">0.44 (60%)</td>
 
-<!--      <td class="odds">6.2</td>-->
-<!--      <td class="value">0.02</td>-->
+
+<!--      <td class="value">-0.51</td>-->
 
       <td class="correct">None</td> <!-- New Result cell -->
       <td class="result">TBD</td> <!-- New Result cell -->
+      <td class="odds">1.44</td>
       <td class="warnings"></td>
 <!--    <td></td>-->
 <!--    <td></td>-->
@@ -335,11 +340,12 @@ window.addEventListener("DOMContentLoaded", (event) => {
 <!--      <td class="hidden">23% vs 54%</td>-->
       <td class="total-color">0.22 (54%)</td>
 
-<!--      <td class="odds">1.32</td>-->
-<!--      <td class="value">-0.67</td>-->
+
+<!--      <td class="value">-0.45</td>-->
 
       <td class="correct">None</td> <!-- New Result cell -->
       <td class="result">TBD</td> <!-- New Result cell -->
+      <td class="odds">1.84</td>
       <td class="warnings">&#128201; Form Dip &#128201;</td>
 <!--    <td></td>-->
 <!--    <td></td>-->
@@ -367,11 +373,12 @@ window.addEventListener("DOMContentLoaded", (event) => {
 <!--      <td class="hidden">51% vs 26%</td>-->
       <td class="total-color">0.19 (51%)</td>
 
-<!--      <td class="odds">2.32</td>-->
-<!--      <td class="value">-0.35</td>-->
+
+<!--      <td class="value">-0.37</td>-->
 
       <td class="correct">None</td> <!-- New Result cell -->
       <td class="result">TBD</td> <!-- New Result cell -->
+      <td class="odds">2.22</td>
       <td class="warnings"></td>
 <!--    <td></td>-->
 <!--    <td></td>-->
@@ -399,11 +406,12 @@ window.addEventListener("DOMContentLoaded", (event) => {
 <!--      <td class="hidden">51% vs 25%</td>-->
       <td class="total-color">0.05 (51%)</td>
 
-<!--      <td class="odds">3.0</td>-->
-<!--      <td class="value">-0.31</td>-->
+
+<!--      <td class="value">-0.47</td>-->
 
       <td class="correct">None</td> <!-- New Result cell -->
       <td class="result">TBD</td> <!-- New Result cell -->
+      <td class="odds">2.02</td>
       <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
 <!--    <td></td>-->
 <!--    <td></td>-->
@@ -426,16 +434,50 @@ window.addEventListener("DOMContentLoaded", (event) => {
 <!--    <td>Feb 23</td>-->
 <!--    <td></td>-->
     <td class="date">Feb 23</td>
-    <td class="team" data-match-index="7">Chelsea vs Tottenham</td>
+    <td class="team" data-match-index="7">Metz vs Lyon</td>
+      <td class="certainty">-0.68 vs 0.04</td>
+<!--      <td class="hidden">33% vs 43%</td>-->
+      <td class="total-color">0.04 (43%)</td>
+
+
+<!--      <td class="value">-0.53</td>-->
+
+      <td class="correct">None</td> <!-- New Result cell -->
+      <td class="result">TBD</td> <!-- New Result cell -->
+      <td class="odds">1.82</td>
+      <td class="warnings"></td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>TBD</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 4.0 | Scoring: 0.75 | Lineup Strength: -0.08 | Team Value: 0.03</li>-->
+<!--          <li>Away Team - Form: 7.0 | Scoring: 1.4 | Lineup Strength: -0.07 | Team Value: 0.19</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 23</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 23</td>
+    <td class="team" data-match-index="8">Chelsea vs Tottenham</td>
       <td class="certainty">-0.48 vs -0.73</td>
 <!--      <td class="hidden">40% vs 35%</td>-->
       <td class="total-color">-0.48 (40%)</td>
 
-<!--      <td class="odds">9.2</td>-->
-<!--      <td class="value">-0.3</td>-->
+
+<!--      <td class="value">n/a</td>-->
 
       <td class="correct">None</td> <!-- New Result cell -->
       <td class="result">TBD</td> <!-- New Result cell -->
+      <td class="odds">n/a</td>
       <td class="warnings">&#127973 MAJOR Injuries &#127973; + &#128201; Form Dip &#128201;</td>
 <!--    <td></td>-->
 <!--    <td></td>-->
