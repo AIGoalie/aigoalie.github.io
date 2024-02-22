@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+.certainty {
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
+/* Add some basic styling for the table */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Define classes for different color ranges */
+.red {
+  background-color: red;
+  color: white;
+}
+
+.green {
+  background-color: green;
+  color: white;
+}
+
+.odds {
+  text-align: center; /* Centering the content of Odds column */
+}
+
+.warnings {
+  text-align: center; /* Centering the content of Odds column */
+}
+ul {
+    list-style-type: none; /* Remove default bullet points */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #f1f1f1;
+}
+li {
+    float: left;
+}
+li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+li a:hover {
+    background-color: #ddd;
+}
+.active {
+    background-color: #ccc;
+}
+
+</style>
+<script>
+window.addEventListener("DOMContentLoaded", (event) => {
+  // Get all the elements with class "total-color"
+  const totalCells = document.querySelectorAll(".total-color");
+
+  // Loop through each "Total" cell and set background color based on the value gradient
+  totalCells.forEach((cell) => {
+    const value = parseFloat(cell.textContent);
+    const gradientColor = calculateGradientColor(value);
+    cell.style.backgroundColor = gradientColor;
+  });
+
+  // Get all the elements with class "team"
+  const teamCells = document.querySelectorAll(".team");
+  const certaintyCells = document.querySelectorAll(".certainty");
+
+    // Loop through each "Team" cell and make the team with the largest certainty value bold
+    teamCells.forEach((cell, index) => {
+        // Get the certainty value by index
+        const certaintyCell = certaintyCells[index];
+        const [certainty1, certainty2] = certaintyCell.textContent.split(" vs ");
+
+
+    // Extract values from certainty
+    const value1 = parseFloat(certainty1);
+    const value2 = parseFloat(certainty2);
+
+    // Determine which team has the largest value and make it bold
+    if (value1 > value2) {
+        cell.innerHTML = `<strong>${cell.textContent.split(' vs ')[0]}</strong> vs ${cell.textContent.split(' vs ')[1]}`;
+    } else if (value2 > value1) {
+        cell.innerHTML = `${cell.textContent.split(' vs ')[0]} vs <strong>${cell.textContent.split(' vs ')[1]}</strong>`;
+    }
+  })
+
+
+  // Get all the elements with class "result"
+  const correctCells = document.querySelectorAll(".correct");
+  // Loop through each "Result" cell and display checkmarks and crosses based on the result value
+    correctCells.forEach((cell, index) => {
+    const correctValue = parseFloat(cell.textContent);
+    if (correctValue === 1.0) {
+      cell.innerHTML = `<span class="green">&#10003;</span>`;
+    } else if (correctValue === 0.0) {
+      cell.innerHTML = `<span>&#10060;</span>`
+    } else if (correctValue === 0.5) {
+      cell.innerHTML = `<span style="color: orange; font-size: 36px;">&#x2043;</span>`; // Set the color to dark yellow using rgb
+    } else {
+       cell.innerHTML = `<span class="black"; font-size: 36px;>&#x2043;</span>`;
+    }
+  });
+  // Function to calculate the gradient color
+  function calculateGradientColor(value) {
+    if (value <= 0) {
+      return "red";
+    } else if (value >= 2) {
+      return "green";
+    } else if (value < 0.7) {
+      const red = 255;
+      const green = 255 * (value * 2);
+      return `rgb(${red}, ${green}, 0)`;
+    } else if ((value >= 0.7) && (value<1.5)) {
+      const red = 255 * (1 - (value - 0.7));
+      const green = 255;
+      return `rgb(${red}, ${green}, 0)`;
+    } else if (value >= 1.5) {
+        const green = 255 * (1 - (value - 1.5));
+        return `rgb(0, ${green}, 0)`;
+    }
+  }
+});
+window.addEventListener("DOMContentLoaded", (event) => {
+  // Get all the tabs
+  const tabs = document.querySelectorAll("ul li a");
+
+  // Function to handle tab click
+  const handleTabClick = (event) => {
+    // Remove "active" class from all tabs
+    tabs.forEach(t => t.classList.remove("active"));
+    // Add "active" class to the clicked tab
+    event.target.classList.add("active");
+  };
+
+  // Loop through each tab
+  tabs.forEach(tab => {
+    // Add click event listener to each tab
+    tab.addEventListener("click", handleTabClick);
+    // Check if this tab should be active based on the current URL
+    if (tab.href === window.location.href) {
+      // If yes, add "active" class to the tab
+      tab.classList.add("active");
+    }
+  });
+});
+</script>
+
+
+
+</head>
+<body>
+<ul>
+    <li><a href="index.html">All</a></li>
+    <li><a href="Feb23.html">23 Feb</a></li>
+    <li><a href="Feb24.html">24 Feb</a></li>
+    <li><a href="Feb25.html">25 Feb</a></li>
+    <li><a href="Feb26.html">26 Feb</a></li>
+    <li><a href="all-prevgw.html">Results Previous Gameweek</a></li>
+
+</ul>
+<table>
+  <tr>
+    <th>Date</th>
+<!--    <th>Time</th>-->
+    <th>Fixture</th>
+<!--    <th>Certainty</th>-->
+<!--    <th>ML</th>-->
+    <th>Certainty</th>
+<!--    <th>Pick</th>-->
+<!--    <th>Odd</th>-->
+<!--      <th>Avg Odds</th>-->
+<!--      <th>Value</th>-->
+
+      <th>Result</th>
+        <th>Score</th>
+    <th>Considerations (Beta)</th>
+<!--    <th>Stake</th>-->
+<!--    <th>Profit</th>-->
+  </tr>
+  
+  <tr class="match">
+<!--    <td>Feb 21</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 21</td>
+    <td class="team" data-match-index="0">Liverpool vs Luton</td>
+      <td class="certainty">1.36 vs -2.61</td>
+<!--      <td class="hidden">79% vs 9%</td>-->
+      <td class="total-color">1.36 (79%)</td>
+
+<!--      <td class="odds">1.79</td>-->
+<!--      <td class="value">-0.0</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">4:1</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 MAJOR Injuries &#127973;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>4:1</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 13.0 | Scoring: 2.4 | Lineup Strength: -0.52 | Team Value: 0.7</li>-->
+<!--          <li>Away Team - Form: 5.0 | Scoring: 1.0 | Lineup Strength: -0.22 | Team Value: 0.07</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+</table>
+
+</body>
+</html>

@@ -1,0 +1,2896 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+.certainty {
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
+/* Add some basic styling for the table */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Define classes for different color ranges */
+.red {
+  background-color: red;
+  color: white;
+}
+
+.green {
+  background-color: green;
+  color: white;
+}
+
+.odds {
+  text-align: center; /* Centering the content of Odds column */
+}
+
+.warnings {
+  text-align: center; /* Centering the content of Odds column */
+}
+ul {
+    list-style-type: none; /* Remove default bullet points */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #f1f1f1;
+}
+li {
+    float: left;
+}
+li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+li a:hover {
+    background-color: #ddd;
+}
+.active {
+    background-color: #ccc;
+}
+
+</style>
+<script>
+window.addEventListener("DOMContentLoaded", (event) => {
+  // Get all the elements with class "total-color"
+  const totalCells = document.querySelectorAll(".total-color");
+
+  // Loop through each "Total" cell and set background color based on the value gradient
+  totalCells.forEach((cell) => {
+    const value = parseFloat(cell.textContent);
+    const gradientColor = calculateGradientColor(value);
+    cell.style.backgroundColor = gradientColor;
+  });
+
+  // Get all the elements with class "team"
+  const teamCells = document.querySelectorAll(".team");
+  const certaintyCells = document.querySelectorAll(".certainty");
+
+    // Loop through each "Team" cell and make the team with the largest certainty value bold
+    teamCells.forEach((cell, index) => {
+        // Get the certainty value by index
+        const certaintyCell = certaintyCells[index];
+        const [certainty1, certainty2] = certaintyCell.textContent.split(" vs ");
+
+
+    // Extract values from certainty
+    const value1 = parseFloat(certainty1);
+    const value2 = parseFloat(certainty2);
+
+    // Determine which team has the largest value and make it bold
+    if (value1 > value2) {
+        cell.innerHTML = `<strong>${cell.textContent.split(' vs ')[0]}</strong> vs ${cell.textContent.split(' vs ')[1]}`;
+    } else if (value2 > value1) {
+        cell.innerHTML = `${cell.textContent.split(' vs ')[0]} vs <strong>${cell.textContent.split(' vs ')[1]}</strong>`;
+    }
+  })
+
+
+  // Get all the elements with class "result"
+  const correctCells = document.querySelectorAll(".correct");
+  // Loop through each "Result" cell and display checkmarks and crosses based on the result value
+    correctCells.forEach((cell, index) => {
+    const correctValue = parseFloat(cell.textContent);
+    if (correctValue === 1.0) {
+      cell.innerHTML = `<span class="green">&#10003;</span>`;
+    } else if (correctValue === 0.0) {
+      cell.innerHTML = `<span>&#10060;</span>`
+    } else if (correctValue === 0.5) {
+      cell.innerHTML = `<span style="color: orange; font-size: 36px;">&#x2043;</span>`; // Set the color to dark yellow using rgb
+    } else {
+       cell.innerHTML = `<span class="black"; font-size: 36px;>&#x2043;</span>`;
+    }
+  });
+  // Function to calculate the gradient color
+  function calculateGradientColor(value) {
+    if (value <= 0) {
+      return "red";
+    } else if (value >= 2) {
+      return "green";
+    } else if (value < 0.7) {
+      const red = 255;
+      const green = 255 * (value * 2);
+      return `rgb(${red}, ${green}, 0)`;
+    } else if ((value >= 0.7) && (value<1.5)) {
+      const red = 255 * (1 - (value - 0.7));
+      const green = 255;
+      return `rgb(${red}, ${green}, 0)`;
+    } else if (value >= 1.5) {
+        const green = 255 * (1 - (value - 1.5));
+        return `rgb(0, ${green}, 0)`;
+    }
+  }
+});
+window.addEventListener("DOMContentLoaded", (event) => {
+  // Get all the tabs
+  const tabs = document.querySelectorAll("ul li a");
+
+  // Function to handle tab click
+  const handleTabClick = (event) => {
+    // Remove "active" class from all tabs
+    tabs.forEach(t => t.classList.remove("active"));
+    // Add "active" class to the clicked tab
+    event.target.classList.add("active");
+  };
+
+  // Loop through each tab
+  tabs.forEach(tab => {
+    // Add click event listener to each tab
+    tab.addEventListener("click", handleTabClick);
+    // Check if this tab should be active based on the current URL
+    if (tab.href === window.location.href) {
+      // If yes, add "active" class to the tab
+      tab.classList.add("active");
+    }
+  });
+});
+</script>
+
+
+
+</head>
+<body>
+<ul>
+<!--    <li><a href="all.html">All</a></li>-->
+<!--    <li><a href="Feb16.html">16 Feb</a></li>-->
+<!--    <li><a href="Feb17.html">17 Feb</a></li>-->
+<!--    <li><a href="Feb18.html">18 Feb</a></li>-->
+<!--    <li><a href="Feb19.html">19 Feb</a></li>-->
+    <li><a href="index.html">All</a></li>
+    <li><a href="Feb23.html">23 Feb</a></li>
+    <li><a href="Feb24.html">24 Feb</a></li>
+    <li><a href="Feb25.html">25 Feb</a></li>
+    <li><a href="Feb26.html">26 Feb</a></li>
+    <li><a href="all-prevgw.html">Results Previous Gameweek</a></li>
+</ul>
+<table>
+  <tr>
+    <th>Date</th>
+<!--    <th>Time</th>-->
+    <th>Fixture</th>
+<!--    <th>Certainty</th>-->
+<!--    <th>ML</th>-->
+    <th>Certainty</th>
+<!--    <th>Pick</th>-->
+<!--    <th>Odd</th>-->
+<!--      <th>Avg Odds</th>-->
+<!--      <th>Value</th>-->
+
+      <th>Result</th>
+        <th>Score</th>
+    <th>Considerations (Beta)</th>
+<!--    <th>Stake</th>-->
+<!--    <th>Profit</th>-->
+  </tr>
+  
+  <tr class="match">
+<!--    <td>Feb 16</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 16</td>
+    <td class="team" data-match-index="0">Inter vs Salernitana</td>
+      <td class="certainty">3.0 vs -3.7</td>
+<!--      <td class="hidden">91% vs 3%</td>-->
+      <td class="total-color">3.0 (91%)</td>
+
+<!--      <td class="odds">n/a</td>-->
+<!--      <td class="value">n/a</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">4:0</td> <!-- New Result cell -->
+      <td class="warnings"></td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>4:0</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 16.0 | Scoring: 2.35 | Lineup Strength: -0.01 | Team Value: 0.96</li>-->
+<!--          <li>Away Team - Form: 2.0 | Scoring: 0.6 | Lineup Strength: -0.19 | Team Value: 0.17</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 18</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 18</td>
+    <td class="team" data-match-index="1">Benfica vs Vizela</td>
+      <td class="certainty">2.94 vs -3.49</td>
+<!--      <td class="hidden">90% vs 4%</td>-->
+      <td class="total-color">2.94 (90%)</td>
+
+<!--      <td class="odds">1.14</td>-->
+<!--      <td class="value">0.32</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">6:1</td> <!-- New Result cell -->
+      <td class="warnings"></td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>6:1</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 16.0 | Scoring: 2.2 | Lineup Strength: -0.03 | Team Value: 1.0</li>-->
+<!--          <li>Away Team - Form: 3.0 | Scoring: 0.55 | Lineup Strength: -0.02 | Team Value: 0.05</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 16</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 16</td>
+    <td class="team" data-match-index="2">PSV Eindhoven vs Heracles</td>
+      <td class="certainty">2.68 vs -3.56</td>
+<!--      <td class="hidden">92% vs 3%</td>-->
+      <td class="total-color">2.68 (92%)</td>
+
+<!--      <td class="odds">n/a</td>-->
+<!--      <td class="value">n/a</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">2:0</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 Injuries &#127973;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>2:0</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 18.0 | Scoring: 3.3 | Lineup Strength: -0.16 | Team Value: 0.91</li>-->
+<!--          <li>Away Team - Form: 6.0 | Scoring: 0.5 | Lineup Strength: -0.21 | Team Value: 0.07</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 18</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 18</td>
+    <td class="team" data-match-index="3">Feyenoord vs Waalwijk</td>
+      <td class="certainty">2.21 vs -3.07</td>
+<!--      <td class="hidden">88% vs 5%</td>-->
+      <td class="total-color">2.21 (88%)</td>
+
+<!--      <td class="odds">1.13</td>-->
+<!--      <td class="value">0.02</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">1:0</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 MAJOR Injuries &#127973;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:0</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 15.0 | Scoring: 2.75 | Lineup Strength: -0.31 | Team Value: 1.0</li>-->
+<!--          <li>Away Team - Form: 5.0 | Scoring: 0.85 | Lineup Strength: -0.04 | Team Value: 0.05</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 17</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 17</td>
+    <td class="team" data-match-index="4">Porto vs Estrela</td>
+      <td class="certainty">1.92 vs -2.63</td>
+<!--      <td class="hidden">77% vs 10%</td>-->
+      <td class="total-color">1.92 (77%)</td>
+
+<!--      <td class="odds">1.23</td>-->
+<!--      <td class="value">-0.03</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">2:0</td> <!-- New Result cell -->
+      <td class="warnings">&#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>2:0</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 13.0 | Scoring: 1.65 | Lineup Strength: -0.03 | Team Value: 0.8</li>-->
+<!--          <li>Away Team - Form: 5.0 | Scoring: 0.75 | Lineup Strength: -0.18 | Team Value: 0.03</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 18</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 18</td>
+    <td class="team" data-match-index="5">Bochum vs Bayern Munich</td>
+      <td class="certainty">-2.65 vs 1.82</td>
+<!--      <td class="hidden">8% vs 81%</td>-->
+      <td class="total-color">1.82 (81%)</td>
+
+<!--      <td class="odds">1.36</td>-->
+<!--      <td class="value">0.01</td>-->
+
+      <td class="correct">0</td> <!-- New Result cell -->
+      <td class="result">3:2</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 Injuries &#127973;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>3:2</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 4.0 | Scoring: 1.15 | Lineup Strength: -0.03 | Team Value: 0.06</li>-->
+<!--          <li>Away Team - Form: 15.0 | Scoring: 1.7 | Lineup Strength: -0.3 | Team Value: 1.0</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 18</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 18</td>
+    <td class="team" data-match-index="6">Vallecano vs Real Madrid</td>
+      <td class="certainty">-3.15 vs 1.71</td>
+<!--      <td class="hidden">8% vs 80%</td>-->
+      <td class="total-color">1.71 (80%)</td>
+
+<!--      <td class="odds">1.64</td>-->
+<!--      <td class="value">0.09</td>-->
+
+      <td class="correct">0.5</td> <!-- New Result cell -->
+      <td class="result">1:1</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 MAJOR Injuries &#127973;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:1</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 3.0 | Scoring: 0.85 | Lineup Strength: -0.42 | Team Value: 0.08</li>-->
+<!--          <li>Away Team - Form: 15.0 | Scoring: 1.2 | Lineup Strength: -0.52 | Team Value: 1.0</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 18</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 18</td>
+    <td class="team" data-match-index="7">Ankaragucu vs Galatasaray</td>
+      <td class="certainty">-2.73 vs 1.69</td>
+<!--      <td class="hidden">10% vs 77%</td>-->
+      <td class="total-color">1.69 (77%)</td>
+
+<!--      <td class="odds">1.52</td>-->
+<!--      <td class="value">0.03</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">0:3</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 MAJOR Injuries &#127973;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>0:3</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 5.0 | Scoring: 1.15 | Lineup Strength: -0.09 | Team Value: 0.13</li>-->
+<!--          <li>Away Team - Form: 17.0 | Scoring: 1.1 | Lineup Strength: -0.45 | Team Value: 1.0</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 17</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 17</td>
+    <td class="team" data-match-index="8">Nantes vs Paris SG</td>
+      <td class="certainty">-2.45 vs 1.68</td>
+<!--      <td class="hidden">10% vs 77%</td>-->
+      <td class="total-color">1.68 (77%)</td>
+
+<!--      <td class="odds">1.44</td>-->
+<!--      <td class="value">-0.01</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">0:2</td> <!-- New Result cell -->
+      <td class="warnings"></td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>0:2</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 6.0 | Scoring: 1.05 | Lineup Strength: -0.18 | Team Value: 0.11</li>-->
+<!--          <li>Away Team - Form: 15.0 | Scoring: 1.5 | Lineup Strength: -0.1 | Team Value: 1.0</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 17</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 17</td>
+    <td class="team" data-match-index="9">Verona vs Juventus</td>
+      <td class="certainty">-2.35 vs 1.57</td>
+<!--      <td class="hidden">13% vs 71%</td>-->
+      <td class="total-color">1.57 (71%)</td>
+
+<!--      <td class="odds">1.78</td>-->
+<!--      <td class="value">0.08</td>-->
+
+      <td class="correct">0.5</td> <!-- New Result cell -->
+      <td class="result">2:2</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>2:2</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 2.0 | Scoring: 0.85 | Lineup Strength: -0.13 | Team Value: 0.15</li>-->
+<!--          <li>Away Team - Form: 13.0 | Scoring: 1.4 | Lineup Strength: -0.16 | Team Value: 0.71</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 17</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 17</td>
+    <td class="team" data-match-index="10">Burnley vs Arsenal</td>
+      <td class="certainty">-2.42 vs 1.5</td>
+<!--      <td class="hidden">10% vs 77%</td>-->
+      <td class="total-color">1.5 (77%)</td>
+
+<!--      <td class="odds">1.31</td>-->
+<!--      <td class="value">-0.15</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">0:5</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 Injuries &#127973;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>0:5</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 3.0 | Scoring: 1.05 | Lineup Strength: -0.17 | Team Value: 0.2</li>-->
+<!--          <li>Away Team - Form: 13.0 | Scoring: 1.9 | Lineup Strength: -0.26 | Team Value: 0.87</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 17</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 17</td>
+    <td class="team" data-match-index="11">Atalanta vs Sassuolo</td>
+      <td class="certainty">1.4 vs -2.16</td>
+<!--      <td class="hidden">72% vs 12%</td>-->
+      <td class="total-color">1.4 (72%)</td>
+
+<!--      <td class="odds">1.36</td>-->
+<!--      <td class="value">-0.16</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">3:0</td> <!-- New Result cell -->
+      <td class="warnings"></td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>3:0</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 11.0 | Scoring: 1.9 | Lineup Strength: -0.0 | Team Value: 0.55</li>-->
+<!--          <li>Away Team - Form: 4.0 | Scoring: 1.05 | Lineup Strength: -0.25 | Team Value: 0.28</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 17</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 17</td>
+    <td class="team" data-match-index="12">Genk vs RWD Molenbeek</td>
+      <td class="certainty">1.28 vs -1.95</td>
+<!--      <td class="hidden">73% vs 12%</td>-->
+      <td class="total-color">1.28 (73%)</td>
+
+<!--      <td class="odds">1.32</td>-->
+<!--      <td class="value">-0.24</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">3:1</td> <!-- New Result cell -->
+      <td class="warnings">&#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>3:1</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 7.0 | Scoring: 1.95 | Lineup Strength: -0.08 | Team Value: 0.93</li>-->
+<!--          <li>Away Team - Form: 3.0 | Scoring: 1.2 | Lineup Strength: -0.09 | Team Value: 0.18</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 19</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 19</td>
+    <td class="team" data-match-index="13">Moreirense vs Sp Lisbon</td>
+      <td class="certainty">-2.17 vs 1.25</td>
+<!--      <td class="hidden">13% vs 70%</td>-->
+      <td class="total-color">1.25 (70%)</td>
+
+<!--      <td class="odds">1.4</td>-->
+<!--      <td class="value">-0.2</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">0:2</td> <!-- New Result cell -->
+      <td class="warnings"></td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>0:2</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 10.0 | Scoring: 1.25 | Lineup Strength: -0.35 | Team Value: 0.05</li>-->
+<!--          <li>Away Team - Form: 17.0 | Scoring: 1.1 | Lineup Strength: -0.07 | Team Value: 0.78</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 17</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 17</td>
+    <td class="team" data-match-index="14">Heidenheim vs Leverkusen</td>
+      <td class="certainty">-1.95 vs 1.22</td>
+<!--      <td class="hidden">11% vs 74%</td>-->
+      <td class="total-color">1.22 (74%)</td>
+
+<!--      <td class="odds">1.4</td>-->
+<!--      <td class="value">-0.22</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">1:2</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 Injuries &#127973;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:2</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 7.0 | Scoring: 1.5 | Lineup Strength: -0.01 | Team Value: 0.03</li>-->
+<!--          <li>Away Team - Form: 16.0 | Scoring: 1.7 | Lineup Strength: -0.22 | Team Value: 0.5</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 17</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 17</td>
+    <td class="team" data-match-index="15">Celta vs Barcelona</td>
+      <td class="certainty">-2.07 vs 1.22</td>
+<!--      <td class="hidden">15% vs 67%</td>-->
+      <td class="total-color">1.22 (67%)</td>
+
+<!--      <td class="odds">1.98</td>-->
+<!--      <td class="value">-0.01</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">1:2</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 Injuries &#127973;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:2</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 3.0 | Scoring: 1.1 | Lineup Strength: -0.04 | Team Value: 0.11</li>-->
+<!--          <li>Away Team - Form: 12.0 | Scoring: 1.45 | Lineup Strength: -0.3 | Team Value: 0.84</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 17</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 17</td>
+    <td class="team" data-match-index="16">Darmstadt vs Stuttgart</td>
+      <td class="certainty">-2.26 vs 1.15</td>
+<!--      <td class="hidden">11% vs 74%</td>-->
+      <td class="total-color">1.15 (74%)</td>
+
+<!--      <td class="odds">1.47</td>-->
+<!--      <td class="value">-0.21</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">1:2</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 Injuries &#127973;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:2</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 2.0 | Scoring: 1.1 | Lineup Strength: -0.32 | Team Value: 0.04</li>-->
+<!--          <li>Away Team - Form: 13.0 | Scoring: 2.4 | Lineup Strength: -0.29 | Team Value: 0.13</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 17</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 17</td>
+    <td class="team" data-match-index="17">RB Leipzig vs M'gladbach</td>
+      <td class="certainty">1.12 vs -2.22</td>
+<!--      <td class="hidden">68% vs 14%</td>-->
+      <td class="total-color">1.12 (68%)</td>
+
+<!--      <td class="odds">1.38</td>-->
+<!--      <td class="value">-0.27</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">2:0</td> <!-- New Result cell -->
+      <td class="warnings">&#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>2:0</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 11.0 | Scoring: 2.2 | Lineup Strength: -0.09 | Team Value: 0.45</li>-->
+<!--          <li>Away Team - Form: 5.0 | Scoring: 1.25 | Lineup Strength: -0.51 | Team Value: 0.21</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 17</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 17</td>
+    <td class="team" data-match-index="18">Rizespor vs Fenerbahce</td>
+      <td class="certainty">-2.48 vs 1.12</td>
+<!--      <td class="hidden">10% vs 76%</td>-->
+      <td class="total-color">1.12 (76%)</td>
+
+<!--      <td class="odds">1.48</td>-->
+<!--      <td class="value">-0.22</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">1:3</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 MAJOR Injuries &#127973;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:3</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 7.0 | Scoring: 1.0 | Lineup Strength: -0.45 | Team Value: 0.12</li>-->
+<!--          <li>Away Team - Form: 15.0 | Scoring: 1.45 | Lineup Strength: -0.41 | Team Value: 0.85</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 18</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 18</td>
+    <td class="team" data-match-index="19">Kortrijk vs St. Gilloise</td>
+      <td class="certainty">-2.25 vs 1.11</td>
+<!--      <td class="hidden">11% vs 75%</td>-->
+      <td class="total-color">1.11 (75%)</td>
+
+<!--      <td class="odds">1.38</td>-->
+<!--      <td class="value">-0.27</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">1:3</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 MAJOR Injuries &#127973;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:3</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 4.0 | Scoring: 0.65 | Lineup Strength: -0.31 | Team Value: 0.21</li>-->
+<!--          <li>Away Team - Form: 15.0 | Scoring: 1.7 | Lineup Strength: -0.33 | Team Value: 0.29</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 18</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 18</td>
+    <td class="team" data-match-index="20">Anderlecht vs St Truiden</td>
+      <td class="certainty">1.08 vs -1.76</td>
+<!--      <td class="hidden">68% vs 14%</td>-->
+      <td class="total-color">1.08 (68%)</td>
+
+<!--      <td class="odds">1.67</td>-->
+<!--      <td class="value">-0.16</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">4:1</td> <!-- New Result cell -->
+      <td class="warnings"></td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>4:1</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 10.0 | Scoring: 2.1 | Lineup Strength: -0.15 | Team Value: 0.75</li>-->
+<!--          <li>Away Team - Form: 6.0 | Scoring: 1.15 | Lineup Strength: -0.04 | Team Value: 0.11</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 18</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 18</td>
+    <td class="team" data-match-index="21">Monaco vs Toulouse</td>
+      <td class="certainty">1.06 vs -2.06</td>
+<!--      <td class="hidden">68% vs 14%</td>-->
+      <td class="total-color">1.06 (68%)</td>
+
+<!--      <td class="odds">1.57</td>-->
+<!--      <td class="value">-0.2</td>-->
+
+      <td class="correct">0</td> <!-- New Result cell -->
+      <td class="result">1:2</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:2</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 10.0 | Scoring: 1.8 | Lineup Strength: -0.29 | Team Value: 0.32</li>-->
+<!--          <li>Away Team - Form: 3.0 | Scoring: 1.4 | Lineup Strength: -0.21 | Team Value: 0.06</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 18</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 18</td>
+    <td class="team" data-match-index="22">Monza vs Milan</td>
+      <td class="certainty">-2.05 vs 1.01</td>
+<!--      <td class="hidden">17% vs 64%</td>-->
+      <td class="total-color">1.01 (64%)</td>
+
+<!--      <td class="odds">1.84</td>-->
+<!--      <td class="value">-0.13</td>-->
+
+      <td class="correct">0</td> <!-- New Result cell -->
+      <td class="result">4:2</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 Injuries &#127973;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>4:2</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 6.0 | Scoring: 0.9 | Lineup Strength: -0.29 | Team Value: 0.17</li>-->
+<!--          <li>Away Team - Form: 13.0 | Scoring: 1.1 | Lineup Strength: -0.25 | Team Value: 0.92</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 19</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 19</td>
+    <td class="team" data-match-index="23">Besiktas vs Konyaspor</td>
+      <td class="certainty">1.0 vs -2.0</td>
+<!--      <td class="hidden">68% vs 15%</td>-->
+      <td class="total-color">1.0 (68%)</td>
+
+<!--      <td class="odds">1.56</td>-->
+<!--      <td class="value">-0.23</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">2:0</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 MAJOR Injuries &#127973; + &#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>2:0</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 9.0 | Scoring: 1.45 | Lineup Strength: -0.33 | Team Value: 0.55</li>-->
+<!--          <li>Away Team - Form: 3.0 | Scoring: 1.3 | Lineup Strength: -0.18 | Team Value: 0.13</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 17</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 17</td>
+    <td class="team" data-match-index="24">Osasuna vs Cadiz</td>
+      <td class="certainty">0.97 vs -1.58</td>
+<!--      <td class="hidden">61% vs 19%</td>-->
+      <td class="total-color">0.97 (61%)</td>
+
+<!--      <td class="odds">1.88</td>-->
+<!--      <td class="value">-0.14</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">2:0</td> <!-- New Result cell -->
+      <td class="warnings">&#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>2:0</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 6.0 | Scoring: 1.1 | Lineup Strength: -0.03 | Team Value: 0.11</li>-->
+<!--          <li>Away Team - Form: 0.0 | Scoring: 1.55 | Lineup Strength: -0.08 | Team Value: 0.06</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 17</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 17</td>
+    <td class="team" data-match-index="25">Napoli vs Genoa</td>
+      <td class="certainty">0.92 vs -1.52</td>
+<!--      <td class="hidden">57% vs 21%</td>-->
+      <td class="total-color">0.92 (57%)</td>
+
+<!--      <td class="odds">1.76</td>-->
+<!--      <td class="value">-0.19</td>-->
+
+      <td class="correct">0.5</td> <!-- New Result cell -->
+      <td class="result">1:1</td> <!-- New Result cell -->
+      <td class="warnings">&#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:1</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 8.0 | Scoring: 1.3 | Lineup Strength: -0.05 | Team Value: 1.0</li>-->
+<!--          <li>Away Team - Form: 6.0 | Scoring: 1.2 | Lineup Strength: -0.05 | Team Value: 0.18</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 17</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 17</td>
+    <td class="team" data-match-index="26">Antwerp vs Mechelen</td>
+      <td class="certainty">0.91 vs -1.66</td>
+<!--      <td class="hidden">66% vs 16%</td>-->
+      <td class="total-color">0.91 (66%)</td>
+
+<!--      <td class="odds">1.6</td>-->
+<!--      <td class="value">-0.25</td>-->
+
+      <td class="correct">0</td> <!-- New Result cell -->
+      <td class="result">0:1</td> <!-- New Result cell -->
+      <td class="warnings"></td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>0:1</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 10.0 | Scoring: 1.9 | Lineup Strength: -0.14 | Team Value: 0.81</li>-->
+<!--          <li>Away Team - Form: 7.0 | Scoring: 0.95 | Lineup Strength: -0.11 | Team Value: 0.2</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 17</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 17</td>
+    <td class="team" data-match-index="27">Antalyaspor vs Istanbulspor</td>
+      <td class="certainty">0.86 vs -1.52</td>
+<!--      <td class="hidden">66% vs 16%</td>-->
+      <td class="total-color">0.86 (66%)</td>
+
+<!--      <td class="odds">n/a</td>-->
+<!--      <td class="value">n/a</td>-->
+
+      <td class="correct">0.5</td> <!-- New Result cell -->
+      <td class="result">2:2</td> <!-- New Result cell -->
+      <td class="warnings">&#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>2:2</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 8.0 | Scoring: 1.2 | Lineup Strength: -0.08 | Team Value: 0.13</li>-->
+<!--          <li>Away Team - Form: 3.0 | Scoring: 1.0 | Lineup Strength: -0.08 | Team Value: 0.06</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 17</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 17</td>
+    <td class="team" data-match-index="28">Man City vs Chelsea</td>
+      <td class="certainty">0.8 vs -1.85</td>
+<!--      <td class="hidden">65% vs 16%</td>-->
+      <td class="total-color">0.8 (65%)</td>
+
+<!--      <td class="odds">1.35</td>-->
+<!--      <td class="value">-0.41</td>-->
+
+      <td class="correct">0.5</td> <!-- New Result cell -->
+      <td class="result">1:1</td> <!-- New Result cell -->
+      <td class="warnings"></td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:1</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 13.0 | Scoring: 2.5 | Lineup Strength: -0.09 | Team Value: 1.0</li>-->
+<!--          <li>Away Team - Form: 9.0 | Scoring: 1.2 | Lineup Strength: -0.46 | Team Value: 0.79</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 18</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 18</td>
+    <td class="team" data-match-index="29">Sp Braga vs Farense</td>
+      <td class="certainty">0.8 vs -1.79</td>
+<!--      <td class="hidden">61% vs 19%</td>-->
+      <td class="total-color">0.8 (61%)</td>
+
+<!--      <td class="odds">1.34</td>-->
+<!--      <td class="value">-0.42</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">2:1</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>2:1</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 12.0 | Scoring: 2.15 | Lineup Strength: -0.26 | Team Value: 0.35</li>-->
+<!--          <li>Away Team - Form: 7.0 | Scoring: 1.5 | Lineup Strength: -0.24 | Team Value: 0.03</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 18</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 18</td>
+    <td class="team" data-match-index="30">Luton vs Man United</td>
+      <td class="certainty">-1.66 vs 0.79</td>
+<!--      <td class="hidden">23% vs 54%</td>-->
+      <td class="total-color">0.79 (54%)</td>
+
+<!--      <td class="odds">1.85</td>-->
+<!--      <td class="value">-0.22</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">1:2</td> <!-- New Result cell -->
+      <td class="warnings"></td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:2</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 5.0 | Scoring: 1.55 | Lineup Strength: -0.22 | Team Value: 0.07</li>-->
+<!--          <li>Away Team - Form: 11.0 | Scoring: 1.8 | Lineup Strength: -0.15 | Team Value: 0.7</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 18</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 18</td>
+    <td class="team" data-match-index="31">Frosinone vs Roma</td>
+      <td class="certainty">-1.61 vs 0.78</td>
+<!--      <td class="hidden">19% vs 61%</td>-->
+      <td class="total-color">0.78 (61%)</td>
+
+<!--      <td class="odds">1.97</td>-->
+<!--      <td class="value">-0.19</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">0:3</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 Injuries &#127973;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>0:3</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 4.0 | Scoring: 1.25 | Lineup Strength: -0.17 | Team Value: 0.11</li>-->
+<!--          <li>Away Team - Form: 10.0 | Scoring: 2.15 | Lineup Strength: -0.16 | Team Value: 0.62</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 17</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 17</td>
+    <td class="team" data-match-index="32">Lille vs Le Havre</td>
+      <td class="certainty">0.78 vs -1.31</td>
+<!--      <td class="hidden">59% vs 20%</td>-->
+      <td class="total-color">0.78 (59%)</td>
+
+<!--      <td class="odds">1.51</td>-->
+<!--      <td class="value">-0.34</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">3:0</td> <!-- New Result cell -->
+      <td class="warnings">&#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>3:0</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 9.0 | Scoring: 1.4 | Lineup Strength: -0.01 | Team Value: 0.2</li>-->
+<!--          <li>Away Team - Form: 5.0 | Scoring: 0.8 | Lineup Strength: -0.02 | Team Value: 0.05</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 18</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 18</td>
+    <td class="team" data-match-index="33">Twente vs Utrecht</td>
+      <td class="certainty">0.74 vs -1.59</td>
+<!--      <td class="hidden">64% vs 17%</td>-->
+      <td class="total-color">0.74 (64%)</td>
+
+<!--      <td class="odds">1.64</td>-->
+<!--      <td class="value">-0.31</td>-->
+
+      <td class="correct">0</td> <!-- New Result cell -->
+      <td class="result">0:1</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 Injuries &#127973;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>0:1</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 12.0 | Scoring: 1.9 | Lineup Strength: -0.24 | Team Value: 0.22</li>-->
+<!--          <li>Away Team - Form: 6.0 | Scoring: 1.0 | Lineup Strength: -0.1 | Team Value: 0.22</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 17</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 17</td>
+    <td class="team" data-match-index="34">Ath Madrid vs Las Palmas</td>
+      <td class="certainty">0.74 vs -1.45</td>
+<!--      <td class="hidden">56% vs 22%</td>-->
+      <td class="total-color">0.74 (56%)</td>
+
+<!--      <td class="odds">1.49</td>-->
+<!--      <td class="value">-0.37</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">5:0</td> <!-- New Result cell -->
+      <td class="warnings">&#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>5:0</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 13.0 | Scoring: 1.75 | Lineup Strength: -0.07 | Team Value: 0.46</li>-->
+<!--          <li>Away Team - Form: 10.0 | Scoring: 1.1 | Lineup Strength: -0.15 | Team Value: 0.05</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 18</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 18</td>
+    <td class="team" data-match-index="35">Ajax vs Nijmegen</td>
+      <td class="certainty">0.71 vs -1.56</td>
+<!--      <td class="hidden">56% vs 22%</td>-->
+      <td class="total-color">0.71 (56%)</td>
+
+<!--      <td class="odds">1.46</td>-->
+<!--      <td class="value">-0.4</td>-->
+
+      <td class="correct">0.5</td> <!-- New Result cell -->
+      <td class="result">2:2</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>2:2</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 9.0 | Scoring: 2.25 | Lineup Strength: -0.22 | Team Value: 0.89</li>-->
+<!--          <li>Away Team - Form: 7.0 | Scoring: 1.9 | Lineup Strength: -0.14 | Team Value: 0.12</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 18</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 18</td>
+    <td class="team" data-match-index="36">Rennes vs Clermont</td>
+      <td class="certainty">0.67 vs -1.5</td>
+<!--      <td class="hidden">62% vs 18%</td>-->
+      <td class="total-color">0.67 (62%)</td>
+
+<!--      <td class="odds">1.54</td>-->
+<!--      <td class="value">-0.38</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">3:1</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 Injuries &#127973;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>3:1</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 7.0 | Scoring: 1.3 | Lineup Strength: -0.19 | Team Value: 0.26</li>-->
+<!--          <li>Away Team - Form: 3.0 | Scoring: 1.2 | Lineup Strength: -0.14 | Team Value: 0.05</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 19</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 19</td>
+    <td class="team" data-match-index="37">Everton vs Crystal Palace</td>
+      <td class="certainty">0.64 vs -1.31</td>
+<!--      <td class="hidden">59% vs 20%</td>-->
+      <td class="total-color">0.64 (59%)</td>
+
+<!--      <td class="odds">1.76</td>-->
+<!--      <td class="value">-0.31</td>-->
+
+      <td class="correct">0.5</td> <!-- New Result cell -->
+      <td class="result">1:1</td> <!-- New Result cell -->
+      <td class="warnings">&#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:1</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 8.0 | Scoring: 1.2 | Lineup Strength: -0.04 | Team Value: 0.28</li>-->
+<!--          <li>Away Team - Form: 4.0 | Scoring: 1.2 | Lineup Strength: -0.13 | Team Value: 0.29</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 17</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 17</td>
+    <td class="team" data-match-index="38">Valencia vs Sevilla</td>
+      <td class="certainty">0.55 vs -1.46</td>
+<!--      <td class="hidden">54% vs 24%</td>-->
+      <td class="total-color">0.55 (54%)</td>
+
+<!--      <td class="odds">2.36</td>-->
+<!--      <td class="value">-0.2</td>-->
+
+      <td class="correct">0.5</td> <!-- New Result cell -->
+      <td class="result">0:0</td> <!-- New Result cell -->
+      <td class="warnings">&#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>0:0</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 8.0 | Scoring: 1.25 | Lineup Strength: -0.07 | Team Value: 0.17</li>-->
+<!--          <li>Away Team - Form: 4.0 | Scoring: 1.25 | Lineup Strength: -0.34 | Team Value: 0.18</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 17</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 17</td>
+    <td class="team" data-match-index="39">Brentford vs Liverpool</td>
+      <td class="certainty">-2.04 vs 0.52</td>
+<!--      <td class="hidden">16% vs 66%</td>-->
+      <td class="total-color">0.52 (66%)</td>
+
+<!--      <td class="odds">1.79</td>-->
+<!--      <td class="value">-0.35</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">1:4</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 MAJOR Injuries &#127973;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:4</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 6.0 | Scoring: 1.4 | Lineup Strength: -0.5 | Team Value: 0.3</li>-->
+<!--          <li>Away Team - Form: 13.0 | Scoring: 1.8 | Lineup Strength: -0.52 | Team Value: 0.7</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 17</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 17</td>
+    <td class="team" data-match-index="40">Tottenham vs Wolves</td>
+      <td class="certainty">0.51 vs -1.5</td>
+<!--      <td class="hidden">55% vs 23%</td>-->
+      <td class="total-color">0.51 (55%)</td>
+
+<!--      <td class="odds">1.57</td>-->
+<!--      <td class="value">-0.43</td>-->
+
+      <td class="correct">0</td> <!-- New Result cell -->
+      <td class="result">1:2</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 Injuries &#127973;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:2</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 11.0 | Scoring: 2.0 | Lineup Strength: -0.24 | Team Value: 0.59</li>-->
+<!--          <li>Away Team - Form: 8.0 | Scoring: 1.6 | Lineup Strength: -0.25 | Team Value: 0.25</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 17</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 17</td>
+    <td class="team" data-match-index="41">Sparta Rotterdam vs Excelsior</td>
+      <td class="certainty">0.46 vs -1.08</td>
+<!--      <td class="hidden">51% vs 26%</td>-->
+      <td class="total-color">0.46 (51%)</td>
+
+<!--      <td class="odds">1.83</td>-->
+<!--      <td class="value">-0.36</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">4:2</td> <!-- New Result cell -->
+      <td class="warnings">&#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>4:2</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 6.0 | Scoring: 1.15 | Lineup Strength: -0.03 | Team Value: 0.12</li>-->
+<!--          <li>Away Team - Form: 3.0 | Scoring: 1.4 | Lineup Strength: -0.09 | Team Value: 0.1</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 16</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 16</td>
+    <td class="team" data-match-index="42">Torino vs Lecce</td>
+      <td class="certainty">0.38 vs -1.46</td>
+<!--      <td class="hidden">62% vs 18%</td>-->
+      <td class="total-color">0.38 (62%)</td>
+
+<!--      <td class="odds">n/a</td>-->
+<!--      <td class="value">n/a</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">2:0</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 MAJOR Injuries &#127973; + &#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>2:0</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 7.0 | Scoring: 0.95 | Lineup Strength: -0.45 | Team Value: 0.32</li>-->
+<!--          <li>Away Team - Form: 3.0 | Scoring: 0.8 | Lineup Strength: -0.13 | Team Value: 0.14</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 18</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 18</td>
+    <td class="team" data-match-index="43">Eupen vs Gent</td>
+      <td class="certainty">-1.18 vs 0.38</td>
+<!--      <td class="hidden">21% vs 57%</td>-->
+      <td class="total-color">0.38 (57%)</td>
+
+<!--      <td class="odds">1.67</td>-->
+<!--      <td class="value">-0.44</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">0:2</td> <!-- New Result cell -->
+      <td class="warnings">&#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>0:2</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 3.0 | Scoring: 0.7 | Lineup Strength: -0.21 | Team Value: 0.2</li>-->
+<!--          <li>Away Team - Form: 6.0 | Scoring: 2.0 | Lineup Strength: -0.09 | Team Value: 0.65</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 16</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 16</td>
+    <td class="team" data-match-index="44">Lyon vs Nice</td>
+      <td class="certainty">-0.94 vs 0.35</td>
+<!--      <td class="hidden">25% vs 52%</td>-->
+      <td class="total-color">0.35 (52%)</td>
+
+<!--      <td class="odds">n/a</td>-->
+<!--      <td class="value">n/a</td>-->
+
+      <td class="correct">0</td> <!-- New Result cell -->
+      <td class="result">1:0</td> <!-- New Result cell -->
+      <td class="warnings">&#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:0</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 6.0 | Scoring: 1.05 | Lineup Strength: -0.07 | Team Value: 0.19</li>-->
+<!--          <li>Away Team - Form: 11.0 | Scoring: 1.6 | Lineup Strength: -0.02 | Team Value: 0.22</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 16</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 16</td>
+    <td class="team" data-match-index="45">Kasimpasa vs Karagumruk</td>
+      <td class="certainty">0.34 vs -1.2</td>
+<!--      <td class="hidden">52% vs 25%</td>-->
+      <td class="total-color">0.34 (52%)</td>
+
+<!--      <td class="odds">n/a</td>-->
+<!--      <td class="value">n/a</td>-->
+
+      <td class="correct">0.5</td> <!-- New Result cell -->
+      <td class="result">1:1</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 Injuries &#127973;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:1</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 10.0 | Scoring: 1.9 | Lineup Strength: -0.25 | Team Value: 0.08</li>-->
+<!--          <li>Away Team - Form: 6.0 | Scoring: 1.8 | Lineup Strength: -0.11 | Team Value: 0.11</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 17</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 17</td>
+    <td class="team" data-match-index="46">Fulham vs Aston Villa</td>
+      <td class="certainty">-1.37 vs 0.33</td>
+<!--      <td class="hidden">23% vs 54%</td>-->
+      <td class="total-color">0.33 (54%)</td>
+
+<!--      <td class="odds">2.5</td>-->
+<!--      <td class="value">-0.27</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">1:2</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:2</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 7.0 | Scoring: 1.45 | Lineup Strength: -0.31 | Team Value: 0.24</li>-->
+<!--          <li>Away Team - Form: 12.0 | Scoring: 1.45 | Lineup Strength: -0.22 | Team Value: 0.5</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 17</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 17</td>
+    <td class="team" data-match-index="47">For Sittard vs AZ Alkmaar</td>
+      <td class="certainty">-1.02 vs 0.33</td>
+<!--      <td class="hidden">22% vs 56%</td>-->
+      <td class="total-color">0.33 (56%)</td>
+
+<!--      <td class="odds">1.91</td>-->
+<!--      <td class="value">-0.39</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">1:2</td> <!-- New Result cell -->
+      <td class="warnings">&#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:2</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 6.0 | Scoring: 1.05 | Lineup Strength: -0.17 | Team Value: 0.09</li>-->
+<!--          <li>Away Team - Form: 9.0 | Scoring: 1.85 | Lineup Strength: -0.01 | Team Value: 0.39</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 18</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 18</td>
+    <td class="team" data-match-index="48">Mallorca vs Sociedad</td>
+      <td class="certainty">-1.08 vs 0.3</td>
+<!--      <td class="hidden">26% vs 51%</td>-->
+      <td class="total-color">0.3 (51%)</td>
+
+<!--      <td class="odds">2.62</td>-->
+<!--      <td class="value">-0.26</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">1:2</td> <!-- New Result cell -->
+      <td class="warnings">&#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:2</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 4.0 | Scoring: 0.9 | Lineup Strength: -0.13 | Team Value: 0.09</li>-->
+<!--          <li>Away Team - Form: 8.0 | Scoring: 1.3 | Lineup Strength: -0.15 | Team Value: 0.42</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 17</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 17</td>
+    <td class="team" data-match-index="49">Wolfsburg vs Dortmund</td>
+      <td class="certainty">-1.14 vs 0.29</td>
+<!--      <td class="hidden">21% vs 57%</td>-->
+      <td class="total-color">0.29 (57%)</td>
+
+<!--      <td class="odds">2.04</td>-->
+<!--      <td class="value">-0.37</td>-->
+
+      <td class="correct">0.5</td> <!-- New Result cell -->
+      <td class="result">1:1</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 Injuries &#127973;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:1</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 5.0 | Scoring: 1.15 | Lineup Strength: -0.05 | Team Value: 0.26</li>-->
+<!--          <li>Away Team - Form: 10.0 | Scoring: 1.65 | Lineup Strength: -0.3 | Team Value: 0.52</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 18</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 18</td>
+    <td class="team" data-match-index="50">Pendikspor vs Trabzonspor</td>
+      <td class="certainty">-1.17 vs 0.29</td>
+<!--      <td class="hidden">28% vs 49%</td>-->
+      <td class="total-color">0.29 (49%)</td>
+
+<!--      <td class="odds">2.24</td>-->
+<!--      <td class="value">-0.33</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">0:2</td> <!-- New Result cell -->
+      <td class="warnings">&#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>0:2</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 6.0 | Scoring: 1.35 | Lineup Strength: -0.32 | Team Value: 0.11</li>-->
+<!--          <li>Away Team - Form: 9.0 | Scoring: 1.9 | Lineup Strength: -0.06 | Team Value: 0.53</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 19</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 19</td>
+    <td class="team" data-match-index="51">Buyuksehyr vs Kayserispor</td>
+      <td class="certainty">0.28 vs -1.22</td>
+<!--      <td class="hidden">55% vs 23%</td>-->
+      <td class="total-color">0.28 (55%)</td>
+
+<!--      <td class="odds">1.73</td>-->
+<!--      <td class="value">-0.46</td>-->
+
+      <td class="correct">0</td> <!-- New Result cell -->
+      <td class="result">2:3</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 Injuries &#127973;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>2:3</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 8.0 | Scoring: 1.4 | Lineup Strength: -0.2 | Team Value: 0.25</li>-->
+<!--          <li>Away Team - Form: 6.0 | Scoring: 1.15 | Lineup Strength: -0.24 | Team Value: 0.12</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 18</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 18</td>
+    <td class="team" data-match-index="52">Brest vs Marseille</td>
+      <td class="certainty">0.18 vs -1.09</td>
+<!--      <td class="hidden">50% vs 26%</td>-->
+      <td class="total-color">0.18 (50%)</td>
+
+<!--      <td class="odds">2.62</td>-->
+<!--      <td class="value">-0.31</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">1:0</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:0</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 9.0 | Scoring: 1.35 | Lineup Strength: -0.16 | Team Value: 0.06</li>-->
+<!--          <li>Away Team - Form: 6.0 | Scoring: 0.8 | Lineup Strength: -0.25 | Team Value: 0.25</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 18</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 18</td>
+    <td class="team" data-match-index="53">Strasbourg vs Lorient</td>
+      <td class="certainty">0.16 vs -0.7</td>
+<!--      <td class="hidden">48% vs 28%</td>-->
+      <td class="total-color">0.16 (48%)</td>
+
+<!--      <td class="odds">1.76</td>-->
+<!--      <td class="value">-0.5</td>-->
+
+      <td class="correct">0</td> <!-- New Result cell -->
+      <td class="result">1:3</td> <!-- New Result cell -->
+      <td class="warnings">&#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:3</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 5.0 | Scoring: 1.0 | Lineup Strength: -0.03 | Team Value: 0.1</li>-->
+<!--          <li>Away Team - Form: 4.0 | Scoring: 1.4 | Lineup Strength: -0.01 | Team Value: 0.09</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 17</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 17</td>
+    <td class="team" data-match-index="54">Newcastle vs Bournemouth</td>
+      <td class="certainty">0.15 vs -1.36</td>
+<!--      <td class="hidden">61% vs 18%</td>-->
+      <td class="total-color">0.15 (61%)</td>
+
+<!--      <td class="odds">2.04</td>-->
+<!--      <td class="value">-0.43</td>-->
+
+      <td class="correct">0.5</td> <!-- New Result cell -->
+      <td class="result">2:2</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 MAJOR Injuries &#127973;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>2:2</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 10.0 | Scoring: 2.2 | Lineup Strength: -0.6 | Team Value: 0.52</li>-->
+<!--          <li>Away Team - Form: 7.0 | Scoring: 1.6 | Lineup Strength: -0.11 | Team Value: 0.27</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 17</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 17</td>
+    <td class="team" data-match-index="55">Portimonense vs Guimaraes</td>
+      <td class="certainty">-0.99 vs 0.14</td>
+<!--      <td class="hidden">22% vs 56%</td>-->
+      <td class="total-color">0.14 (56%)</td>
+
+<!--      <td class="odds">1.91</td>-->
+<!--      <td class="value">-0.47</td>-->
+
+      <td class="correct">0.5</td> <!-- New Result cell -->
+      <td class="result">1:1</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:1</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 6.0 | Scoring: 1.15 | Lineup Strength: -0.06 | Team Value: 0.05</li>-->
+<!--          <li>Away Team - Form: 11.0 | Scoring: 1.95 | Lineup Strength: -0.28 | Team Value: 0.1</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 18</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 18</td>
+    <td class="team" data-match-index="56">Empoli vs Fiorentina</td>
+      <td class="certainty">-1.01 vs 0.12</td>
+<!--      <td class="hidden">26% vs 50%</td>-->
+      <td class="total-color">0.12 (50%)</td>
+
+<!--      <td class="odds">2.16</td>-->
+<!--      <td class="value">-0.41</td>-->
+
+      <td class="correct">0.5</td> <!-- New Result cell -->
+      <td class="result">1:1</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:1</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 5.0 | Scoring: 0.9 | Lineup Strength: -0.11 | Team Value: 0.15</li>-->
+<!--          <li>Away Team - Form: 9.0 | Scoring: 1.25 | Lineup Strength: -0.28 | Team Value: 0.43</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 18</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 18</td>
+    <td class="team" data-match-index="57">Sheffield United vs Brighton</td>
+      <td class="certainty">-0.98 vs 0.12</td>
+<!--      <td class="hidden">22% vs 56%</td>-->
+      <td class="total-color">0.12 (56%)</td>
+
+<!--      <td class="odds">1.68</td>-->
+<!--      <td class="value">-0.55</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">0:5</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>0:5</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 3.0 | Scoring: 0.9 | Lineup Strength: -0.17 | Team Value: 0.12</li>-->
+<!--          <li>Away Team - Form: 6.0 | Scoring: 2.65 | Lineup Strength: -0.19 | Team Value: 0.37</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 18</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 18</td>
+    <td class="team" data-match-index="58">Estoril vs Gil Vicente</td>
+      <td class="certainty">0.09 vs -0.8</td>
+<!--      <td class="hidden">49% vs 27%</td>-->
+      <td class="total-color">0.09 (49%)</td>
+
+<!--      <td class="odds">2.12</td>-->
+<!--      <td class="value">-0.43</td>-->
+
+      <td class="correct">0</td> <!-- New Result cell -->
+      <td class="result">1:3</td> <!-- New Result cell -->
+      <td class="warnings">&#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:3</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 6.0 | Scoring: 1.6 | Lineup Strength: -0.11 | Team Value: 0.06</li>-->
+<!--          <li>Away Team - Form: 5.0 | Scoring: 1.65 | Lineup Strength: -0.11 | Team Value: 0.06</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 16</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 16</td>
+    <td class="team" data-match-index="59">Famalicao vs Rio Ave</td>
+      <td class="certainty">0.06 vs -0.91</td>
+<!--      <td class="hidden">50% vs 26%</td>-->
+      <td class="total-color">0.06 (50%)</td>
+
+<!--      <td class="odds">n/a</td>-->
+<!--      <td class="value">n/a</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">2:1</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 MAJOR Injuries &#127973; + &#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>2:1</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 5.0 | Scoring: 0.95 | Lineup Strength: -0.33 | Team Value: 0.12</li>-->
+<!--          <li>Away Team - Form: 3.0 | Scoring: 1.2 | Lineup Strength: -0.02 | Team Value: 0.04</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 17</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 17</td>
+    <td class="team" data-match-index="60">Mainz vs Augsburg</td>
+      <td class="certainty">-0.87 vs 0.01</td>
+<!--      <td class="hidden">31% vs 44%</td>-->
+      <td class="total-color">0.01 (44%)</td>
+
+<!--      <td class="odds">4.0</td>-->
+<!--      <td class="value">-0.25</td>-->
+
+      <td class="correct">0</td> <!-- New Result cell -->
+      <td class="result">1:0</td> <!-- New Result cell -->
+      <td class="warnings">&#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:0</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 1.0 | Scoring: 0.75 | Lineup Strength: -0.23 | Team Value: 0.13</li>-->
+<!--          <li>Away Team - Form: 5.0 | Scoring: 1.55 | Lineup Strength: -0.13 | Team Value: 0.14</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 18</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 18</td>
+    <td class="team" data-match-index="61">Cercle Brugge vs Club Brugge</td>
+      <td class="certainty">-0.99 vs 0.01</td>
+<!--      <td class="hidden">28% vs 47%</td>-->
+      <td class="total-color">0.01 (47%)</td>
+
+<!--      <td class="odds">2.1</td>-->
+<!--      <td class="value">-0.47</td>-->
+
+      <td class="correct">0.5</td> <!-- New Result cell -->
+      <td class="result">1:1</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:1</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 9.0 | Scoring: 1.5 | Lineup Strength: -0.29 | Team Value: 0.24</li>-->
+<!--          <li>Away Team - Form: 9.0 | Scoring: 1.4 | Lineup Strength: -0.18 | Team Value: 1.0</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 17</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 17</td>
+    <td class="team" data-match-index="62">Hoffenheim vs Union Berlin</td>
+      <td class="certainty">0.0 vs -1.01</td>
+<!--      <td class="hidden">55% vs 23%</td>-->
+      <td class="total-color">0.0 (55%)</td>
+
+<!--      <td class="odds">1.96</td>-->
+<!--      <td class="value">-0.51</td>-->
+
+      <td class="correct">0</td> <!-- New Result cell -->
+      <td class="result">0:1</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 MAJOR Injuries &#127973; + &#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>0:1</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 7.0 | Scoring: 1.85 | Lineup Strength: -0.35 | Team Value: 0.17</li>-->
+<!--          <li>Away Team - Form: 5.0 | Scoring: 1.9 | Lineup Strength: -0.16 | Team Value: 0.21</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 18</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 18</td>
+    <td class="team" data-match-index="63">Betis vs Alaves</td>
+      <td class="certainty">-0.01 vs -0.98</td>
+<!--      <td class="hidden">53% vs 24%</td>-->
+      <td class="total-color">-0.01 (53%)</td>
+
+<!--      <td class="odds">2.18</td>-->
+<!--      <td class="value">-0.46</td>-->
+
+      <td class="correct">0.5</td> <!-- New Result cell -->
+      <td class="result">0:0</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 MAJOR Injuries &#127973;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>0:0</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 7.0 | Scoring: 1.15 | Lineup Strength: -0.47 | Team Value: 0.2</li>-->
+<!--          <li>Away Team - Form: 5.0 | Scoring: 1.0 | Lineup Strength: -0.01 | Team Value: 0.05</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 17</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 17</td>
+    <td class="team" data-match-index="64">Oud-Heverlee Leuven vs Charleroi</td>
+      <td class="certainty">-0.02 vs -1.09</td>
+<!--      <td class="hidden">48% vs 28%</td>-->
+      <td class="total-color">-0.02 (48%)</td>
+
+<!--      <td class="odds">2.48</td>-->
+<!--      <td class="value">-0.41</td>-->
+
+      <td class="correct">0.5</td> <!-- New Result cell -->
+      <td class="result">0:0</td> <!-- New Result cell -->
+      <td class="warnings"></td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>0:0</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 6.0 | Scoring: 1.3 | Lineup Strength: -0.04 | Team Value: 0.24</li>-->
+<!--          <li>Away Team - Form: 6.0 | Scoring: 1.45 | Lineup Strength: -0.57 | Team Value: 0.29</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 18</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 18</td>
+    <td class="team" data-match-index="65">Casa Pia vs Arouca</td>
+      <td class="certainty">-0.79 vs -0.02</td>
+<!--      <td class="hidden">27% vs 50%</td>-->
+      <td class="total-color">-0.02 (50%)</td>
+
+<!--      <td class="odds">2.32</td>-->
+<!--      <td class="value">-0.44</td>-->
+
+      <td class="correct">0</td> <!-- New Result cell -->
+      <td class="result">1:0</td> <!-- New Result cell -->
+      <td class="warnings"></td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:0</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 4.0 | Scoring: 0.8 | Lineup Strength: -0.2 | Team Value: 0.04</li>-->
+<!--          <li>Away Team - Form: 7.0 | Scoring: 1.75 | Lineup Strength: -0.11 | Team Value: 0.06</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 18</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 18</td>
+    <td class="team" data-match-index="66">Granada vs Almeria</td>
+      <td class="certainty">-0.06 vs -0.74</td>
+<!--      <td class="hidden">48% vs 28%</td>-->
+      <td class="total-color">-0.06 (48%)</td>
+
+<!--      <td class="odds">2.26</td>-->
+<!--      <td class="value">-0.47</td>-->
+
+      <td class="correct">0.5</td> <!-- New Result cell -->
+      <td class="result">1:1</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:1</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 1.0 | Scoring: 0.95 | Lineup Strength: -0.23 | Team Value: 0.07</li>-->
+<!--          <li>Away Team - Form: 0.0 | Scoring: 1.8 | Lineup Strength: -0.07 | Team Value: 0.09</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 19</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 19</td>
+    <td class="team" data-match-index="67">Ath Bilbao vs Girona</td>
+      <td class="certainty">-0.41 vs -0.11</td>
+<!--      <td class="hidden">38% vs 37%</td>-->
+      <td class="total-color">-0.11 (37%)</td>
+
+<!--      <td class="odds">4.1</td>-->
+<!--      <td class="value">-0.29</td>-->
+
+      <td class="correct">0</td> <!-- New Result cell -->
+      <td class="result">3:2</td> <!-- New Result cell -->
+      <td class="warnings">&#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>3:2</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 11.0 | Scoring: 1.8 | Lineup Strength: -0.01 | Team Value: 0.21</li>-->
+<!--          <li>Away Team - Form: 14.0 | Scoring: 0.85 | Lineup Strength: -0.01 | Team Value: 0.16</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 17</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 17</td>
+    <td class="team" data-match-index="68">Zwolle vs Almere City</td>
+      <td class="certainty">-0.15 vs -0.78</td>
+<!--      <td class="hidden">51% vs 26%</td>-->
+      <td class="total-color">-0.15 (51%)</td>
+
+<!--      <td class="odds">2.22</td>-->
+<!--      <td class="value">-0.51</td>-->
+
+      <td class="correct">0</td> <!-- New Result cell -->
+      <td class="result">0:1</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 MAJOR Injuries &#127973;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>0:1</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 7.0 | Scoring: 1.5 | Lineup Strength: -0.36 | Team Value: 0.07</li>-->
+<!--          <li>Away Team - Form: 6.0 | Scoring: 1.55 | Lineup Strength: -0.07 | Team Value: 0.07</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 18</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 18</td>
+    <td class="team" data-match-index="69">Lazio vs Bologna</td>
+      <td class="certainty">-0.16 vs -0.77</td>
+<!--      <td class="hidden">40% vs 35%</td>-->
+      <td class="total-color">-0.16 (40%)</td>
+
+<!--      <td class="odds">2.46</td>-->
+<!--      <td class="value">-0.47</td>-->
+
+      <td class="correct">0</td> <!-- New Result cell -->
+      <td class="result">1:2</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:2</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 10.0 | Scoring: 1.25 | Lineup Strength: -0.27 | Team Value: 0.48</li>-->
+<!--          <li>Away Team - Form: 10.0 | Scoring: 1.0 | Lineup Strength: -0.16 | Team Value: 0.28</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 18</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 18</td>
+    <td class="team" data-match-index="70">Montpellier vs Metz</td>
+      <td class="certainty">-0.16 vs -0.64</td>
+<!--      <td class="hidden">45% vs 30%</td>-->
+      <td class="total-color">-0.16 (45%)</td>
+
+<!--      <td class="odds">1.79</td>-->
+<!--      <td class="value">-0.62</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">3:0</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>3:0</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 4.0 | Scoring: 0.95 | Lineup Strength: -0.22 | Team Value: 0.08</li>-->
+<!--          <li>Away Team - Form: 4.0 | Scoring: 1.25 | Lineup Strength: -0.08 | Team Value: 0.03</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 18</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 18</td>
+    <td class="team" data-match-index="71">Udinese vs Cagliari</td>
+      <td class="certainty">-0.21 vs -0.82</td>
+<!--      <td class="hidden">47% vs 29%</td>-->
+      <td class="total-color">-0.21 (47%)</td>
+
+<!--      <td class="odds">1.94</td>-->
+<!--      <td class="value">-0.6</td>-->
+
+      <td class="correct">0.5</td> <!-- New Result cell -->
+      <td class="result">1:1</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:1</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 3.0 | Scoring: 1.15 | Lineup Strength: -0.23 | Team Value: 0.27</li>-->
+<!--          <li>Away Team - Form: 4.0 | Scoring: 1.65 | Lineup Strength: -0.3 | Team Value: 0.12</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 16</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 16</td>
+    <td class="team" data-match-index="72">Westerlo vs Standard</td>
+      <td class="certainty">-0.27 vs -0.72</td>
+<!--      <td class="hidden">43% vs 33%</td>-->
+      <td class="total-color">-0.27 (43%)</td>
+
+<!--      <td class="odds">n/a</td>-->
+<!--      <td class="value">n/a</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">2:1</td> <!-- New Result cell -->
+      <td class="warnings">&#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>2:1</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 6.0 | Scoring: 1.6 | Lineup Strength: -0.13 | Team Value: 0.27</li>-->
+<!--          <li>Away Team - Form: 6.0 | Scoring: 1.8 | Lineup Strength: -0.35 | Team Value: 0.47</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 16</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 16</td>
+    <td class="team" data-match-index="73">Villarreal vs Getafe</td>
+      <td class="certainty">-0.78 vs -0.27</td>
+<!--      <td class="hidden">35% vs 41%</td>-->
+      <td class="total-color">-0.27 (41%)</td>
+
+<!--      <td class="odds">n/a</td>-->
+<!--      <td class="value">n/a</td>-->
+
+      <td class="correct">0.5</td> <!-- New Result cell -->
+      <td class="result">1:1</td> <!-- New Result cell -->
+      <td class="warnings">&#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:1</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 5.0 | Scoring: 1.4 | Lineup Strength: -0.49 | Team Value: 0.18</li>-->
+<!--          <li>Away Team - Form: 7.0 | Scoring: 1.85 | Lineup Strength: -0.07 | Team Value: 0.11</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 17</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 17</td>
+    <td class="team" data-match-index="74">Nott'm Forest vs West Ham</td>
+      <td class="certainty">-0.95 vs -0.28</td>
+<!--      <td class="hidden">33% vs 42%</td>-->
+      <td class="total-color">-0.28 (42%)</td>
+
+<!--      <td class="odds">3.35</td>-->
+<!--      <td class="value">-0.41</td>-->
+
+      <td class="correct">0</td> <!-- New Result cell -->
+      <td class="result">2:0</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 MAJOR Injuries &#127973; + &#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>2:0</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 3.0 | Scoring: 1.2 | Lineup Strength: -0.29 | Team Value: 0.31</li>-->
+<!--          <li>Away Team - Form: 7.0 | Scoring: 1.9 | Lineup Strength: -0.44 | Team Value: 0.37</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 16</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 16</td>
+    <td class="team" data-match-index="75">FC Koln vs Werder Bremen</td>
+      <td class="certainty">-1.01 vs -0.28</td>
+<!--      <td class="hidden">27% vs 49%</td>-->
+      <td class="total-color">-0.28 (49%)</td>
+
+<!--      <td class="odds">n/a</td>-->
+<!--      <td class="value">n/a</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">0:1</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 MAJOR Injuries &#127973;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>0:1</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 3.0 | Scoring: 0.75 | Lineup Strength: -0.32 | Team Value: 0.11</li>-->
+<!--          <li>Away Team - Form: 7.0 | Scoring: 1.7 | Lineup Strength: -0.47 | Team Value: 0.1</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 18</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 18</td>
+    <td class="team" data-match-index="76">Vitesse vs Volendam</td>
+      <td class="certainty">-0.28 vs -0.78</td>
+<!--      <td class="hidden">41% vs 35%</td>-->
+      <td class="total-color">-0.28 (41%)</td>
+
+<!--      <td class="odds">1.79</td>-->
+<!--      <td class="value">-0.67</td>-->
+
+      <td class="correct">0.5</td> <!-- New Result cell -->
+      <td class="result">1:1</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:1</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 2.0 | Scoring: 0.65 | Lineup Strength: -0.18 | Team Value: 0.13</li>-->
+<!--          <li>Away Team - Form: 3.0 | Scoring: 2.2 | Lineup Strength: -0.38 | Team Value: 0.05</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 17</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 17</td>
+    <td class="team" data-match-index="77">Heerenveen vs Go Ahead Eagles</td>
+      <td class="certainty">-0.37 vs -0.35</td>
+<!--      <td class="hidden">31% vs 45%</td>-->
+      <td class="total-color">-0.35 (45%)</td>
+
+<!--      <td class="odds">3.85</td>-->
+<!--      <td class="value">-0.4</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">0:2</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>0:2</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 6.0 | Scoring: 1.55 | Lineup Strength: -0.04 | Team Value: 0.16</li>-->
+<!--          <li>Away Team - Form: 8.0 | Scoring: 2.05 | Lineup Strength: -0.18 | Team Value: 0.07</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 18</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 18</td>
+    <td class="team" data-match-index="78">Reims vs Lens</td>
+      <td class="certainty">-0.36 vs -0.41</td>
+<!--      <td class="hidden">36% vs 39%</td>-->
+      <td class="total-color">-0.36 (36%)</td>
+
+<!--      <td class="odds">2.78</td>-->
+<!--      <td class="value">-0.51</td>-->
+
+      <td class="correct">0.5</td> <!-- New Result cell -->
+      <td class="result">1:1</td> <!-- New Result cell -->
+      <td class="warnings">&#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:1</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 9.0 | Scoring: 1.3 | Lineup Strength: -0.08 | Team Value: 0.08</li>-->
+<!--          <li>Away Team - Form: 10.0 | Scoring: 1.35 | Lineup Strength: -0.19 | Team Value: 0.19</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 17</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 17</td>
+    <td class="team" data-match-index="79">Hatayspor vs Sivasspor</td>
+      <td class="certainty">-0.5 vs -0.38</td>
+<!--      <td class="hidden">37% vs 38%</td>-->
+      <td class="total-color">-0.38 (38%)</td>
+
+<!--      <td class="odds">3.65</td>-->
+<!--      <td class="value">-0.43</td>-->
+
+      <td class="correct">0.5</td> <!-- New Result cell -->
+      <td class="result">1:1</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 Injuries &#127973;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:1</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 5.0 | Scoring: 1.15 | Lineup Strength: -0.2 | Team Value: 0.09</li>-->
+<!--          <li>Away Team - Form: 7.0 | Scoring: 1.5 | Lineup Strength: -0.18 | Team Value: 0.08</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 18</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 18</td>
+    <td class="team" data-match-index="80">Alanyaspor vs Ad. Demirspor</td>
+      <td class="certainty">-0.38 vs -0.74</td>
+<!--      <td class="hidden">37% vs 38%</td>-->
+      <td class="total-color">-0.38 (37%)</td>
+
+<!--      <td class="odds">2.04</td>-->
+<!--      <td class="value">-0.65</td>-->
+
+      <td class="correct">0.5</td> <!-- New Result cell -->
+      <td class="result">3:3</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>3:3</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 5.0 | Scoring: 1.1 | Lineup Strength: -0.27 | Team Value: 0.12</li>-->
+<!--          <li>Away Team - Form: 5.0 | Scoring: 1.6 | Lineup Strength: -0.35 | Team Value: 0.19</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 18</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 18</td>
+    <td class="team" data-match-index="81">Freiburg vs Ein Frankfurt</td>
+      <td class="certainty">-0.48 vs -0.68</td>
+<!--      <td class="hidden">35% vs 40%</td>-->
+      <td class="total-color">-0.48 (35%)</td>
+
+<!--      <td class="odds">2.4</td>-->
+<!--      <td class="value">-0.61</td>-->
+
+      <td class="correct">0.5</td> <!-- New Result cell -->
+      <td class="result">3:3</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 MAJOR Injuries &#127973; + &#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>3:3</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 7.0 | Scoring: 1.2 | Lineup Strength: -0.39 | Team Value: 0.18</li>-->
+<!--          <li>Away Team - Form: 7.0 | Scoring: 1.8 | Lineup Strength: -0.27 | Team Value: 0.19</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 17</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 17</td>
+    <td class="team" data-match-index="82">Chaves vs Boavista</td>
+      <td class="certainty">-0.49 vs -0.51</td>
+<!--      <td class="hidden">32% vs 44%</td>-->
+      <td class="total-color">-0.49 (32%)</td>
+
+<!--      <td class="odds">2.72</td>-->
+<!--      <td class="value">-0.57</td>-->
+
+      <td class="correct">1</td> <!-- New Result cell -->
+      <td class="result">2:1</td> <!-- New Result cell -->
+      <td class="warnings">&#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>2:1</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 3.0 | Scoring: 1.0 | Lineup Strength: -0.08 | Team Value: 0.04</li>-->
+<!--          <li>Away Team - Form: 5.0 | Scoring: 2.25 | Lineup Strength: -0.42 | Team Value: 0.08</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+  <tr class="match">
+<!--    <td>Feb 18</td>-->
+<!--    <td></td>-->
+    <td class="date">Feb 18</td>
+    <td class="team" data-match-index="83">Gaziantep vs Samsunspor</td>
+      <td class="certainty">-0.71 vs -0.54</td>
+<!--      <td class="hidden">41% vs 34%</td>-->
+      <td class="total-color">-0.54 (34%)</td>
+
+<!--      <td class="odds">3.0</td>-->
+<!--      <td class="value">-0.55</td>-->
+
+      <td class="correct">0.5</td> <!-- New Result cell -->
+      <td class="result">1:1</td> <!-- New Result cell -->
+      <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--    <td>1:1</td>-->
+<!--    <td></td>-->
+<!--    <td></td>-->
+<!--  </tr>-->
+<!--  <tr class="explanation">-->
+<!--    <td colspan="12">-->
+<!--      <div>-->
+<!--        <ul>-->
+<!--          <li>Home Team - Form: 7.0 | Scoring: 1.4 | Lineup Strength: -0.53 | Team Value: 0.09</li>-->
+<!--          <li>Away Team - Form: 8.0 | Scoring: 1.25 | Lineup Strength: -0.22 | Team Value: 0.15</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+  
+</table>
+
+</body>
+</html>
