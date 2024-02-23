@@ -120,25 +120,23 @@ window.addEventListener("DOMContentLoaded", (event) => {
        cell.innerHTML = `<span class="black"; font-size: 36px;>&#x2043;</span>`;
     }
   });
-  // Function to calculate the gradient color
-  function calculateGradientColor(value) {
-    if (value <= 0) {
-      return "red";
-    } else if (value >= 2) {
-      return "green";
-    } else if (value < 0.7) {
-      const red = 255;
-      const green = 255 * (value * 2);
-      return `rgb(${red}, ${green}, 0)`;
-    } else if ((value >= 0.7) && (value<1.5)) {
-      const red = 255 * (1 - (value - 0.7));
-      const green = 255;
-      return `rgb(${red}, ${green}, 0)`;
-    } else if (value >= 1.5) {
-        const green = 255 * (1 - (value - 1.5));
-        return `rgb(0, ${green}, 0)`;
+    function calculateGradientColor(value) {
+        if (value <= 0) {
+            return "red";
+        } else if (value < 50) {
+            const red = 255;
+            const green = Math.round((value / 50) * 255);
+            return `rgb(${red}, ${green}, 0)`;
+        } else if (value >= 50 && value < 75) {
+            const red = Math.round((1 - (value - 65) / 17.5) * 255);
+            const green = 255;
+            return `rgb(${red}, ${green}, 0)`;
+        } else if (value >= 75) {
+            const green = Math.round(255 - ((value - 78) / 12.5) * 255);
+            return `rgb(0, ${green}, 0)`;
+        }
     }
-  }
+
 });
 window.addEventListener("DOMContentLoaded", (event) => {
   // Get all the tabs
@@ -182,7 +180,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
   <tr>
       <th>Date</th>
       <th>Fixture</th>
-      <th>Certainty</th>
+      <th>Confidence</th>
       <th>Result</th>
       <th>Score</th>
       <th>Odds (Beta)</th>
@@ -193,7 +191,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     <td class="date">Feb 25</td>
     <td class="team" data-match-index="0">Benfica vs Portimonense</td>
       <td class="certainty">2.48 vs -3.07</td>
-      <td class="total-color">2.48 (87%)</td>
+      <td class="total-color">84.8%</td>
       <td class="correct">None</td>
       <td class="result">TBD</td>
       <td class="odds">1.12</td>
@@ -202,20 +200,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
   
   <tr class="match">
     <td class="date">Feb 25</td>
-    <td class="team" data-match-index="1">Lecce vs Inter</td>
-      <td class="certainty">-3.39 vs 2.39</td>
-      <td class="total-color">2.39 (86%)</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">1.45</td>
-      <td class="warnings"></td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="2">Rio Ave vs Sp Lisbon</td>
-      <td class="certainty">-2.98 vs 2.37</td>
-      <td class="total-color">2.37 (84%)</td>
+    <td class="team" data-match-index="1">Rio Ave vs Sp Lisbon</td>
+      <td class="certainty">-2.98 vs 2.41</td>
+      <td class="total-color">84.05%</td>
       <td class="correct">None</td>
       <td class="result">TBD</td>
       <td class="odds">1.39</td>
@@ -224,9 +211,20 @@ window.addEventListener("DOMContentLoaded", (event) => {
   
   <tr class="match">
     <td class="date">Feb 25</td>
+    <td class="team" data-match-index="2">Lecce vs Inter</td>
+      <td class="certainty">-3.28 vs 2.39</td>
+      <td class="total-color">83.91%</td>
+      <td class="correct">None</td>
+      <td class="result">TBD</td>
+      <td class="odds">1.45</td>
+      <td class="warnings"></td>
+
+  
+  <tr class="match">
+    <td class="date">Feb 25</td>
     <td class="team" data-match-index="3">Juventus vs Frosinone</td>
-      <td class="certainty">1.86 vs -2.7</td>
-      <td class="total-color">1.86 (81%)</td>
+      <td class="certainty">1.86 vs -2.66</td>
+      <td class="total-color">78.62%</td>
       <td class="correct">None</td>
       <td class="result">TBD</td>
       <td class="odds">1.34</td>
@@ -237,7 +235,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     <td class="date">Feb 25</td>
     <td class="team" data-match-index="4">Paris SG vs Rennes</td>
       <td class="certainty">1.85 vs -2.63</td>
-      <td class="total-color">1.85 (78%)</td>
+      <td class="total-color">78.48%</td>
       <td class="correct">None</td>
       <td class="result">TBD</td>
       <td class="odds">1.48</td>
@@ -248,7 +246,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     <td class="date">Feb 25</td>
     <td class="team" data-match-index="5">Real Madrid vs Sevilla</td>
       <td class="certainty">1.81 vs -3.19</td>
-      <td class="total-color">1.81 (83%)</td>
+      <td class="total-color">78.1%</td>
       <td class="correct">None</td>
       <td class="result">TBD</td>
       <td class="odds">1.32</td>
@@ -259,7 +257,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     <td class="date">Feb 25</td>
     <td class="team" data-match-index="6">Almere City vs Feyenoord</td>
       <td class="certainty">-2.42 vs 1.55</td>
-      <td class="total-color">1.55 (80%)</td>
+      <td class="total-color">75.45%</td>
       <td class="correct">None</td>
       <td class="result">TBD</td>
       <td class="odds">1.28</td>
@@ -268,20 +266,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
   
   <tr class="match">
     <td class="date">Feb 25</td>
-    <td class="team" data-match-index="7">Nice vs Clermont</td>
-      <td class="certainty">1.44 vs -2.09</td>
-      <td class="total-color">1.44 (71%)</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">1.48</td>
-      <td class="warnings">&#128201; Form Dip &#128201;</td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="8">St. Gilloise vs Standard</td>
-      <td class="certainty">1.39 vs -2.49</td>
-      <td class="total-color">1.39 (77%)</td>
+    <td class="team" data-match-index="7">St. Gilloise vs Standard</td>
+      <td class="certainty">1.45 vs -2.49</td>
+      <td class="total-color">74.54%</td>
       <td class="correct">None</td>
       <td class="result">TBD</td>
       <td class="odds">1.38</td>
@@ -290,9 +277,20 @@ window.addEventListener("DOMContentLoaded", (event) => {
   
   <tr class="match">
     <td class="date">Feb 25</td>
+    <td class="team" data-match-index="8">Nice vs Clermont</td>
+      <td class="certainty">1.44 vs -2.09</td>
+      <td class="total-color">74.35%</td>
+      <td class="correct">None</td>
+      <td class="result">TBD</td>
+      <td class="odds">1.48</td>
+      <td class="warnings">&#128201; Form Dip &#128201;</td>
+
+  
+  <tr class="match">
+    <td class="date">Feb 25</td>
     <td class="team" data-match-index="9">Gil Vicente vs Porto</td>
       <td class="certainty">-1.88 vs 1.26</td>
-      <td class="total-color">1.26 (66%)</td>
+      <td class="total-color">72.57%</td>
       <td class="correct">None</td>
       <td class="result">TBD</td>
       <td class="odds">1.4</td>
@@ -303,7 +301,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     <td class="date">Feb 25</td>
     <td class="team" data-match-index="10">Wolves vs Sheffield United</td>
       <td class="certainty">0.98 vs -1.9</td>
-      <td class="total-color">0.98 (75%)</td>
+      <td class="total-color">69.18%</td>
       <td class="correct">None</td>
       <td class="result">TBD</td>
       <td class="odds">1.51</td>
@@ -314,7 +312,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     <td class="date">Feb 25</td>
     <td class="team" data-match-index="11">Trabzonspor vs Ad. Demirspor</td>
       <td class="certainty">0.97 vs -1.84</td>
-      <td class="total-color">0.97 (58%)</td>
+      <td class="total-color">68.68%</td>
       <td class="correct">None</td>
       <td class="result">TBD</td>
       <td class="odds">1.82</td>
@@ -324,8 +322,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
   <tr class="match">
     <td class="date">Feb 25</td>
     <td class="team" data-match-index="12">Cagliari vs Napoli</td>
-      <td class="certainty">-1.71 vs 0.84</td>
-      <td class="total-color">0.84 (58%)</td>
+      <td class="certainty">-1.79 vs 0.84</td>
+      <td class="total-color">63.55%</td>
       <td class="correct">None</td>
       <td class="result">TBD</td>
       <td class="odds">1.91</td>
@@ -336,7 +334,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     <td class="date">Feb 25</td>
     <td class="team" data-match-index="13">Istanbulspor vs Besiktas</td>
       <td class="certainty">-1.63 vs 0.75</td>
-      <td class="total-color">0.75 (64%)</td>
+      <td class="total-color">60.15%</td>
       <td class="correct">None</td>
       <td class="result">TBD</td>
       <td class="odds">1.59</td>
@@ -347,7 +345,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     <td class="date">Feb 25</td>
     <td class="team" data-match-index="14">Dortmund vs Hoffenheim</td>
       <td class="certainty">0.55 vs -1.82</td>
-      <td class="total-color">0.55 (64%)</td>
+      <td class="total-color">52.01%</td>
       <td class="correct">None</td>
       <td class="result">TBD</td>
       <td class="odds">1.55</td>
@@ -358,7 +356,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     <td class="date">Feb 25</td>
     <td class="team" data-match-index="15">Toulouse vs Lille</td>
       <td class="certainty">-1.15 vs 0.46</td>
-      <td class="total-color">0.46 (54%)</td>
+      <td class="total-color">46.55%</td>
       <td class="correct">None</td>
       <td class="result">TBD</td>
       <td class="odds">1.95</td>
@@ -369,7 +367,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     <td class="date">Feb 25</td>
     <td class="team" data-match-index="16">Twente vs Go Ahead Eagles</td>
       <td class="certainty">0.35 vs -1.27</td>
-      <td class="total-color">0.35 (53%)</td>
+      <td class="total-color">38.25%</td>
       <td class="correct">None</td>
       <td class="result">TBD</td>
       <td class="odds">1.55</td>
@@ -380,7 +378,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     <td class="date">Feb 25</td>
     <td class="team" data-match-index="17">Las Palmas vs Osasuna</td>
       <td class="certainty">0.3 vs -0.97</td>
-      <td class="total-color">0.3 (53%)</td>
+      <td class="total-color">33.95%</td>
       <td class="correct">None</td>
       <td class="result">TBD</td>
       <td class="odds">2.48</td>
@@ -390,8 +388,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
   <tr class="match">
     <td class="date">Feb 25</td>
     <td class="team" data-match-index="18">Marseille vs Montpellier</td>
-      <td class="certainty">0.23 vs -1.2</td>
-      <td class="total-color">0.23 (53%)</td>
+      <td class="certainty">0.29 vs -1.2</td>
+      <td class="total-color">32.91%</td>
       <td class="correct">None</td>
       <td class="result">TBD</td>
       <td class="odds">1.79</td>
@@ -401,8 +399,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
   <tr class="match">
     <td class="date">Feb 25</td>
     <td class="team" data-match-index="19">Ein Frankfurt vs Wolfsburg</td>
-      <td class="certainty">0.2 vs -1.02</td>
-      <td class="total-color">0.2 (56%)</td>
+      <td class="certainty">0.21 vs -1.02</td>
+      <td class="total-color">26.56%</td>
       <td class="correct">None</td>
       <td class="result">TBD</td>
       <td class="odds">2.38</td>
@@ -411,20 +409,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
   
   <tr class="match">
     <td class="date">Feb 25</td>
-    <td class="team" data-match-index="20">Milan vs Atalanta</td>
-      <td class="certainty">0.18 vs -0.77</td>
-      <td class="total-color">0.18 (44%)</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">2.44</td>
-      <td class="warnings"></td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="21">Betis vs Ath Bilbao</td>
+    <td class="team" data-match-index="20">Betis vs Ath Bilbao</td>
       <td class="certainty">-1.13 vs 0.14</td>
-      <td class="total-color">0.14 (45%)</td>
+      <td class="total-color">21.53%</td>
       <td class="correct">None</td>
       <td class="result">TBD</td>
       <td class="odds">2.3</td>
@@ -433,9 +420,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
   
   <tr class="match">
     <td class="date">Feb 25</td>
-    <td class="team" data-match-index="22">Eupen vs Cercle Brugge</td>
+    <td class="team" data-match-index="21">Eupen vs Cercle Brugge</td>
       <td class="certainty">-1.13 vs 0.12</td>
-      <td class="total-color">0.12 (56%)</td>
+      <td class="total-color">19.76%</td>
       <td class="correct">None</td>
       <td class="result">TBD</td>
       <td class="odds">1.73</td>
@@ -444,9 +431,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
   
   <tr class="match">
     <td class="date">Feb 25</td>
-    <td class="team" data-match-index="23">Excelsior vs Vitesse</td>
+    <td class="team" data-match-index="22">Excelsior vs Vitesse</td>
       <td class="certainty">0.1 vs -0.89</td>
-      <td class="total-color">0.1 (53%)</td>
+      <td class="total-color">18.4%</td>
       <td class="correct">None</td>
       <td class="result">TBD</td>
       <td class="odds">2.18</td>
@@ -455,9 +442,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
   
   <tr class="match">
     <td class="date">Feb 25</td>
-    <td class="team" data-match-index="24">Karagumruk vs Alanyaspor</td>
+    <td class="team" data-match-index="23">Karagumruk vs Alanyaspor</td>
       <td class="certainty">0.08 vs -0.96</td>
-      <td class="total-color">0.08 (50%)</td>
+      <td class="total-color">16.16%</td>
       <td class="correct">None</td>
       <td class="result">TBD</td>
       <td class="odds">1.92</td>
@@ -466,9 +453,31 @@ window.addEventListener("DOMContentLoaded", (event) => {
   
   <tr class="match">
     <td class="date">Feb 25</td>
-    <td class="team" data-match-index="25">Cadiz vs Celta</td>
+    <td class="team" data-match-index="24">Lens vs Monaco</td>
+      <td class="certainty">0.02 vs -0.86</td>
+      <td class="total-color">11.7%</td>
+      <td class="correct">None</td>
+      <td class="result">TBD</td>
+      <td class="odds">2.36</td>
+      <td class="warnings"></td>
+
+  
+  <tr class="match">
+    <td class="date">Feb 25</td>
+    <td class="team" data-match-index="25">Milan vs Atalanta</td>
+      <td class="certainty">0.0 vs -0.91</td>
+      <td class="total-color">10.21%</td>
+      <td class="correct">None</td>
+      <td class="result">TBD</td>
+      <td class="odds">2.44</td>
+      <td class="warnings">&#127973 Injuries &#127973;</td>
+
+  
+  <tr class="match">
+    <td class="date">Feb 25</td>
+    <td class="team" data-match-index="26">Cadiz vs Celta</td>
       <td class="certainty">-0.63 vs -0.01</td>
-      <td class="total-color">-0.01 (44%)</td>
+      <td class="total-color">9.81%</td>
       <td class="correct">None</td>
       <td class="result">TBD</td>
       <td class="odds">2.66</td>
@@ -477,9 +486,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
   
   <tr class="match">
     <td class="date">Feb 25</td>
-    <td class="team" data-match-index="26">Sivasspor vs Pendikspor</td>
+    <td class="team" data-match-index="27">Sivasspor vs Pendikspor</td>
       <td class="certainty">-0.01 vs -0.99</td>
-      <td class="total-color">-0.01 (49%)</td>
+      <td class="total-color">9.86%</td>
       <td class="correct">None</td>
       <td class="result">TBD</td>
       <td class="odds">2.16</td>
@@ -488,9 +497,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
   
   <tr class="match">
     <td class="date">Feb 25</td>
-    <td class="team" data-match-index="27">Le Havre vs Reims</td>
+    <td class="team" data-match-index="28">Le Havre vs Reims</td>
       <td class="certainty">-0.51 vs -0.09</td>
-      <td class="total-color">-0.09 (39%)</td>
+      <td class="total-color">8.15%</td>
       <td class="correct">None</td>
       <td class="result">TBD</td>
       <td class="odds">2.52</td>
@@ -499,9 +508,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
   
   <tr class="match">
     <td class="date">Feb 25</td>
-    <td class="team" data-match-index="28">Volendam vs Heerenveen</td>
+    <td class="team" data-match-index="29">Volendam vs Heerenveen</td>
       <td class="certainty">-0.82 vs -0.1</td>
-      <td class="total-color">-0.1 (43%)</td>
+      <td class="total-color">8.07%</td>
       <td class="correct">None</td>
       <td class="result">TBD</td>
       <td class="odds">1.78</td>
@@ -510,20 +519,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
   
   <tr class="match">
     <td class="date">Feb 25</td>
-    <td class="team" data-match-index="29">Lens vs Monaco</td>
-      <td class="certainty">-0.12 vs -0.86</td>
-      <td class="total-color">-0.12 (46%)</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">2.36</td>
-      <td class="warnings">&#127973 Injuries &#127973;</td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
     <td class="team" data-match-index="30">Gent vs Antwerp</td>
       <td class="certainty">-0.55 vs -0.18</td>
-      <td class="total-color">-0.18 (41%)</td>
+      <td class="total-color">6.36%</td>
       <td class="correct">None</td>
       <td class="result">TBD</td>
       <td class="odds">2.84</td>
@@ -534,7 +532,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     <td class="date">Feb 25</td>
     <td class="team" data-match-index="31">Vizela vs Estoril</td>
       <td class="certainty">-0.42 vs -0.21</td>
-      <td class="total-color">-0.21 (45%)</td>
+      <td class="total-color">5.9%</td>
       <td class="correct">None</td>
       <td class="result">TBD</td>
       <td class="odds">2.64</td>
@@ -544,8 +542,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
   <tr class="match">
     <td class="date">Feb 25</td>
     <td class="team" data-match-index="32">Augsburg vs Freiburg</td>
-      <td class="certainty">-0.29 vs -0.73</td>
-      <td class="total-color">-0.29 (43%)</td>
+      <td class="certainty">-0.29 vs -0.6</td>
+      <td class="total-color">4.19%</td>
       <td class="correct">None</td>
       <td class="result">TBD</td>
       <td class="odds">2.34</td>
@@ -554,31 +552,20 @@ window.addEventListener("DOMContentLoaded", (event) => {
   
   <tr class="match">
     <td class="date">Feb 25</td>
-    <td class="team" data-match-index="33">Sassuolo vs Empoli</td>
-      <td class="certainty">-0.33 vs -0.57</td>
-      <td class="total-color">-0.33 (39%)</td>
+    <td class="team" data-match-index="33">AZ Alkmaar vs Ajax</td>
+      <td class="certainty">-0.38 vs -0.42</td>
+      <td class="total-color">2.46%</td>
       <td class="correct">None</td>
       <td class="result">TBD</td>
-      <td class="odds">2.3</td>
-      <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
+      <td class="odds">2.16</td>
+      <td class="warnings">&#128201; Form Dip &#128201;</td>
 
   
   <tr class="match">
     <td class="date">Feb 25</td>
-    <td class="team" data-match-index="34">AZ Alkmaar vs Ajax</td>
-      <td class="certainty">-0.38 vs -0.36</td>
-      <td class="total-color">-0.36 (34%)</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">3.2</td>
-      <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="35">Club Brugge vs Anderlecht</td>
-      <td class="certainty">-0.46 vs -0.38</td>
-      <td class="total-color">-0.38 (38%)</td>
+    <td class="team" data-match-index="34">Club Brugge vs Anderlecht</td>
+      <td class="certainty">-0.39 vs -0.38</td>
+      <td class="total-color">2.46%</td>
       <td class="correct">None</td>
       <td class="result">TBD</td>
       <td class="odds">4.8</td>
