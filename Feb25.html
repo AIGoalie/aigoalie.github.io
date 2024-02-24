@@ -2,577 +2,610 @@
 <html>
 <head>
 
-<style>
-.certainty {
-  display: none;
-}
-
-.hidden {
-  display: none;
-}
-/* Add some basic styling for the table */
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-th, td {
-  border: 1px solid #ddd;
-  text-align: center;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-/* Define classes for different color ranges */
-.red {
-  background-color: red;
-  color: white;
-}
-
-.green {
-  background-color: green;
-  color: white;
-}
-
-.odds {
-  text-align: center; /* Centering the content of Odds column */
-}
-
-.warnings {
-  text-align: center; /* Centering the content of Odds column */
-}
-ul {
-    list-style-type: none; /* Remove default bullet points */
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #f1f1f1;
-}
-li {
-    float: left;
-}
-li a {
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-li a:hover {
-    background-color: #ddd;
-}
-.active {
-    background-color: #ccc;
-}
-
-</style>
-<script>
-window.addEventListener("DOMContentLoaded", (event) => {
-  // Get all the elements with class "total-color"
-  const totalCells = document.querySelectorAll(".total-color");
-
-  // Loop through each "Total" cell and set background color based on the value gradient
-  totalCells.forEach((cell) => {
-    const value = parseFloat(cell.textContent);
-    const gradientColor = calculateGradientColor(value);
-    cell.style.backgroundColor = gradientColor;
-  });
-
-  // Get all the elements with class "team"
-  const teamCells = document.querySelectorAll(".team");
-  const certaintyCells = document.querySelectorAll(".certainty");
-
-    // Loop through each "Team" cell and make the team with the largest certainty value bold
-    teamCells.forEach((cell, index) => {
-        // Get the certainty value by index
-        const certaintyCell = certaintyCells[index];
-        const [certainty1, certainty2] = certaintyCell.textContent.split(" vs ");
-
-
-    // Extract values from certainty
-    const value1 = parseFloat(certainty1);
-    const value2 = parseFloat(certainty2);
-
-    // Determine which team has the largest value and make it bold
-    if (value1 > value2) {
-        cell.innerHTML = `<strong>${cell.textContent.split(' vs ')[0]}</strong> vs ${cell.textContent.split(' vs ')[1]}`;
-    } else if (value2 > value1) {
-        cell.innerHTML = `${cell.textContent.split(' vs ')[0]} vs <strong>${cell.textContent.split(' vs ')[1]}</strong>`;
-    }
-  })
-
-
-  // Get all the elements with class "result"
-  const correctCells = document.querySelectorAll(".correct");
-  // Loop through each "Result" cell and display checkmarks and crosses based on the result value
-    correctCells.forEach((cell, index) => {
-    const correctValue = parseFloat(cell.textContent);
-    if (correctValue === 1.0) {
-      cell.innerHTML = `<span class="green">&#10003;</span>`;
-    } else if (correctValue === 0.0) {
-      cell.innerHTML = `<span>&#10060;</span>`
-    } else if (correctValue === 0.5) {
-      cell.innerHTML = `<span style="color: orange; font-size: 36px;">&#x2043;</span>`; // Set the color to dark yellow using rgb
-    } else {
-       cell.innerHTML = `<span class="black"; font-size: 36px;>&#x2043;</span>`;
-    }
-  });
-    function calculateGradientColor(value) {
-        if (value <= 0) {
-            return "red";
-        } else if (value < 50) {
-            const red = 255;
-            const green = Math.round((value / 50) * 255);
-            return `rgb(${red}, ${green}, 0)`;
-        } else if (value >= 50 && value < 75) {
-            const red = Math.round((1 - (value - 65) / 17.5) * 255);
-            const green = 255;
-            return `rgb(${red}, ${green}, 0)`;
-        } else if (value >= 75) {
-            const green = Math.round(255 - ((value - 78) / 12.5) * 255);
-            return `rgb(0, ${green}, 0)`;
+    <style>
+        .certainty {
+            display: none;
         }
-    }
 
-});
-window.addEventListener("DOMContentLoaded", (event) => {
-  // Get all the tabs
-  const tabs = document.querySelectorAll("ul li a");
+        .hidden {
+            display: none;
+        }
+        /* Add some basic styling for the table */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
 
-  // Function to handle tab click
-  const handleTabClick = (event) => {
-    // Remove "active" class from all tabs
-    tabs.forEach(t => t.classList.remove("active"));
-    // Add "active" class to the clicked tab
-    event.target.classList.add("active");
-  };
+        th, td {
+            border: 1px solid #ddd;
+            text-align: center;
+            padding: 8px;
+        }
 
-  // Loop through each tab
-  tabs.forEach(tab => {
-    // Add click event listener to each tab
-    tab.addEventListener("click", handleTabClick);
-    // Check if this tab should be active based on the current URL
-    if (tab.href === window.location.href) {
-      // If yes, add "active" class to the tab
-      tab.classList.add("active");
-    }
-  });
-});
-</script>
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* Define classes for different color ranges */
+        .red {
+            background-color: red;
+            color: white;
+        }
+
+        .green {
+            background-color: green;
+            color: white;
+        }
+
+        .odds {
+            text-align: center; /* Centering the content of Odds column */
+        }
+
+        .warnings {
+            text-align: center; /* Centering the content of Odds column */
+        }
+        ul {
+            list-style-type: none; /* Remove default bullet points */
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #f1f1f1;
+            width: 100%; /* Set width to 100% to stretch across the page */
+            display: flex; /* Use flexbox layout */
+
+        }
+        li {
+            float: left;
+                        flex-grow: 1; /* Allow the list items to grow and fill the available space equally */
+            text-align: center; /* Center align the content */
+
+        }
+        .paypal {
+                        padding: 52px 20px;
+
+
+        }
+        li a:not(.paypal){
+            display: block;
+            color: black;
+            text-align: center;
+            padding: 52px 20px;
+            text-decoration: none;
+            font-size: 20px; /* Adjust font size */
+
+        }
+
+
+        li a:hover:not(.paypal) {
+            background-color: #ddd;
+        }
+        .active {
+            background-color: #ccc;
+        }
+        .center {
+            width: 20%; /* Specify the width of the div */
+            margin: 0 auto; /* Set margin to auto for horizontal centering */
+            padding: 20px; /* Add padding for spacing */
+        }
+    </style>
+    <script>
+        window.addEventListener("DOMContentLoaded", (event) => {
+            // Get all the elements with class "total-color"
+            const totalCells = document.querySelectorAll(".total-color");
+
+            // Loop through each "Total" cell and set background color based on the value gradient
+            totalCells.forEach((cell) => {
+                const value = parseFloat(cell.textContent);
+                const gradientColor = calculateGradientColor(value);
+                cell.style.backgroundColor = gradientColor;
+            });
+
+            // Get all the elements with class "team"
+            const teamCells = document.querySelectorAll(".team");
+            const certaintyCells = document.querySelectorAll(".certainty");
+
+            // Loop through each "Team" cell and make the team with the largest certainty value bold
+            teamCells.forEach((cell, index) => {
+                // Get the certainty value by index
+                const certaintyCell = certaintyCells[index];
+                const [certainty1, certainty2] = certaintyCell.textContent.split(" vs ");
+
+
+                // Extract values from certainty
+                const value1 = parseFloat(certainty1);
+                const value2 = parseFloat(certainty2);
+
+                // Determine which team has the largest value and make it bold
+                if (value1 > value2) {
+                    cell.innerHTML = `<strong>${cell.textContent.split(' vs ')[0]}</strong> - ${cell.textContent.split(' vs ')[1]}`;
+                } else if (value2 > value1) {
+                    cell.innerHTML = `${cell.textContent.split(' vs ')[0]} - <strong>${cell.textContent.split(' vs ')[1]}</strong>`;
+                }
+            })
+            const scoreCells = document.querySelectorAll(".result");
+
+            scoreCells.forEach((cell, index) => {
+                if (!cell.textContent.includes('PM') && !cell.textContent.includes('AM') && !cell.textContent.includes('postponed')) {
+                    cell.innerHTML = `<strong>${cell.textContent}</strong>`;
+                }
+            });
+
+
+
+            // Get all the elements with class "result"
+            const correctCells = document.querySelectorAll(".correct");
+            // Loop through each "Result" cell and display checkmarks and crosses based on the result value
+            correctCells.forEach((cell, index) => {
+                const correctValue = parseFloat(cell.textContent);
+                if (correctValue === 1.0) {
+                    cell.innerHTML = `<span class="green">&#10003;</span>`;
+                } else if (correctValue === 0.0) {
+                    cell.innerHTML = `<span>&#10060;</span>`
+                } else if (correctValue === 0.5) {
+                    cell.innerHTML = `<span style="color: orange; font-size: 36px;">&#x2043;</span>`; // Set the color to dark yellow using rgb
+                } else {
+                    cell.innerHTML = `<span class="black"; font-size: 36px;>&#x2043;</span>`;
+                }
+            });
+            function calculateGradientColor(value) {
+                if (value <= 0) {
+                    return "red";
+                } else if (value < 50) {
+                    const red = 255;
+                    const green = Math.round((value / 50) * 255);
+                    return `rgb(${red}, ${green}, 0)`;
+                } else if (value >= 50 && value < 75) {
+                    const red = Math.round((1 - (value - 65) / 17.5) * 255);
+                    const green = 255;
+                    return `rgb(${red}, ${green}, 0)`;
+                } else if (value >= 75) {
+                    const green = Math.round(255 - ((value - 78) / 12.5) * 255);
+                    return `rgb(0, ${green}, 0)`;
+                }
+            }
+
+        });
+        window.addEventListener("DOMContentLoaded", (event) => {
+            // Get all the tabs
+            const tabs = document.querySelectorAll("ul li a:not(.paypal)");
+
+            // Function to handle tab click
+            const handleTabClick = (event) => {
+                // Remove "active" class from all tabs
+                tabs.forEach(t => t.classList.remove("active"));
+                // Add "active" class to the clicked tab
+                event.target.classList.add("active");
+            };
+
+            // Loop through each tab
+            tabs.forEach(tab => {
+                // Add click event listener to each tab
+                tab.addEventListener("click", handleTabClick);
+                // Check if this tab should be active based on the current URL
+                if (tab.href === window.location.href && tab.getAttribute("href").endsWith(".html")) {
+                    // If yes, add "active" class to the tab
+                    tab.classList.add("active");
+                }
+            });
+        });
+    </script>
 
 
 
 </head>
 <body>
 <ul>
+        <li><a class="paypal" href="index.html"> <img src="AIGoalieblack.png" alt="logo-paypa" width="140" height="110"> </a></li>
+    <li><a  class="paypal" href="https://www.paypal.com/donate/?hosted_button_id=97FSH2FUWA4VE"> <img src="donate.png" alt="logo-paypa" width="270" height="105"> </a></li>
     <li><a href="index.html">All</a></li>
     <li><a href="Feb23.html">23 Feb</a></li>
     <li><a href="Feb24.html">24 Feb</a></li>
     <li><a href="Feb25.html">25 Feb</a></li>
     <li><a href="Feb26.html">26 Feb</a></li>
-    <li><a href="all-prevgw.html">Results Previous Gameweek</a></li>
+    <li><a href="all-prevgw.html">Previous Gameweek (old format)</a></li>
+        <li><a  class="paypal" href="https://www.paypal.com/donate/?hosted_button_id=97FSH2FUWA4VE"> <img src="donate.png" alt="logo-paypa" width="270" height="105"> </a></li>
 
+    <li><a class="paypal" href="index.html"> <img src="AIGoalieblack.png" alt="logo-paypa" width="140" height="110"> </a></li>
 </ul>
 <table>
-  <tr>
-      <th>Date</th>
-      <th>Fixture</th>
-      <th>Confidence</th>
-      <th>Result</th>
-      <th>Score</th>
-      <th>Odds (Beta)</th>
-      <th>Highlighted Team Alerts (Beta)</th>
-  </tr>
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="0">Benfica vs Portimonense</td>
-      <td class="certainty">2.48 vs -3.07</td>
-      <td class="total-color">84.8%</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">1.12</td>
-      <td class="warnings"></td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="1">Rio Ave vs Sp Lisbon</td>
-      <td class="certainty">-2.98 vs 2.41</td>
-      <td class="total-color">84.05%</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">1.39</td>
-      <td class="warnings"></td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="2">Lecce vs Inter</td>
-      <td class="certainty">-3.28 vs 2.39</td>
-      <td class="total-color">83.91%</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">1.45</td>
-      <td class="warnings"></td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="3">Juventus vs Frosinone</td>
-      <td class="certainty">1.86 vs -2.66</td>
-      <td class="total-color">78.62%</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">1.34</td>
-      <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="4">Paris SG vs Rennes</td>
-      <td class="certainty">1.85 vs -2.63</td>
-      <td class="total-color">78.48%</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">1.48</td>
-      <td class="warnings"></td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="5">Real Madrid vs Sevilla</td>
-      <td class="certainty">1.81 vs -3.19</td>
-      <td class="total-color">78.1%</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">1.32</td>
-      <td class="warnings">&#127973 MAJOR Injuries &#127973; + &#128201; Form Dip &#128201;</td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="6">Almere City vs Feyenoord</td>
-      <td class="certainty">-2.42 vs 1.55</td>
-      <td class="total-color">75.45%</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">1.28</td>
-      <td class="warnings">&#127973 Injuries &#127973;</td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="7">St. Gilloise vs Standard</td>
-      <td class="certainty">1.45 vs -2.49</td>
-      <td class="total-color">74.54%</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">1.38</td>
-      <td class="warnings"></td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="8">Nice vs Clermont</td>
-      <td class="certainty">1.44 vs -2.09</td>
-      <td class="total-color">74.35%</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">1.48</td>
-      <td class="warnings">&#128201; Form Dip &#128201;</td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="9">Gil Vicente vs Porto</td>
-      <td class="certainty">-1.88 vs 1.26</td>
-      <td class="total-color">72.57%</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">1.4</td>
-      <td class="warnings">&#128201; Form Dip &#128201;</td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="10">Wolves vs Sheffield United</td>
-      <td class="certainty">0.98 vs -1.9</td>
-      <td class="total-color">69.18%</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">1.51</td>
-      <td class="warnings">&#127973 Injuries &#127973;</td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="11">Trabzonspor vs Ad. Demirspor</td>
-      <td class="certainty">0.97 vs -1.84</td>
-      <td class="total-color">68.68%</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">1.82</td>
-      <td class="warnings"></td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="12">Cagliari vs Napoli</td>
-      <td class="certainty">-1.79 vs 0.84</td>
-      <td class="total-color">63.55%</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">1.91</td>
-      <td class="warnings">&#128201; Form Dip &#128201;</td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="13">Istanbulspor vs Besiktas</td>
-      <td class="certainty">-1.63 vs 0.75</td>
-      <td class="total-color">60.12%</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">1.59</td>
-      <td class="warnings">&#127973 MAJOR Injuries &#127973;</td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="14">Dortmund vs Hoffenheim</td>
-      <td class="certainty">0.55 vs -1.82</td>
-      <td class="total-color">52.01%</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">1.55</td>
-      <td class="warnings">&#127973 MAJOR Injuries &#127973; + &#128201; Form Dip &#128201;</td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="15">Toulouse vs Lille</td>
-      <td class="certainty">-1.15 vs 0.46</td>
-      <td class="total-color">46.55%</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">1.95</td>
-      <td class="warnings"></td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="16">Twente vs Go Ahead Eagles</td>
-      <td class="certainty">0.35 vs -1.27</td>
-      <td class="total-color">38.25%</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">1.55</td>
-      <td class="warnings">&#127973 Injuries &#127973;</td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="17">Las Palmas vs Osasuna</td>
-      <td class="certainty">0.3 vs -0.97</td>
-      <td class="total-color">33.95%</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">2.48</td>
-      <td class="warnings">&#128201; Form Dip &#128201;</td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="18">Marseille vs Montpellier</td>
-      <td class="certainty">0.29 vs -1.2</td>
-      <td class="total-color">32.91%</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">1.79</td>
-      <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="19">Ein Frankfurt vs Wolfsburg</td>
-      <td class="certainty">0.21 vs -1.02</td>
-      <td class="total-color">26.56%</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">2.38</td>
-      <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="20">Betis vs Ath Bilbao</td>
-      <td class="certainty">-1.13 vs 0.14</td>
-      <td class="total-color">21.53%</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">2.3</td>
-      <td class="warnings"></td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="21">Eupen vs Cercle Brugge</td>
-      <td class="certainty">-1.13 vs 0.12</td>
-      <td class="total-color">19.76%</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">1.73</td>
-      <td class="warnings">&#127973 Injuries &#127973;</td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="22">Excelsior vs Vitesse</td>
-      <td class="certainty">0.1 vs -0.89</td>
-      <td class="total-color">18.4%</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">2.18</td>
-      <td class="warnings">&#128201; Form Dip &#128201;</td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="23">Karagumruk vs Alanyaspor</td>
-      <td class="certainty">0.08 vs -0.96</td>
-      <td class="total-color">16.16%</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">1.92</td>
-      <td class="warnings">&#128201; Form Dip &#128201;</td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="24">Lens vs Monaco</td>
-      <td class="certainty">0.02 vs -0.86</td>
-      <td class="total-color">11.7%</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">2.36</td>
-      <td class="warnings"></td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="25">Milan vs Atalanta</td>
-      <td class="certainty">0.0 vs -0.91</td>
-      <td class="total-color">10.21%</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">2.44</td>
-      <td class="warnings">&#127973 Injuries &#127973;</td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="26">Cadiz vs Celta</td>
-      <td class="certainty">-0.63 vs -0.01</td>
-      <td class="total-color">9.81%</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">2.66</td>
-      <td class="warnings">&#128201; Form Dip &#128201;</td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="27">Sivasspor vs Pendikspor</td>
-      <td class="certainty">-0.01 vs -0.99</td>
-      <td class="total-color">9.86%</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">2.16</td>
-      <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="28">Le Havre vs Reims</td>
-      <td class="certainty">-0.51 vs -0.09</td>
-      <td class="total-color">8.15%</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">2.52</td>
-      <td class="warnings">&#128201; Form Dip &#128201;</td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="29">Volendam vs Heerenveen</td>
-      <td class="certainty">-0.82 vs -0.1</td>
-      <td class="total-color">8.07%</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">1.78</td>
-      <td class="warnings">&#128201; Form Dip &#128201;</td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="30">Gent vs Antwerp</td>
-      <td class="certainty">-0.55 vs -0.18</td>
-      <td class="total-color">6.36%</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">2.84</td>
-      <td class="warnings"></td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="31">Vizela vs Estoril</td>
-      <td class="certainty">-0.42 vs -0.21</td>
-      <td class="total-color">5.9%</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">2.64</td>
-      <td class="warnings">&#128201; Form Dip &#128201;</td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="32">Augsburg vs Freiburg</td>
-      <td class="certainty">-0.29 vs -0.6</td>
-      <td class="total-color">4.19%</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">2.34</td>
-      <td class="warnings">&#128201; Form Dip &#128201;</td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="33">AZ Alkmaar vs Ajax</td>
-      <td class="certainty">-0.38 vs -0.42</td>
-      <td class="total-color">2.46%</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">2.16</td>
-      <td class="warnings">&#128201; Form Dip &#128201;</td>
-
-  
-  <tr class="match">
-    <td class="date">Feb 25</td>
-    <td class="team" data-match-index="34">Club Brugge vs Anderlecht</td>
-      <td class="certainty">-0.39 vs -0.38</td>
-      <td class="total-color">2.46%</td>
-      <td class="correct">None</td>
-      <td class="result">TBD</td>
-      <td class="odds">4.8</td>
-      <td class="warnings"></td>
-
-  
+    <tr>
+        <th>Date</th>
+        <th>Score/Time</th>
+        <th>Fixture</th>
+        <th>Confidence</th>
+        <th>Result</th>
+        <th>Odds (Beta)</th>
+        <th>Highlighted Team Alerts (Beta)</th>
+    </tr>
+    
+    <tr class="match">
+        <td class="date">Feb 25</td>
+        <td class="result">7:00 PM</td>
+        <td class="team" data-match-index="0">Benfica vs Portimonense</td>
+        <td class="certainty">2.48 vs -3.07</td>
+        <td class="total-color">84.8%</td>
+        <td class="correct">None</td>
+        <td class="odds">1.12</td>
+        <td class="warnings"></td>
+    </tr>
+        
+    <tr class="match">
+        <td class="date">Feb 25</td>
+        <td class="result">9:30 PM</td>
+        <td class="team" data-match-index="1">Rio Ave vs Sp Lisbon</td>
+        <td class="certainty">-2.98 vs 2.41</td>
+        <td class="total-color">84.05%</td>
+        <td class="correct">None</td>
+        <td class="odds">1.39</td>
+        <td class="warnings"></td>
+    </tr>
+        
+    <tr class="match">
+        <td class="date">Feb 25</td>
+        <td class="result">6:00 PM</td>
+        <td class="team" data-match-index="2">Lecce vs Inter</td>
+        <td class="certainty">-3.28 vs 2.39</td>
+        <td class="total-color">83.91%</td>
+        <td class="correct">None</td>
+        <td class="odds">1.45</td>
+        <td class="warnings"></td>
+    </tr>
+        
+    <tr class="match">
+        <td class="date">Feb 25</td>
+        <td class="result">12:30 PM</td>
+        <td class="team" data-match-index="3">Juventus vs Frosinone</td>
+        <td class="certainty">1.86 vs -2.66</td>
+        <td class="total-color">78.62%</td>
+        <td class="correct">None</td>
+        <td class="odds">1.34</td>
+        <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
+    </tr>
+        
+    <tr class="match">
+        <td class="date">Feb 25</td>
+        <td class="result">5:05 PM</td>
+        <td class="team" data-match-index="4">Paris SG vs Rennes</td>
+        <td class="certainty">1.85 vs -2.63</td>
+        <td class="total-color">78.48%</td>
+        <td class="correct">None</td>
+        <td class="odds">1.48</td>
+        <td class="warnings"></td>
+    </tr>
+        
+    <tr class="match">
+        <td class="date">Feb 25</td>
+        <td class="result">9:00 PM</td>
+        <td class="team" data-match-index="5">Real Madrid vs Sevilla</td>
+        <td class="certainty">1.81 vs -3.19</td>
+        <td class="total-color">78.1%</td>
+        <td class="correct">None</td>
+        <td class="odds">1.32</td>
+        <td class="warnings">&#127973 MAJOR Injuries &#127973; + &#128201; Form Dip &#128201;</td>
+    </tr>
+        
+    <tr class="match">
+        <td class="date">Feb 25</td>
+        <td class="result">2:30 PM</td>
+        <td class="team" data-match-index="6">Almere City vs Feyenoord</td>
+        <td class="certainty">-2.42 vs 1.55</td>
+        <td class="total-color">75.45%</td>
+        <td class="correct">None</td>
+        <td class="odds">1.28</td>
+        <td class="warnings">&#127973 Injuries &#127973;</td>
+    </tr>
+        
+    <tr class="match">
+        <td class="date">Feb 25</td>
+        <td class="result">6:30 PM</td>
+        <td class="team" data-match-index="7">St. Gilloise vs Standard</td>
+        <td class="certainty">1.45 vs -2.49</td>
+        <td class="total-color">74.54%</td>
+        <td class="correct">None</td>
+        <td class="odds">1.38</td>
+        <td class="warnings"></td>
+    </tr>
+        
+    <tr class="match">
+        <td class="date">Feb 25</td>
+        <td class="result">3:00 PM</td>
+        <td class="team" data-match-index="8">Nice vs Clermont</td>
+        <td class="certainty">1.44 vs -2.09</td>
+        <td class="total-color">74.35%</td>
+        <td class="correct">None</td>
+        <td class="odds">1.48</td>
+        <td class="warnings">&#128201; Form Dip &#128201;</td>
+    </tr>
+        
+    <tr class="match">
+        <td class="date">Feb 25</td>
+        <td class="result">7:00 PM</td>
+        <td class="team" data-match-index="9">Gil Vicente vs Porto</td>
+        <td class="certainty">-1.88 vs 1.26</td>
+        <td class="total-color">72.57%</td>
+        <td class="correct">None</td>
+        <td class="odds">1.4</td>
+        <td class="warnings">&#128201; Form Dip &#128201;</td>
+    </tr>
+        
+    <tr class="match">
+        <td class="date">Feb 25</td>
+        <td class="result">2:30 PM</td>
+        <td class="team" data-match-index="10">Wolves vs Sheffield United</td>
+        <td class="certainty">0.98 vs -1.9</td>
+        <td class="total-color">69.18%</td>
+        <td class="correct">None</td>
+        <td class="odds">1.51</td>
+        <td class="warnings">&#127973 Injuries &#127973;</td>
+    </tr>
+        
+    <tr class="match">
+        <td class="date">Feb 25</td>
+        <td class="result">2:00 PM</td>
+        <td class="team" data-match-index="11">Trabzonspor vs Ad. Demirspor</td>
+        <td class="certainty">0.97 vs -1.84</td>
+        <td class="total-color">68.68%</td>
+        <td class="correct">None</td>
+        <td class="odds">1.82</td>
+        <td class="warnings"></td>
+    </tr>
+        
+    <tr class="match">
+        <td class="date">Feb 25</td>
+        <td class="result">3:00 PM</td>
+        <td class="team" data-match-index="12">Cagliari vs Napoli</td>
+        <td class="certainty">-1.79 vs 0.84</td>
+        <td class="total-color">63.55%</td>
+        <td class="correct">None</td>
+        <td class="odds">1.91</td>
+        <td class="warnings">&#128201; Form Dip &#128201;</td>
+    </tr>
+        
+    <tr class="match">
+        <td class="date">Feb 25</td>
+        <td class="result">5:00 PM</td>
+        <td class="team" data-match-index="13">Istanbulspor vs Besiktas</td>
+        <td class="certainty">-1.63 vs 0.75</td>
+        <td class="total-color">60.12%</td>
+        <td class="correct">None</td>
+        <td class="odds">1.59</td>
+        <td class="warnings">&#127973 MAJOR Injuries &#127973;</td>
+    </tr>
+        
+    <tr class="match">
+        <td class="date">Feb 25</td>
+        <td class="result">5:30 PM</td>
+        <td class="team" data-match-index="14">Dortmund vs Hoffenheim</td>
+        <td class="certainty">0.55 vs -1.82</td>
+        <td class="total-color">52.01%</td>
+        <td class="correct">None</td>
+        <td class="odds">1.55</td>
+        <td class="warnings">&#127973 MAJOR Injuries &#127973; + &#128201; Form Dip &#128201;</td>
+    </tr>
+        
+    <tr class="match">
+        <td class="date">Feb 25</td>
+        <td class="result">3:00 PM</td>
+        <td class="team" data-match-index="15">Toulouse vs Lille</td>
+        <td class="certainty">-1.15 vs 0.46</td>
+        <td class="total-color">46.55%</td>
+        <td class="correct">None</td>
+        <td class="odds">1.95</td>
+        <td class="warnings"></td>
+    </tr>
+        
+    <tr class="match">
+        <td class="date">Feb 25</td>
+        <td class="result">2:30 PM</td>
+        <td class="team" data-match-index="16">Twente vs Go Ahead Eagles</td>
+        <td class="certainty">0.35 vs -1.27</td>
+        <td class="total-color">38.25%</td>
+        <td class="correct">None</td>
+        <td class="odds">1.55</td>
+        <td class="warnings">&#127973 Injuries &#127973;</td>
+    </tr>
+        
+    <tr class="match">
+        <td class="date">Feb 25</td>
+        <td class="result">6:30 PM</td>
+        <td class="team" data-match-index="17">Las Palmas vs Osasuna</td>
+        <td class="certainty">0.3 vs -0.97</td>
+        <td class="total-color">33.95%</td>
+        <td class="correct">None</td>
+        <td class="odds">2.48</td>
+        <td class="warnings">&#128201; Form Dip &#128201;</td>
+    </tr>
+        
+    <tr class="match">
+        <td class="date">Feb 25</td>
+        <td class="result">8:45 PM</td>
+        <td class="team" data-match-index="18">Marseille vs Montpellier</td>
+        <td class="certainty">0.29 vs -1.2</td>
+        <td class="total-color">32.91%</td>
+        <td class="correct">None</td>
+        <td class="odds">1.79</td>
+        <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
+    </tr>
+        
+    <tr class="match">
+        <td class="date">Feb 25</td>
+        <td class="result">3:30 PM</td>
+        <td class="team" data-match-index="19">Ein Frankfurt vs Wolfsburg</td>
+        <td class="certainty">0.21 vs -1.02</td>
+        <td class="total-color">26.56%</td>
+        <td class="correct">None</td>
+        <td class="odds">2.38</td>
+        <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
+    </tr>
+        
+    <tr class="match">
+        <td class="date">Feb 25</td>
+        <td class="result">4:15 PM</td>
+        <td class="team" data-match-index="20">Betis vs Ath Bilbao</td>
+        <td class="certainty">-1.13 vs 0.14</td>
+        <td class="total-color">21.53%</td>
+        <td class="correct">None</td>
+        <td class="odds">2.3</td>
+        <td class="warnings"></td>
+    </tr>
+        
+    <tr class="match">
+        <td class="date">Feb 25</td>
+        <td class="result">7:15 PM</td>
+        <td class="team" data-match-index="21">Eupen vs Cercle Brugge</td>
+        <td class="certainty">-1.13 vs 0.12</td>
+        <td class="total-color">19.76%</td>
+        <td class="correct">None</td>
+        <td class="odds">1.73</td>
+        <td class="warnings">&#127973 Injuries &#127973;</td>
+    </tr>
+        
+    <tr class="match">
+        <td class="date">Feb 25</td>
+        <td class="result">12:15 PM</td>
+        <td class="team" data-match-index="22">Excelsior vs Vitesse</td>
+        <td class="certainty">0.1 vs -0.89</td>
+        <td class="total-color">18.4%</td>
+        <td class="correct">None</td>
+        <td class="odds">2.18</td>
+        <td class="warnings">&#128201; Form Dip &#128201;</td>
+    </tr>
+        
+    <tr class="match">
+        <td class="date">Feb 25</td>
+        <td class="result">2:00 PM</td>
+        <td class="team" data-match-index="23">Karagumruk vs Alanyaspor</td>
+        <td class="certainty">0.08 vs -0.96</td>
+        <td class="total-color">16.16%</td>
+        <td class="correct">None</td>
+        <td class="odds">1.92</td>
+        <td class="warnings">&#128201; Form Dip &#128201;</td>
+    </tr>
+        
+    <tr class="match">
+        <td class="date">Feb 25</td>
+        <td class="result">1:00 PM</td>
+        <td class="team" data-match-index="24">Lens vs Monaco</td>
+        <td class="certainty">0.02 vs -0.86</td>
+        <td class="total-color">11.7%</td>
+        <td class="correct">None</td>
+        <td class="odds">2.36</td>
+        <td class="warnings"></td>
+    </tr>
+        
+    <tr class="match">
+        <td class="date">Feb 25</td>
+        <td class="result">8:45 PM</td>
+        <td class="team" data-match-index="25">Milan vs Atalanta</td>
+        <td class="certainty">0.0 vs -0.91</td>
+        <td class="total-color">10.21%</td>
+        <td class="correct">None</td>
+        <td class="odds">2.44</td>
+        <td class="warnings">&#127973 Injuries &#127973;</td>
+    </tr>
+        
+    <tr class="match">
+        <td class="date">Feb 25</td>
+        <td class="result">2:00 PM</td>
+        <td class="team" data-match-index="26">Cadiz vs Celta</td>
+        <td class="certainty">-0.63 vs -0.01</td>
+        <td class="total-color">9.81%</td>
+        <td class="correct">None</td>
+        <td class="odds">2.66</td>
+        <td class="warnings">&#128201; Form Dip &#128201;</td>
+    </tr>
+        
+    <tr class="match">
+        <td class="date">Feb 25</td>
+        <td class="result">11:30 AM</td>
+        <td class="team" data-match-index="27">Sivasspor vs Pendikspor</td>
+        <td class="certainty">-0.01 vs -0.99</td>
+        <td class="total-color">9.86%</td>
+        <td class="correct">None</td>
+        <td class="odds">2.16</td>
+        <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
+    </tr>
+        
+    <tr class="match">
+        <td class="date">Feb 25</td>
+        <td class="result">3:00 PM</td>
+        <td class="team" data-match-index="28">Le Havre vs Reims</td>
+        <td class="certainty">-0.51 vs -0.09</td>
+        <td class="total-color">8.15%</td>
+        <td class="correct">None</td>
+        <td class="odds">2.52</td>
+        <td class="warnings">&#128201; Form Dip &#128201;</td>
+    </tr>
+        
+    <tr class="match">
+        <td class="date">Feb 25</td>
+        <td class="result">8:00 PM</td>
+        <td class="team" data-match-index="29">Volendam vs Heerenveen</td>
+        <td class="certainty">-0.82 vs -0.1</td>
+        <td class="total-color">8.07%</td>
+        <td class="correct">None</td>
+        <td class="odds">1.78</td>
+        <td class="warnings">&#128201; Form Dip &#128201;</td>
+    </tr>
+        
+    <tr class="match">
+        <td class="date">Feb 25</td>
+        <td class="result">4:00 PM</td>
+        <td class="team" data-match-index="30">Gent vs Antwerp</td>
+        <td class="certainty">-0.55 vs -0.18</td>
+        <td class="total-color">6.36%</td>
+        <td class="correct">None</td>
+        <td class="odds">2.84</td>
+        <td class="warnings"></td>
+    </tr>
+        
+    <tr class="match">
+        <td class="date">Feb 25</td>
+        <td class="result">4:30 PM</td>
+        <td class="team" data-match-index="31">Vizela vs Estoril</td>
+        <td class="certainty">-0.42 vs -0.21</td>
+        <td class="total-color">5.9%</td>
+        <td class="correct">None</td>
+        <td class="odds">2.64</td>
+        <td class="warnings">&#128201; Form Dip &#128201;</td>
+    </tr>
+        
+    <tr class="match">
+        <td class="date">Feb 25</td>
+        <td class="result">7:30 PM</td>
+        <td class="team" data-match-index="32">Augsburg vs Freiburg</td>
+        <td class="certainty">-0.29 vs -0.6</td>
+        <td class="total-color">4.19%</td>
+        <td class="correct">None</td>
+        <td class="odds">2.34</td>
+        <td class="warnings">&#128201; Form Dip &#128201;</td>
+    </tr>
+        
+    <tr class="match">
+        <td class="date">Feb 25</td>
+        <td class="result">4:45 PM</td>
+        <td class="team" data-match-index="33">AZ Alkmaar vs Ajax</td>
+        <td class="certainty">-0.38 vs -0.42</td>
+        <td class="total-color">2.46%</td>
+        <td class="correct">None</td>
+        <td class="odds">2.16</td>
+        <td class="warnings">&#128201; Form Dip &#128201;</td>
+    </tr>
+        
+    <tr class="match">
+        <td class="date">Feb 25</td>
+        <td class="result">1:30 PM</td>
+        <td class="team" data-match-index="34">Club Brugge vs Anderlecht</td>
+        <td class="certainty">-0.39 vs -0.38</td>
+        <td class="total-color">2.46%</td>
+        <td class="correct">None</td>
+        <td class="odds">4.8</td>
+        <td class="warnings"></td>
+    </tr>
+        
 </table>
-
+<div class="center">
+    18+. Gamble Responsibly.
+</div>
 </body>
 </html>
