@@ -14,6 +14,31 @@
         table {
             border-collapse: collapse;
             width: 100%;
+            table-layout: fixed;
+        }
+
+                /* Define specific widths for each column */
+        th:nth-child(1),
+        td:nth-child(1) {
+            width: 5%;
+        }
+
+        th:nth-child(2),
+        td:nth-child(2) {
+            width: 15%;
+        }
+        th:nth-child(3),
+        td:nth-child(3) {
+            width: 5%;
+        }
+
+        th:nth-child(4),
+        td:nth-child(4) {
+            width: 5%;
+        }
+        th:nth-child(5),
+        td:nth-child(5) {
+            width: 5%;
         }
 
         th, td {
@@ -53,11 +78,13 @@
             width: 100%; /* Set width to 100% to stretch across the page */
             display: flex; /* Use flexbox layout */
             flex-wrap: wrap; /* Allow flex items to wrap to the next line */
+
         }
         li {
             flex-grow: 1; /* Allow the list items to grow and fill the available space equally */
             text-align: center; /* Center align the content */
             max-width: 500px; /* Set maximum width for each tab */
+
         }
 
         .paypal {
@@ -82,10 +109,15 @@
         .active {
             background-color: #ccc;
         }
+        .left {
+            width: 100%; /* Specify the width of the div */
+            margin: 0 auto; /* Set margin to auto for horizontal centering */
+            padding: 5px; /* Add padding for spacing */
+
+        }
         .center {
             width: 20%; /* Specify the width of the div */
             margin: 0 auto; /* Set margin to auto for horizontal centering */
-            padding: 20px; /* Add padding for spacing */
         }
 
         .tooltip {
@@ -114,6 +146,15 @@
         .tooltip:hover .tooltiptext {
             visibility: visible;
             opacity: 1;
+        }
+        .container {
+            display: flex;
+            align-items:center;
+        }
+        .ali {
+           text-align: center;
+            flex: 1;
+            margin: 0 -15px;
         }
     </style>
     <script>
@@ -170,9 +211,9 @@
                 } else if (correctValue === 0.0) {
                     cell.innerHTML = `<span>&#10060;</span>`
                 } else if (correctValue === 0.5) {
-                    cell.innerHTML = `<span style="color: orange; font-size: 36px;">&#x2043;</span>`; // Set the color to dark yellow using rgb
+                    cell.innerHTML = `<span style="color: orange;"">&#x2043;</span>`; // Set the color to dark yellow using rgb
                 } else {
-                    cell.innerHTML = `<span class="black"; font-size: 36px;>&#x2043;</span>`;
+                    cell.innerHTML = `<span class="black";>&#x2043;</span>`;
                 }
             });
             function calculateGradientColor(value) {
@@ -222,2528 +263,2530 @@
 
 </head>
 <body>
-<div>
-    Last updated 23:10:04 2024-02-24
-</div>
 <ul>
     <li><a class="paypal" href="index.html"> <img src="AIGoalieblack.png" alt="logo-paypa" width="98" height="78"> </a></li>
-    <li><a href="index.html">All</a></li>
+     
+        <li><a class="active" href="index.html">All</a></li>
+    
     <li><a href="Feb23.html">23 Feb</a></li>
     <li><a href="Feb24.html">24 Feb</a></li>
     <li><a href="Feb25.html">25 Feb</a></li>
     <li><a href="Feb26.html">26 Feb</a></li>
-    <li><a href="all-prevgw.html">Last Gameweek</a></li>
+    <li><a href="all-prevgw.html">Last Gameweek (old style)</a></li>
     <li><a  class="paypal" href="https://www.paypal.com/donate/?hosted_button_id=97FSH2FUWA4VE"> <img src="donatee.png" alt="logo-paypa" width="130" height="78"> </a></li>
 </ul>
 <table>
     <tr>
-        <th>Date</th>
-        <th>Score/Time</th>
+            <th>Date</th>
+<!--        <th>Score/Time</th>-->
         <th>Fixture</th>
-        <th>Confidence</th>
         <th>Odds</th>
+        <th>Confidence</th>
         <th>Result</th>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 25</td>
-        <td class="result">7:00 PM</td>
+<!--        <td class="result">7:00 PM</td>-->
         <td class="team" data-match-index="0">
-            <span class="tooltip">       <span class="tooltiptext">
-        
-        
+<!--            <span class="tooltip">       <span class="tooltiptext">-->
+<!--        -->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Benfica</strong> - Portimonense
+        <div class="container"><div class="ali"><strong>Benfica</strong> </div> <div class="ali"> 7:00 PM </div> <div class="ali"> Portimonense</div></div>
 
-            <span class="tooltip"> &#128201;            <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">2.48 vs -3.07</td>
-        <td class="total-color">84.8%</td>
         <td class="odds">1.12</td>
+        <td class="total-color">84.8%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 23</td>
-        <td class="result">2:1</td>
+<!--        <td class="result">2:1</td>-->
         <td class="team" data-match-index="1">
-            <span class="tooltip"> &#127973;      <span class="tooltiptext">
-        
-            This team has some injuries
-        
+<!--            <span class="tooltip"> &#127973;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Leverkusen</strong> - Mainz
+        <div class="container"><div class="ali"><strong>Leverkusen</strong> </div> <div class="ali"> <strong>2:1</strong> </div> <div class="ali"> Mainz</div></div>
 
-            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">2.44 vs -3.38</td>
-        <td class="total-color">84.39%</td>
         <td class="odds">1.24</td>
+        <td class="total-color">84.39%</td>
         <td class="correct">1</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 25</td>
-        <td class="result">9:30 PM</td>
+<!--        <td class="result">9:30 PM</td>-->
         <td class="team" data-match-index="2">
-            <span class="tooltip"> &#128201;      <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        Rio Ave - <strong>Sp Lisbon</strong>
+        <div class="container"><div class="ali">Rio Ave </div> <div class="ali"> 9:30 PM </div> <div class="ali"> <strong>Sp Lisbon</strong></div></div>
 
-            <span class="tooltip">             <span class="tooltiptext">
-        
-        
+<!--            <span class="tooltip">             <span class="tooltiptext">-->
+<!--        -->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-2.98 vs 2.41</td>
-        <td class="total-color">84.05%</td>
         <td class="odds">1.39</td>
+        <td class="total-color">84.05%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 25</td>
-        <td class="result">6:00 PM</td>
+<!--        <td class="result">6:00 PM</td>-->
         <td class="team" data-match-index="3">
-            <span class="tooltip"> &#127973; &#128201;      <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973; &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        Lecce - <strong>Inter</strong>
+        <div class="container"><div class="ali">Lecce </div> <div class="ali"> 6:00 PM </div> <div class="ali"> <strong>Inter</strong></div></div>
 
-            <span class="tooltip">             <span class="tooltiptext">
-        
-        
+<!--            <span class="tooltip">             <span class="tooltiptext">-->
+<!--        -->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-3.28 vs 2.4</td>
-        <td class="total-color">84.0%</td>
         <td class="odds">1.45</td>
+        <td class="total-color">84.0%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 26</td>
-        <td class="result">6:00 PM</td>
+<!--        <td class="result">6:00 PM</td>-->
         <td class="team" data-match-index="4">
-            <span class="tooltip"> &#127973;      <span class="tooltiptext">
-        
-            This team has some injuries
-        
+<!--            <span class="tooltip"> &#127973;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Galatasaray</strong> - Antalyaspor
+        <div class="container"><div class="ali"><strong>Galatasaray</strong> </div> <div class="ali"> 6:00 PM </div> <div class="ali"> Antalyaspor</div></div>
 
-            <span class="tooltip"> &#128201;            <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">2.09 vs -2.93</td>
-        <td class="total-color">80.92%</td>
         <td class="odds">1.32</td>
+        <td class="total-color">80.92%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 24</td>
-        <td class="result">2:2</td>
+<!--        <td class="result">2:2</td>-->
         <td class="team" data-match-index="5">
-            <span class="tooltip"> &#128201;      <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        Almeria - <strong>Ath Madrid</strong>
+        <div class="container"><div class="ali">Almeria </div> <div class="ali"> <strong>2:2</strong> </div> <div class="ali"> <strong>Ath Madrid</strong></div></div>
 
-            <span class="tooltip"> &#128201;            <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-2.51 vs 1.87</td>
-        <td class="total-color">78.71%</td>
         <td class="odds">1.79</td>
+        <td class="total-color">78.71%</td>
         <td class="correct">0.5</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 25</td>
-        <td class="result">12:30 PM</td>
+<!--        <td class="result">12:30 PM</td>-->
         <td class="team" data-match-index="6">
-            <span class="tooltip"> &#127973; &#128201;      <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973; &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Juventus</strong> - Frosinone
+        <div class="container"><div class="ali"><strong>Juventus</strong> </div> <div class="ali"> 12:30 PM </div> <div class="ali"> Frosinone</div></div>
 
-            <span class="tooltip"> &#128201;            <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">1.86 vs -2.66</td>
-        <td class="total-color">78.62%</td>
         <td class="odds">1.34</td>
+        <td class="total-color">78.62%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 24</td>
-        <td class="result">1:7</td>
+<!--        <td class="result">1:7</td>-->
         <td class="team" data-match-index="7">
-            <span class="tooltip"> &#127973&#127973; &#128201;      <span class="tooltiptext">
-        
-            This team has MAJOR injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973&#127973; &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has MAJOR injuries and a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        Zwolle - <strong>PSV Eindhoven</strong>
+        <div class="container"><div class="ali">Zwolle </div> <div class="ali"> <strong>1:7</strong> </div> <div class="ali"> <strong>PSV Eindhoven</strong></div></div>
 
-            <span class="tooltip"> &#127973;            <span class="tooltiptext">
-        
-            This team has some injuries
-        
+<!--            <span class="tooltip"> &#127973;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-2.97 vs 1.85</td>
-        <td class="total-color">78.46%</td>
         <td class="odds">1.23</td>
+        <td class="total-color">78.46%</td>
         <td class="correct">1</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 25</td>
-        <td class="result">5:05 PM</td>
+<!--        <td class="result">5:05 PM</td>-->
         <td class="team" data-match-index="8">
-            <span class="tooltip">       <span class="tooltiptext">
-        
-        
+<!--            <span class="tooltip">       <span class="tooltiptext">-->
+<!--        -->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Paris SG</strong> - Rennes
+        <div class="container"><div class="ali"><strong>Paris SG</strong> </div> <div class="ali"> 5:05 PM </div> <div class="ali"> Rennes</div></div>
 
-            <span class="tooltip"> &#127973;            <span class="tooltiptext">
-        
-            This team has some injuries
-        
+<!--            <span class="tooltip"> &#127973;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">1.85 vs -2.63</td>
-        <td class="total-color">78.48%</td>
         <td class="odds">1.48</td>
+        <td class="total-color">78.48%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 26</td>
-        <td class="result">9:00 PM</td>
+<!--        <td class="result">9:00 PM</td>-->
         <td class="team" data-match-index="9">
-            <span class="tooltip"> &#128201;      <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Girona</strong> - Vallecano
+        <div class="container"><div class="ali"><strong>Girona</strong> </div> <div class="ali"> 9:00 PM </div> <div class="ali"> Vallecano</div></div>
 
-            <span class="tooltip"> &#127973&#127973; &#128201;            <span class="tooltiptext">
-        
-            This team has MAJOR injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973&#127973; &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has MAJOR injuries and a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">1.82 vs -2.75</td>
-        <td class="total-color">78.19%</td>
         <td class="odds">1.7</td>
+        <td class="total-color">78.19%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 25</td>
-        <td class="result">9:00 PM</td>
+<!--        <td class="result">9:00 PM</td>-->
         <td class="team" data-match-index="10">
-            <span class="tooltip"> &#127973&#127973; &#128201;      <span class="tooltiptext">
-        
-            This team has MAJOR injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973&#127973; &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has MAJOR injuries and a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Real Madrid</strong> - Sevilla
+        <div class="container"><div class="ali"><strong>Real Madrid</strong> </div> <div class="ali"> 9:00 PM </div> <div class="ali"> Sevilla</div></div>
 
-            <span class="tooltip"> &#127973&#127973;            <span class="tooltiptext">
-        
-            This team has MAJOR injuries
-        
+<!--            <span class="tooltip"> &#127973&#127973;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has MAJOR injuries-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">1.81 vs -3.19</td>
-        <td class="total-color">78.1%</td>
         <td class="odds">1.32</td>
+        <td class="total-color">78.1%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 24</td>
-        <td class="result">1:1</td>
+<!--        <td class="result">1:1</td>-->
         <td class="team" data-match-index="11">
-            <span class="tooltip"> &#127973;      <span class="tooltiptext">
-        
-            This team has some injuries
-        
+<!--            <span class="tooltip"> &#127973;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Stuttgart</strong> - FC Koln
+        <div class="container"><div class="ali"><strong>Stuttgart</strong> </div> <div class="ali"> <strong>1:1</strong> </div> <div class="ali"> FC Koln</div></div>
 
-            <span class="tooltip"> &#127973&#127973; &#128201;            <span class="tooltiptext">
-        
-            This team has MAJOR injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973&#127973; &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has MAJOR injuries and a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">1.64 vs -2.82</td>
-        <td class="total-color">76.42%</td>
         <td class="odds">1.36</td>
+        <td class="total-color">76.42%</td>
         <td class="correct">0.5</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 23</td>
-        <td class="result">2:0</td>
+<!--        <td class="result">2:0</td>-->
         <td class="team" data-match-index="12">
-            <span class="tooltip">       <span class="tooltiptext">
-        
-        
+<!--            <span class="tooltip">       <span class="tooltiptext">-->
+<!--        -->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Bologna</strong> - Verona
+        <div class="container"><div class="ali"><strong>Bologna</strong> </div> <div class="ali"> <strong>2:0</strong> </div> <div class="ali"> Verona</div></div>
 
-            <span class="tooltip"> &#128201;            <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">1.56 vs -2.09</td>
-        <td class="total-color">75.59%</td>
         <td class="odds">1.6</td>
+        <td class="total-color">75.59%</td>
         <td class="correct">1</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 25</td>
-        <td class="result">2:30 PM</td>
+<!--        <td class="result">2:30 PM</td>-->
         <td class="team" data-match-index="13">
-            <span class="tooltip">       <span class="tooltiptext">
-        
-        
+<!--            <span class="tooltip">       <span class="tooltiptext">-->
+<!--        -->
+<!--        -->
 
 
 
         </span></span>
 
-        Almere City - <strong>Feyenoord</strong>
+        <div class="container"><div class="ali">Almere City </div> <div class="ali"> 2:30 PM </div> <div class="ali"> <strong>Feyenoord</strong></div></div>
 
-            <span class="tooltip"> &#127973;            <span class="tooltiptext">
-        
-            This team has some injuries
-        
+<!--            <span class="tooltip"> &#127973;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-2.42 vs 1.55</td>
-        <td class="total-color">75.45%</td>
         <td class="odds">1.28</td>
+        <td class="total-color">75.45%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 25</td>
-        <td class="result">6:30 PM</td>
+<!--        <td class="result">6:30 PM</td>-->
         <td class="team" data-match-index="14">
-            <span class="tooltip">       <span class="tooltiptext">
-        
-        
+<!--            <span class="tooltip">       <span class="tooltiptext">-->
+<!--        -->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>St. Gilloise</strong> - Standard
+        <div class="container"><div class="ali"><strong>St. Gilloise</strong> </div> <div class="ali"> 6:30 PM </div> <div class="ali"> Standard</div></div>
 
-            <span class="tooltip"> &#127973&#127973; &#128201;            <span class="tooltiptext">
-        
-            This team has MAJOR injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973&#127973; &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has MAJOR injuries and a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">1.45 vs -2.49</td>
-        <td class="total-color">74.54%</td>
         <td class="odds">1.38</td>
+        <td class="total-color">74.54%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 25</td>
-        <td class="result">3:00 PM</td>
+<!--        <td class="result">3:00 PM</td>-->
         <td class="team" data-match-index="15">
-            <span class="tooltip"> &#128201;      <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Nice</strong> - Clermont
+        <div class="container"><div class="ali"><strong>Nice</strong> </div> <div class="ali"> 3:00 PM </div> <div class="ali"> Clermont</div></div>
 
-            <span class="tooltip"> &#128201;            <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">1.44 vs -2.09</td>
-        <td class="total-color">74.35%</td>
         <td class="odds">1.48</td>
+        <td class="total-color">74.35%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 21</td>
-        <td class="result">4:1</td>
+<!--        <td class="result">4:1</td>-->
         <td class="team" data-match-index="16">
-            <span class="tooltip"> &#127973&#127973;      <span class="tooltiptext">
-        
-            This team has MAJOR injuries
-        
+<!--            <span class="tooltip"> &#127973&#127973;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has MAJOR injuries-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Liverpool</strong> - Luton
+        <div class="container"><div class="ali"><strong>Liverpool</strong> </div> <div class="ali"> <strong>4:1</strong> </div> <div class="ali"> Luton</div></div>
 
-            <span class="tooltip"> &#128201;            <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">1.36 vs -2.44</td>
-        <td class="total-color">73.62%</td>
         <td class="odds">n/a</td>
+        <td class="total-color">73.62%</td>
         <td class="correct">1</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 25</td>
-        <td class="result">7:00 PM</td>
+<!--        <td class="result">7:00 PM</td>-->
         <td class="team" data-match-index="17">
-            <span class="tooltip"> &#128201;      <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        Gil Vicente - <strong>Porto</strong>
+        <div class="container"><div class="ali">Gil Vicente </div> <div class="ali"> 7:00 PM </div> <div class="ali"> <strong>Porto</strong></div></div>
 
-            <span class="tooltip"> &#128201;            <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-1.88 vs 1.26</td>
-        <td class="total-color">72.57%</td>
         <td class="odds">1.4</td>
+        <td class="total-color">72.57%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 24</td>
-        <td class="result">4:2</td>
+<!--        <td class="result">4:2</td>-->
         <td class="team" data-match-index="18">
-            <span class="tooltip"> &#127973;      <span class="tooltiptext">
-        
-            This team has some injuries
-        
+<!--            <span class="tooltip"> &#127973;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Aston Villa</strong> - Nott'm Forest
+        <div class="container"><div class="ali"><strong>Aston Villa</strong> </div> <div class="ali"> <strong>4:2</strong> </div> <div class="ali"> Nott'm Forest</div></div>
 
-            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">1.22 vs -2.29</td>
-        <td class="total-color">72.19%</td>
         <td class="odds">1.58</td>
+        <td class="total-color">72.19%</td>
         <td class="correct">1</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 24</td>
-        <td class="result">4:0</td>
+<!--        <td class="result">4:0</td>-->
         <td class="team" data-match-index="19">
-            <span class="tooltip"> &#127973;      <span class="tooltiptext">
-        
-            This team has some injuries
-        
+<!--            <span class="tooltip"> &#127973;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Barcelona</strong> - Getafe
+        <div class="container"><div class="ali"><strong>Barcelona</strong> </div> <div class="ali"> <strong>4:0</strong> </div> <div class="ali"> Getafe</div></div>
 
-            <span class="tooltip"> &#128201;            <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">1.22 vs -2.09</td>
-        <td class="total-color">72.2%</td>
         <td class="odds">1.43</td>
+        <td class="total-color">72.2%</td>
         <td class="correct">1</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 24</td>
-        <td class="result">2:1</td>
+<!--        <td class="result">2:1</td>-->
         <td class="team" data-match-index="20">
-            <span class="tooltip"> &#127973&#127973;      <span class="tooltiptext">
-        
-            This team has MAJOR injuries
-        
+<!--            <span class="tooltip"> &#127973&#127973;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has MAJOR injuries-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Fenerbahce</strong> - Kasimpasa
+        <div class="container"><div class="ali"><strong>Fenerbahce</strong> </div> <div class="ali"> <strong>2:1</strong> </div> <div class="ali"> Kasimpasa</div></div>
 
-            <span class="tooltip"> &#127973;            <span class="tooltiptext">
-        
-            This team has some injuries
-        
+<!--            <span class="tooltip"> &#127973;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">1.15 vs -2.39</td>
-        <td class="total-color">71.52%</td>
         <td class="odds">1.2</td>
+        <td class="total-color">71.52%</td>
         <td class="correct">1</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 25</td>
-        <td class="result">2:30 PM</td>
+<!--        <td class="result">2:30 PM</td>-->
         <td class="team" data-match-index="21">
-            <span class="tooltip"> &#127973;      <span class="tooltiptext">
-        
-            This team has some injuries
-        
+<!--            <span class="tooltip"> &#127973;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Wolves</strong> - Sheffield United
+        <div class="container"><div class="ali"><strong>Wolves</strong> </div> <div class="ali"> 2:30 PM </div> <div class="ali"> Sheffield United</div></div>
 
-            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">0.98 vs -1.9</td>
-        <td class="total-color">69.18%</td>
         <td class="odds">1.51</td>
+        <td class="total-color">69.18%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 23</td>
-        <td class="result">1:3</td>
+<!--        <td class="result">1:3</td>-->
         <td class="team" data-match-index="22">
-            <span class="tooltip"> &#128201;      <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Sociedad</strong> - Villarreal
+        <div class="container"><div class="ali"><strong>Sociedad</strong> </div> <div class="ali"> <strong>1:3</strong> </div> <div class="ali"> Villarreal</div></div>
 
-            <span class="tooltip"> &#127973&#127973; &#128201;            <span class="tooltiptext">
-        
-            This team has MAJOR injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973&#127973; &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has MAJOR injuries and a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">0.95 vs -2.03</td>
-        <td class="total-color">68.01%</td>
         <td class="odds">1.81</td>
+        <td class="total-color">68.01%</td>
         <td class="correct">0</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 25</td>
-        <td class="result">2:00 PM</td>
+<!--        <td class="result">2:00 PM</td>-->
         <td class="team" data-match-index="23">
-            <span class="tooltip">       <span class="tooltiptext">
-        
-        
+<!--            <span class="tooltip">       <span class="tooltiptext">-->
+<!--        -->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Trabzonspor</strong> - Ad. Demirspor
+        <div class="container"><div class="ali"><strong>Trabzonspor</strong> </div> <div class="ali"> 2:00 PM </div> <div class="ali"> Ad. Demirspor</div></div>
 
-            <span class="tooltip"> &#127973&#127973; &#128201;            <span class="tooltiptext">
-        
-            This team has MAJOR injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973&#127973; &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has MAJOR injuries and a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">0.94 vs -1.84</td>
-        <td class="total-color">67.58%</td>
         <td class="odds">1.82</td>
+        <td class="total-color">67.58%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 24</td>
-        <td class="result">1:2</td>
+<!--        <td class="result">1:2</td>-->
         <td class="team" data-match-index="24">
-            <span class="tooltip"> &#127973&#127973;      <span class="tooltiptext">
-        
-            This team has MAJOR injuries
-        
+<!--            <span class="tooltip"> &#127973&#127973;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has MAJOR injuries-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Man United</strong> - Fulham
+        <div class="container"><div class="ali"><strong>Man United</strong> </div> <div class="ali"> <strong>1:2</strong> </div> <div class="ali"> Fulham</div></div>
 
-            <span class="tooltip"> &#127973&#127973; &#128201;            <span class="tooltiptext">
-        
-            This team has MAJOR injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973&#127973; &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has MAJOR injuries and a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">0.93 vs -2.11</td>
-        <td class="total-color">67.31%</td>
         <td class="odds">1.59</td>
+        <td class="total-color">67.31%</td>
         <td class="correct">0</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 24</td>
-        <td class="result">0:1</td>
+<!--        <td class="result">0:1</td>-->
         <td class="team" data-match-index="25">
-            <span class="tooltip"> &#128201;      <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        Bournemouth - <strong>Man City</strong>
+        <div class="container"><div class="ali">Bournemouth </div> <div class="ali"> <strong>0:1</strong> </div> <div class="ali"> <strong>Man City</strong></div></div>
 
-            <span class="tooltip">             <span class="tooltiptext">
-        
-        
+<!--            <span class="tooltip">             <span class="tooltiptext">-->
+<!--        -->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-1.6 vs 0.89</td>
-        <td class="total-color">65.74%</td>
         <td class="odds">1.42</td>
+        <td class="total-color">65.74%</td>
         <td class="correct">1</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 25</td>
-        <td class="result">3:00 PM</td>
+<!--        <td class="result">3:00 PM</td>-->
         <td class="team" data-match-index="26">
-            <span class="tooltip"> &#127973&#127973; &#128201;      <span class="tooltiptext">
-        
-            This team has MAJOR injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973&#127973; &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has MAJOR injuries and a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        Cagliari - <strong>Napoli</strong>
+        <div class="container"><div class="ali">Cagliari </div> <div class="ali"> 3:00 PM </div> <div class="ali"> <strong>Napoli</strong></div></div>
 
-            <span class="tooltip"> &#128201;            <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-1.79 vs 0.84</td>
-        <td class="total-color">63.55%</td>
         <td class="odds">1.91</td>
+        <td class="total-color">63.55%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 26</td>
-        <td class="result">9:15 PM</td>
+<!--        <td class="result">9:15 PM</td>-->
         <td class="team" data-match-index="27">
-            <span class="tooltip"> &#127973&#127973; &#128201;      <span class="tooltiptext">
-        
-            This team has MAJOR injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973&#127973; &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has MAJOR injuries and a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        Boavista - <strong>Sp Braga</strong>
+        <div class="container"><div class="ali">Boavista </div> <div class="ali"> 9:15 PM </div> <div class="ali"> <strong>Sp Braga</strong></div></div>
 
-            <span class="tooltip"> &#127973;            <span class="tooltiptext">
-        
-            This team has some injuries
-        
+<!--            <span class="tooltip"> &#127973;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-1.96 vs 0.81</td>
-        <td class="total-color">62.57%</td>
         <td class="odds">1.7</td>
+        <td class="total-color">62.57%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 24</td>
-        <td class="result">4:1</td>
+<!--        <td class="result">4:1</td>-->
         <td class="team" data-match-index="28">
-            <span class="tooltip"> &#127973;      <span class="tooltiptext">
-        
-            This team has some injuries
-        
+<!--            <span class="tooltip"> &#127973;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Arsenal</strong> - Newcastle
+        <div class="container"><div class="ali"><strong>Arsenal</strong> </div> <div class="ali"> <strong>4:1</strong> </div> <div class="ali"> Newcastle</div></div>
 
-            <span class="tooltip"> &#127973&#127973; &#128201;            <span class="tooltiptext">
-        
-            This team has MAJOR injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973&#127973; &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has MAJOR injuries and a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">0.78 vs -1.8</td>
-        <td class="total-color">61.03%</td>
         <td class="odds">1.41</td>
+        <td class="total-color">61.03%</td>
         <td class="correct">1</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 25</td>
-        <td class="result">5:00 PM</td>
+<!--        <td class="result">5:00 PM</td>-->
         <td class="team" data-match-index="29">
-            <span class="tooltip"> &#128201;      <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        Istanbulspor - <strong>Besiktas</strong>
+        <div class="container"><div class="ali">Istanbulspor </div> <div class="ali"> 5:00 PM </div> <div class="ali"> <strong>Besiktas</strong></div></div>
 
-            <span class="tooltip"> &#127973&#127973;            <span class="tooltiptext">
-        
-            This team has MAJOR injuries
-        
+<!--            <span class="tooltip"> &#127973&#127973;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has MAJOR injuries-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-1.63 vs 0.75</td>
-        <td class="total-color">60.12%</td>
         <td class="odds">1.59</td>
+        <td class="total-color">60.12%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 26</td>
-        <td class="result">6:30 PM</td>
+<!--        <td class="result">6:30 PM</td>-->
         <td class="team" data-match-index="30">
-            <span class="tooltip"> &#127973;      <span class="tooltiptext">
-        
-            This team has some injuries
-        
+<!--            <span class="tooltip"> &#127973;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Roma</strong> - Torino
+        <div class="container"><div class="ali"><strong>Roma</strong> </div> <div class="ali"> 6:30 PM </div> <div class="ali"> Torino</div></div>
 
-            <span class="tooltip"> &#127973&#127973; &#128201;            <span class="tooltiptext">
-        
-            This team has MAJOR injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973&#127973; &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has MAJOR injuries and a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">0.69 vs -1.8</td>
-        <td class="total-color">57.47%</td>
         <td class="odds">2.0</td>
+        <td class="total-color">57.47%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 24</td>
-        <td class="result">2:1</td>
+<!--        <td class="result">2:1</td>-->
         <td class="team" data-match-index="31">
-            <span class="tooltip"> &#127973; &#128201;      <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973; &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Bayern Munich</strong> - RB Leipzig
+        <div class="container"><div class="ali"><strong>Bayern Munich</strong> </div> <div class="ali"> <strong>2:1</strong> </div> <div class="ali"> RB Leipzig</div></div>
 
-            <span class="tooltip">             <span class="tooltiptext">
-        
-        
+<!--            <span class="tooltip">             <span class="tooltiptext">-->
+<!--        -->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">0.66 vs -1.55</td>
-        <td class="total-color">56.28%</td>
         <td class="odds">1.76</td>
+        <td class="total-color">56.28%</td>
         <td class="correct">1</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 24</td>
-        <td class="result">0:2</td>
+<!--        <td class="result">0:2</td>-->
         <td class="team" data-match-index="32">
-            <span class="tooltip"> &#127973; &#128201;      <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973; &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Guimaraes</strong> - Casa Pia
+        <div class="container"><div class="ali"><strong>Guimaraes</strong> </div> <div class="ali"> <strong>0:2</strong> </div> <div class="ali"> Casa Pia</div></div>
 
-            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">0.65 vs -1.63</td>
-        <td class="total-color">56.06%</td>
         <td class="odds">1.57</td>
+        <td class="total-color">56.06%</td>
         <td class="correct">0</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 24</td>
-        <td class="result">1:1</td>
+<!--        <td class="result">1:1</td>-->
         <td class="team" data-match-index="33">
-            <span class="tooltip"> &#127973&#127973;      <span class="tooltiptext">
-        
-            This team has MAJOR injuries
-        
+<!--            <span class="tooltip"> &#127973&#127973;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has MAJOR injuries-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Werder Bremen</strong> - Darmstadt
+        <div class="container"><div class="ali"><strong>Werder Bremen</strong> </div> <div class="ali"> <strong>1:1</strong> </div> <div class="ali"> Darmstadt</div></div>
 
-            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">0.63 vs -1.83</td>
-        <td class="total-color">55.19%</td>
         <td class="odds">1.68</td>
+        <td class="total-color">55.19%</td>
         <td class="correct">0.5</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 25</td>
-        <td class="result">5:30 PM</td>
+<!--        <td class="result">5:30 PM</td>-->
         <td class="team" data-match-index="34">
-            <span class="tooltip"> &#127973&#127973; &#128201;      <span class="tooltiptext">
-        
-            This team has MAJOR injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973&#127973; &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has MAJOR injuries and a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Dortmund</strong> - Hoffenheim
+        <div class="container"><div class="ali"><strong>Dortmund</strong> </div> <div class="ali"> 5:30 PM </div> <div class="ali"> Hoffenheim</div></div>
 
-            <span class="tooltip"> &#127973&#127973; &#128201;            <span class="tooltiptext">
-        
-            This team has MAJOR injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973&#127973; &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has MAJOR injuries and a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">0.55 vs -1.82</td>
-        <td class="total-color">52.01%</td>
         <td class="odds">1.55</td>
+        <td class="total-color">52.01%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 24</td>
-        <td class="result">postponed</td>
+<!--        <td class="result">postponed</td>-->
         <td class="team" data-match-index="35">
-            <span class="tooltip"> &#128201;      <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        Granada - <strong>Valencia</strong>
+        <div class="container"><div class="ali">Granada </div> <div class="ali"> postponed </div> <div class="ali"> <strong>Valencia</strong></div></div>
 
-            <span class="tooltip"> &#128201;            <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-1.11 vs 0.47</td>
-        <td class="total-color">47.87%</td>
         <td class="odds">2.9</td>
+        <td class="total-color">47.87%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 25</td>
-        <td class="result">3:00 PM</td>
+<!--        <td class="result">3:00 PM</td>-->
         <td class="team" data-match-index="36">
-            <span class="tooltip"> &#127973;      <span class="tooltiptext">
-        
-            This team has some injuries
-        
+<!--            <span class="tooltip"> &#127973;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries-->
+<!--        -->
 
 
 
         </span></span>
 
-        Toulouse - <strong>Lille</strong>
+        <div class="container"><div class="ali">Toulouse </div> <div class="ali"> 3:00 PM </div> <div class="ali"> <strong>Lille</strong></div></div>
 
-            <span class="tooltip">             <span class="tooltiptext">
-        
-        
+<!--            <span class="tooltip">             <span class="tooltiptext">-->
+<!--        -->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-1.15 vs 0.46</td>
-        <td class="total-color">46.55%</td>
         <td class="odds">1.95</td>
+        <td class="total-color">46.55%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 23</td>
-        <td class="result">1:0</td>
+<!--        <td class="result">1:0</td>-->
         <td class="team" data-match-index="37">
-            <span class="tooltip">       <span class="tooltiptext">
-        
-        
+<!--            <span class="tooltip">       <span class="tooltiptext">-->
+<!--        -->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Utrecht</strong> - Heracles
+        <div class="container"><div class="ali"><strong>Utrecht</strong> </div> <div class="ali"> <strong>1:0</strong> </div> <div class="ali"> Heracles</div></div>
 
-            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">0.44 vs -1.25</td>
-        <td class="total-color">45.02%</td>
         <td class="odds">1.44</td>
+        <td class="total-color">45.02%</td>
         <td class="correct">1</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 24</td>
-        <td class="result">2:0</td>
+<!--        <td class="result">2:0</td>-->
         <td class="team" data-match-index="38">
-            <span class="tooltip"> &#128201;      <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Genoa</strong> - Udinese
+        <div class="container"><div class="ali"><strong>Genoa</strong> </div> <div class="ali"> <strong>2:0</strong> </div> <div class="ali"> Udinese</div></div>
 
-            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">0.37 vs -1.18</td>
-        <td class="total-color">39.61%</td>
         <td class="odds">2.4</td>
+        <td class="total-color">39.61%</td>
         <td class="correct">1</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 24</td>
-        <td class="result">3:0</td>
+<!--        <td class="result">3:0</td>-->
         <td class="team" data-match-index="39">
-            <span class="tooltip"> &#127973;      <span class="tooltiptext">
-        
-            This team has some injuries
-        
+<!--            <span class="tooltip"> &#127973;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Mechelen</strong> - Kortrijk
+        <div class="container"><div class="ali"><strong>Mechelen</strong> </div> <div class="ali"> <strong>3:0</strong> </div> <div class="ali"> Kortrijk</div></div>
 
-            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">0.36 vs -1.28</td>
-        <td class="total-color">38.97%</td>
         <td class="odds">1.58</td>
+        <td class="total-color">38.97%</td>
         <td class="correct">1</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 25</td>
-        <td class="result">2:30 PM</td>
+<!--        <td class="result">2:30 PM</td>-->
         <td class="team" data-match-index="40">
-            <span class="tooltip"> &#127973;      <span class="tooltiptext">
-        
-            This team has some injuries
-        
+<!--            <span class="tooltip"> &#127973;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Twente</strong> - Go Ahead Eagles
+        <div class="container"><div class="ali"><strong>Twente</strong> </div> <div class="ali"> 2:30 PM </div> <div class="ali"> Go Ahead Eagles</div></div>
 
-            <span class="tooltip"> &#127973;            <span class="tooltiptext">
-        
-            This team has some injuries
-        
+<!--            <span class="tooltip"> &#127973;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">0.35 vs -1.27</td>
-        <td class="total-color">38.25%</td>
         <td class="odds">1.55</td>
+        <td class="total-color">38.25%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 25</td>
-        <td class="result">6:30 PM</td>
+<!--        <td class="result">6:30 PM</td>-->
         <td class="team" data-match-index="41">
-            <span class="tooltip"> &#128201;      <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Las Palmas</strong> - Osasuna
+        <div class="container"><div class="ali"><strong>Las Palmas</strong> </div> <div class="ali"> 6:30 PM </div> <div class="ali"> Osasuna</div></div>
 
-            <span class="tooltip">             <span class="tooltiptext">
-        
-        
+<!--            <span class="tooltip">             <span class="tooltiptext">-->
+<!--        -->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">0.3 vs -0.97</td>
-        <td class="total-color">33.95%</td>
         <td class="odds">2.48</td>
+        <td class="total-color">33.95%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 25</td>
-        <td class="result">8:45 PM</td>
+<!--        <td class="result">8:45 PM</td>-->
         <td class="team" data-match-index="42">
-            <span class="tooltip"> &#127973; &#128201;      <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973; &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Marseille</strong> - Montpellier
+        <div class="container"><div class="ali"><strong>Marseille</strong> </div> <div class="ali"> 8:45 PM </div> <div class="ali"> Montpellier</div></div>
 
-            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">0.29 vs -1.2</td>
-        <td class="total-color">32.91%</td>
         <td class="odds">1.79</td>
+        <td class="total-color">32.91%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 24</td>
-        <td class="result">1:1</td>
+<!--        <td class="result">1:1</td>-->
         <td class="team" data-match-index="43">
-            <span class="tooltip"> &#128201;      <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Alaves</strong> - Mallorca
+        <div class="container"><div class="ali"><strong>Alaves</strong> </div> <div class="ali"> <strong>1:1</strong> </div> <div class="ali"> Mallorca</div></div>
 
-            <span class="tooltip"> &#128201;            <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">0.28 vs -0.93</td>
-        <td class="total-color">32.72%</td>
         <td class="odds">2.0</td>
+        <td class="total-color">32.72%</td>
         <td class="correct">0.5</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 23</td>
-        <td class="result">0:1</td>
+<!--        <td class="result">0:1</td>-->
         <td class="team" data-match-index="44">
-            <span class="tooltip"> &#127973&#127973; &#128201;      <span class="tooltiptext">
-        
-            This team has MAJOR injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973&#127973; &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has MAJOR injuries and a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        Charleroi - <strong>Genk</strong>
+        <div class="container"><div class="ali">Charleroi </div> <div class="ali"> <strong>0:1</strong> </div> <div class="ali"> <strong>Genk</strong></div></div>
 
-            <span class="tooltip"> &#128201;            <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-1.2 vs 0.26</td>
-        <td class="total-color">30.71%</td>
         <td class="odds">1.84</td>
+        <td class="total-color">30.71%</td>
         <td class="correct">1</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 24</td>
-        <td class="result">0:2</td>
+<!--        <td class="result">0:2</td>-->
         <td class="team" data-match-index="45">
-            <span class="tooltip"> &#128201;      <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        Salernitana - <strong>Monza</strong>
+        <div class="container"><div class="ali">Salernitana </div> <div class="ali"> <strong>0:2</strong> </div> <div class="ali"> <strong>Monza</strong></div></div>
 
-            <span class="tooltip"> &#128201;            <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-1.0 vs 0.25</td>
-        <td class="total-color">29.72%</td>
         <td class="odds">2.6</td>
+        <td class="total-color">29.72%</td>
         <td class="correct">1</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 25</td>
-        <td class="result">8:45 PM</td>
+<!--        <td class="result">8:45 PM</td>-->
         <td class="team" data-match-index="46">
-            <span class="tooltip">       <span class="tooltiptext">
-        
-        
+<!--            <span class="tooltip">       <span class="tooltiptext">-->
+<!--        -->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Milan</strong> - Atalanta
+        <div class="container"><div class="ali"><strong>Milan</strong> </div> <div class="ali"> 8:45 PM </div> <div class="ali"> Atalanta</div></div>
 
-            <span class="tooltip">             <span class="tooltiptext">
-        
-        
+<!--            <span class="tooltip">             <span class="tooltiptext">-->
+<!--        -->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">0.22 vs -0.77</td>
-        <td class="total-color">27.69%</td>
         <td class="odds">2.44</td>
+        <td class="total-color">27.69%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 25</td>
-        <td class="result">3:30 PM</td>
+<!--        <td class="result">3:30 PM</td>-->
         <td class="team" data-match-index="47">
-            <span class="tooltip"> &#127973; &#128201;      <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973; &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Ein Frankfurt</strong> - Wolfsburg
+        <div class="container"><div class="ali"><strong>Ein Frankfurt</strong> </div> <div class="ali"> 3:30 PM </div> <div class="ali"> Wolfsburg</div></div>
 
-            <span class="tooltip"> &#128201;            <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">0.21 vs -1.02</td>
-        <td class="total-color">26.56%</td>
         <td class="odds">2.38</td>
+        <td class="total-color">26.56%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 23</td>
-        <td class="result">3:2</td>
+<!--        <td class="result">3:2</td>-->
         <td class="team" data-match-index="48">
-            <span class="tooltip">       <span class="tooltiptext">
-        
-        
+<!--            <span class="tooltip">       <span class="tooltiptext">-->
+<!--        -->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Arouca</strong> - Famalicao
+        <div class="container"><div class="ali"><strong>Arouca</strong> </div> <div class="ali"> <strong>3:2</strong> </div> <div class="ali"> Famalicao</div></div>
 
-            <span class="tooltip"> &#128201;            <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">0.19 vs -0.93</td>
-        <td class="total-color">24.98%</td>
         <td class="odds">2.22</td>
+        <td class="total-color">24.98%</td>
         <td class="correct">1</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 25</td>
-        <td class="result">4:15 PM</td>
+<!--        <td class="result">4:15 PM</td>-->
         <td class="team" data-match-index="49">
-            <span class="tooltip"> &#127973&#127973; &#128201;      <span class="tooltiptext">
-        
-            This team has MAJOR injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973&#127973; &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has MAJOR injuries and a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        Betis - <strong>Ath Bilbao</strong>
+        <div class="container"><div class="ali">Betis </div> <div class="ali"> 4:15 PM </div> <div class="ali"> <strong>Ath Bilbao</strong></div></div>
 
-            <span class="tooltip">             <span class="tooltiptext">
-        
-        
+<!--            <span class="tooltip">             <span class="tooltiptext">-->
+<!--        -->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-1.08 vs 0.13</td>
-        <td class="total-color">20.19%</td>
         <td class="odds">2.3</td>
+        <td class="total-color">20.19%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 24</td>
-        <td class="result">3:0</td>
+<!--        <td class="result">3:0</td>-->
         <td class="team" data-match-index="50">
-            <span class="tooltip"> &#128201;      <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Crystal Palace</strong> - Burnley
+        <div class="container"><div class="ali"><strong>Crystal Palace</strong> </div> <div class="ali"> <strong>3:0</strong> </div> <div class="ali"> Burnley</div></div>
 
-            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">0.12 vs -0.92</td>
-        <td class="total-color">19.48%</td>
         <td class="odds">2.02</td>
+        <td class="total-color">19.48%</td>
         <td class="correct">1</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 25</td>
-        <td class="result">7:15 PM</td>
+<!--        <td class="result">7:15 PM</td>-->
         <td class="team" data-match-index="51">
-            <span class="tooltip"> &#127973; &#128201;      <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973; &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        Eupen - <strong>Cercle Brugge</strong>
+        <div class="container"><div class="ali">Eupen </div> <div class="ali"> 7:15 PM </div> <div class="ali"> <strong>Cercle Brugge</strong></div></div>
 
-            <span class="tooltip"> &#127973;            <span class="tooltiptext">
-        
-            This team has some injuries
-        
+<!--            <span class="tooltip"> &#127973;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-1.13 vs 0.12</td>
-        <td class="total-color">19.76%</td>
         <td class="odds">1.73</td>
+        <td class="total-color">19.76%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 25</td>
-        <td class="result">12:15 PM</td>
+<!--        <td class="result">12:15 PM</td>-->
         <td class="team" data-match-index="52">
-            <span class="tooltip"> &#128201;      <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Excelsior</strong> - Vitesse
+        <div class="container"><div class="ali"><strong>Excelsior</strong> </div> <div class="ali"> 12:15 PM </div> <div class="ali"> Vitesse</div></div>
 
-            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">0.1 vs -0.89</td>
-        <td class="total-color">18.4%</td>
         <td class="odds">2.18</td>
+        <td class="total-color">18.4%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 24</td>
-        <td class="result">0:3</td>
+<!--        <td class="result">0:3</td>-->
         <td class="team" data-match-index="53">
-            <span class="tooltip"> &#128201;      <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        Strasbourg - <strong>Brest</strong>
+        <div class="container"><div class="ali">Strasbourg </div> <div class="ali"> <strong>0:3</strong> </div> <div class="ali"> <strong>Brest</strong></div></div>
 
-            <span class="tooltip"> &#128201;            <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-0.69 vs 0.08</td>
-        <td class="total-color">16.42%</td>
         <td class="odds">2.64</td>
+        <td class="total-color">16.42%</td>
         <td class="correct">1</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 25</td>
-        <td class="result">2:00 PM</td>
+<!--        <td class="result">2:00 PM</td>-->
         <td class="team" data-match-index="54">
-            <span class="tooltip"> &#128201;      <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Karagumruk</strong> - Alanyaspor
+        <div class="container"><div class="ali"><strong>Karagumruk</strong> </div> <div class="ali"> 2:00 PM </div> <div class="ali"> Alanyaspor</div></div>
 
-            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">0.08 vs -0.96</td>
-        <td class="total-color">16.16%</td>
         <td class="odds">1.92</td>
+        <td class="total-color">16.16%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 23</td>
-        <td class="result">3:0</td>
+<!--        <td class="result">3:0</td>-->
         <td class="team" data-match-index="55">
-            <span class="tooltip"> &#127973; &#128201;      <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973; &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Samsunspor</strong> - Rizespor
+        <div class="container"><div class="ali"><strong>Samsunspor</strong> </div> <div class="ali"> <strong>3:0</strong> </div> <div class="ali"> Rizespor</div></div>
 
-            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">0.07 vs -0.97</td>
-        <td class="total-color">15.29%</td>
         <td class="odds">2.02</td>
+        <td class="total-color">15.29%</td>
         <td class="correct">1</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 23</td>
-        <td class="result">1:2</td>
+<!--        <td class="result">1:2</td>-->
         <td class="team" data-match-index="56">
-            <span class="tooltip"> &#128201;      <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        Metz - <strong>Lyon</strong>
+        <div class="container"><div class="ali">Metz </div> <div class="ali"> <strong>1:2</strong> </div> <div class="ali"> <strong>Lyon</strong></div></div>
 
-            <span class="tooltip">             <span class="tooltiptext">
-        
-        
+<!--            <span class="tooltip">             <span class="tooltiptext">-->
+<!--        -->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-0.68 vs 0.05</td>
-        <td class="total-color">14.1%</td>
         <td class="odds">1.82</td>
+        <td class="total-color">14.1%</td>
         <td class="correct">1</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 24</td>
-        <td class="result">1:1</td>
+<!--        <td class="result">1:1</td>-->
         <td class="team" data-match-index="57">
-            <span class="tooltip"> &#127973; &#128201;      <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973; &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Estrela</strong> - Chaves
+        <div class="container"><div class="ali"><strong>Estrela</strong> </div> <div class="ali"> <strong>1:1</strong> </div> <div class="ali"> Chaves</div></div>
 
-            <span class="tooltip"> &#128201;            <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">0.03 vs -0.79</td>
-        <td class="total-color">12.27%</td>
         <td class="odds">2.1</td>
+        <td class="total-color">12.27%</td>
         <td class="correct">0.5</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 25</td>
-        <td class="result">1:00 PM</td>
+<!--        <td class="result">1:00 PM</td>-->
         <td class="team" data-match-index="58">
-            <span class="tooltip">       <span class="tooltiptext">
-        
-        
+<!--            <span class="tooltip">       <span class="tooltiptext">-->
+<!--        -->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Lens</strong> - Monaco
+        <div class="container"><div class="ali"><strong>Lens</strong> </div> <div class="ali"> 1:00 PM </div> <div class="ali"> Monaco</div></div>
 
-            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">0.02 vs -0.86</td>
-        <td class="total-color">11.7%</td>
         <td class="odds">2.36</td>
+        <td class="total-color">11.7%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 24</td>
-        <td class="result">3:2</td>
+<!--        <td class="result">3:2</td>-->
         <td class="team" data-match-index="59">
-            <span class="tooltip"> &#127973; &#128201;      <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973; &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Kayserispor</strong> - Ankaragucu
+        <div class="container"><div class="ali"><strong>Kayserispor</strong> </div> <div class="ali"> <strong>3:2</strong> </div> <div class="ali"> Ankaragucu</div></div>
 
-            <span class="tooltip"> &#128201;            <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">0.02 vs -0.83</td>
-        <td class="total-color">11.47%</td>
         <td class="odds">2.3</td>
+        <td class="total-color">11.47%</td>
         <td class="correct">1</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 24</td>
-        <td class="result">1:1</td>
+<!--        <td class="result">1:1</td>-->
         <td class="team" data-match-index="60">
-            <span class="tooltip"> &#128201;      <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        RWD Molenbeek - <strong>Oud-Heverlee Leuven</strong>
+        <div class="container"><div class="ali">RWD Molenbeek </div> <div class="ali"> <strong>1:1</strong> </div> <div class="ali"> <strong>Oud</div></div>
 
-            <span class="tooltip"> &#128201;            <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-0.66 vs -0.01</td>
-        <td class="total-color">9.7%</td>
         <td class="odds">2.44</td>
+        <td class="total-color">9.7%</td>
         <td class="correct">0.5</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 25</td>
-        <td class="result">2:00 PM</td>
+<!--        <td class="result">2:00 PM</td>-->
         <td class="team" data-match-index="61">
-            <span class="tooltip"> &#128201;      <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        Cadiz - <strong>Celta</strong>
+        <div class="container"><div class="ali">Cadiz </div> <div class="ali"> 2:00 PM </div> <div class="ali"> <strong>Celta</strong></div></div>
 
-            <span class="tooltip"> &#128201;            <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-0.63 vs -0.01</td>
-        <td class="total-color">9.81%</td>
         <td class="odds">2.66</td>
+        <td class="total-color">9.81%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 25</td>
-        <td class="result">11:30 AM</td>
+<!--        <td class="result">11:30 AM</td>-->
         <td class="team" data-match-index="62">
-            <span class="tooltip"> &#127973; &#128201;      <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973; &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Sivasspor</strong> - Pendikspor
+        <div class="container"><div class="ali"><strong>Sivasspor</strong> </div> <div class="ali"> 11:30 AM </div> <div class="ali"> Pendikspor</div></div>
 
-            <span class="tooltip"> &#127973&#127973; &#128201;            <span class="tooltiptext">
-        
-            This team has MAJOR injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973&#127973; &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has MAJOR injuries and a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-0.01 vs -0.99</td>
-        <td class="total-color">9.86%</td>
         <td class="odds">2.16</td>
+        <td class="total-color">9.86%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 24</td>
-        <td class="result">0:1</td>
+<!--        <td class="result">0:1</td>-->
         <td class="team" data-match-index="63">
-            <span class="tooltip"> &#128201;      <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Waalwijk</strong> - For Sittard
+        <div class="container"><div class="ali"><strong>Waalwijk</strong> </div> <div class="ali"> <strong>0:1</strong> </div> <div class="ali"> For Sittard</div></div>
 
-            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-0.06 vs -0.66</td>
-        <td class="total-color">8.79%</td>
         <td class="odds">2.46</td>
+        <td class="total-color">8.79%</td>
         <td class="correct">0</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 24</td>
-        <td class="result">2:0</td>
+<!--        <td class="result">2:0</td>-->
         <td class="team" data-match-index="64">
-            <span class="tooltip"> &#128201;      <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Nijmegen</strong> - Sparta Rotterdam
+        <div class="container"><div class="ali"><strong>Nijmegen</strong> </div> <div class="ali"> <strong>2:0</strong> </div> <div class="ali"> Sparta Rotterdam</div></div>
 
-            <span class="tooltip"> &#128201;            <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-0.09 vs -0.58</td>
-        <td class="total-color">8.14%</td>
         <td class="odds">1.92</td>
+        <td class="total-color">8.14%</td>
         <td class="correct">1</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 25</td>
-        <td class="result">3:00 PM</td>
+<!--        <td class="result">3:00 PM</td>-->
         <td class="team" data-match-index="65">
-            <span class="tooltip"> &#128201;      <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        Le Havre - <strong>Reims</strong>
+        <div class="container"><div class="ali">Le Havre </div> <div class="ali"> 3:00 PM </div> <div class="ali"> <strong>Reims</strong></div></div>
 
-            <span class="tooltip"> &#128201;            <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-0.51 vs -0.09</td>
-        <td class="total-color">8.15%</td>
         <td class="odds">2.52</td>
+        <td class="total-color">8.15%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 25</td>
-        <td class="result">8:00 PM</td>
+<!--        <td class="result">8:00 PM</td>-->
         <td class="team" data-match-index="66">
-            <span class="tooltip"> &#127973&#127973; &#128201;      <span class="tooltiptext">
-        
-            This team has MAJOR injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973&#127973; &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has MAJOR injuries and a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        Volendam - <strong>Heerenveen</strong>
+        <div class="container"><div class="ali">Volendam </div> <div class="ali"> 8:00 PM </div> <div class="ali"> <strong>Heerenveen</strong></div></div>
 
-            <span class="tooltip"> &#128201;            <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-0.82 vs -0.1</td>
-        <td class="total-color">8.07%</td>
         <td class="odds">1.78</td>
+        <td class="total-color">8.07%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 24</td>
-        <td class="result">5:2</td>
+<!--        <td class="result">5:2</td>-->
         <td class="team" data-match-index="67">
-            <span class="tooltip"> &#127973; &#128201;      <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973; &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>M'gladbach</strong> - Bochum
+        <div class="container"><div class="ali"><strong>M'gladbach</strong> </div> <div class="ali"> <strong>5:2</strong> </div> <div class="ali"> Bochum</div></div>
 
-            <span class="tooltip"> &#128201;            <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-0.15 vs -0.67</td>
-        <td class="total-color">6.95%</td>
         <td class="odds">2.04</td>
+        <td class="total-color">6.95%</td>
         <td class="correct">1</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 25</td>
-        <td class="result">4:00 PM</td>
+<!--        <td class="result">4:00 PM</td>-->
         <td class="team" data-match-index="68">
-            <span class="tooltip"> &#128201;      <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        Gent - <strong>Antwerp</strong>
+        <div class="container"><div class="ali">Gent </div> <div class="ali"> 4:00 PM </div> <div class="ali"> <strong>Antwerp</strong></div></div>
 
-            <span class="tooltip">             <span class="tooltiptext">
-        
-        
+<!--            <span class="tooltip">             <span class="tooltiptext">-->
+<!--        -->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-0.55 vs -0.18</td>
-        <td class="total-color">6.36%</td>
         <td class="odds">2.84</td>
+        <td class="total-color">6.36%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 24</td>
-        <td class="result">0:1</td>
+<!--        <td class="result">0:1</td>-->
         <td class="team" data-match-index="69">
-            <span class="tooltip">       <span class="tooltiptext">
-        
-        
+<!--            <span class="tooltip">       <span class="tooltiptext">-->
+<!--        -->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Lorient</strong> - Nantes
+        <div class="container"><div class="ali"><strong>Lorient</strong> </div> <div class="ali"> <strong>0:1</strong> </div> <div class="ali"> Nantes</div></div>
 
-            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-0.19 vs -0.55</td>
-        <td class="total-color">6.17%</td>
         <td class="odds">2.7</td>
+        <td class="total-color">6.17%</td>
         <td class="correct">0</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 25</td>
-        <td class="result">4:30 PM</td>
+<!--        <td class="result">4:30 PM</td>-->
         <td class="team" data-match-index="70">
-            <span class="tooltip"> &#128201;      <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        Vizela - <strong>Estoril</strong>
+        <div class="container"><div class="ali">Vizela </div> <div class="ali"> 4:30 PM </div> <div class="ali"> <strong>Estoril</strong></div></div>
 
-            <span class="tooltip"> &#128201;            <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-0.42 vs -0.21</td>
-        <td class="total-color">5.9%</td>
         <td class="odds">2.64</td>
+        <td class="total-color">5.9%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 26</td>
-        <td class="result">9:00 PM</td>
+<!--        <td class="result">9:00 PM</td>-->
         <td class="team" data-match-index="71">
-            <span class="tooltip"> &#127973&#127973; &#128201;      <span class="tooltiptext">
-        
-            This team has MAJOR injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973&#127973; &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has MAJOR injuries and a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>West Ham</strong> - Brentford
+        <div class="container"><div class="ali"><strong>West Ham</strong> </div> <div class="ali"> 9:00 PM </div> <div class="ali"> Brentford</div></div>
 
-            <span class="tooltip"> &#127973&#127973; &#128201;            <span class="tooltiptext">
-        
-            This team has MAJOR injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973&#127973; &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has MAJOR injuries and a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-0.23 vs -1.21</td>
-        <td class="total-color">5.34%</td>
         <td class="odds">2.64</td>
+        <td class="total-color">5.34%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 24</td>
-        <td class="result">2:2</td>
+<!--        <td class="result">2:2</td>-->
         <td class="team" data-match-index="72">
-            <span class="tooltip">       <span class="tooltiptext">
-        
-        
+<!--            <span class="tooltip">       <span class="tooltiptext">-->
+<!--        -->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Union Berlin</strong> - Heidenheim
+        <div class="container"><div class="ali"><strong>Union Berlin</strong> </div> <div class="ali"> <strong>2:2</strong> </div> <div class="ali"> Heidenheim</div></div>
 
-            <span class="tooltip"> &#128201;            <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-0.23 vs -0.28</td>
-        <td class="total-color">5.31%</td>
         <td class="odds">2.08</td>
+        <td class="total-color">5.31%</td>
         <td class="correct">0.5</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 24</td>
-        <td class="result">2:0</td>
+<!--        <td class="result">2:0</td>-->
         <td class="team" data-match-index="73">
-            <span class="tooltip"> &#128201;      <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Konyaspor</strong> - Hatayspor
+        <div class="container"><div class="ali"><strong>Konyaspor</strong> </div> <div class="ali"> <strong>2:0</strong> </div> <div class="ali"> Hatayspor</div></div>
 
-            <span class="tooltip"> &#127973&#127973; &#128201;            <span class="tooltiptext">
-        
-            This team has MAJOR injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973&#127973; &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has MAJOR injuries and a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-0.25 vs -0.74</td>
-        <td class="total-color">4.95%</td>
         <td class="odds">2.34</td>
+        <td class="total-color">4.95%</td>
         <td class="correct">1</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 25</td>
-        <td class="result">7:30 PM</td>
+<!--        <td class="result">7:30 PM</td>-->
         <td class="team" data-match-index="74">
-            <span class="tooltip"> &#128201;      <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Augsburg</strong> - Freiburg
+        <div class="container"><div class="ali"><strong>Augsburg</strong> </div> <div class="ali"> 7:30 PM </div> <div class="ali"> Freiburg</div></div>
 
-            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-0.29 vs -0.6</td>
-        <td class="total-color">4.19%</td>
         <td class="odds">2.34</td>
+        <td class="total-color">4.19%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 24</td>
-        <td class="result">1:1</td>
+<!--        <td class="result">1:1</td>-->
         <td class="team" data-match-index="75">
-            <span class="tooltip"> &#127973;      <span class="tooltiptext">
-        
-            This team has some injuries
-        
+<!--            <span class="tooltip"> &#127973;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries-->
+<!--        -->
 
 
 
         </span></span>
 
-        Brighton - <strong>Everton</strong>
+        <div class="container"><div class="ali">Brighton </div> <div class="ali"> <strong>1:1</strong> </div> <div class="ali"> <strong>Everton</strong></div></div>
 
-            <span class="tooltip"> &#128201;            <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-0.42 vs -0.31</td>
-        <td class="total-color">3.88%</td>
         <td class="odds">4.4</td>
+        <td class="total-color">3.88%</td>
         <td class="correct">0.5</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 24</td>
-        <td class="result">2:3</td>
+<!--        <td class="result">2:3</td>-->
         <td class="team" data-match-index="76">
-            <span class="tooltip"> &#127973; &#128201;      <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973; &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Sassuolo</strong> - Empoli
+        <div class="container"><div class="ali"><strong>Sassuolo</strong> </div> <div class="ali"> <strong>2:3</strong> </div> <div class="ali"> Empoli</div></div>
 
-            <span class="tooltip"> &#128201;            <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-0.33 vs -0.57</td>
-        <td class="total-color">3.47%</td>
         <td class="odds">2.3</td>
+        <td class="total-color">3.47%</td>
         <td class="correct">0</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 24</td>
-        <td class="result">1:0</td>
+<!--        <td class="result">1:0</td>-->
         <td class="team" data-match-index="77">
-            <span class="tooltip"> &#128201;      <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>St Truiden</strong> - Westerlo
+        <div class="container"><div class="ali"><strong>St Truiden</strong> </div> <div class="ali"> <strong>1:0</strong> </div> <div class="ali"> Westerlo</div></div>
 
-            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-0.35 vs -0.38</td>
-        <td class="total-color">3.08%</td>
         <td class="odds">2.08</td>
+        <td class="total-color">3.08%</td>
         <td class="correct">1</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 25</td>
-        <td class="result">4:45 PM</td>
+<!--        <td class="result">4:45 PM</td>-->
         <td class="team" data-match-index="78">
-            <span class="tooltip"> &#128201;      <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>AZ Alkmaar</strong> - Ajax
+        <div class="container"><div class="ali"><strong>AZ Alkmaar</strong> </div> <div class="ali"> 4:45 PM </div> <div class="ali"> Ajax</div></div>
 
-            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-0.38 vs -0.42</td>
-        <td class="total-color">2.46%</td>
         <td class="odds">2.16</td>
+        <td class="total-color">2.46%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 25</td>
-        <td class="result">1:30 PM</td>
+<!--        <td class="result">1:30 PM</td>-->
         <td class="team" data-match-index="79">
-            <span class="tooltip"> &#128201;      <span class="tooltiptext">
-        
-            This team has a dip in form recently
-        
+<!--            <span class="tooltip"> &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        Club Brugge - <strong>Anderlecht</strong>
+        <div class="container"><div class="ali">Club Brugge </div> <div class="ali"> 1:30 PM </div> <div class="ali"> <strong>Anderlecht</strong></div></div>
 
-            <span class="tooltip">             <span class="tooltiptext">
-        
-        
+<!--            <span class="tooltip">             <span class="tooltiptext">-->
+<!--        -->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-0.39 vs -0.38</td>
-        <td class="total-color">2.46%</td>
         <td class="odds">4.8</td>
+        <td class="total-color">2.46%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 24</td>
-        <td class="result">0:1</td>
+<!--        <td class="result">0:1</td>-->
         <td class="team" data-match-index="80">
-            <span class="tooltip"> &#127973; &#128201;      <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973; &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        Farense - <strong>Moreirense</strong>
+        <div class="container"><div class="ali">Farense </div> <div class="ali"> <strong>0:1</strong> </div> <div class="ali"> <strong>Moreirense</strong></div></div>
 
-            <span class="tooltip"> &#127973&#127973; &#128201;            <span class="tooltiptext">
-        
-            This team has MAJOR injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973&#127973; &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has MAJOR injuries and a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-0.69 vs -0.4</td>
-        <td class="total-color">2.01%</td>
         <td class="odds">2.94</td>
+        <td class="total-color">2.01%</td>
         <td class="correct">1</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 26</td>
-        <td class="result">8:45 PM</td>
+<!--        <td class="result">8:45 PM</td>-->
         <td class="team" data-match-index="81">
-            <span class="tooltip"> &#127973&#127973; &#128201;      <span class="tooltiptext">
-        
-            This team has MAJOR injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973&#127973; &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has MAJOR injuries and a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        Fiorentina - <strong>Lazio</strong>
+        <div class="container"><div class="ali">Fiorentina </div> <div class="ali"> 8:45 PM </div> <div class="ali"> <strong>Lazio</strong></div></div>
 
-            <span class="tooltip"> &#127973&#127973; &#128201;            <span class="tooltiptext">
-        
-            This team has MAJOR injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973&#127973; &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has MAJOR injuries and a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-0.64 vs -0.48</td>
-        <td class="total-color">0.45%</td>
         <td class="odds">3.45</td>
+        <td class="total-color">0.45%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 23</td>
-        <td class="result">postponed</td>
+<!--        <td class="result">postponed</td>-->
         <td class="team" data-match-index="82">
-            <span class="tooltip"> &#127973&#127973; &#128201;      <span class="tooltiptext">
-        
-            This team has MAJOR injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973&#127973; &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has MAJOR injuries and a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        <strong>Chelsea</strong> - Tottenham
+        <div class="container"><div class="ali"><strong>Chelsea</strong> </div> <div class="ali"> postponed </div> <div class="ali"> Tottenham</div></div>
 
-            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">
-        
-            This team has some injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973; &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has some injuries and a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-0.48 vs -0.73</td>
-        <td class="total-color">0.44%</td>
         <td class="odds">n/a</td>
+        <td class="total-color">0.44%</td>
         <td class="correct">None</td>
 
     </tr>
     
     <tr class="match">
         <td class="date">Feb 24</td>
-        <td class="result">0:2</td>
+<!--        <td class="result">0:2</td>-->
         <td class="team" data-match-index="83">
-            <span class="tooltip"> &#127973&#127973; &#128201;      <span class="tooltiptext">
-        
-            This team has MAJOR injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973&#127973; &#128201;      <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has MAJOR injuries and a dip in form recently-->
+<!--        -->
 
 
 
         </span></span>
 
-        Gaziantep - <strong>Buyuksehyr</strong>
+        <div class="container"><div class="ali">Gaziantep </div> <div class="ali"> <strong>0:2</strong> </div> <div class="ali"> <strong>Buyuksehyr</strong></div></div>
 
-            <span class="tooltip"> &#127973&#127973; &#128201;            <span class="tooltiptext">
-        
-            This team has MAJOR injuries and a dip in form recently
-        
+<!--            <span class="tooltip"> &#127973&#127973; &#128201;            <span class="tooltiptext">-->
+<!--        -->
+<!--            This team has MAJOR injuries and a dip in form recently-->
+<!--        -->
 
         </span></span>
 
         </td>
         <td class="certainty">-0.95 vs -0.48</td>
-        <td class="total-color">0.48%</td>
         <td class="odds">2.76</td>
+        <td class="total-color">0.48%</td>
         <td class="correct">1</td>
 
     </tr>
     
 </table>
+<div class="left">
+    Last updated 12:56:04 2024-02-25
+</div>
 <div class="center">
     18+. Gamble Responsibly.
 </div>
