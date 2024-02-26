@@ -93,13 +93,22 @@
             max-width: 500px; /* Set maximum width for each tab */
 
         }
+        .contact{
+            display: block;
+            color: black;
+            text-align: center;
+            padding: 20px 1px;
+            text-decoration: none;
+            font-size: 16px;
+
+        }
 
         .paypal {
             padding: 1px 1px;
 
 
         }
-        li a:not(.paypal){
+        li a:not(.paypal):not(.contact){
             display: block;
             color: black;
             text-align: center;
@@ -110,7 +119,7 @@
         }
 
 
-        li a:hover:not(.paypal) {
+        li a:hover:not(.paypal):not(.contact) {
             background-color: #ddd;
         }
         .active {
@@ -243,7 +252,7 @@
         });
         window.addEventListener("DOMContentLoaded", (event) => {
             // Get all the tabs
-            const tabs = document.querySelectorAll("ul li a:not(.paypal)");
+            const tabs = document.querySelectorAll("ul li a:not(.paypal):not(.contact)");
 
             // Function to handle tab click
             const handleTabClick = (event) => {
@@ -281,6 +290,7 @@
     <li><a href="Feb26.html">26 Feb</a></li>
     <li><a href="all-prevgw.html">Last Gameweek (old style)</a></li>
     <li><a  class="paypal" href="https://www.paypal.com/donate/?hosted_button_id=97FSH2FUWA4VE"> <img src="donateeee.png" alt="logo-paypa" width="150" height="78"> </a></li>
+     <li> <a class="contact" href="mailto:ai.goalie.mail@gmail.com"> Contact <br>&#9993;</br> </a> </li>
 </ul>
 <table>
     <tr>
@@ -2052,10 +2062,11 @@
     
 </table>
 <div class="left">
-    Last updated 10:52:42 2024-02-26
+    Last updated 12:08:56 2024-02-26
 </div>
 <div class="center">
-    18+. Gamble Responsibly.
+    18+. Gamble Responsibly.  <a href="disclaimer.html"> Liability Disclaimer. <a/>
 </div>
+
 </body>
 </html>
