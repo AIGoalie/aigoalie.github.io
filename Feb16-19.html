@@ -353,27 +353,54 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </head>
 <body>
-<ul>
-    <li><a class="paypal" href="index.html"> <img src="AIGoalieblack.png" alt="Logo of the AI Goalie football webpage" width="98" height="78"> </a></li>
+<div><!-- Include the common snippet -->
 
-    <li><a class="active" href="index.html">All</a></li>
+<div id="common-snippet">
+    <!-- Your common HTML code here -->
+    <ul>
+        <li><a class="paypal" href="index.html"> <img src="AIGoalieblack.png" alt="Logo of the AI Goalie football webpage" width="98" height="78"> </a></li>
+        
+        <li><a href="index.html">All</a></li>
+        
+        <li><a href="Mar8.html">Yesterday</a></li>
+        <li><a href="Mar9.html">Today</a></li>
+        <li><a href="Mar10.html">Tomorrow</a></li>
+        <li><a href="Mar11.html">Mon 11 Mar</a></li>
+        <select id="previousGameweeks" onchange="redirectToGameweek()">
+            <option value="" disabled selected>Select Gameweek</option>
+            <option value="index.html">Current</option>
+            <option value="Feb28-Mar4.html">1-4 Mar</option>
+            <option value="Feb23-26.html">23-26 Feb</option>
+            <option value="Feb16-19.html">16-19 Feb</option>
+        </select>
+        <li><a  class="paypal" href="https://www.paypal.com/donate/?hosted_button_id=97FSH2FUWA4VE"> <img src="donateeee.png" alt="Donation button for AI Goalie football webpage through  paypal" width="150" height="78"> </a></li>
+        <li> <a class="contact" href="mailto:ai.goalie.mail@gmail.com"> Contact <br>&#9993;</br> </a> </li>
+    </ul>
+</div></div>
 
-    <li><a href="Mar8.html">Yesterday</a></li>
-    <li><a href="Mar9.html">Today</a></li>
-    <li><a href="Mar10.html">Tomorrow</a></li>
-    <li><a href="Mar11.html">Mon 11 Mar</a></li>
-    <select id="previousGameweeks" onchange="redirectToGameweek()">
-        <option value="" disabled selected>Select Gameweek</option>
-        <option value="index.html">Current</option>
-        <option value="Feb28-Mar4.html">1-4 Mar</option>
-        <option value="Feb23-26.html">23-26 Feb</option>
-        <option value="Feb16-19.html" selected>16-19 Feb</option>
-    </select>
+<!--<ul>-->
+<!--    <li><a class="paypal" href="index.html"> <img src="AIGoalieblack.png" alt="Logo of the AI Goalie football webpage" width="98" height="78"> </a></li>-->
+
+<!--    <li><a class="active" href="index.html">All</a></li>-->
+
+<!--    <li><a href="Mar8.html">Yesterday</a></li>-->
+<!--    <li><a href="Mar9.html">Today</a></li>-->
+<!--    <li><a href="Mar10.html">Tomorrow</a></li>-->
+<!--    <li><a href="Mar11.html">Mon 11 Mar</a></li>-->
+<!--    <select id="previousGameweeks" onchange="redirectToGameweek()">-->
+<!--        <option value="" disabled selected>Select Gameweek</option>-->
+<!--        <option value="index.html">Current</option>-->
+<!--        <option value="Feb28-Mar4.html" selected>1-4 Mar</option>-->
+<!--        <option value="Feb23-26.html">23-26 Feb</option>-->
+<!--        <option value="Feb16-19.html">16-19 Feb</option>-->
+<!--    </select>-->
 
 
-    <li><a  class="paypal" href="https://www.paypal.com/donate/?hosted_button_id=97FSH2FUWA4VE"> <img src="donateeee.png" alt="Donation button for AI Goalie football webpage through  paypal" width="150" height="78"> </a></li>
-    <li> <a class="contact" href="mailto:ai.goalie.mail@gmail.com"> Contact <br>&#9993;</br> </a> </li>
-</ul>
+
+<!--    <li><a  class="paypal" href="https://www.paypal.com/donate/?hosted_button_id=97FSH2FUWA4VE"> <img src="donateeee.png" alt="Donation button for AI Goalie football webpage through  paypal" width="150" height="78"> </a></li>-->
+<!--    <li> <a class="contact" href="mailto:ai.goalie.mail@gmail.com"> Contact <br>&#9993;</br> </a> </li>-->
+<!--</ul>-->
+
 
 <table>
   <tr>
@@ -394,7 +421,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
   </tr>
-  
+
   <tr class="match">
 
 
@@ -407,8 +434,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">4:0</td> 
+      <td class="correct">1</td>
+      <td class="result">4:0</td>
       <td class="warnings"></td>
 
 
@@ -426,7 +453,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -439,8 +466,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">6:1</td> 
+      <td class="correct">1</td>
+      <td class="result">6:1</td>
       <td class="warnings"></td>
 
 
@@ -458,7 +485,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -471,8 +498,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">2:0</td> 
+      <td class="correct">1</td>
+      <td class="result">2:0</td>
       <td class="warnings">&#127973 Injuries &#127973;</td>
 
 
@@ -490,7 +517,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -503,8 +530,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">1:0</td> 
+      <td class="correct">1</td>
+      <td class="result">1:0</td>
       <td class="warnings">&#127973 MAJOR Injuries &#127973;</td>
 
 
@@ -522,7 +549,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -535,8 +562,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">2:0</td> 
+      <td class="correct">1</td>
+      <td class="result">2:0</td>
       <td class="warnings">&#128201; Form Dip &#128201;</td>
 
 
@@ -554,7 +581,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -567,8 +594,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0</td> 
-      <td class="result">3:2</td> 
+      <td class="correct">0</td>
+      <td class="result">3:2</td>
       <td class="warnings">&#127973 Injuries &#127973;</td>
 
 
@@ -586,7 +613,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -599,8 +626,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0.5</td> 
-      <td class="result">1:1</td> 
+      <td class="correct">0.5</td>
+      <td class="result">1:1</td>
       <td class="warnings">&#127973 MAJOR Injuries &#127973;</td>
 
 
@@ -618,7 +645,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -631,8 +658,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">0:3</td> 
+      <td class="correct">1</td>
+      <td class="result">0:3</td>
       <td class="warnings">&#127973 MAJOR Injuries &#127973;</td>
 
 
@@ -650,7 +677,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -663,8 +690,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">0:2</td> 
+      <td class="correct">1</td>
+      <td class="result">0:2</td>
       <td class="warnings"></td>
 
 
@@ -682,7 +709,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -695,8 +722,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0.5</td> 
-      <td class="result">2:2</td> 
+      <td class="correct">0.5</td>
+      <td class="result">2:2</td>
       <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
 
 
@@ -714,7 +741,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -727,8 +754,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">0:5</td> 
+      <td class="correct">1</td>
+      <td class="result">0:5</td>
       <td class="warnings">&#127973 Injuries &#127973;</td>
 
 
@@ -746,7 +773,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -759,8 +786,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">3:0</td> 
+      <td class="correct">1</td>
+      <td class="result">3:0</td>
       <td class="warnings"></td>
 
 
@@ -778,7 +805,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -791,8 +818,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">3:1</td> 
+      <td class="correct">1</td>
+      <td class="result">3:1</td>
       <td class="warnings">&#128201; Form Dip &#128201;</td>
 
 
@@ -810,7 +837,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -823,8 +850,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">0:2</td> 
+      <td class="correct">1</td>
+      <td class="result">0:2</td>
       <td class="warnings"></td>
 
 
@@ -842,7 +869,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -855,8 +882,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">1:2</td> 
+      <td class="correct">1</td>
+      <td class="result">1:2</td>
       <td class="warnings">&#127973 Injuries &#127973;</td>
 
 
@@ -874,7 +901,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -887,8 +914,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">1:2</td> 
+      <td class="correct">1</td>
+      <td class="result">1:2</td>
       <td class="warnings">&#127973 Injuries &#127973;</td>
 
 
@@ -906,7 +933,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -919,8 +946,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">1:2</td> 
+      <td class="correct">1</td>
+      <td class="result">1:2</td>
       <td class="warnings">&#127973 Injuries &#127973;</td>
 
 
@@ -938,7 +965,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -951,8 +978,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">2:0</td> 
+      <td class="correct">1</td>
+      <td class="result">2:0</td>
       <td class="warnings">&#128201; Form Dip &#128201;</td>
 
 
@@ -970,7 +997,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -983,8 +1010,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">1:3</td> 
+      <td class="correct">1</td>
+      <td class="result">1:3</td>
       <td class="warnings">&#127973 MAJOR Injuries &#127973;</td>
 
 
@@ -1002,7 +1029,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -1015,8 +1042,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">1:3</td> 
+      <td class="correct">1</td>
+      <td class="result">1:3</td>
       <td class="warnings">&#127973 MAJOR Injuries &#127973;</td>
 
 
@@ -1034,7 +1061,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -1047,8 +1074,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">4:1</td> 
+      <td class="correct">1</td>
+      <td class="result">4:1</td>
       <td class="warnings"></td>
 
 
@@ -1066,7 +1093,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -1079,8 +1106,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0</td> 
-      <td class="result">1:2</td> 
+      <td class="correct">0</td>
+      <td class="result">1:2</td>
       <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
 
 
@@ -1098,7 +1125,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -1111,8 +1138,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0</td> 
-      <td class="result">4:2</td> 
+      <td class="correct">0</td>
+      <td class="result">4:2</td>
       <td class="warnings">&#127973 Injuries &#127973;</td>
 
 
@@ -1130,7 +1157,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -1143,8 +1170,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">2:0</td> 
+      <td class="correct">1</td>
+      <td class="result">2:0</td>
       <td class="warnings">&#127973 MAJOR Injuries &#127973; + &#128201; Form Dip &#128201;</td>
 
 
@@ -1162,7 +1189,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -1175,8 +1202,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">2:0</td> 
+      <td class="correct">1</td>
+      <td class="result">2:0</td>
       <td class="warnings">&#128201; Form Dip &#128201;</td>
 
 
@@ -1194,7 +1221,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -1207,8 +1234,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0.5</td> 
-      <td class="result">1:1</td> 
+      <td class="correct">0.5</td>
+      <td class="result">1:1</td>
       <td class="warnings">&#128201; Form Dip &#128201;</td>
 
 
@@ -1226,7 +1253,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -1239,8 +1266,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0</td> 
-      <td class="result">0:1</td> 
+      <td class="correct">0</td>
+      <td class="result">0:1</td>
       <td class="warnings"></td>
 
 
@@ -1258,7 +1285,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -1271,8 +1298,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0.5</td> 
-      <td class="result">2:2</td> 
+      <td class="correct">0.5</td>
+      <td class="result">2:2</td>
       <td class="warnings">&#128201; Form Dip &#128201;</td>
 
 
@@ -1290,7 +1317,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -1303,8 +1330,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0.5</td> 
-      <td class="result">1:1</td> 
+      <td class="correct">0.5</td>
+      <td class="result">1:1</td>
       <td class="warnings"></td>
 
 
@@ -1322,7 +1349,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -1335,8 +1362,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">2:1</td> 
+      <td class="correct">1</td>
+      <td class="result">2:1</td>
       <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
 
 
@@ -1354,7 +1381,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -1367,8 +1394,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">1:2</td> 
+      <td class="correct">1</td>
+      <td class="result">1:2</td>
       <td class="warnings"></td>
 
 
@@ -1386,7 +1413,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -1399,8 +1426,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">0:3</td> 
+      <td class="correct">1</td>
+      <td class="result">0:3</td>
       <td class="warnings">&#127973 Injuries &#127973;</td>
 
 
@@ -1418,7 +1445,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -1431,8 +1458,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">3:0</td> 
+      <td class="correct">1</td>
+      <td class="result">3:0</td>
       <td class="warnings">&#128201; Form Dip &#128201;</td>
 
 
@@ -1450,7 +1477,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -1463,8 +1490,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0</td> 
-      <td class="result">0:1</td> 
+      <td class="correct">0</td>
+      <td class="result">0:1</td>
       <td class="warnings">&#127973 Injuries &#127973;</td>
 
 
@@ -1482,7 +1509,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -1495,8 +1522,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">5:0</td> 
+      <td class="correct">1</td>
+      <td class="result">5:0</td>
       <td class="warnings">&#128201; Form Dip &#128201;</td>
 
 
@@ -1514,7 +1541,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -1527,8 +1554,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0.5</td> 
-      <td class="result">2:2</td> 
+      <td class="correct">0.5</td>
+      <td class="result">2:2</td>
       <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
 
 
@@ -1546,7 +1573,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -1559,8 +1586,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">3:1</td> 
+      <td class="correct">1</td>
+      <td class="result">3:1</td>
       <td class="warnings">&#127973 Injuries &#127973;</td>
 
 
@@ -1578,7 +1605,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -1591,8 +1618,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0.5</td> 
-      <td class="result">1:1</td> 
+      <td class="correct">0.5</td>
+      <td class="result">1:1</td>
       <td class="warnings">&#128201; Form Dip &#128201;</td>
 
 
@@ -1610,7 +1637,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -1623,8 +1650,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0.5</td> 
-      <td class="result">0:0</td> 
+      <td class="correct">0.5</td>
+      <td class="result">0:0</td>
       <td class="warnings">&#128201; Form Dip &#128201;</td>
 
 
@@ -1642,7 +1669,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -1655,8 +1682,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">1:4</td> 
+      <td class="correct">1</td>
+      <td class="result">1:4</td>
       <td class="warnings">&#127973 MAJOR Injuries &#127973;</td>
 
 
@@ -1674,7 +1701,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -1687,8 +1714,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0</td> 
-      <td class="result">1:2</td> 
+      <td class="correct">0</td>
+      <td class="result">1:2</td>
       <td class="warnings">&#127973 Injuries &#127973;</td>
 
 
@@ -1706,7 +1733,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -1719,8 +1746,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">4:2</td> 
+      <td class="correct">1</td>
+      <td class="result">4:2</td>
       <td class="warnings">&#128201; Form Dip &#128201;</td>
 
 
@@ -1738,7 +1765,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -1751,8 +1778,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">2:0</td> 
+      <td class="correct">1</td>
+      <td class="result">2:0</td>
       <td class="warnings">&#127973 MAJOR Injuries &#127973; + &#128201; Form Dip &#128201;</td>
 
 
@@ -1770,7 +1797,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -1783,8 +1810,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">0:2</td> 
+      <td class="correct">1</td>
+      <td class="result">0:2</td>
       <td class="warnings">&#128201; Form Dip &#128201;</td>
 
 
@@ -1802,7 +1829,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -1815,8 +1842,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0</td> 
-      <td class="result">1:0</td> 
+      <td class="correct">0</td>
+      <td class="result">1:0</td>
       <td class="warnings">&#128201; Form Dip &#128201;</td>
 
 
@@ -1834,7 +1861,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -1847,8 +1874,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0.5</td> 
-      <td class="result">1:1</td> 
+      <td class="correct">0.5</td>
+      <td class="result">1:1</td>
       <td class="warnings">&#127973 Injuries &#127973;</td>
 
 
@@ -1866,7 +1893,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -1879,8 +1906,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">1:2</td> 
+      <td class="correct">1</td>
+      <td class="result">1:2</td>
       <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
 
 
@@ -1898,7 +1925,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -1911,8 +1938,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">1:2</td> 
+      <td class="correct">1</td>
+      <td class="result">1:2</td>
       <td class="warnings">&#128201; Form Dip &#128201;</td>
 
 
@@ -1930,7 +1957,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -1943,8 +1970,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">1:2</td> 
+      <td class="correct">1</td>
+      <td class="result">1:2</td>
       <td class="warnings">&#128201; Form Dip &#128201;</td>
 
 
@@ -1962,7 +1989,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -1975,8 +2002,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0.5</td> 
-      <td class="result">1:1</td> 
+      <td class="correct">0.5</td>
+      <td class="result">1:1</td>
       <td class="warnings">&#127973 Injuries &#127973;</td>
 
 
@@ -1994,7 +2021,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -2007,8 +2034,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">0:2</td> 
+      <td class="correct">1</td>
+      <td class="result">0:2</td>
       <td class="warnings">&#128201; Form Dip &#128201;</td>
 
 
@@ -2026,7 +2053,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -2039,8 +2066,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0</td> 
-      <td class="result">2:3</td> 
+      <td class="correct">0</td>
+      <td class="result">2:3</td>
       <td class="warnings">&#127973 Injuries &#127973;</td>
 
 
@@ -2058,7 +2085,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -2071,8 +2098,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">1:0</td> 
+      <td class="correct">1</td>
+      <td class="result">1:0</td>
       <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
 
 
@@ -2090,7 +2117,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -2103,8 +2130,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0</td> 
-      <td class="result">1:3</td> 
+      <td class="correct">0</td>
+      <td class="result">1:3</td>
       <td class="warnings">&#128201; Form Dip &#128201;</td>
 
 
@@ -2122,7 +2149,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -2135,8 +2162,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0.5</td> 
-      <td class="result">2:2</td> 
+      <td class="correct">0.5</td>
+      <td class="result">2:2</td>
       <td class="warnings">&#127973 MAJOR Injuries &#127973;</td>
 
 
@@ -2154,7 +2181,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -2167,8 +2194,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0.5</td> 
-      <td class="result">1:1</td> 
+      <td class="correct">0.5</td>
+      <td class="result">1:1</td>
       <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
 
 
@@ -2186,7 +2213,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -2199,8 +2226,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0.5</td> 
-      <td class="result">1:1</td> 
+      <td class="correct">0.5</td>
+      <td class="result">1:1</td>
       <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
 
 
@@ -2218,7 +2245,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -2231,8 +2258,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">0:5</td> 
+      <td class="correct">1</td>
+      <td class="result">0:5</td>
       <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
 
 
@@ -2250,7 +2277,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -2263,8 +2290,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0</td> 
-      <td class="result">1:3</td> 
+      <td class="correct">0</td>
+      <td class="result">1:3</td>
       <td class="warnings">&#128201; Form Dip &#128201;</td>
 
 
@@ -2282,7 +2309,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -2295,8 +2322,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">2:1</td> 
+      <td class="correct">1</td>
+      <td class="result">2:1</td>
       <td class="warnings">&#127973 MAJOR Injuries &#127973; + &#128201; Form Dip &#128201;</td>
 
 
@@ -2314,7 +2341,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -2327,8 +2354,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0</td> 
-      <td class="result">1:0</td> 
+      <td class="correct">0</td>
+      <td class="result">1:0</td>
       <td class="warnings">&#128201; Form Dip &#128201;</td>
 
 
@@ -2346,7 +2373,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -2359,8 +2386,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0.5</td> 
-      <td class="result">1:1</td> 
+      <td class="correct">0.5</td>
+      <td class="result">1:1</td>
       <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
 
 
@@ -2378,7 +2405,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -2391,8 +2418,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0</td> 
-      <td class="result">0:1</td> 
+      <td class="correct">0</td>
+      <td class="result">0:1</td>
       <td class="warnings">&#127973 MAJOR Injuries &#127973; + &#128201; Form Dip &#128201;</td>
 
 
@@ -2410,7 +2437,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -2423,8 +2450,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0.5</td> 
-      <td class="result">0:0</td> 
+      <td class="correct">0.5</td>
+      <td class="result">0:0</td>
       <td class="warnings">&#127973 MAJOR Injuries &#127973;</td>
 
 
@@ -2442,7 +2469,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -2455,8 +2482,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0.5</td> 
-      <td class="result">0:0</td> 
+      <td class="correct">0.5</td>
+      <td class="result">0:0</td>
       <td class="warnings"></td>
 
 
@@ -2474,7 +2501,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -2487,8 +2514,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0</td> 
-      <td class="result">1:0</td> 
+      <td class="correct">0</td>
+      <td class="result">1:0</td>
       <td class="warnings"></td>
 
 
@@ -2506,7 +2533,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -2519,8 +2546,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0.5</td> 
-      <td class="result">1:1</td> 
+      <td class="correct">0.5</td>
+      <td class="result">1:1</td>
       <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
 
 
@@ -2538,7 +2565,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -2551,8 +2578,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0</td> 
-      <td class="result">3:2</td> 
+      <td class="correct">0</td>
+      <td class="result">3:2</td>
       <td class="warnings">&#128201; Form Dip &#128201;</td>
 
 
@@ -2570,7 +2597,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -2583,8 +2610,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0</td> 
-      <td class="result">0:1</td> 
+      <td class="correct">0</td>
+      <td class="result">0:1</td>
       <td class="warnings">&#127973 MAJOR Injuries &#127973;</td>
 
 
@@ -2602,7 +2629,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -2615,8 +2642,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0</td> 
-      <td class="result">1:2</td> 
+      <td class="correct">0</td>
+      <td class="result">1:2</td>
       <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
 
 
@@ -2634,7 +2661,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -2647,8 +2674,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">3:0</td> 
+      <td class="correct">1</td>
+      <td class="result">3:0</td>
       <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
 
 
@@ -2666,7 +2693,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -2679,8 +2706,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0.5</td> 
-      <td class="result">1:1</td> 
+      <td class="correct">0.5</td>
+      <td class="result">1:1</td>
       <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
 
 
@@ -2698,7 +2725,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -2711,8 +2738,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">2:1</td> 
+      <td class="correct">1</td>
+      <td class="result">2:1</td>
       <td class="warnings">&#128201; Form Dip &#128201;</td>
 
 
@@ -2730,7 +2757,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -2743,8 +2770,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0.5</td> 
-      <td class="result">1:1</td> 
+      <td class="correct">0.5</td>
+      <td class="result">1:1</td>
       <td class="warnings">&#128201; Form Dip &#128201;</td>
 
 
@@ -2762,7 +2789,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -2775,8 +2802,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0</td> 
-      <td class="result">2:0</td> 
+      <td class="correct">0</td>
+      <td class="result">2:0</td>
       <td class="warnings">&#127973 MAJOR Injuries &#127973; + &#128201; Form Dip &#128201;</td>
 
 
@@ -2794,7 +2821,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -2807,8 +2834,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">0:1</td> 
+      <td class="correct">1</td>
+      <td class="result">0:1</td>
       <td class="warnings">&#127973 MAJOR Injuries &#127973;</td>
 
 
@@ -2826,7 +2853,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -2839,8 +2866,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0.5</td> 
-      <td class="result">1:1</td> 
+      <td class="correct">0.5</td>
+      <td class="result">1:1</td>
       <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
 
 
@@ -2858,7 +2885,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -2871,8 +2898,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">0:2</td> 
+      <td class="correct">1</td>
+      <td class="result">0:2</td>
       <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
 
 
@@ -2890,7 +2917,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -2903,8 +2930,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0.5</td> 
-      <td class="result">1:1</td> 
+      <td class="correct">0.5</td>
+      <td class="result">1:1</td>
       <td class="warnings">&#128201; Form Dip &#128201;</td>
 
 
@@ -2922,7 +2949,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -2935,8 +2962,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0.5</td> 
-      <td class="result">1:1</td> 
+      <td class="correct">0.5</td>
+      <td class="result">1:1</td>
       <td class="warnings">&#127973 Injuries &#127973;</td>
 
 
@@ -2954,7 +2981,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -2967,8 +2994,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0.5</td> 
-      <td class="result">3:3</td> 
+      <td class="correct">0.5</td>
+      <td class="result">3:3</td>
       <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
 
 
@@ -2986,7 +3013,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -2999,8 +3026,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0.5</td> 
-      <td class="result">3:3</td> 
+      <td class="correct">0.5</td>
+      <td class="result">3:3</td>
       <td class="warnings">&#127973 MAJOR Injuries &#127973; + &#128201; Form Dip &#128201;</td>
 
 
@@ -3018,7 +3045,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -3031,8 +3058,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">1</td> 
-      <td class="result">2:1</td> 
+      <td class="correct">1</td>
+      <td class="result">2:1</td>
       <td class="warnings">&#128201; Form Dip &#128201;</td>
 
 
@@ -3050,7 +3077,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
   <tr class="match">
 
 
@@ -3063,8 +3090,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-      <td class="correct">0.5</td> 
-      <td class="result">1:1</td> 
+      <td class="correct">0.5</td>
+      <td class="result">1:1</td>
       <td class="warnings">&#127973 Injuries &#127973; + &#128201; Form Dip &#128201;</td>
 
 
@@ -3082,7 +3109,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
+
 </table>
 <div class="center">
    <a href="privacy_policy.html"> Privacy Policy</a>  - 18+. Gamble Responsibly. -  <a href="disclaimer.html"> Liability Disclaimer</a>
