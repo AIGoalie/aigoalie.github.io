@@ -818,26 +818,31 @@
 <body>
 
 <div class="desktop-body">
-<div>{% include 'navbar.html' %}</div>
-{%if 'index' in filename%}
-<div>&nbsp;</div>
-<div class="introduction-box" id="introductionBox">
-        <button class="close-btn" onclick="closeIntroductionBox()">&#10006;</button>
+<div><div id="common-snippet">
+    <ul>
+        <li><a class="paypal" href="index.html"> <img src="AIGoalieblack.webp" alt="Logo of the AI Goalie football webpage" width="98" height="76"> </a></li>
+        
+        <li><a href="index.html">All</a></li>
+        
+        <li><a href="Mar29.html">29 Mar</a></li>
+        <li><a href="Mar30.html">30 Mar</a></li>
+        <li><a href="Mar31.html">31 Mar</a></li>
+        <li><a href="Apr1.html">1 Apr</a></li>
+        <li><select class="select-wrapper" id="previousGameweeks" onchange="redirectToGameweek()">
+            <option value="" disabled selected>Select Gameweek</option>
+            <option value="index.html">Current</option>
+            <option value="Mar15-Mar17.html">15-17 Mar</option>
+            <option value="Mar8-Mar11.html">8-11 Mar</option>
+            <option value="Feb28-Mar4.html">1-4 Mar</option>
+            <option value="Feb23-26.html">23-26 Feb</option>
+            <option value="Feb16-19.html">16-19 Feb</option>
+        </select></li>
+        <li><a  class="paypal" href="https://www.paypal.com/donate/?hosted_button_id=97FSH2FUWA4VE"> <img src="donateeee_resized.webp" alt="Donation button for AI Goalie football webpage through  paypal" width="150" height="74"> </a></li>
+        <li> <a class="contact" href="contact.html"> Contact <br>&#9993;</br> </a> </li>
+    </ul>
+</div></div>
 
-    <h2>Welcome to AIGoalie Football Predictions!</h2>
 
-        <p class="intro">&#129302; An <strong>Artificial Intelligence (AI) model</strong> that predicts the winner of football matches.</p>
-        <p class="intro">&#127947; Trained on <strong>a lot of football data</strong> from many seasons and many leagues.</p>
-        <p class="intro">&#128218; <strong>Continues to learn and improve</strong> as more matches are played throughout the season.</p>
-        <p class="intro">&#128269; Presents you <strong>a different perspective</strong>: the most confident to the least confident predictions across all the leagues.</p>
-        <p class="intro">&#128680; Gives you additional <strong>important information</strong>, such as important player injuries.</p>
-        <p class="intro">&#127919; Is <strong>impressively accurate</strong>! Check out <a class="in-text-a" href="#" onclick="openSelectDropdown()">previous gameweeks</a> to see how AIGoalie performed so far.</p>
-
-    <p>Let AIGoalie help you save time, stay ahead of the game, and make informed decisions, completely free!</p>
-</div>
-<div>&nbsp;</div>
-{%else%}
-{%endif%}
 <table>
     <tr>
         <th>Date</th>
@@ -849,92 +854,97 @@
         <th>Alerts Away<span class="tooltip-info"> <sup><img width="12" height="12" alt="information icon" src="info.png"></sup>  <span class="tooltiptext"> <br>&#127973 = Considerable injuries</br><br>&#127973&#127973 = Major injuries</br><br>&#128201 = Dip in form</br> <br> Note, you may see injuries when expanding match but no alert here, meaning the model does not consider them important. </br></span> </span></th>
 
     </tr>
-    {% for match in matches %}
+    
     <tr class="match">
-        <td class="date">{{ match.date }}</td>
-        <td class="team" data-match-index="{{ loop.index0 }}">{{ match.fixture }}</td>
-        <td class="certainty">{{ match.certainty }}</td>
-        <td class="odds">{{ match.odds }}</td>
-        <td class="total-color">{{ match.total }}</td>
-        <td class="correct">{{ match.correct }}</td>
+        <td class="date">Apr 6</td>
+        <td class="team" data-match-index="0"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Antwerp</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./logos/BE1/Antwerp.webp" alt="Antwerp logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score">8:45 PM</div><div class="away-team-logo"><img width="14" height="18" src="./logos/BE1/Genk.webp" alt="Genk logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Genk</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Valencia</li><li class="li-collaps">&#127973; Engels</li><li class="li-collaps">&#127973; Keita</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Ouattara</li><li class="li-collaps">&#127973; Sor</li><li class="li-collaps">&#127973; Oyen</li><li class="li-collaps">&#127973; Baah</li><li class="li-collaps">&#127973; Play-Offs</li></ul></div></div><div></div></td>
+        <td class="certainty">-0.08 vs -0.69</td>
+        <td class="odds">2.76</td>
+        <td class="total-color">8.45%</td>
+        <td class="correct">None</td>
         <td class="warnings">
-            <span class="tooltip"> {{ match.alerts_home }}
+            <span class="tooltip"> &nbsp;
                 <span class="tooltiptext">
-                {% if '&#127973&#127973' in match.alerts_home and  '&#128201' in match.alerts_home %}
-                    Home team has MAJOR injuries and a dip in form recently
-                {% elif '&#127973&#127973' in match.alerts_home %}
-                    Home team has MAJOR injuries
-                {% elif '&#127973' in match.alerts_home and  '&#128201' in match.alerts_home %}
-                    Home team has considerable injuries and a dip in form recently
-                {% elif '&#128201' in match.alerts_home %}
-                    Home team has a dip in form recently
-                {% elif '&#127973' in match.alerts_home %}
-                    Home team has considerable injuries
-                {% else %}
-                {% endif %}
+                
+                
                 </span>
             </span>
         </td>
         <td class="warnings">
-            <span class="tooltip"> {{ match.alerts_away }}
+            <span class="tooltip"> &#128201;
                 <span class="tooltiptext">
-                    {% if '&#127973&#127973' in match.alerts_away and  '&#128201' in match.alerts_away %}
-                        Away team has MAJOR injuries and a dip in form recently
-                    {% elif '&#127973&#127973' in match.alerts_away %}
-                        Away team has MAJOR injuries
-                    {% elif '&#127973' in match.alerts_away and  '&#128201' in match.alerts_away %}
-                        Away team has considerable injuries and a dip in form recently
-                    {% elif '&#128201' in match.alerts_away %}
+                    
                         Away team has a dip in form recently
-                    {% elif '&#127973' in match.alerts_away %}
-                        Away team has considerable injuries
-                    {% else %}
-                    {% endif %}
+                    
                 </span>
             </span>
         </td>
     </tr>
-    {% endfor %}
+    
+    <tr class="match">
+        <td class="date">Apr 6</td>
+        <td class="team" data-match-index="1"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Standard</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./logos/BE1/Standard.webp" alt="Standard logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score">6:15 PM</div><div class="away-team-logo"><img width="14" height="18" src="./logos/BE1/Oud-Heverlee Leuven.webp" alt="Oud-Heverlee Leuven logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Oud-Heverlee Leuven</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Bokadi</li><li class="li-collaps">&#127973; Vanheusden</li><li class="li-collaps">&#127973; Ngoy</li><li class="li-collaps">&#127973; O'Neill</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Calut</li><li class="li-collaps">&#127973; Vlietinck</li><li class="li-collaps">&#127973; N’Dri</li><li class="li-collaps">&#127973; Russo</li><li class="li-collaps">&#127973; Kiyine</li><li class="li-collaps">&#127973; Maertens</li><li class="li-collaps">&#127973; Ricca</li><li class="li-collaps">&#127973; Play-Offs</li></ul></div></div><div></div></td>
+        <td class="certainty">-0.17 vs -0.98</td>
+        <td class="odds">3.8</td>
+        <td class="total-color">6.57%</td>
+        <td class="correct">None</td>
+        <td class="warnings">
+            <span class="tooltip"> &#127973&#127973;
+                <span class="tooltiptext">
+                
+                    Home team has MAJOR injuries
+                
+                </span>
+            </span>
+        </td>
+        <td class="warnings">
+            <span class="tooltip"> &#127973; &#128201;
+                <span class="tooltiptext">
+                    
+                        Away team has considerable injuries and a dip in form recently
+                    
+                </span>
+            </span>
+        </td>
+    </tr>
+    
 </table>
 <div class="left">
-    Last updated {{time}}
+    Last updated 17:22:13 2024-03-24
 </div>
 <div class="center">
    <a href="privacy_policy.html"> Privacy Policy</a>  - 18+. Gamble Responsibly. -  <a href="disclaimer.html">Terms</a>
 </div>
-{%if 'index' in filename%}
 
-    <div class="cookie-notice" id="cookieNotice" style="display: none;">
-      This website uses cookies to analyze traffic.
-      <button class="accept-btn" onclick="acceptCookies()">Okay</button>
-      <button class="reject-btn" onclick="rejectCookies()">Reject</button>
-    </div>
-{%else%}
-{%endif%}
+
 </div>
 
 <div class="mobile-body">
 
-    <div>{% include 'navbar_m.html' %}</div>
-{%if 'index' in filename%}
-<div>&nbsp;</div>
-<div class="introduction-box" id="introductionBox_m">
-        <button class="close-btn" onclick="closeIntroductionBox()">&#10006;</button>
+    <div><div id="common-snippet">
+    <ul>
+        <li><a class="paypal" href="index.html"> <img src="AIGoalieblack.webp" alt="Logo of the AI Goalie football webpage" width="48" height="37"> </a></li>
+        
+        <li><a href="index.html">All</a></li>
+        
+        <li><a href="Mar29.html">Fri 29 Mar</a></li>
+        <li><a href="Mar30.html">Sat 30 Mar</a></li>
+        <li><a href="Mar31.html">Sun 31 Mar</a></li>
+        <li><a href="Apr1.html">Mon 1 Apr</a></li>
+        <li><select aria-label="State" class="select-wrapper" id="previousGameweeks_m" onchange="redirectToGameweek()">
+            <option value="" disabled selected>Select Gameweek</option>
+            <option value="index.html">Current</option>
+            <option value="Mar15-Mar17.html">15-17 Mar</option>
+            <option value="Mar8-Mar11.html">8-11 Mar</option>
+            <option value="Feb28-Mar4.html">1-4 Mar</option>
+            <option value="Feb23-26.html">23-26 Feb</option>
+            <option value="Feb16-19.html">16-19 Feb</option>
+        </select></li>
+    </ul>
 
-    <h2>Welcome to AIGoalie Football Predictions!</h2>
+</div></div>
 
-        <p class="intro">&#129302; An <strong>Artificial Intelligence (AI) model</strong> that predicts the winner of football matches.</p>
-        <p class="intro">&#127947; Trained on <strong>a lot of football data</strong> from many seasons and many leagues.</p>
-        <p class="intro">&#128218; <strong>Continues to learn and improve</strong> as more matches are played throughout the season.</p>
-        <p class="intro">&#128269; Presents you <strong>a different perspective</strong>: the most confident to the least confident predictions across all the leagues.</p>
-        <p class="intro">&#128680; Gives you additional <strong>important information</strong>, such as important player injuries.</p>
-        <p class="intro">&#127919; Is <strong>impressively accurate</strong>! Check out <a class="in-text-a" href="#" onclick="openSelectDropdown()">previous gameweeks</a> to see how AIGoalie performed so far.</p>
 
-    <p>Let AIGoalie help you save time, stay ahead of the game, and make informed decisions, completely free!</p>
-</div>
-<div>&nbsp;</div>
-{%else%}
-{%endif%}
 
 <table>
     <tr>
@@ -943,18 +953,26 @@
         <th>Res.<span class="tooltip-info">  <sup><img width="8" height="8" alt="information icon" src="info.png"></sup>  <span class="tooltiptext"> Whether the selected team won, drew, or lost. </span> </span></th>
 
     </tr>
-    {% for match in matches %}
+    
     <tr class="match">
-        <td class="team" data-match-index="{{ loop.index0 }}">{{ match.fixture_m }}</td>
-        <td class="certainty">{{ match.certainty }}</td>
-        <td class="total-color">{{ match.total_m }}</td>
-        <td class="correct">{{ match.correct }}</td>
+        <td class="team" data-match-index="0"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Antwerp</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./logos/BE1/Antwerp.webp" alt="Antwerp logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score">8:45 PM</div><div class="away-team-logo"><img width="14" height="18" src="./logos/BE1/Genk.webp" alt="Genk logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Genk</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> 2.76</div><div class="li-collaps">&nbsp;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Valencia</li><li class="li-collaps">&#127973; Engels</li><li class="li-collaps">&#127973; Keita</li></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Ouattara</li><li class="li-collaps">&#127973; Sor</li><li class="li-collaps">&#127973; Oyen</li><li class="li-collaps">&#127973; Baah</li><li class="li-collaps">&#127973; Play-Offs</li></ul></div></div></td>
+        <td class="certainty">-0.08 vs -0.69</td>
+        <td class="total-color">8%</td>
+        <td class="correct">None</td>
 
     </tr>
-    {% endfor %}
+    
+    <tr class="match">
+        <td class="team" data-match-index="1"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Standard</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./logos/BE1/Standard.webp" alt="Standard logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score">6:15 PM</div><div class="away-team-logo"><img width="14" height="18" src="./logos/BE1/Oud-Heverlee Leuven.webp" alt="Oud-Heverlee Leuven logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Oud-Heverlee Leuven</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> 3.8</div><div class="li-collaps">&#127973&#127973;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Bokadi</li><li class="li-collaps">&#127973; Vanheusden</li><li class="li-collaps">&#127973; Ngoy</li><li class="li-collaps">&#127973; O'Neill</li></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#127973; &#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Calut</li><li class="li-collaps">&#127973; Vlietinck</li><li class="li-collaps">&#127973; N’Dri</li><li class="li-collaps">&#127973; Russo</li><li class="li-collaps">&#127973; Kiyine</li><li class="li-collaps">&#127973; Maertens</li><li class="li-collaps">&#127973; Ricca</li><li class="li-collaps">&#127973; Play-Offs</li></ul></div></div></td>
+        <td class="certainty">-0.17 vs -0.98</td>
+        <td class="total-color">7%</td>
+        <td class="correct">None</td>
+
+    </tr>
+    
 </table>
 <div class="left">
-    Last updated {{time}}
+    Last updated 17:22:13 2024-03-24
 </div>
 
 <ul class="ul-bottom">
@@ -966,15 +984,8 @@
 <div class="center">
    <a href="privacy_policy.html"> Privacy Policy</a>  - 18+. Gamble Responsibly. -  <a href="disclaimer.html">Terms</a>
 </div>
-{%if 'index' in filename%}
 
-    <div class="cookie-notice_m" id="cookieNotice_m" style="display: none;">
-      This website uses cookies to analyze traffic.
-      <button class="accept-btn" onclick="acceptCookies()">Okay</button>
-      <button class="reject-btn" onclick="rejectCookies()">Reject</button>
-    </div>
-{%else%}
-{%endif%}
+
 
 
 </div>
