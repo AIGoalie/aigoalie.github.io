@@ -171,7 +171,9 @@
         .certainty {
             display: none;
         }
-
+              .gp {
+            text-align: center;
+        }
         .hidden {
             display: none;
         }
@@ -221,11 +223,15 @@
 
             th:nth-child(6),
             td:nth-child(6) {
-                width: 4%;
+                width: 3%;
             }
 
             th:nth-child(7),
             td:nth-child(7) {
+                width: 4%;
+            }
+            th:nth-child(8),
+            td:nth-child(8) {
                 width: 4%;
             }
         }
@@ -561,6 +567,17 @@
                 cell.style.backgroundColor = gradientColor;
             });
 
+                        // Get all the elements with class "total-color"
+            const gpCells = document.querySelectorAll(".gp");
+
+            // Loop through each "Total" cell and set background color based on the value gradient
+            gpCells.forEach((cell) => {
+                const value = parseFloat(cell.textContent);
+                const gradientColor = calculateGradientColor(value);
+                cell.style.backgroundColor = gradientColor;
+            });
+
+
             const scoreCells = document.querySelectorAll(".result");
 
             scoreCells.forEach((cell, index) => {
@@ -671,12 +688,18 @@
             document.cookie = "cookieConsent=false; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/";
         }
 
-        // Check if the cookie exists and user has accepted
         function checkCookie() {
-            var consentCookie = getCookie("cookieConsent");
-            if (consentCookie === "" || consentCookie === "false") {
-                document.getElementById("cookieNotice").style.display = "block";
-                document.getElementById("cookieNotice_m").style.display = "block";
+            // Extract the filename from the URL
+            var pathArray = window.location.pathname.split('/');
+            var currentPage = pathArray[pathArray.length - 1];
+
+            // Check if the current page is index.html
+            if (currentPage === "index.html") {
+                var consentCookie = getCookie("cookieConsent");
+                if (consentCookie === "" || consentCookie === "false") {
+                    document.getElementById("cookieNotice").style.display = "block";
+                    document.getElementById("cookieNotice_m").style.display = "block";
+                }
             }
         }
 
@@ -719,6 +742,10 @@
         function closeIntroductionBox() {
             document.getElementById("introductionBox").style.display = "none";
             document.getElementById("introductionBox_m").style.display = "none";
+            document.getElementById("emptyspace").style.display = "none";
+            document.getElementById("emptyspace2").style.display = "none";
+            document.getElementById("emptyspace_m").style.display = "none";
+            document.getElementById("emptyspace2_m").style.display = "none";
         }
 
 
@@ -850,6 +877,7 @@
         <th>Odds<span class="tooltip-info">  <sup><img width="12" height="12" alt="information icon" src="info.png"></sup>  <span class="tooltiptext"> Pre-match odds of the selected team winning. </span> </span></th>
         <th>Confidence<span class="tooltip-info"> <sup><img width="12" height="12" alt="information icon" src="info.png"></sup>  <span class="tooltiptext"> How confident AIGoalie is that the selected team will win. </span> </span></th>
         <th>Result<span class="tooltip-info">  <sup><img width="12" height="12" alt="information icon" src="info.png"></sup>  <span class="tooltiptext"> Whether the selected team won, drew, or lost. </span> </span></th>
+        <th>GP<span class="tooltip-info"> <sup><img width="12" height="12" alt="information icon" src="info.png"></sup>  <span class="tooltiptext"> How confident AIGoalie is that the selected team will win. </span> </span></th>
         <th>Alerts Home<span class="tooltip-info"> <sup><img width="12" height="12" alt="information icon" src="info.png"></sup>  <span class="tooltiptext"><br> &#127973 = Considerable injuries</br><br>&#127973&#127973 = Major injuries</br><br>&#128201 = Dip in form</br> <br> Note, you may see injuries when expanding match but no alert here, meaning the model does not consider them important. </br></span> </span></th>
         <th>Alerts Away<span class="tooltip-info"> <sup><img width="12" height="12" alt="information icon" src="info.png"></sup>  <span class="tooltiptext"> <br>&#127973 = Considerable injuries</br><br>&#127973&#127973 = Major injuries</br><br>&#128201 = Dip in form</br> <br> Note, you may see injuries when expanding match but no alert here, meaning the model does not consider them important. </br></span> </span></th>
 
@@ -857,11 +885,39 @@
     
     <tr class="match">
         <td class="date">Mar 17</td>
-        <td class="team" data-match-index="0"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">Kasimpasa</div><div class="home-team-logo"><img width="14" height="18" src="./logos/TR1/Kasimpasa.webp" alt="Kasimpasa logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>3:4</strong></div><div class="away-team-logo"><img width="14" height="18" src="./logos/TR1/Galatasaray.webp" alt="Galatasaray logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>Galatasaray</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Çetinkaya</li><li class="li-collaps">&#127973; Saddiki</li><li class="li-collaps">&#127973; Ngoy</li><li class="li-collaps">&#127973; Omeruo</li><li class="li-collaps">&#127973; Kara</li><li class="li-collaps">&#127973; Winck</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Oliveira</li><li class="li-collaps">&#127973; Ayhan</li><li class="li-collaps">&#127973; Ziyech</li><li class="li-collaps">&#127973; Sánchez</li><li class="li-collaps">&#127973; Aktürkoğlu</li></ul></div></div><div></div></td>
-        <td class="certainty">-2.7 vs 1.57</td>
-        <td class="odds">n/a</td>
-        <td class="total-color">75.67%</td>
+        <td class="team" data-match-index="0"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Inter</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./logos/IT1/Inter.webp" alt="Inter logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>1:1</strong></div><div class="away-team-logo"><img width="14" height="18" src="./logos/IT1/Napoli.webp" alt="Napoli logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Napoli</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Cuadrado</li><li class="li-collaps">&#127973; Sensi</li><li class="li-collaps">&#127973; Arnautovic</li><li class="li-collaps">&#127973; Vrij</li><li class="li-collaps">&#127973; Sommer</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Lobotka</li><li class="li-collaps">&#127973; Mazzocchi</li><li class="li-collaps">&#127973; Ngonge</li></ul></div></div><div></div></td>
+        <td class="certainty">1.6 vs -2.26</td>
+        <td class="odds">1.22</td>
+        <td class="total-color">76.02%</td>
+        <td class="correct">0.5</td>
+        <td class="gp">52%</td>
+        <td class="warnings">
+            <span class="tooltip"> &nbsp;
+                <span class="tooltiptext">
+                
+                
+                </span>
+            </span>
+        </td>
+        <td class="warnings">
+            <span class="tooltip"> &#128201;
+                <span class="tooltiptext">
+                    
+                        Away team has a dip in form recently
+                    
+                </span>
+            </span>
+        </td>
+    </tr>
+    
+    <tr class="match">
+        <td class="date">Mar 17</td>
+        <td class="team" data-match-index="1"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">Freiburg</div><div class="home-team-logo"><img width="14" height="18" src="./logos/L1/Freiburg.webp" alt="Freiburg logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>2:3</strong></div><div class="away-team-logo"><img width="14" height="18" src="./logos/L1/Leverkusen.webp" alt="Leverkusen logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>Leverkusen</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Kyereh</li><li class="li-collaps">&#127973; Schmidt</li><li class="li-collaps">&#127973; Lienhart</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Arthur</li><li class="li-collaps">&#127973; Boniface</li><li class="li-collaps">&#127973; Mbamba</li><li class="li-collaps">&#127973; League</li></ul></div></div><div></div></td>
+        <td class="certainty">-2.36 vs 1.5</td>
+        <td class="odds">1.24</td>
+        <td class="total-color">74.96%</td>
         <td class="correct">1</td>
+        <td class="gp">65%</td>
         <td class="warnings">
             <span class="tooltip"> &#127973; &#128201;
                 <span class="tooltiptext">
@@ -872,10 +928,9 @@
             </span>
         </td>
         <td class="warnings">
-            <span class="tooltip"> &#127973&#127973;
+            <span class="tooltip"> &nbsp;
                 <span class="tooltiptext">
                     
-                        Away team has MAJOR injuries
                     
                 </span>
             </span>
@@ -884,25 +939,54 @@
     
     <tr class="match">
         <td class="date">Mar 17</td>
-        <td class="team" data-match-index="1"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">Trabzonspor</div><div class="home-team-logo"><img width="14" height="18" src="./logos/TR1/Trabzonspor.webp" alt="Trabzonspor logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>2:3</strong></div><div class="away-team-logo"><img width="14" height="18" src="./logos/TR1/Fenerbahce.webp" alt="Fenerbahce logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>Fenerbahce</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Türkmen</li><li class="li-collaps">&#127973; Onuachu</li><li class="li-collaps">&#127973; Aydın</li><li class="li-collaps">&#127973; Türkmen</li><li class="li-collaps">&#127973; Destan</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Peres</li><li class="li-collaps">&#127973; King</li><li class="li-collaps">&#127973; Söyüncü</li><li class="li-collaps">&#127973; Yandaş</li><li class="li-collaps">&#127973; Kadıoğlu</li><li class="li-collaps">&#127973; Ünder</li><li class="li-collaps">&#127973; Kent</li><li class="li-collaps">&#127973; Peres</li><li class="li-collaps">&#127973; Osayi-Samuel</li></ul></div></div><div></div></td>
-        <td class="certainty">-1.55 vs 0.23</td>
-        <td class="odds">n/a</td>
-        <td class="total-color">28.05%</td>
+        <td class="team" data-match-index="2"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>PSV Eindhoven</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./logos/NL1/PSV Eindhoven.webp" alt="PSV Eindhoven logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>1:0</strong></div><div class="away-team-logo"><img width="14" height="18" src="./logos/NL1/Twente.webp" alt="Twente logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Twente</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Lang</li><li class="li-collaps">&#127973; Saibari</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Hilgers</li><li class="li-collaps">&#127973; Brenet</li></ul></div></div><div></div></td>
+        <td class="certainty">1.44 vs -2.34</td>
+        <td class="odds">1.44</td>
+        <td class="total-color">74.36%</td>
         <td class="correct">1</td>
+        <td class="gp">52%</td>
+        <td class="warnings">
+            <span class="tooltip"> &#127973;
+                <span class="tooltiptext">
+                
+                    Home team has considerable injuries
+                
+                </span>
+            </span>
+        </td>
+        <td class="warnings">
+            <span class="tooltip"> &#127973;
+                <span class="tooltiptext">
+                    
+                        Away team has considerable injuries
+                    
+                </span>
+            </span>
+        </td>
+    </tr>
+    
+    <tr class="match">
+        <td class="date">Mar 17</td>
+        <td class="team" data-match-index="3"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Roma</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./logos/IT1/Roma.webp" alt="Roma logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>1:0</strong></div><div class="away-team-logo"><img width="14" height="18" src="./logos/IT1/Sassuolo.webp" alt="Sassuolo logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Sassuolo</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Azmoun</li><li class="li-collaps">&#127973; Kristensen</li><li class="li-collaps">&#127973; Pellegrini</li><li class="li-collaps">&#127973; A</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Berardi</li><li class="li-collaps">&#127973; Erlić</li><li class="li-collaps">&#127973; A</li></ul></div></div><div></div></td>
+        <td class="certainty">1.42 vs -2.28</td>
+        <td class="odds">1.92</td>
+        <td class="total-color">74.23%</td>
+        <td class="correct">1</td>
+        <td class="gp">73%</td>
+        <td class="warnings">
+            <span class="tooltip"> &#127973;
+                <span class="tooltiptext">
+                
+                    Home team has considerable injuries
+                
+                </span>
+            </span>
+        </td>
         <td class="warnings">
             <span class="tooltip"> &#127973; &#128201;
                 <span class="tooltiptext">
-                
-                    Home team has considerable injuries and a dip in form recently
-                
-                </span>
-            </span>
-        </td>
-        <td class="warnings">
-            <span class="tooltip"> &#127973&#127973;
-                <span class="tooltiptext">
                     
-                        Away team has MAJOR injuries
+                        Away team has considerable injuries and a dip in form recently
                     
                 </span>
             </span>
@@ -911,11 +995,122 @@
     
     <tr class="match">
         <td class="date">Mar 17</td>
-        <td class="team" data-match-index="2"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">Hatayspor</div><div class="home-team-logo"><img width="14" height="18" src="./logos/TR1/Hatayspor.webp" alt="Hatayspor logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>3:0</strong></div><div class="away-team-logo"><img width="14" height="18" src="./logos/TR1/Samsunspor.webp" alt="Samsunspor logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>Samsunspor</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Çörekçi</li><li class="li-collaps">&#127973; Önde</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Satka</li><li class="li-collaps">&#127973; Kılınç</li></ul></div></div><div></div></td>
-        <td class="certainty">-0.88 vs 0.21</td>
-        <td class="odds">n/a</td>
-        <td class="total-color">26.92%</td>
-        <td class="correct">0</td>
+        <td class="team" data-match-index="4"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">Heerenveen</div><div class="home-team-logo"><img width="14" height="18" src="./logos/NL1/Heerenveen.webp" alt="Heerenveen logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>2:3</strong></div><div class="away-team-logo"><img width="14" height="18" src="./logos/NL1/Feyenoord.webp" alt="Feyenoord logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>Feyenoord</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Brouwers</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Zechiël</li><li class="li-collaps">&#127973; Bijlow</li><li class="li-collaps">&#127973; Trauner</li><li class="li-collaps">&#127973; Jahanbakhsh</li><li class="li-collaps">&#127973; Milambo</li></ul></div></div><div></div></td>
+        <td class="certainty">-2.09 vs 1.39</td>
+        <td class="odds">1.31</td>
+        <td class="total-color">73.93%</td>
+        <td class="correct">1</td>
+        <td class="gp">65%</td>
+        <td class="warnings">
+            <span class="tooltip"> &#128201;
+                <span class="tooltiptext">
+                
+                    Home team has a dip in form recently
+                
+                </span>
+            </span>
+        </td>
+        <td class="warnings">
+            <span class="tooltip"> &nbsp;
+                <span class="tooltiptext">
+                    
+                    
+                </span>
+            </span>
+        </td>
+    </tr>
+    
+    <tr class="match">
+        <td class="date">Mar 17</td>
+        <td class="team" data-match-index="5"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">Verona</div><div class="home-team-logo"><img width="14" height="18" src="./logos/IT1/Verona.webp" alt="Verona logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>1:3</strong></div><div class="away-team-logo"><img width="14" height="18" src="./logos/IT1/Milan.webp" alt="Milan logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>Milan</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Berardi</li><li class="li-collaps">&#127973; Cruz</li><li class="li-collaps">&#127973; Folorunsho</li><li class="li-collaps">&#127973; Suslov</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Pobega</li><li class="li-collaps">&#127973; Kalulu</li><li class="li-collaps">&#127973; Kjaer</li><li class="li-collaps">&#127973; Hernández</li><li class="li-collaps">&#127973; A</li></ul></div></div><div></div></td>
+        <td class="certainty">-2.22 vs 1.19</td>
+        <td class="odds">2.66</td>
+        <td class="total-color">71.88%</td>
+        <td class="correct">1</td>
+        <td class="gp">55%</td>
+        <td class="warnings">
+            <span class="tooltip"> &#127973;
+                <span class="tooltiptext">
+                
+                    Home team has considerable injuries
+                
+                </span>
+            </span>
+        </td>
+        <td class="warnings">
+            <span class="tooltip"> &#127973;
+                <span class="tooltiptext">
+                    
+                        Away team has considerable injuries
+                    
+                </span>
+            </span>
+        </td>
+    </tr>
+    
+    <tr class="match">
+        <td class="date">Mar 17</td>
+        <td class="team" data-match-index="6"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Juventus</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./logos/IT1/Juventus.webp" alt="Juventus logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>0:0</strong></div><div class="away-team-logo"><img width="14" height="18" src="./logos/IT1/Genoa.webp" alt="Genoa logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Genoa</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Alcaraz</li><li class="li-collaps">&#127973; Milik</li><li class="li-collaps">&#127973; Vlahović</li><li class="li-collaps">&#127973; A</li><li class="li-collaps">&#127973; Fagioli</li><li class="li-collaps">&#127973; Pogba</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Matturro</li><li class="li-collaps">&#127973; Martín</li></ul></div></div><div></div></td>
+        <td class="certainty">0.91 vs -1.83</td>
+        <td class="odds">2.64</td>
+        <td class="total-color">66.58%</td>
+        <td class="correct">0.5</td>
+        <td class="gp">33%</td>
+        <td class="warnings">
+            <span class="tooltip"> &#127973&#127973; &#128201;
+                <span class="tooltiptext">
+                
+                    Home team has MAJOR injuries and a dip in form recently
+                
+                </span>
+            </span>
+        </td>
+        <td class="warnings">
+            <span class="tooltip"> &#128201;
+                <span class="tooltiptext">
+                    
+                        Away team has a dip in form recently
+                    
+                </span>
+            </span>
+        </td>
+    </tr>
+    
+    <tr class="match">
+        <td class="date">Mar 17</td>
+        <td class="team" data-match-index="7"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">Volendam</div><div class="home-team-logo"><img width="14" height="18" src="./logos/NL1/Volendam.webp" alt="Volendam logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>0:4</strong></div><div class="away-team-logo"><img width="14" height="18" src="./logos/NL1/AZ Alkmaar.webp" alt="AZ Alkmaar logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>AZ Alkmaar</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Antonioli</li><li class="li-collaps">&#127973; Gustavo</li><li class="li-collaps">&#127973; Mbuyamba</li><li class="li-collaps">&#127973; Twigt</li><li class="li-collaps">&#127973; Roux</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Westerveld</li><li class="li-collaps">&#127973; Schouten</li></ul></div></div><div></div></td>
+        <td class="certainty">-1.85 vs 0.89</td>
+        <td class="odds">1.27</td>
+        <td class="total-color">65.74%</td>
+        <td class="correct">1</td>
+        <td class="gp">71%</td>
+        <td class="warnings">
+            <span class="tooltip"> &#127973&#127973; &#128201;
+                <span class="tooltiptext">
+                
+                    Home team has MAJOR injuries and a dip in form recently
+                
+                </span>
+            </span>
+        </td>
+        <td class="warnings">
+            <span class="tooltip"> &nbsp;
+                <span class="tooltiptext">
+                    
+                    
+                </span>
+            </span>
+        </td>
+    </tr>
+    
+    <tr class="match">
+        <td class="date">Mar 17</td>
+        <td class="team" data-match-index="8"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Atalanta</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./logos/IT1/Atalanta.webp" alt="Atalanta logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score">postponed</div><div class="away-team-logo"><img width="14" height="18" src="./logos/IT1/Fiorentina.webp" alt="Fiorentina logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Fiorentina</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Ketelaere</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Milenković</li></ul></div></div><div></div></td>
+        <td class="certainty">0.47 vs -1.22</td>
+        <td class="odds">3.55</td>
+        <td class="total-color">47.6%</td>
+        <td class="correct">None</td>
+        <td class="gp">52%</td>
         <td class="warnings">
             <span class="tooltip"> &#128201;
                 <span class="tooltiptext">
@@ -938,16 +1133,100 @@
     
     <tr class="match">
         <td class="date">Mar 17</td>
-        <td class="team" data-match-index="3"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Rizespor</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./logos/TR1/Rizespor.webp" alt="Rizespor logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>3:1</strong></div><div class="away-team-logo"><img width="14" height="18" src="./logos/TR1/Gaziantep.webp" alt="Gaziantep logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Gaziantep</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Laine</li><li class="li-collaps">&#127973; Keser</li><li class="li-collaps">&#127973; Pala</li><li class="li-collaps">&#127973; Miya</li><li class="li-collaps">&#127973; Højer</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Başyiğit</li><li class="li-collaps">&#127973; Zengin</li><li class="li-collaps">&#127973; Acosta</li><li class="li-collaps">&#127973; Acosta</li><li class="li-collaps">&#127973; M'Bakata</li></ul></div></div><div></div></td>
-        <td class="certainty">0.18 vs -1.23</td>
-        <td class="odds">n/a</td>
-        <td class="total-color">24.8%</td>
+        <td class="team" data-match-index="9"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">Sparta Rotterdam</div><div class="home-team-logo"><img width="14" height="18" src="./logos/NL1/Sparta Rotterdam.webp" alt="Sparta Rotterdam logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>2:2</strong></div><div class="away-team-logo"><img width="14" height="18" src="./logos/NL1/Ajax.webp" alt="Ajax logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>Ajax</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Kitolano</li><li class="li-collaps">&#127973; Warmerdam</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Ávila</li><li class="li-collaps">&#127973; Berghuis</li><li class="li-collaps">&#127973; Henderson</li><li class="li-collaps">&#127973; Brobbey</li><li class="li-collaps">&#127973; Sutalo</li><li class="li-collaps">&#127973; Kaplan</li><li class="li-collaps">&#127973; Eredivisie</li><li class="li-collaps">&#127973; Mannsverk</li><li class="li-collaps">&#127973; League</li></ul></div></div><div></div></td>
+        <td class="certainty">-1.71 vs 0.39</td>
+        <td class="odds">1.78</td>
+        <td class="total-color">41.17%</td>
+        <td class="correct">0.5</td>
+        <td class="gp">66%</td>
+        <td class="warnings">
+            <span class="tooltip"> &#127973; &#128201;
+                <span class="tooltiptext">
+                
+                    Home team has considerable injuries and a dip in form recently
+                
+                </span>
+            </span>
+        </td>
+        <td class="warnings">
+            <span class="tooltip"> &#127973&#127973; &#128201;
+                <span class="tooltiptext">
+                    
+                        Away team has MAJOR injuries and a dip in form recently
+                    
+                </span>
+            </span>
+        </td>
+    </tr>
+    
+    <tr class="match">
+        <td class="date">Mar 17</td>
+        <td class="team" data-match-index="10"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Dortmund</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./logos/L1/Dortmund.webp" alt="Dortmund logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>3:1</strong></div><div class="away-team-logo"><img width="14" height="18" src="./logos/L1/Ein Frankfurt.webp" alt="Ein Frankfurt logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Ein Frankfurt</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Bensebaini</li><li class="li-collaps">&#127973; Haller</li><li class="li-collaps">&#127973; Kamara</li><li class="li-collaps">&#127973; Malen</li><li class="li-collaps">&#127973; Kobel</li><li class="li-collaps">&#127973; Sabitzer</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Kalajdzic</li><li class="li-collaps">&#127973; Rode</li><li class="li-collaps">&#127973; Loune</li><li class="li-collaps">&#127973; Gebuhr</li><li class="li-collaps">&#127973; Larsson</li><li class="li-collaps">&#127973; Skhiri</li><li class="li-collaps">&#127973; Buta</li><li class="li-collaps">&#127973; Futkeu</li><li class="li-collaps">&#127973; DFB-Pokal</li><li class="li-collaps">&#127973; Collins</li><li class="li-collaps">&#127973; Baum</li></ul></div></div><div></div></td>
+        <td class="certainty">0.05 vs -1.23</td>
+        <td class="odds">6.2</td>
+        <td class="total-color">14.04%</td>
         <td class="correct">1</td>
+        <td class="gp">62%</td>
+        <td class="warnings">
+            <span class="tooltip"> &#127973&#127973;
+                <span class="tooltiptext">
+                
+                    Home team has MAJOR injuries
+                
+                </span>
+            </span>
+        </td>
         <td class="warnings">
             <span class="tooltip"> &#127973;
                 <span class="tooltiptext">
+                    
+                        Away team has considerable injuries
+                    
+                </span>
+            </span>
+        </td>
+    </tr>
+    
+    <tr class="match">
+        <td class="date">Mar 17</td>
+        <td class="team" data-match-index="11"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Utrecht</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./logos/NL1/Utrecht.webp" alt="Utrecht logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>1:0</strong></div><div class="away-team-logo"><img width="14" height="18" src="./logos/NL1/Nijmegen.webp" alt="Nijmegen logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Nijmegen</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Descotte</li><li class="li-collaps">&#127973; Lidberg</li><li class="li-collaps">&#127973; Romeny</li><li class="li-collaps">&#127973; Booth</li><li class="li-collaps">&#127973; Handwerker</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Dost</li><li class="li-collaps">&#127973; Wit</li><li class="li-collaps">&#127973; Rossen</li></ul></div></div><div></div></td>
+        <td class="certainty">-0.12 vs -0.62</td>
+        <td class="odds">11.0</td>
+        <td class="total-color">7.53%</td>
+        <td class="correct">1</td>
+        <td class="gp">48%</td>
+        <td class="warnings">
+            <span class="tooltip"> &#127973; &#128201;
+                <span class="tooltiptext">
                 
-                    Home team has considerable injuries
+                    Home team has considerable injuries and a dip in form recently
+                
+                </span>
+            </span>
+        </td>
+        <td class="warnings">
+            <span class="tooltip"> &nbsp;
+                <span class="tooltiptext">
+                    
+                    
+                </span>
+            </span>
+        </td>
+    </tr>
+    
+    <tr class="match">
+        <td class="date">Mar 17</td>
+        <td class="team" data-match-index="12"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">West Ham</div><div class="home-team-logo"><img width="14" height="18" src="./logos/GB1/West Ham.webp" alt="West Ham logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>1:1</strong></div><div class="away-team-logo"><img width="14" height="18" src="./logos/GB1/Aston Villa.webp" alt="Aston Villa logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>Aston Villa</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Antonio</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Mings</li><li class="li-collaps">&#127973; Buendía</li><li class="li-collaps">&#127973; Kamara</li><li class="li-collaps">&#127973; Cash</li></ul></div></div><div></div></td>
+        <td class="certainty">-0.63 vs -0.15</td>
+        <td class="odds">1.68</td>
+        <td class="total-color">6.98%</td>
+        <td class="correct">0.5</td>
+        <td class="gp">67%</td>
+        <td class="warnings">
+            <span class="tooltip"> &#128201;
+                <span class="tooltiptext">
+                
+                    Home team has a dip in form recently
                 
                 </span>
             </span>
@@ -965,7 +1244,7 @@
     
 </table>
 <div class="left">
-    Last updated 14:11:36 2024-03-26
+    Last updated 14:00:23 2024-03-30
 </div>
 <div class="center">
    <a href="privacy_policy.html"> Privacy Policy</a>  - 18+. Gamble Responsibly. -  <a href="disclaimer.html">Terms</a>
@@ -982,11 +1261,11 @@
         
         <li><a href="index.html">All</a></li>
         
-        <li><a href="Mar29.html">Fri 29 Mar</a></li>
-        <li><a href="Mar30.html">Sat 30 Mar</a></li>
-        <li><a href="Mar31.html">Sun 31 Mar</a></li>
-        <li><a href="Apr1.html">Mon 1 Apr</a></li>
-        <li><select aria-label="State" class="select-wrapper" id="previousGameweeks_m" onchange="redirectToGameweek()">
+        <li><a href="Mar29.html">29 Mar</a></li>
+        <li><a href="Mar30.html">30 Mar</a></li>
+        <li><a href="Mar31.html">31 Mar</a></li>
+        <li><a href="Apr1.html">1 Apr</a></li>
+        <li><select aria-label="State" class="select-wrapper_m" id="previousGameweeks_m" onchange="redirectToGameweek()">
             <option value="" disabled selected>Select Gameweek</option>
             <option value="index.html">Current</option>
             <option value="Mar15-Mar17.html">15-17 Mar</option>
@@ -1010,40 +1289,112 @@
     </tr>
     
     <tr class="match">
-        <td class="team" data-match-index="0"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">Kasimpasa</div><div class="home-team-logo"><img width="14" height="18" src="./logos/TR1/Kasimpasa.webp" alt="Kasimpasa logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>3:4</strong></div><div class="away-team-logo"><img width="14" height="18" src="./logos/TR1/Galatasaray.webp" alt="Galatasaray logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>Galatasaray</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#127973; &#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Çetinkaya</li><li class="li-collaps">&#127973; Saddiki</li><li class="li-collaps">&#127973; Ngoy</li><li class="li-collaps">&#127973; Omeruo</li><li class="li-collaps">&#127973; Kara</li><li class="li-collaps">&#127973; Winck</li></ul></div></div><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> n/a</div><div class="li-collaps">&#127973&#127973;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Oliveira</li><li class="li-collaps">&#127973; Ayhan</li><li class="li-collaps">&#127973; Ziyech</li><li class="li-collaps">&#127973; Sánchez</li><li class="li-collaps">&#127973; Aktürkoğlu</li></ul></div></div></td>
-        <td class="certainty">-2.7 vs 1.57</td>
+        <td class="team" data-match-index="0"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Inter</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./logos/IT1/Inter.webp" alt="Inter logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>1:1</strong></div><div class="away-team-logo"><img width="14" height="18" src="./logos/IT1/Napoli.webp" alt="Napoli logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Napoli</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> 1.22</div><div class="li-collaps">&nbsp;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Cuadrado</li><li class="li-collaps">&#127973; Sensi</li><li class="li-collaps">&#127973; Arnautovic</li><li class="li-collaps">&#127973; Vrij</li><li class="li-collaps">&#127973; Sommer</li></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Lobotka</li><li class="li-collaps">&#127973; Mazzocchi</li><li class="li-collaps">&#127973; Ngonge</li></ul></div></div></td>
+        <td class="certainty">1.6 vs -2.26</td>
         <td class="total-color">76%</td>
+        <td class="correct">0.5</td>
+
+    </tr>
+    
+    <tr class="match">
+        <td class="team" data-match-index="1"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">Freiburg</div><div class="home-team-logo"><img width="14" height="18" src="./logos/L1/Freiburg.webp" alt="Freiburg logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>2:3</strong></div><div class="away-team-logo"><img width="14" height="18" src="./logos/L1/Leverkusen.webp" alt="Leverkusen logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>Leverkusen</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#127973; &#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Kyereh</li><li class="li-collaps">&#127973; Schmidt</li><li class="li-collaps">&#127973; Lienhart</li></ul></div></div><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> 1.24</div><div class="li-collaps">&nbsp;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Arthur</li><li class="li-collaps">&#127973; Boniface</li><li class="li-collaps">&#127973; Mbamba</li><li class="li-collaps">&#127973; League</li></ul></div></div></td>
+        <td class="certainty">-2.36 vs 1.5</td>
+        <td class="total-color">75%</td>
         <td class="correct">1</td>
 
     </tr>
     
     <tr class="match">
-        <td class="team" data-match-index="1"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">Trabzonspor</div><div class="home-team-logo"><img width="14" height="18" src="./logos/TR1/Trabzonspor.webp" alt="Trabzonspor logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>2:3</strong></div><div class="away-team-logo"><img width="14" height="18" src="./logos/TR1/Fenerbahce.webp" alt="Fenerbahce logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>Fenerbahce</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#127973; &#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Türkmen</li><li class="li-collaps">&#127973; Onuachu</li><li class="li-collaps">&#127973; Aydın</li><li class="li-collaps">&#127973; Türkmen</li><li class="li-collaps">&#127973; Destan</li></ul></div></div><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> n/a</div><div class="li-collaps">&#127973&#127973;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Peres</li><li class="li-collaps">&#127973; King</li><li class="li-collaps">&#127973; Söyüncü</li><li class="li-collaps">&#127973; Yandaş</li><li class="li-collaps">&#127973; Kadıoğlu</li><li class="li-collaps">&#127973; Ünder</li><li class="li-collaps">&#127973; Kent</li><li class="li-collaps">&#127973; Peres</li><li class="li-collaps">&#127973; Osayi-Samuel</li></ul></div></div></td>
-        <td class="certainty">-1.55 vs 0.23</td>
-        <td class="total-color">28%</td>
+        <td class="team" data-match-index="2"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>PSV Eindhoven</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./logos/NL1/PSV Eindhoven.webp" alt="PSV Eindhoven logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>1:0</strong></div><div class="away-team-logo"><img width="14" height="18" src="./logos/NL1/Twente.webp" alt="Twente logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Twente</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> 1.44</div><div class="li-collaps">&#127973;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Lang</li><li class="li-collaps">&#127973; Saibari</li></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#127973;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Hilgers</li><li class="li-collaps">&#127973; Brenet</li></ul></div></div></td>
+        <td class="certainty">1.44 vs -2.34</td>
+        <td class="total-color">74%</td>
         <td class="correct">1</td>
 
     </tr>
     
     <tr class="match">
-        <td class="team" data-match-index="2"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">Hatayspor</div><div class="home-team-logo"><img width="14" height="18" src="./logos/TR1/Hatayspor.webp" alt="Hatayspor logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>3:0</strong></div><div class="away-team-logo"><img width="14" height="18" src="./logos/TR1/Samsunspor.webp" alt="Samsunspor logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>Samsunspor</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Çörekçi</li><li class="li-collaps">&#127973; Önde</li></ul></div></div><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> n/a</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Satka</li><li class="li-collaps">&#127973; Kılınç</li></ul></div></div></td>
-        <td class="certainty">-0.88 vs 0.21</td>
-        <td class="total-color">27%</td>
-        <td class="correct">0</td>
+        <td class="team" data-match-index="3"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Roma</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./logos/IT1/Roma.webp" alt="Roma logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>1:0</strong></div><div class="away-team-logo"><img width="14" height="18" src="./logos/IT1/Sassuolo.webp" alt="Sassuolo logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Sassuolo</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> 1.92</div><div class="li-collaps">&#127973;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Azmoun</li><li class="li-collaps">&#127973; Kristensen</li><li class="li-collaps">&#127973; Pellegrini</li><li class="li-collaps">&#127973; A</li></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#127973; &#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Berardi</li><li class="li-collaps">&#127973; Erlić</li><li class="li-collaps">&#127973; A</li></ul></div></div></td>
+        <td class="certainty">1.42 vs -2.28</td>
+        <td class="total-color">74%</td>
+        <td class="correct">1</td>
 
     </tr>
     
     <tr class="match">
-        <td class="team" data-match-index="3"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Rizespor</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./logos/TR1/Rizespor.webp" alt="Rizespor logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>3:1</strong></div><div class="away-team-logo"><img width="14" height="18" src="./logos/TR1/Gaziantep.webp" alt="Gaziantep logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Gaziantep</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> n/a</div><div class="li-collaps">&#127973;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Laine</li><li class="li-collaps">&#127973; Keser</li><li class="li-collaps">&#127973; Pala</li><li class="li-collaps">&#127973; Miya</li><li class="li-collaps">&#127973; Højer</li></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#127973; &#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Başyiğit</li><li class="li-collaps">&#127973; Zengin</li><li class="li-collaps">&#127973; Acosta</li><li class="li-collaps">&#127973; Acosta</li><li class="li-collaps">&#127973; M'Bakata</li></ul></div></div></td>
-        <td class="certainty">0.18 vs -1.23</td>
-        <td class="total-color">25%</td>
+        <td class="team" data-match-index="4"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">Heerenveen</div><div class="home-team-logo"><img width="14" height="18" src="./logos/NL1/Heerenveen.webp" alt="Heerenveen logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>2:3</strong></div><div class="away-team-logo"><img width="14" height="18" src="./logos/NL1/Feyenoord.webp" alt="Feyenoord logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>Feyenoord</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Brouwers</li></ul></div></div><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> 1.31</div><div class="li-collaps">&nbsp;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Zechiël</li><li class="li-collaps">&#127973; Bijlow</li><li class="li-collaps">&#127973; Trauner</li><li class="li-collaps">&#127973; Jahanbakhsh</li><li class="li-collaps">&#127973; Milambo</li></ul></div></div></td>
+        <td class="certainty">-2.09 vs 1.39</td>
+        <td class="total-color">74%</td>
         <td class="correct">1</td>
+
+    </tr>
+    
+    <tr class="match">
+        <td class="team" data-match-index="5"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">Verona</div><div class="home-team-logo"><img width="14" height="18" src="./logos/IT1/Verona.webp" alt="Verona logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>1:3</strong></div><div class="away-team-logo"><img width="14" height="18" src="./logos/IT1/Milan.webp" alt="Milan logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>Milan</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#127973;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Berardi</li><li class="li-collaps">&#127973; Cruz</li><li class="li-collaps">&#127973; Folorunsho</li><li class="li-collaps">&#127973; Suslov</li></ul></div></div><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> 2.66</div><div class="li-collaps">&#127973;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Pobega</li><li class="li-collaps">&#127973; Kalulu</li><li class="li-collaps">&#127973; Kjaer</li><li class="li-collaps">&#127973; Hernández</li><li class="li-collaps">&#127973; A</li></ul></div></div></td>
+        <td class="certainty">-2.22 vs 1.19</td>
+        <td class="total-color">72%</td>
+        <td class="correct">1</td>
+
+    </tr>
+    
+    <tr class="match">
+        <td class="team" data-match-index="6"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Juventus</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./logos/IT1/Juventus.webp" alt="Juventus logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>0:0</strong></div><div class="away-team-logo"><img width="14" height="18" src="./logos/IT1/Genoa.webp" alt="Genoa logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Genoa</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> 2.64</div><div class="li-collaps">&#127973&#127973; &#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Alcaraz</li><li class="li-collaps">&#127973; Milik</li><li class="li-collaps">&#127973; Vlahović</li><li class="li-collaps">&#127973; A</li><li class="li-collaps">&#127973; Fagioli</li><li class="li-collaps">&#127973; Pogba</li></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Matturro</li><li class="li-collaps">&#127973; Martín</li></ul></div></div></td>
+        <td class="certainty">0.91 vs -1.83</td>
+        <td class="total-color">67%</td>
+        <td class="correct">0.5</td>
+
+    </tr>
+    
+    <tr class="match">
+        <td class="team" data-match-index="7"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">Volendam</div><div class="home-team-logo"><img width="14" height="18" src="./logos/NL1/Volendam.webp" alt="Volendam logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>0:4</strong></div><div class="away-team-logo"><img width="14" height="18" src="./logos/NL1/AZ Alkmaar.webp" alt="AZ Alkmaar logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>AZ Alkmaar</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#127973&#127973; &#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Antonioli</li><li class="li-collaps">&#127973; Gustavo</li><li class="li-collaps">&#127973; Mbuyamba</li><li class="li-collaps">&#127973; Twigt</li><li class="li-collaps">&#127973; Roux</li></ul></div></div><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> 1.27</div><div class="li-collaps">&nbsp;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Westerveld</li><li class="li-collaps">&#127973; Schouten</li></ul></div></div></td>
+        <td class="certainty">-1.85 vs 0.89</td>
+        <td class="total-color">66%</td>
+        <td class="correct">1</td>
+
+    </tr>
+    
+    <tr class="match">
+        <td class="team" data-match-index="8"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Atalanta</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./logos/IT1/Atalanta.webp" alt="Atalanta logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score">postponed</div><div class="away-team-logo"><img width="14" height="18" src="./logos/IT1/Fiorentina.webp" alt="Fiorentina logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Fiorentina</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> 3.55</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Ketelaere</li></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Milenković</li></ul></div></div></td>
+        <td class="certainty">0.47 vs -1.22</td>
+        <td class="total-color">48%</td>
+        <td class="correct">None</td>
+
+    </tr>
+    
+    <tr class="match">
+        <td class="team" data-match-index="9"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">Sparta Rotterdam</div><div class="home-team-logo"><img width="14" height="18" src="./logos/NL1/Sparta Rotterdam.webp" alt="Sparta Rotterdam logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>2:2</strong></div><div class="away-team-logo"><img width="14" height="18" src="./logos/NL1/Ajax.webp" alt="Ajax logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>Ajax</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#127973; &#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Kitolano</li><li class="li-collaps">&#127973; Warmerdam</li></ul></div></div><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> 1.78</div><div class="li-collaps">&#127973&#127973; &#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Ávila</li><li class="li-collaps">&#127973; Berghuis</li><li class="li-collaps">&#127973; Henderson</li><li class="li-collaps">&#127973; Brobbey</li><li class="li-collaps">&#127973; Sutalo</li><li class="li-collaps">&#127973; Kaplan</li><li class="li-collaps">&#127973; Eredivisie</li><li class="li-collaps">&#127973; Mannsverk</li><li class="li-collaps">&#127973; League</li></ul></div></div></td>
+        <td class="certainty">-1.71 vs 0.39</td>
+        <td class="total-color">41%</td>
+        <td class="correct">0.5</td>
+
+    </tr>
+    
+    <tr class="match">
+        <td class="team" data-match-index="10"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Dortmund</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./logos/L1/Dortmund.webp" alt="Dortmund logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>3:1</strong></div><div class="away-team-logo"><img width="14" height="18" src="./logos/L1/Ein Frankfurt.webp" alt="Ein Frankfurt logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Ein Frankfurt</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> 6.2</div><div class="li-collaps">&#127973&#127973;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Bensebaini</li><li class="li-collaps">&#127973; Haller</li><li class="li-collaps">&#127973; Kamara</li><li class="li-collaps">&#127973; Malen</li><li class="li-collaps">&#127973; Kobel</li><li class="li-collaps">&#127973; Sabitzer</li></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#127973;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Kalajdzic</li><li class="li-collaps">&#127973; Rode</li><li class="li-collaps">&#127973; Loune</li><li class="li-collaps">&#127973; Gebuhr</li><li class="li-collaps">&#127973; Larsson</li><li class="li-collaps">&#127973; Skhiri</li><li class="li-collaps">&#127973; Buta</li><li class="li-collaps">&#127973; Futkeu</li><li class="li-collaps">&#127973; DFB-Pokal</li><li class="li-collaps">&#127973; Collins</li><li class="li-collaps">&#127973; Baum</li></ul></div></div></td>
+        <td class="certainty">0.05 vs -1.23</td>
+        <td class="total-color">14%</td>
+        <td class="correct">1</td>
+
+    </tr>
+    
+    <tr class="match">
+        <td class="team" data-match-index="11"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Utrecht</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./logos/NL1/Utrecht.webp" alt="Utrecht logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>1:0</strong></div><div class="away-team-logo"><img width="14" height="18" src="./logos/NL1/Nijmegen.webp" alt="Nijmegen logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Nijmegen</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> 11.0</div><div class="li-collaps">&#127973; &#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Descotte</li><li class="li-collaps">&#127973; Lidberg</li><li class="li-collaps">&#127973; Romeny</li><li class="li-collaps">&#127973; Booth</li><li class="li-collaps">&#127973; Handwerker</li></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&nbsp;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Dost</li><li class="li-collaps">&#127973; Wit</li><li class="li-collaps">&#127973; Rossen</li></ul></div></div></td>
+        <td class="certainty">-0.12 vs -0.62</td>
+        <td class="total-color">8%</td>
+        <td class="correct">1</td>
+
+    </tr>
+    
+    <tr class="match">
+        <td class="team" data-match-index="12"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">West Ham</div><div class="home-team-logo"><img width="14" height="18" src="./logos/GB1/West Ham.webp" alt="West Ham logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>1:1</strong></div><div class="away-team-logo"><img width="14" height="18" src="./logos/GB1/Aston Villa.webp" alt="Aston Villa logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>Aston Villa</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Antonio</li></ul></div></div><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> 1.68</div><div class="li-collaps">&#127973; &#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Mings</li><li class="li-collaps">&#127973; Buendía</li><li class="li-collaps">&#127973; Kamara</li><li class="li-collaps">&#127973; Cash</li></ul></div></div></td>
+        <td class="certainty">-0.63 vs -0.15</td>
+        <td class="total-color">7%</td>
+        <td class="correct">0.5</td>
 
     </tr>
     
 </table>
 <div class="left">
-    Last updated 14:11:36 2024-03-26
+    Last updated 14:00:23 2024-03-30
 </div>
 
 <ul class="ul-bottom">
