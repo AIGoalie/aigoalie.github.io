@@ -743,10 +743,12 @@
         function closeIntroductionBox() {
             document.getElementById("introductionBox").style.display = "none";
             document.getElementById("introductionBox_m").style.display = "none";
+
             document.getElementById("emptyspace").style.display = "none";
-            // document.getElementById("emptyspace2").style.display = "none";
+            document.getElementById("emptyspace2").style.display = "none";
             document.getElementById("emptyspace_m").style.display = "none";
             document.getElementById("emptyspace2_m").style.display = "none";
+
         }
 
 
@@ -776,7 +778,7 @@
             border-radius: 10px;
             padding: 20px;
             margin: 0 auto; /* Center the box horizontally */
-            max-width: 50%; /* Limit the width to about half of the page */
+            /*max-width: 50%; !* Limit the width to about half of the page *!*/
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
@@ -808,9 +810,9 @@
             border: 1px solid #dee2e6;
             border-radius: 10px;
             padding: 20px;
-            width: 80%;
+            /*width: 80%;*/
             margin: 0 auto; /* Center the box horizontally */
-            max-width: 80%; /* Limit the width to about half of the page */
+            /*max-width: 80%; !* Limit the width to about half of the page *!*/
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
@@ -1050,13 +1052,88 @@ function updateSortIndicator_m(columnIndex, direction) {
     });
 }
 
-</script>
+function toggleExpand(element) {
+  var parentDiv = element.parentElement;
+  var isExpanded = parentDiv.classList.contains("expand");
 
+  // Close all open paragraphs
+  var expandedParagraphs = document.querySelectorAll(".readmore.expand");
+  var expandedLinks = document.querySelectorAll(".readmore-link.expand");
+  expandedParagraphs.forEach(function (paragraph) {
+    paragraph.classList.remove("expand");
+  });
+  expandedLinks.forEach(function (link) {
+    link.classList.remove("expand");
+  });
+
+  // If target wasn't expanded, then expand it
+  if (!isExpanded) {
+    parentDiv.classList.add("expand");
+    element.classList.add("expand");
+  }
+}
+</script>
+<head>
+        <style>
+
+.readmore {
+
+  position: relative;
+  max-height: 100px;
+  overflow: hidden;
+  width:50%;
+  padding: 10px;
+
+  transition:max-height 0.15s ease-out;
+            margin: 0 auto;
+}
+
+.readmore.expand{
+  max-height: 5000px !important;
+  transition:max-height 0.35s ease-in-out;
+}
+
+.readmore-link{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: block;
+  width:100%;
+  text-align: center;
+  font-weight:bold;
+  font-size:16px;
+  padding-top:40px;
+  background-image: linear-gradient(to bottom, transparent, white);
+  cursor: pointer;
+    font-weight: bold;
+               @media screen and (max-width: 768px) {
+                 font-size: 10px;
+             }
+}
+
+.readmore-link.expand {
+  position: relative;
+  background-image: none;
+  padding-top:10px;
+  height:20px;
+}
+
+.readmore-link:after {
+  content:"Show more";
+}
+.readmore-link.expand:after{
+  content:"Show less";
+}
+    </style>
+</head>
 <body class="body">
 <div class="desktop-body">
-<div><div id="common-snippet">
+<div><a href="index.html"> <header style="text-align: center">
+    <img src="banner.png" alt="Banner Image" width="50%" height="auto">
+</header></a>
+<div id="common-snippet">
     <ul>
-        <li><a class="paypal" href="index.html"> <img src="AIGoalieblack.webp" alt="Logo of the AI Goalie football webpage" width="98" height="76"> </a></li>
+<!--        <li><a class="paypal" href="index.html"> <img src="Logo-Text.png" alt="Logo of the AI Goalie football webpage" width="98" height="98"> </a></li>-->
         
         <li><a class="active" href="index.html">All</a></li>
         
@@ -1079,8 +1156,12 @@ function updateSortIndicator_m(columnIndex, direction) {
     </ul>
 </div></div>
 
-<div id="emptyspace">&nbsp;</div>
-<div class="introduction-box" id="introductionBox">
+    <div id="emptyspace">&nbsp;</div>
+
+<div class="container"  id="introductionBox">
+    <div class="readmore" >
+
+<div class="introduction-box">
         <button class="close-btn" onclick="closeIntroductionBox()">&#10006;</button>
 
     <h2>Welcome to AIGoalie Football Predictions!</h2>
@@ -1103,6 +1184,11 @@ function updateSortIndicator_m(columnIndex, direction) {
 
     <p>Please report any bugs or feature requests through our <a href="contact.html"> contact form! </a></p>
 </div>
+      <span class="readmore-link" onclick="toggleExpand(this)"></span>
+    </div>
+</div>
+<div id="emptyspace2">&nbsp;</div>
+
 
 <div>&nbsp</div>
 <div class="search-dropdown-container">
@@ -1176,7 +1262,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="odds">1.17</td>
         <td class="total-color">89%</td>
         <td class="correct">1</td>
-        <td class="gp">&#9917;<br>1.87</td>
+        <td class="gp">&#9917;<br>1.05</td>
         <td class="warnings">
             <span class="tooltip"> &nbsp;
                 <span class="tooltiptext">
@@ -1203,7 +1289,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="odds">1.16</td>
         <td class="total-color">86%</td>
         <td class="correct">1</td>
-        <td class="gp">&#9917;&#9917;&#9917;&#9917;<br>4.17</td>
+        <td class="gp">&#9917;&#9917;<br>2.34</td>
         <td class="warnings">
             <span class="tooltip"> &#127973&#127973; &#128201;
                 <span class="tooltiptext">
@@ -1231,7 +1317,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="odds">1.12</td>
         <td class="total-color">82%</td>
         <td class="correct">1</td>
-        <td class="gp">&#9917;&#9917;&#9917;<br>3.42</td>
+        <td class="gp">&#9917;<br>1.64</td>
         <td class="warnings">
             <span class="tooltip"> &#127973;
                 <span class="tooltiptext">
@@ -1259,7 +1345,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="odds">1.12</td>
         <td class="total-color">81%</td>
         <td class="correct">None</td>
-        <td class="gp">&#9917;&#9917;&#9917;<br>3.08</td>
+        <td class="gp">&#9917;<br>1.63</td>
         <td class="warnings">
             <span class="tooltip"> &#127973&#127973; &#128201;
                 <span class="tooltiptext">
@@ -1287,7 +1373,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="odds">1.29</td>
         <td class="total-color">81%</td>
         <td class="correct">1</td>
-        <td class="gp">&#9917;&#9917;<br>2.36</td>
+        <td class="gp">&#9917;<br>1.4</td>
         <td class="warnings">
             <span class="tooltip"> &#127973&#127973;
                 <span class="tooltiptext">
@@ -1314,7 +1400,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="odds">1.1</td>
         <td class="total-color">80%</td>
         <td class="correct">None</td>
-        <td class="gp">&#9917;&#9917;&#9917;<br>3.14</td>
+        <td class="gp">&#9917;<br>1.48</td>
         <td class="warnings">
             <span class="tooltip"> &#127973&#127973;
                 <span class="tooltiptext">
@@ -1342,7 +1428,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="odds">1.29</td>
         <td class="total-color">57%</td>
         <td class="correct">1</td>
-        <td class="gp">&#9917;&#9917;<br>2.23</td>
+        <td class="gp">&#128564;<br>0.93</td>
         <td class="warnings">
             <span class="tooltip"> &nbsp;
                 <span class="tooltiptext">
@@ -1369,7 +1455,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="odds">1.51</td>
         <td class="total-color">55%</td>
         <td class="correct">None</td>
-        <td class="gp">&#9917;&#9917;<br>2.3</td>
+        <td class="gp">&#9917;<br>1.13</td>
         <td class="warnings">
             <span class="tooltip"> &#127973&#127973; &#128201;
                 <span class="tooltiptext">
@@ -1397,7 +1483,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="odds">1.98</td>
         <td class="total-color">54%</td>
         <td class="correct">1</td>
-        <td class="gp">&#9917;&#9917;<br>2.55</td>
+        <td class="gp">&#9917;<br>1.13</td>
         <td class="warnings">
             <span class="tooltip"> &#127973;
                 <span class="tooltiptext">
@@ -1425,7 +1511,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="odds">1.45</td>
         <td class="total-color">51%</td>
         <td class="correct">0</td>
-        <td class="gp">&#9917;&#9917;<br>2.51</td>
+        <td class="gp">&#9917;<br>1.26</td>
         <td class="warnings">
             <span class="tooltip"> &#127973; &#128201;
                 <span class="tooltiptext">
@@ -1452,7 +1538,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="odds">1.52</td>
         <td class="total-color">49%</td>
         <td class="correct">1</td>
-        <td class="gp">&#9917;<br>1.48</td>
+        <td class="gp">&#128564;<br>0.6</td>
         <td class="warnings">
             <span class="tooltip"> &#127973; &#128201;
                 <span class="tooltiptext">
@@ -1480,7 +1566,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="odds">2.14</td>
         <td class="total-color">46%</td>
         <td class="correct">1</td>
-        <td class="gp">&#9917;<br>1.68</td>
+        <td class="gp">&#128564;<br>0.92</td>
         <td class="warnings">
             <span class="tooltip"> &#127973; &#128201;
                 <span class="tooltiptext">
@@ -1508,7 +1594,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="odds">2.66</td>
         <td class="total-color">44%</td>
         <td class="correct">0.5</td>
-        <td class="gp">&#9917;<br>1.98</td>
+        <td class="gp">&#128564;<br>0.78</td>
         <td class="warnings">
             <span class="tooltip"> &#127973; &#128201;
                 <span class="tooltiptext">
@@ -1536,7 +1622,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="odds">1.95</td>
         <td class="total-color">44%</td>
         <td class="correct">None</td>
-        <td class="gp">&#9917;<br>1.93</td>
+        <td class="gp">&#9917;<br>1.1</td>
         <td class="warnings">
             <span class="tooltip"> &#128201;
                 <span class="tooltiptext">
@@ -1564,7 +1650,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="odds">2.3</td>
         <td class="total-color">39%</td>
         <td class="correct">1</td>
-        <td class="gp">&#9917;<br>1.63</td>
+        <td class="gp">&#128564;<br>0.88</td>
         <td class="warnings">
             <span class="tooltip"> &#127973; &#128201;
                 <span class="tooltiptext">
@@ -1592,7 +1678,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="odds">2.08</td>
         <td class="total-color">33%</td>
         <td class="correct">0.5</td>
-        <td class="gp">&#9917;<br>1.03</td>
+        <td class="gp">&#128564;<br>0.45</td>
         <td class="warnings">
             <span class="tooltip"> &#127973;
                 <span class="tooltiptext">
@@ -1620,7 +1706,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="odds">2.86</td>
         <td class="total-color">21%</td>
         <td class="correct">0</td>
-        <td class="gp">&#9917;&#9917;<br>2.15</td>
+        <td class="gp">&#128564;<br>0.88</td>
         <td class="warnings">
             <span class="tooltip"> &#127973; &#128201;
                 <span class="tooltiptext">
@@ -1647,7 +1733,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="odds">2.68</td>
         <td class="total-color">11%</td>
         <td class="correct">None</td>
-        <td class="gp">&#9917;<br>1.5</td>
+        <td class="gp">&#128564;<br>0.79</td>
         <td class="warnings">
             <span class="tooltip"> &nbsp;
                 <span class="tooltiptext">
@@ -1674,7 +1760,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="odds">1.95</td>
         <td class="total-color">11%</td>
         <td class="correct">0.5</td>
-        <td class="gp">&#9917;&#9917;<br>2.05</td>
+        <td class="gp">&#128564;<br>0.97</td>
         <td class="warnings">
             <span class="tooltip"> &#128201;
                 <span class="tooltiptext">
@@ -1702,7 +1788,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="odds">2.14</td>
         <td class="total-color">9%</td>
         <td class="correct">0.5</td>
-        <td class="gp">&#9917;&#9917;<br>2.64</td>
+        <td class="gp">&#9917;<br>1.17</td>
         <td class="warnings">
             <span class="tooltip"> &#128201;
                 <span class="tooltiptext">
@@ -1729,7 +1815,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="odds">3.3</td>
         <td class="total-color">8%</td>
         <td class="correct">None</td>
-        <td class="gp">&#128564;<br>0.84</td>
+        <td class="gp">&#128564;<br>0.19</td>
         <td class="warnings">
             <span class="tooltip"> &#128201;
                 <span class="tooltiptext">
@@ -1757,7 +1843,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="odds">2.0</td>
         <td class="total-color">8%</td>
         <td class="correct">0.5</td>
-        <td class="gp">&#9917;<br>1.76</td>
+        <td class="gp">&#128564;<br>0.65</td>
         <td class="warnings">
             <span class="tooltip"> &#127973&#127973; &#128201;
                 <span class="tooltiptext">
@@ -1785,7 +1871,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="odds">2.6</td>
         <td class="total-color">6%</td>
         <td class="correct">1</td>
-        <td class="gp">&#9917;<br>1.58</td>
+        <td class="gp">&#128564;<br>0.85</td>
         <td class="warnings">
             <span class="tooltip"> &#127973&#127973; &#128201;
                 <span class="tooltiptext">
@@ -1813,7 +1899,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="odds">2.5</td>
         <td class="total-color">3%</td>
         <td class="correct">0.5</td>
-        <td class="gp">&#9917;&#9917;<br>2.56</td>
+        <td class="gp">&#9917;<br>1.3</td>
         <td class="warnings">
             <span class="tooltip"> &nbsp;
                 <span class="tooltiptext">
@@ -1840,7 +1926,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="odds">3.55</td>
         <td class="total-color">3%</td>
         <td class="correct">None</td>
-        <td class="gp">&#9917;&#9917;<br>2.39</td>
+        <td class="gp">&#9917;<br>1.03</td>
         <td class="warnings">
             <span class="tooltip"> &#127973&#127973; &#128201;
                 <span class="tooltiptext">
@@ -1868,7 +1954,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="odds">3.15</td>
         <td class="total-color">2%</td>
         <td class="correct">1</td>
-        <td class="gp">&#9917;&#9917;<br>2.75</td>
+        <td class="gp">&#9917;<br>1.68</td>
         <td class="warnings">
             <span class="tooltip"> &#127973&#127973; &#128201;
                 <span class="tooltiptext">
@@ -1896,7 +1982,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="odds">2.84</td>
         <td class="total-color">0%</td>
         <td class="correct">0</td>
-        <td class="gp">&#9917;<br>1.58</td>
+        <td class="gp">&#128564;<br>0.66</td>
         <td class="warnings">
             <span class="tooltip"> &#128201;
                 <span class="tooltiptext">
@@ -1924,7 +2010,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="odds">2.84</td>
         <td class="total-color">0%</td>
         <td class="correct">0.5</td>
-        <td class="gp">&#9917;<br>1.97</td>
+        <td class="gp">&#128564;<br>0.78</td>
         <td class="warnings">
             <span class="tooltip"> &#127973&#127973; &#128201;
                 <span class="tooltiptext">
@@ -1952,7 +2038,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="odds">2.42</td>
         <td class="total-color">0%</td>
         <td class="correct">0</td>
-        <td class="gp">&#9917;<br>1.8</td>
+        <td class="gp">&#9917;<br>1.0</td>
         <td class="warnings">
             <span class="tooltip"> &#127973; &#128201;
                 <span class="tooltiptext">
@@ -1975,7 +2061,7 @@ function updateSortIndicator_m(columnIndex, direction) {
     
 </table>
 <div class="left" style="margin: 0 auto; border-collapse: collapse; width: 95%;">
-    Last updated 12:37:53 2024-04-04
+    Last updated 12:44:07 2024-04-04
 </div>
 <div class="center">
    <a href="privacy_policy.html"> Privacy Policy</a>  - 18+. Gamble Responsibly. -  <a href="disclaimer.html">Terms</a>
@@ -1992,9 +2078,12 @@ function updateSortIndicator_m(columnIndex, direction) {
 
 <div class="mobile-body">
 
-    <div><div id="common-snippet">
+    <div><a href="index.html"> <header style="text-align: center">
+    <img src="banner.png" alt="Banner Image" width="100%" height="auto">
+</header></a>
+<div id="common-snippet">
     <ul>
-        <li><a class="paypal" href="index.html"> <img src="AIGoalieblack.webp" alt="Logo of the AI Goalie football webpage" width="48" height="37"> </a></li>
+<!--        <li><a class="paypal" href="index.html"> <img src="Logo-Text.png" alt="Logo of the AI Goalie football webpage" width="48" height="48"> </a></li>-->
         
         <li><a class="active" href="index.html">All</a></li>
         
@@ -2018,10 +2107,14 @@ function updateSortIndicator_m(columnIndex, direction) {
 </div></div>
 
 <div id="emptyspace_m">&nbsp;</div>
-<div class="introduction-box" id="introductionBox_m">
+
+<div class="container"  id="introductionBox_m">
+    <div class="readmore" >
+
+<div class="introduction-box">
         <button class="close-btn" onclick="closeIntroductionBox()">&#10006;</button>
 
-    <h2><u>Welcome to AIGoalie Football Predictions!</u></h2>
+    <h2>Welcome to AIGoalie Football Predictions!</h2>
 
         <p class="intro">&#129302; An <strong>Artificial Intelligence (AI) model</strong> that predicts the winner of football matches.</p>
         <p class="intro">&#127947; Trained on <strong>a lot of football data</strong> from many seasons and many leagues.</p>
@@ -2030,7 +2123,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <p class="intro">&#128680; Gives you additional <strong>important information</strong>, such as important player injuries.</p>
         <p class="intro">&#127919; Is <strong>impressively accurate</strong>! Check out <a class="in-text-a" href="#" onclick="openSelectDropdown()">previous gameweeks</a> to see how AIGoalie performed so far.</p>
 
-    <p>Let AIGoalie help you <b>save</b> time, <b>keep</b> you ahead of the game, and <b>assist</b> you in making informed decisions, completely free!</p>
+        <p>Let AIGoalie help you <b>save</b> time, <b>keep</b> you ahead of the game, and <b>assist</b> you in making informed decisions, completely free!</p>
 
     <h2><u>NEWS</u></h2>
      <h2>GOALS UPDATE!</h2>
@@ -2040,6 +2133,9 @@ function updateSortIndicator_m(columnIndex, direction) {
     <p> &#9881;  <b>Filter </b> leagues with 'Select Leagues' <br> &#128269; <b>Search </b> for your favourite team with 'Search'</p>
 
     <p>Please report any bugs or feature requests through our <a href="contact.html"> contact form! </a></p>
+</div>
+      <span class="readmore-link" onclick="toggleExpand(this)"></span>
+    </div>
 </div>
 <div id="emptyspace2_m">&nbsp;</div>
 
@@ -2107,7 +2203,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="certainty">2.88 vs -3.73</td>
         <td class="total-color">89%</td>
         <td class="correct">1</td>
-        <td class="gp">&#9917;<br>1.87</td>
+        <td class="gp">&#9917;<br>1.05</td>
 
     </tr>
     
@@ -2116,7 +2212,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="certainty">-3.72 vs 2.56</td>
         <td class="total-color">86%</td>
         <td class="correct">1</td>
-        <td class="gp">&#9917;&#9917;&#9917;&#9917;<br>4.17</td>
+        <td class="gp">&#9917;&#9917;<br>2.34</td>
 
     </tr>
     
@@ -2125,7 +2221,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="certainty">2.15 vs -2.92</td>
         <td class="total-color">82%</td>
         <td class="correct">1</td>
-        <td class="gp">&#9917;&#9917;&#9917;<br>3.42</td>
+        <td class="gp">&#9917;<br>1.64</td>
 
     </tr>
     
@@ -2134,7 +2230,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="certainty">-3.29 vs 2.09</td>
         <td class="total-color">81%</td>
         <td class="correct">None</td>
-        <td class="gp">&#9917;&#9917;&#9917;<br>3.08</td>
+        <td class="gp">&#9917;<br>1.63</td>
 
     </tr>
     
@@ -2143,7 +2239,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="certainty">2.07 vs -3.0</td>
         <td class="total-color">81%</td>
         <td class="correct">1</td>
-        <td class="gp">&#9917;&#9917;<br>2.36</td>
+        <td class="gp">&#9917;<br>1.4</td>
 
     </tr>
     
@@ -2152,7 +2248,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="certainty">2.03 vs -3.01</td>
         <td class="total-color">80%</td>
         <td class="correct">None</td>
-        <td class="gp">&#9917;&#9917;&#9917;<br>3.14</td>
+        <td class="gp">&#9917;<br>1.48</td>
 
     </tr>
     
@@ -2161,7 +2257,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="certainty">0.67 vs -1.54</td>
         <td class="total-color">57%</td>
         <td class="correct">1</td>
-        <td class="gp">&#9917;&#9917;<br>2.23</td>
+        <td class="gp">&#128564;<br>0.93</td>
 
     </tr>
     
@@ -2170,7 +2266,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="certainty">0.63 vs -1.84</td>
         <td class="total-color">55%</td>
         <td class="correct">None</td>
-        <td class="gp">&#9917;&#9917;<br>2.3</td>
+        <td class="gp">&#9917;<br>1.13</td>
 
     </tr>
     
@@ -2179,7 +2275,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="certainty">0.61 vs -1.81</td>
         <td class="total-color">54%</td>
         <td class="correct">1</td>
-        <td class="gp">&#9917;&#9917;<br>2.55</td>
+        <td class="gp">&#9917;<br>1.13</td>
 
     </tr>
     
@@ -2188,7 +2284,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="certainty">-1.3 vs 0.51</td>
         <td class="total-color">51%</td>
         <td class="correct">0</td>
-        <td class="gp">&#9917;&#9917;<br>2.51</td>
+        <td class="gp">&#9917;<br>1.26</td>
 
     </tr>
     
@@ -2197,7 +2293,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="certainty">0.49 vs -1.48</td>
         <td class="total-color">49%</td>
         <td class="correct">1</td>
-        <td class="gp">&#9917;<br>1.48</td>
+        <td class="gp">&#128564;<br>0.6</td>
 
     </tr>
     
@@ -2206,7 +2302,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="certainty">-1.14 vs 0.45</td>
         <td class="total-color">46%</td>
         <td class="correct">1</td>
-        <td class="gp">&#9917;<br>1.68</td>
+        <td class="gp">&#128564;<br>0.92</td>
 
     </tr>
     
@@ -2215,7 +2311,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="certainty">-1.36 vs 0.43</td>
         <td class="total-color">44%</td>
         <td class="correct">0.5</td>
-        <td class="gp">&#9917;<br>1.98</td>
+        <td class="gp">&#128564;<br>0.78</td>
 
     </tr>
     
@@ -2224,7 +2320,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="certainty">0.43 vs -1.07</td>
         <td class="total-color">44%</td>
         <td class="correct">None</td>
-        <td class="gp">&#9917;<br>1.93</td>
+        <td class="gp">&#9917;<br>1.1</td>
 
     </tr>
     
@@ -2233,7 +2329,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="certainty">-1.2 vs 0.36</td>
         <td class="total-color">39%</td>
         <td class="correct">1</td>
-        <td class="gp">&#9917;<br>1.63</td>
+        <td class="gp">&#128564;<br>0.88</td>
 
     </tr>
     
@@ -2242,7 +2338,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="certainty">0.29 vs -1.12</td>
         <td class="total-color">33%</td>
         <td class="correct">0.5</td>
-        <td class="gp">&#9917;<br>1.03</td>
+        <td class="gp">&#128564;<br>0.45</td>
 
     </tr>
     
@@ -2251,7 +2347,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="certainty">-0.86 vs 0.14</td>
         <td class="total-color">21%</td>
         <td class="correct">0</td>
-        <td class="gp">&#9917;&#9917;<br>2.15</td>
+        <td class="gp">&#128564;<br>0.88</td>
 
     </tr>
     
@@ -2260,7 +2356,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="certainty">0.02 vs -1.03</td>
         <td class="total-color">11%</td>
         <td class="correct">None</td>
-        <td class="gp">&#9917;<br>1.5</td>
+        <td class="gp">&#128564;<br>0.79</td>
 
     </tr>
     
@@ -2269,7 +2365,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="certainty">-0.82 vs 0.01</td>
         <td class="total-color">11%</td>
         <td class="correct">0.5</td>
-        <td class="gp">&#9917;&#9917;<br>2.05</td>
+        <td class="gp">&#128564;<br>0.97</td>
 
     </tr>
     
@@ -2278,7 +2374,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="certainty">-0.53 vs -0.03</td>
         <td class="total-color">9%</td>
         <td class="correct">0.5</td>
-        <td class="gp">&#9917;&#9917;<br>2.64</td>
+        <td class="gp">&#9917;<br>1.17</td>
 
     </tr>
     
@@ -2287,7 +2383,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="certainty">-0.63 vs -0.08</td>
         <td class="total-color">8%</td>
         <td class="correct">None</td>
-        <td class="gp">&#128564;<br>0.84</td>
+        <td class="gp">&#128564;<br>0.19</td>
 
     </tr>
     
@@ -2296,7 +2392,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="certainty">-0.12 vs -1.05</td>
         <td class="total-color">8%</td>
         <td class="correct">0.5</td>
-        <td class="gp">&#9917;<br>1.76</td>
+        <td class="gp">&#128564;<br>0.65</td>
 
     </tr>
     
@@ -2305,7 +2401,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="certainty">-0.21 vs -0.66</td>
         <td class="total-color">6%</td>
         <td class="correct">1</td>
-        <td class="gp">&#9917;<br>1.58</td>
+        <td class="gp">&#128564;<br>0.85</td>
 
     </tr>
     
@@ -2314,7 +2410,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="certainty">-0.33 vs -0.56</td>
         <td class="total-color">3%</td>
         <td class="correct">0.5</td>
-        <td class="gp">&#9917;&#9917;<br>2.56</td>
+        <td class="gp">&#9917;<br>1.3</td>
 
     </tr>
     
@@ -2323,7 +2419,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="certainty">-0.82 vs -0.37</td>
         <td class="total-color">3%</td>
         <td class="correct">None</td>
-        <td class="gp">&#9917;&#9917;<br>2.39</td>
+        <td class="gp">&#9917;<br>1.03</td>
 
     </tr>
     
@@ -2332,7 +2428,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="certainty">-0.47 vs -0.38</td>
         <td class="total-color">2%</td>
         <td class="correct">1</td>
-        <td class="gp">&#9917;&#9917;<br>2.75</td>
+        <td class="gp">&#9917;<br>1.68</td>
 
     </tr>
     
@@ -2341,7 +2437,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="certainty">-0.48 vs -0.49</td>
         <td class="total-color">0%</td>
         <td class="correct">0</td>
-        <td class="gp">&#9917;<br>1.58</td>
+        <td class="gp">&#128564;<br>0.66</td>
 
     </tr>
     
@@ -2350,7 +2446,7 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="certainty">-0.85 vs -0.55</td>
         <td class="total-color">0%</td>
         <td class="correct">0.5</td>
-        <td class="gp">&#9917;<br>1.97</td>
+        <td class="gp">&#128564;<br>0.78</td>
 
     </tr>
     
@@ -2359,13 +2455,13 @@ function updateSortIndicator_m(columnIndex, direction) {
         <td class="certainty">-0.56 vs -0.58</td>
         <td class="total-color">0%</td>
         <td class="correct">0</td>
-        <td class="gp">&#9917;<br>1.8</td>
+        <td class="gp">&#9917;<br>1.0</td>
 
     </tr>
     
 </table>
 <div class="left">
-    Last updated 12:37:53 2024-04-04
+    Last updated 12:44:07 2024-04-04
 </div>
 
 <ul class="ul-bottom">
