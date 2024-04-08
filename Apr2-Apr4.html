@@ -53,9 +53,6 @@
             left: 50%; /* Position arrow in the middle */
             transform: translateX(-50%) rotate(180deg); /* Rotate the arrow upside down */
             font-size: 0px;
-            @media screen and (max-width: 768px) {
-                font-size: 0px;
-            }
                 font-weight: bold;
         }
 
@@ -74,9 +71,6 @@
             left: 50%; /* Position arrow in the middle */
             transform: translateX(-50%) rotate(180deg); /* Rotate the arrow upside down */
             font-size: 0px;
-            @media screen and (max-width: 768px) {
-                font-size: 0px;
-            }/* Adjust the font size as needed */
                 font-weight: bold; /* Add this line to make the arrow bold */
         }
           .cookie-notice {
@@ -201,35 +195,23 @@
         th:nth-child(1),
         td:nth-child(1) {
             width: 3%;
-            @media screen and (max-width: 768px) {
-                 width: 70%
-             }
         }
 
         th:nth-child(2),
         td:nth-child(2) {
             width: 20%;
-            @media screen and (max-width: 768px) {
-                 width: 10%
-             }
         }
         th:nth-child(3),
         td:nth-child(3) {
             width: 3%;
-            @media screen and (max-width: 768px) {
-                 width: 7.5%
-             }
         }
 
 
             th:nth-child(4),
             td:nth-child(4) {
                 width: 3%;
-                           @media screen and (max-width: 768px) {
-                 width: 12.5%
-             }
             }
-@media screen and (min-width: 768px) {
+
             th:nth-child(5),
             td:nth-child(5) {
                 width: 3%;
@@ -248,14 +230,11 @@
             td:nth-child(8) {
                 width: 4%;
             }
-        }
+
         th, td {
             border: 1px solid #ddd;
             text-align: center;
             padding: 8px;
-            @media screen and (max-width: 768px) {
-                 font-size: 10px;
-             }
         }
 
         tr:nth-child(even) {
@@ -326,24 +305,14 @@
             text-align: left; /* Center align the content */
             max-width: 500px; /* Set maximum width for each tab */
             font-size: 12px;
-             @media screen and (max-width: 768px) {
-                 font-size: 8px;
-             }
         }
         .contact{
             display: block;
             color: black;
             text-align: center;
             padding: 20px 1px;
-             @media screen and (max-width: 768px) {
-                 padding: 8px 1px;
-             }
             text-decoration: none;
             font-size: 16px;
-             @media screen and (max-width: 768px) {
-                 font-size: 8px;
-                 width: 80%;
-             }
 
         }
 
@@ -359,14 +328,8 @@
             color: black;
             text-align: center;
             padding: 30px 1px;
-             @media screen and (max-width: 768px) {
-                 padding: 12px 1px;
-             }
             text-decoration: none;
             font-size: 16px; /* Adjust font size */
-             @media screen and (max-width: 768px) {
-                 font-size: 12px;
-             }
 
         }
 
@@ -382,9 +345,6 @@
             width: 100%; /* Specify the width of the div */
             margin: 0 auto; /* Set margin to auto for horizontal centering */
             padding: 5px; /* Add padding for spacing */
-             @media screen and (max-width: 768px) {
-                    font-size: 8px;
-             }
         }
     .center {
         position: absolute;
@@ -392,13 +352,7 @@
         transform: translate(-50%, -50%);
         text-align: center;
     }
-    /* Change width and font size for smaller screens */
-    @media screen and (max-width: 768px) {
-        .center {
-            width: 80%;
-            font-size: 8px;
-        }
-    }
+
 
         .tooltip {
             position: relative;
@@ -412,9 +366,6 @@
         .tooltip-info .tooltiptext {
             visibility: hidden;
             width: 250px;
-             @media screen and (max-width: 768px) {
-                 width: 100px;
-             }
             background-color: #555;
             color: #fff;
             text-align: left;
@@ -425,14 +376,8 @@
             /*bottom: 125%;*/
             /*left: 50%;*/
             margin-left: -250px;
-             @media screen and (max-width: 768px) {
-                 margin-left: -50px;
-             }
             opacity: 0;
             transition: opacity 0.3s;
-             @media screen and (max-width: 768px) {
-                 font-size: 8px;
-             }
         }
 
         .tooltip-info:hover .tooltiptext {
@@ -513,9 +458,6 @@
         .arrow::before {
             content: '\25B6'; /* Right-pointing triangle */
             font-size: 10px;
-             @media screen and (max-width: 768px) {
-                 font-size: 8px;
-             }
             display: inline-block;
             text-align: left;
 
@@ -538,25 +480,12 @@
         .collapsible-container {
             display: flex;
             justify-content: space-between;
-            margin-left: 200px; /* Adjust the left margin as needed */
-             @media screen and (max-width: 768px) {
-                 margin-left: 0px;
-             }
+            margin-left: 200px;
             margin-right: -50px;
-             @media screen and (max-width: 768px) {
-                 margin-right: -70px;
-             }
             margin-top: 2px;
         }
 
 
-        @media screen and (max-width: 768px) {
-            .nav a {
-                float: none;
-                display: block;
-                text-align: left;
-            }
-        }
 
         /* Show the content when the row is expanded */
         .expanded .collapsible-content {
@@ -564,6 +493,192 @@
             text-align: center;
             flex: 1;
         }
+
+        @media screen and (max-width: 768px) {
+        th, td {
+                 font-size: 10px;
+        }
+
+
+            /* Define specific widths for each column */
+            th:nth-child(1),
+            td:nth-child(1) {
+                    width: 70%
+            }
+
+            th:nth-child(2),
+            td:nth-child(2) {
+                    width: 10%
+            }
+
+            th:nth-child(3),
+            td:nth-child(3) {
+                    width: 7.5%
+            }
+
+
+            th:nth-child(4),
+            td:nth-child(4) {
+                    width: 12.5%
+            }
+
+
+        .li-collaps {
+                 font-size: 8px;
+        }
+        .contact{
+                 padding: 8px 1px;
+
+                 font-size: 8px;
+                 width: 80%;
+
+
+        }
+
+        li a:not(.paypal):not(.contact):not(.intro):not(.in-text-a){
+                 padding: 12px 1px;
+
+                 font-size: 12px;
+
+
+        }
+
+        .left {
+                    font-size: 8px;
+
+        }
+        .center {
+            width: 80%;
+            font-size: 8px;
+        }
+      .tooltip-info .tooltiptext {
+            visibility: hidden;
+            width: 250px;
+                 width: 100px;
+
+                 margin-left: -50px;
+
+                 font-size: 8px;
+
+        }
+
+
+
+        /* Style for the arrow */
+        .arrow::before {
+                 font-size: 8px;
+        }
+
+
+           .collapsible-container {
+                 margin-left: 0px;
+
+                 margin-right: -70px;
+
+        }
+
+
+            .nav a {
+                float: none;
+                display: block;
+                text-align: left;
+            }
+
+        }
+        @media screen and (max-width: 768px) {
+            th, td {
+                font-size: 10px;
+            }
+
+
+            /* Define specific widths for each column */
+            th:nth-child(1),
+            td:nth-child(1) {
+                width: 70%
+            }
+
+            th:nth-child(2),
+            td:nth-child(2) {
+                width: 10%
+            }
+
+            th:nth-child(3),
+            td:nth-child(3) {
+                width: 7.5%
+            }
+
+
+            th:nth-child(4),
+            td:nth-child(4) {
+                width: 12.5%
+            }
+
+
+            .li-collaps {
+                font-size: 8px;
+            }
+
+            .contact {
+                padding: 8px 1px;
+
+                font-size: 8px;
+                width: 80%;
+
+
+            }
+
+            li a:not(.paypal):not(.contact):not(.intro):not(.in-text-a) {
+                padding: 12px 1px;
+
+                font-size: 12px;
+
+
+            }
+
+            .left {
+                font-size: 8px;
+
+            }
+
+            .center {
+                width: 80%;
+                font-size: 8px;
+            }
+
+            .tooltip-info .tooltiptext {
+                visibility: hidden;
+                width: 250px;
+                width: 100px;
+
+                margin-left: -50px;
+
+                font-size: 8px;
+
+            }
+
+
+            /* Style for the arrow */
+            .arrow::before {
+                font-size: 8px;
+            }
+
+
+            .collapsible-container {
+                margin-left: 0px;
+
+                margin-right: -70px;
+
+            }
+
+
+            .nav a {
+                float: none;
+                display: block;
+                text-align: left;
+            }
+
+        }
+
 
 
     </style>
