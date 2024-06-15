@@ -1200,7 +1200,7 @@ function toggleExpand(element) {
   position: relative;
   max-height: 100px;
   overflow: hidden;
-  width:50%;
+  width:80%;
   padding: 10px;
 
   transition:max-height 0.15s ease-out;
@@ -1265,6 +1265,162 @@ function toggleExpand(element) {
     display: block;
 }
 
+.search-dropdown-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.search-container {
+    display: flex;
+    position: relative;
+    font-size: 300px;
+   @media screen and (max-width: 768px) {
+
+     font-size: 500px;
+
+ }
+}
+
+#searchInput {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 4px 0 0 4px; /* Rounded corners on the left side */
+}
+
+#searchBtn {
+    padding: 10px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0; /* Rounded corners on the right side */
+    cursor: pointer;
+}
+
+#searchBtn:hover {
+    background-color: #0056b3;
+}
+
+.dropdown-content {
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content div {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content div:hover {
+    background-color: #f1f1f1;
+}
+
+.table-title h1 {
+    text-align: center; /* Centers the title */
+    font-size: 24px; /* Large font size for visibility */
+    color: white; /* White text for contrast against the red background */
+    margin-bottom: 10px; /* Adds space between the title and the table */
+    padding: 5px; /* Adds padding inside the title container */
+    background-color: #c0392b; /* A strong, sophisticated red */
+    border-radius: 8px; /* Softens the edges of the title container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+    border: 1px solid #b03228; /* Darker red border for slight contrast */
+            border-collapse: collapse;
+            width: 92.5%;
+            table-layout: fixed;
+            margin: 0 auto; /* Add this line to center the table horizontally */
+       @media screen and (max-width: 768px) {
+
+     font-size: 16px;
+            width: 87.5%;
+
+ }
+}
+
+
+
+/* Update table header to match or complement the title background */
+#myTable_euros th {
+    background-color: #900; /* A darker shade of red for the header rows */
+    color: white; /* White text for readability */
+    padding: 8px; /* Comfortable padding within headers */
+}
+#myTable_euros td {
+    padding: 8px; /* Ensures content within table cells is not cramped */
+    text-align: center; /* Centers text in cells for uniformity */
+    border-bottom: 1px solid #ccc; /* Adds a subtle line between rows for clarity */
+}
+
+/* Update table header to match or complement the title background */
+#myTable_euros_m th {
+    background-color: #900; /* A darker shade of red for the header rows */
+    color: white; /* White text for readability */
+    padding: 8px; /* Comfortable padding within headers */
+}
+#myTable_euros_m td {
+    padding: 8px; /* Ensures content within table cells is not cramped */
+    text-align: center; /* Centers text in cells for uniformity */
+    border-bottom: 1px solid #ccc; /* Adds a subtle line between rows for clarity */
+}
+
+
+.table-title-global h1 {
+    text-align: center; /* Centers the title */
+    font-size: 24px; /* Large font size for visibility */
+    color: white; /* White text for contrast against the red background */
+    margin-bottom: 10px; /* Adds space between the title and the table */
+    padding: 5px; /* Adds padding inside the title container */
+    background-color: #c0392b; /* A strong, sophisticated red */
+    border-radius: 8px; /* Softens the edges of the title container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+    border: 1px solid #b03228; /* Darker red border for slight contrast */
+            border-collapse: collapse;
+            width: 92.5%;
+            table-layout: fixed;
+            margin: 0 auto; /* Add this line to center the table horizontally */
+
+           @media screen and (max-width: 768px) {
+
+     font-size: 16px;
+            width: 90%;
+
+ }
+}
+
+
+
+/* Update table header to match or complement the title background */
+#myTable th {
+    background-color: #900; /* A darker shade of red for the header rows */
+    color: white; /* White text for readability */
+    padding: 8px; /* Comfortable padding within headers */
+}
+#myTable td {
+    padding: 8px; /* Ensures content within table cells is not cramped */
+    text-align: center; /* Centers text in cells for uniformity */
+    border-bottom: 1px solid #ccc; /* Adds a subtle line between rows for clarity */
+}
+
+
+/* Update table header to match or complement the title background */
+#myTable_m th {
+    background-color: #900; /* A darker shade of red for the header rows */
+    color: white; /* White text for readability */
+    padding: 8px; /* Comfortable padding within headers */
+}
+#myTable_m td {
+    padding: 8px; /* Ensures content within table cells is not cramped */
+    text-align: center; /* Centers text in cells for uniformity */
+    border-bottom: 1px solid #ccc; /* Adds a subtle line between rows for clarity */
+}
     </style>
 </head>
 <body class="body">
@@ -1315,24 +1471,27 @@ function toggleExpand(element) {
 
 
 <div>&nbsp</div>
+
 <div class="search-dropdown-container">
     <div class="search-container">
-        <input class="search" type="text" id="searchInput" onkeyup="searchTable()" style="width:500px;" placeholder="Search for team or league, e.g. 'Euro 2024'">
+        <input type="text" id="searchInput" onkeyup="searchTable()" style="width:500px;" placeholder="&#128269; Search for team or league, e.g. 'Euro 2024'">
     <div class="dropdown-content" id="leaguesContainer"></div>
     </div>
 </div>
 &nbsp;
-
+<div class="table-title">
+    <h1>&#127942; EURO 2024 Matches</h1>
+</div>
 <table id="myTable_euros">
     <tr>
         <th>Date</th>
-        <th>Fixture<span class="tooltip-info"> <sup><img width="12" height="12" alt="information icon" src="info.png"></sup>  <span class="tooltiptext">  <strong>Bold-faced team</strong> is selected by AIGoalie to win. </span> </span></th>
-        <th>Odds<span class="tooltip-info">  <sup><img width="12" height="12" alt="information icon" src="info.png"></sup>  <span class="tooltiptext"> Pre-match odds of the selected team winning. </span> </span></th>
-        <th onclick="sortTable(4)">Win<span class="tooltip-info"> <sup><img width="12" height="12" alt="information icon" src="info.png"></sup>  <span class="tooltiptext"> How confident AIGoalie is that <u>the selected team will win.</u> Low confidence indicates unpredictability of the match. </span> </span><span class="sort-arrow">▼</span></th>
-        <th>Result<span class="tooltip-info">  <sup><img width="12" height="12" alt="information icon" src="info.png"></sup>  <span class="tooltiptext"> Whether the selected team won, drew, or lost. </span> </span></th>
-        <th onclick="sortTable(6)">Over<span class="tooltip-info"> <sup><img width="12" height="12" alt="information icon" src="info.png"></sup>  <span class="tooltiptext">The minimum number of goals predicted by AIGoalie. <br> &#9917; = over 0.5 <br> &#9917;&#9917; = over 1.5 <br> &#9917;&#9917;&#9917; = over 2.5 <br> ... </span> </span> </span> </span> <span class="sort-arrow">►</span></th>
-        <th>Alerts Home<span class="tooltip-info"> <sup><img width="12" height="12" alt="information icon" src="info.png"></sup>  <span class="tooltiptext"><br> &#127973 = Considerable injuries</br><br>&#127973&#127973 = Major injuries</br><br>&#128201 = Dip in form</br> <br> Note, you may see injuries when expanding match but no alert here, meaning the model does not consider them important. </br></span> </span></th>
-        <th>Alerts Away<span class="tooltip-info"> <sup><img width="12" height="12" alt="information icon" src="info.png"></sup>  <span class="tooltiptext"> <br>&#127973 = Considerable injuries</br><br>&#127973&#127973 = Major injuries</br><br>&#128201 = Dip in form</br> <br> Note, you may see injuries when expanding match but no alert here, meaning the model does not consider them important. </br></span> </span></th>
+        <th>Fixture<span class="tooltip-info"> <sup><img width="12" height="12" alt="information icon" src="infoo.png"></sup>  <span class="tooltiptext">  <strong>Bold-faced team</strong> is selected by AIGoalie to win. </span> </span></th>
+        <th>Odds<span class="tooltip-info">  <sup><img width="12" height="12" alt="information icon" src="infoo.png"></sup>  <span class="tooltiptext"> Pre-match odds of the selected team winning. Note that odds are fetched once per day at 00:00 GMT, meaning some matches may have live odds. </span> </span></th>
+        <th onclick="sortTable(4)">Win<span class="tooltip-info"> <sup><img width="12" height="12" alt="information icon" src="infoo.png"></sup>  <span class="tooltiptext"> How confident AIGoalie is that <u>the selected team will win.</u> Low confidence indicates unpredictability of the match. </span> </span><span class="sort-arrow">▼</span></th>
+        <th>Result<span class="tooltip-info">  <sup><img width="12" height="12" alt="information icon" src="infoo.png"></sup>  <span class="tooltiptext"> Whether the selected team won, drew, or lost. </span> </span></th>
+        <th onclick="sortTable(6)">Over<span class="tooltip-info"> <sup><img width="12" height="12" alt="information icon" src="infoo.png"></sup>  <span class="tooltiptext">The minimum number of goals predicted by AIGoalie. <br> &#9917; = over 0.5 <br> &#9917;&#9917; = over 1.5 <br> &#9917;&#9917;&#9917; = over 2.5 <br> ... </span> </span> </span> </span> <span class="sort-arrow">►</span></th>
+        <th>Alerts Home<span class="tooltip-info"> <sup><img width="12" height="12" alt="information icon" src="infoo.png"></sup>  <span class="tooltiptext"><br> &#127973 = Considerable injuries</br><br>&#127973&#127973 = Major injuries</br><br>&#128201 = Dip in form</br> <br> Note, you may see injuries when expanding match but no alert here, meaning the model does not consider them important. </br></span> </span></th>
+        <th>Alerts Away<span class="tooltip-info"> <sup><img width="12" height="12" alt="information icon" src="infoo.png"></sup>  <span class="tooltiptext"> <br>&#127973 = Considerable injuries</br><br>&#127973&#127973 = Major injuries</br><br>&#128201 = Dip in form</br> <br> Note, you may see injuries when expanding match but no alert here, meaning the model does not consider them important. </br></span> </span></th>
 
     </tr>
     
@@ -1352,23 +1511,26 @@ function toggleExpand(element) {
 
 <div>&nbsp;</div>
 <div>&nbsp;</div>
+    <div class="table-title-global">
+    <h1>&#127757; Global Matches</h1>
+</div>
 <table id="myTable">
     <tr>
         <th>Date</th>
-        <th>Fixture<span class="tooltip-info"> <sup><img width="12" height="12" alt="information icon" src="info.png"></sup>  <span class="tooltiptext">  <strong>Bold-faced team</strong> is selected by AIGoalie to win. </span> </span></th>
-        <th>Odds<span class="tooltip-info">  <sup><img width="12" height="12" alt="information icon" src="info.png"></sup>  <span class="tooltiptext"> Pre-match odds of the selected team winning. </span> </span></th>
-        <th onclick="sortTable(4)">Win<span class="tooltip-info"> <sup><img width="12" height="12" alt="information icon" src="info.png"></sup>  <span class="tooltiptext"> How confident AIGoalie is that <u>the selected team will win.</u> Low confidence indicates unpredictability of the match. </span> </span><span class="sort-arrow">▼</span></th>
-        <th>Result<span class="tooltip-info">  <sup><img width="12" height="12" alt="information icon" src="info.png"></sup>  <span class="tooltiptext"> Whether the selected team won, drew, or lost. </span> </span></th>
-        <th onclick="sortTable(6)">Over<span class="tooltip-info"> <sup><img width="12" height="12" alt="information icon" src="info.png"></sup>  <span class="tooltiptext">The minimum number of goals predicted by AIGoalie. <br> &#9917; = over 0.5 <br> &#9917;&#9917; = over 1.5 <br> &#9917;&#9917;&#9917; = over 2.5 <br> ... </span> </span> </span> </span> <span class="sort-arrow">►</span></th>
-        <th>Alerts Home<span class="tooltip-info"> <sup><img width="12" height="12" alt="information icon" src="info.png"></sup>  <span class="tooltiptext"><br> &#127973 = Considerable injuries</br><br>&#127973&#127973 = Major injuries</br><br>&#128201 = Dip in form</br> <br> Note, you may see injuries when expanding match but no alert here, meaning the model does not consider them important. </br></span> </span></th>
-        <th>Alerts Away<span class="tooltip-info"> <sup><img width="12" height="12" alt="information icon" src="info.png"></sup>  <span class="tooltiptext"> <br>&#127973 = Considerable injuries</br><br>&#127973&#127973 = Major injuries</br><br>&#128201 = Dip in form</br> <br> Note, you may see injuries when expanding match but no alert here, meaning the model does not consider them important. </br></span> </span></th>
+        <th>Fixture<span class="tooltip-info"> <sup><img width="12" height="12" alt="information icon" src="infoo.png"></sup>  <span class="tooltiptext">  <strong>Bold-faced team</strong> is selected by AIGoalie to win. </span> </span></th>
+        <th>Odds<span class="tooltip-info">  <sup><img width="12" height="12" alt="information icon" src="infoo.png"></sup>  <span class="tooltiptext"> Pre-match odds of the selected team winning. Note that odds are fetched once per day at 00:00 GMT, meaning some matches may have live odds. </span> </span></th>
+        <th onclick="sortTable(4)">Win<span class="tooltip-info"> <sup><img width="12" height="12" alt="information icon" src="infoo.png"></sup>  <span class="tooltiptext"> How confident AIGoalie is that <u>the selected team will win.</u> Low confidence indicates unpredictability of the match. </span> </span><span class="sort-arrow">▼</span></th>
+        <th>Result<span class="tooltip-info">  <sup><img width="12" height="12" alt="information icon" src="infoo.png"></sup>  <span class="tooltiptext"> Whether the selected team won, drew, or lost. </span> </span></th>
+        <th onclick="sortTable(6)">Over<span class="tooltip-info"> <sup><img width="12" height="12" alt="information icon" src="infoo.png"></sup>  <span class="tooltiptext">The minimum number of goals predicted by AIGoalie. <br> &#9917; = over 0.5 <br> &#9917;&#9917; = over 1.5 <br> &#9917;&#9917;&#9917; = over 2.5 <br> ... </span> </span> </span> </span> <span class="sort-arrow">►</span></th>
+        <th>Alerts Home<span class="tooltip-info"> <sup><img width="12" height="12" alt="information icon" src="infoo.png"></sup>  <span class="tooltiptext"><br> &#127973 = Considerable injuries</br><br>&#127973&#127973 = Major injuries</br><br>&#128201 = Dip in form</br> <br> Note, you may see injuries when expanding match but no alert here, meaning the model does not consider them important. </br></span> </span></th>
+        <th>Alerts Away<span class="tooltip-info"> <sup><img width="12" height="12" alt="information icon" src="infoo.png"></sup>  <span class="tooltiptext"> <br>&#127973 = Considerable injuries</br><br>&#127973&#127973 = Major injuries</br><br>&#128201 = Dip in form</br> <br> Note, you may see injuries when expanding match but no alert here, meaning the model does not consider them important. </br></span> </span></th>
 
     </tr>
     
 <tr class="match" data-league="Copa Venezuela" data-home="Deportivo Táchira" data-away="Ureña SC">
         <td class="date">Thu.</td>
         <td class="team" data-match-index="0"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Deportivo Táchira</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./new_logos/deportivo-tachira_13297.png" alt="Deportivo Táchira logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score">23:00</div><div class="away-team-logo"><img width="14" height="18" src="./new_logos/urena-sc_30500.png" alt="Ureña SC logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Ureña SC</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div></td>
-        <td class="certainty">0.67 vs -1.17</td>
+        <td class="certainty">0.66 vs -1.35</td>
         <td class="odds">2.1</td>
         <td class="total-color">71%</td>
         <td class="correct">None</td>
@@ -1396,7 +1558,7 @@ function toggleExpand(element) {
 <tr class="match" data-league="Copa Venezuela" data-home="Monagas SC" data-away="Atlético La Cruz">
         <td class="date">Thu.</td>
         <td class="team" data-match-index="1"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Monagas SC</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./new_logos/monagas-sc_14596.png" alt="Monagas SC logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score">23:00</div><div class="away-team-logo"><img width="14" height="18" src="./new_logos/atletico-nacional-puerto-la-cruz_26452.png" alt="Atlético La Cruz logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Atlético La Cruz</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Navas</li><li class="li-collaps">&#127973; Carrión</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div></td>
-        <td class="certainty">0.47 vs -1.06</td>
+        <td class="certainty">0.47 vs -1.29</td>
         <td class="odds">1.01</td>
         <td class="total-color">70%</td>
         <td class="correct">None</td>
@@ -1424,7 +1586,7 @@ function toggleExpand(element) {
 <tr class="match" data-league="Copa Venezuela" data-home="Caracas FC" data-away="Metropolitanos FC">
         <td class="date">Thu.</td>
         <td class="team" data-match-index="2"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Caracas FC</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./new_logos/caracas-fc_531.png" alt="Caracas FC logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score">23:00</div><div class="away-team-logo"><img width="14" height="18" src="./new_logos/metropolitanos-fc_42918.png" alt="Metropolitanos FC logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Metropolitanos FC</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div></td>
-        <td class="certainty">0.1 vs -0.6</td>
+        <td class="certainty">0.06 vs -0.8</td>
         <td class="odds">1.54</td>
         <td class="total-color">66%</td>
         <td class="correct">None</td>
@@ -1451,10 +1613,10 @@ function toggleExpand(element) {
     
 <tr class="match" data-league="Campeonato Brasileiro Série A" data-home="Cruzeiro Esporte Clube" data-away="Cuiabá Esporte Clube (MT)">
         <td class="date">Thu.</td>
-        <td class="team" data-match-index="3"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Cruzeiro Esporte Clube</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./new_logos/ec-cruzeiro-belo-horizonte_609.png" alt="Cruzeiro Esporte Clube logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>2:1</strong></div><div class="away-team-logo"><img width="14" height="18" src="./new_logos/cuiaba-ec-mt-_28022.png" alt="Cuiabá Esporte Clube (MT) logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Cuiabá Esporte Clube (MT)</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Vital</li><li class="li-collaps">&#127973; Dinenno</li><li class="li-collaps">&#127973; Cifuentes</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div></td>
-        <td class="certainty">-0.14 vs -0.56</td>
+        <td class="team" data-match-index="3"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Cruzeiro Esporte Clube</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./new_logos/ec-cruzeiro-belo-horizonte_609.png" alt="Cruzeiro Esporte Clube logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>2:1</strong></div><div class="away-team-logo"><img width="14" height="18" src="./new_logos/cuiaba-ec-mt-_28022.png" alt="Cuiabá Esporte Clube (MT) logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Cuiabá Esporte Clube (MT)</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Vital</li><li class="li-collaps">&#127973; Dinenno</li><li class="li-collaps">&#127973; Cifuentes</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div></td>
+        <td class="certainty">-0.13 vs -0.56</td>
         <td class="odds">1.04</td>
-        <td class="total-color">36%</td>
+        <td class="total-color">37%</td>
         <td class="correct">1</td>
         <td class="gp">&#9917;<br>1.55</td>
         <td class="warnings">
@@ -1479,12 +1641,12 @@ function toggleExpand(element) {
     
 <tr class="match" data-league="Professional Football League" data-home="CA Sarmiento (Junin)" data-away="Club Estudiantes de La Plata">
         <td class="date">Thu.</td>
-        <td class="team" data-match-index="4"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">CA Sarmiento (Junin)</div><div class="home-team-logo"><img width="14" height="18" src="./new_logos/club-atletico-sarmiento-junin-_12454.png" alt="CA Sarmiento (Junin) logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>2:0</strong></div><div class="away-team-logo"><img width="14" height="18" src="./new_logos/club-estudiantes-de-la-plata_288.png" alt="Club Estudiantes de La Plata logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>Club Estudiantes de La Plata</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Paradela</li><li class="li-collaps">&#127973; Mauri</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Altamirano</li><li class="li-collaps">&#127973; Carrillo</li><li class="li-collaps">&#127973; Ascacíbar</li><li class="li-collaps">&#127973; Meza</li><li class="li-collaps">&#127973; Benedetti</li><li class="li-collaps">&#127973; Flores</li></ul></div></div><div></div></td>
-        <td class="certainty">-0.46 vs -0.41</td>
-        <td class="odds">3.3</td>
-        <td class="total-color">9%</td>
-        <td class="correct">0</td>
-        <td class="gp">&#9917;<br>1.14</td>
+        <td class="team" data-match-index="4"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>CA Sarmiento (Junin)</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./new_logos/club-atletico-sarmiento-junin-_12454.png" alt="CA Sarmiento (Junin) logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>2:0</strong></div><div class="away-team-logo"><img width="14" height="18" src="./new_logos/club-estudiantes-de-la-plata_288.png" alt="Club Estudiantes de La Plata logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Club Estudiantes de La Plata</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Paradela</li><li class="li-collaps">&#127973; Mauri</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Altamirano</li><li class="li-collaps">&#127973; Carrillo</li><li class="li-collaps">&#127973; Ascacíbar</li><li class="li-collaps">&#127973; Meza</li><li class="li-collaps">&#127973; Benedetti</li><li class="li-collaps">&#127973; Flores</li></ul></div></div><div></div></td>
+        <td class="certainty">-0.45 vs -0.54</td>
+        <td class="odds">1.47</td>
+        <td class="total-color">5%</td>
+        <td class="correct">1</td>
+        <td class="gp">&#9917;<br>1.11</td>
         <td class="warnings">
             <span class="tooltip"> &#128201;
                 <span class="tooltiptext">
@@ -1507,12 +1669,12 @@ function toggleExpand(element) {
     
 <tr class="match" data-league="Professional Football League" data-home="Club Atlético Tigre" data-away="Club Atlético Belgrano">
         <td class="date">Thu.</td>
-        <td class="team" data-match-index="5"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Club Atlético Tigre</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./new_logos/club-atletico-tigre_11831.png" alt="Club Atlético Tigre logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>1:1</strong></div><div class="away-team-logo"><img width="14" height="18" src="./new_logos/ca-belgrano_2417.png" alt="Club Atlético Belgrano logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Club Atlético Belgrano</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Protti</li><li class="li-collaps">&#127973; Flores</li><li class="li-collaps">&#127973; Alemán</li><li class="li-collaps">&#127973; Esquivel</li><li class="li-collaps">&#127973; Maroni</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Passerini</li><li class="li-collaps">&#127973; Sánchez</li><li class="li-collaps">&#127973; García</li><li class="li-collaps">&#127973; Reyna</li><li class="li-collaps">&#127973; Marín</li></ul></div></div><div></div></td>
-        <td class="certainty">-0.46 vs -0.58</td>
+        <td class="team" data-match-index="5"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Club Atlético Tigre</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./new_logos/club-atletico-tigre_11831.png" alt="Club Atlético Tigre logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>1:1</strong></div><div class="away-team-logo"><img width="14" height="18" src="./new_logos/ca-belgrano_2417.png" alt="Club Atlético Belgrano logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Club Atlético Belgrano</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Protti</li><li class="li-collaps">&#127973; Flores</li><li class="li-collaps">&#127973; Alemán</li><li class="li-collaps">&#127973; Esquivel</li><li class="li-collaps">&#127973; Maroni</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Passerini</li><li class="li-collaps">&#127973; Sánchez</li><li class="li-collaps">&#127973; García</li><li class="li-collaps">&#127973; Reyna</li><li class="li-collaps">&#127973; Marín</li></ul></div></div><div></div></td>
+        <td class="certainty">-0.46 vs -0.88</td>
         <td class="odds">n/a</td>
         <td class="total-color">4%</td>
         <td class="correct">0.5</td>
-        <td class="gp">&#9917;<br>1.45</td>
+        <td class="gp">&#9917;<br>1.43</td>
         <td class="warnings">
             <span class="tooltip"> &#127973; &#128201;
                 <span class="tooltiptext">
@@ -1535,7 +1697,7 @@ function toggleExpand(element) {
     
 </table>
 <div class="left" style="margin: 0 auto; border-collapse: collapse; width: 95%;">
-    Last updated 09:37:24 2024-06-15
+    Last updated 13:17:49 2024-06-15
 </div>
 <div class="center">
    <a href="privacy_policy.html"> Privacy Policy</a>  - 18+. Gamble Responsibly. -  <a href="disclaimer.html">Terms</a>
@@ -1593,9 +1755,12 @@ function toggleExpand(element) {
 </div></div>
 
 
+
+    <div>&nbsp</div>
+
 <div class="search-dropdown-container">
     <div class="search-container">
-    <input class="search" type="text" id="searchInput_m" onkeyup="searchTable_m()" style="width:300px" placeholder="Search for team or league, e.g. 'Euro 2024'">
+    <input  type="text" id="searchInput_m" onkeyup="searchTable_m()" style="width:300px" placeholder="&#128269; Search for team or league, e.g. 'Euro 2024'">
     <div class="dropdown-content" id="leaguesContainer_m">
 
     </div>
@@ -1603,13 +1768,15 @@ function toggleExpand(element) {
     </div>
 
     &nbsp;
-
+<div class="table-title">
+    <h1>&#127942; EURO 2024 Matches</h1>
+</div>
 <table id="myTable_euros_m">
     <tr>
-        <th style="font-size:8px;">Fixture<span class="tooltip-info"> <sup><img width="5" height="5" alt="information icon" src="info.png"></sup>  <span class="tooltiptext">  <strong>Bold-faced team</strong> is selected by AIGoalie to win. </span> </span></th>
-        <th onclick="sortTable_m(2) " style="font-size:8px;">Win<span class="tooltip-info"> <sup><img width="5" height="5" alt="information icon" src="info.png"></sup>  <span class="tooltiptext"> How confident AIGoalie is that <u>the selected team will win</u>. </span> </span><span class="sort-arrow_m">▼</span></th>
+        <th style="font-size:8px;">Fixture<span class="tooltip-info"> <sup><img width="5" height="5" alt="information icon" src="infoo.png"></sup>  <span class="tooltiptext">  <strong>Bold-faced team</strong> is selected by AIGoalie to win. </span> </span></th>
+        <th onclick="sortTable_m(2) " style="font-size:8px;">Win<span class="tooltip-info"> <sup><img width="5" height="5" alt="information icon" src="infoo.png"></sup>  <span class="tooltiptext"> How confident AIGoalie is that <u>the selected team will win</u>. </span> </span><span class="sort-arrow_m">▼</span></th>
         <th style="font-size:8px;">Res</th>
-        <th onclick="sortTable_m(4)"style="font-size:8px;">Over<span class="tooltip-info"> <sup><img width="5" height="5" alt="information icon" src="info.png"></sup>  <span class="tooltiptext"> The minimum number of goals predicted by AIGoalie. <br> &#9917; = over 0.5 <br> &#9917;&#9917; = over 1.5 <br> &#9917;&#9917;&#9917; = over 2.5 <br> ... </span> </span> <span class="sort-arrow_m">►</span></th>
+        <th onclick="sortTable_m(4)"style="font-size:8px;">Over<span class="tooltip-info"> <sup><img width="5" height="5" alt="information icon" src="infoo.png"></sup>  <span class="tooltiptext"> The minimum number of goals predicted by AIGoalie. <br> &#9917; = over 0.5 <br> &#9917;&#9917; = over 1.5 <br> &#9917;&#9917;&#9917; = over 2.5 <br> ... </span> </span> <span class="sort-arrow_m">►</span></th>
     </tr>
     
     
@@ -1628,18 +1795,20 @@ function toggleExpand(element) {
     <div> &nbsp; </div>
     <div> &nbsp; </div>
 
-
+    <div class="table-title-global">
+    <h1>&#127757; Global Matches</h1>
+</div>
 <table id="myTable_m">
     <tr>
-        <th style="font-size:8px;">Fixture<span class="tooltip-info"> <sup><img width="5" height="5" alt="information icon" src="info.png"></sup>  <span class="tooltiptext">  <strong>Bold-faced team</strong> is selected by AIGoalie to win. </span> </span></th>
-        <th onclick="sortTable_m(2) " style="font-size:8px;">Win<span class="tooltip-info"> <sup><img width="5" height="5" alt="information icon" src="info.png"></sup>  <span class="tooltiptext"> How confident AIGoalie is that <u>the selected team will win</u>. </span> </span><span class="sort-arrow_m">▼</span></th>
+        <th style="font-size:8px;">Fixture<span class="tooltip-info"> <sup><img width="5" height="5" alt="information icon" src="infoo.png"></sup>  <span class="tooltiptext">  <strong>Bold-faced team</strong> is selected by AIGoalie to win. </span> </span></th>
+        <th onclick="sortTable_m(2) " style="font-size:8px;">Win<span class="tooltip-info"> <sup><img width="5" height="5" alt="information icon" src="infoo.png"></sup>  <span class="tooltiptext"> How confident AIGoalie is that <u>the selected team will win</u>. </span> </span><span class="sort-arrow_m">▼</span></th>
         <th style="font-size:8px;">Res</th>
-        <th onclick="sortTable_m(4)"style="font-size:8px;">Over<span class="tooltip-info"> <sup><img width="5" height="5" alt="information icon" src="info.png"></sup>  <span class="tooltiptext"> The minimum number of goals predicted by AIGoalie. <br> &#9917; = over 0.5 <br> &#9917;&#9917; = over 1.5 <br> &#9917;&#9917;&#9917; = over 2.5 <br> ... </span> </span> <span class="sort-arrow_m">►</span></th>
+        <th onclick="sortTable_m(4)"style="font-size:8px;">Over<span class="tooltip-info"> <sup><img width="5" height="5" alt="information icon" src="infoo.png"></sup>  <span class="tooltiptext"> The minimum number of goals predicted by AIGoalie. <br> &#9917; = over 0.5 <br> &#9917;&#9917; = over 1.5 <br> &#9917;&#9917;&#9917; = over 2.5 <br> ... </span> </span> <span class="sort-arrow_m">►</span></th>
     </tr>
     
     <tr class="match" data-league="Copa Venezuela" data-home="Deportivo Táchira" data-away="Ureña SC">
         <td class="team" data-match-index="0"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Deportivo Táchira</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./new_logos/deportivo-tachira_13297.png" alt="Deportivo Táchira logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score">23:00</div><div class="away-team-logo"><img width="14" height="18" src="./new_logos/urena-sc_30500.png" alt="Ureña SC logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Ureña SC</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> 2.1</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div></td>
-        <td class="certainty">0.67 vs -1.17</td>
+        <td class="certainty">0.66 vs -1.35</td>
         <td class="total-color">71%</td>
         <td class="correct">None</td>
         <td class="gp">&#9917;<br>1.14</td>
@@ -1648,7 +1817,7 @@ function toggleExpand(element) {
     
     <tr class="match" data-league="Copa Venezuela" data-home="Monagas SC" data-away="Atlético La Cruz">
         <td class="team" data-match-index="1"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Monagas SC</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./new_logos/monagas-sc_14596.png" alt="Monagas SC logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score">23:00</div><div class="away-team-logo"><img width="14" height="18" src="./new_logos/atletico-nacional-puerto-la-cruz_26452.png" alt="Atlético La Cruz logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Atlético La Cruz</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> 1.01</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Navas</li><li class="li-collaps">&#127973; Carrión</li></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div></td>
-        <td class="certainty">0.47 vs -1.06</td>
+        <td class="certainty">0.47 vs -1.29</td>
         <td class="total-color">70%</td>
         <td class="correct">None</td>
         <td class="gp">&#9917;<br>1.6</td>
@@ -1657,7 +1826,7 @@ function toggleExpand(element) {
     
     <tr class="match" data-league="Copa Venezuela" data-home="Caracas FC" data-away="Metropolitanos FC">
         <td class="team" data-match-index="2"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Caracas FC</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./new_logos/caracas-fc_531.png" alt="Caracas FC logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score">23:00</div><div class="away-team-logo"><img width="14" height="18" src="./new_logos/metropolitanos-fc_42918.png" alt="Metropolitanos FC logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Metropolitanos FC</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> 1.54</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div></td>
-        <td class="certainty">0.1 vs -0.6</td>
+        <td class="certainty">0.06 vs -0.8</td>
         <td class="total-color">66%</td>
         <td class="correct">None</td>
         <td class="gp">&#9917;<br>1.79</td>
@@ -1665,35 +1834,35 @@ function toggleExpand(element) {
     </tr>
     
     <tr class="match" data-league="Campeonato Brasileiro Série A" data-home="Cruzeiro Esporte Clube" data-away="Cuiabá Esporte Clube (MT)">
-        <td class="team" data-match-index="3"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Cruzeiro Esporte Clube</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./new_logos/ec-cruzeiro-belo-horizonte_609.png" alt="Cruzeiro Esporte Clube logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>2:1</strong></div><div class="away-team-logo"><img width="14" height="18" src="./new_logos/cuiaba-ec-mt-_28022.png" alt="Cuiabá Esporte Clube (MT) logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Cuiabá Esporte Clube (MT)</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> 1.04</div><div class="li-collaps">&#127973; &#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Vital</li><li class="li-collaps">&#127973; Dinenno</li><li class="li-collaps">&#127973; Cifuentes</li></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div></td>
-        <td class="certainty">-0.14 vs -0.56</td>
-        <td class="total-color">36%</td>
+        <td class="team" data-match-index="3"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Cruzeiro Esporte Clube</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./new_logos/ec-cruzeiro-belo-horizonte_609.png" alt="Cruzeiro Esporte Clube logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>2:1</strong></div><div class="away-team-logo"><img width="14" height="18" src="./new_logos/cuiaba-ec-mt-_28022.png" alt="Cuiabá Esporte Clube (MT) logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Cuiabá Esporte Clube (MT)</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> 1.04</div><div class="li-collaps">&#127973; &#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Vital</li><li class="li-collaps">&#127973; Dinenno</li><li class="li-collaps">&#127973; Cifuentes</li></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div></td>
+        <td class="certainty">-0.13 vs -0.56</td>
+        <td class="total-color">37%</td>
         <td class="correct">1</td>
         <td class="gp">&#9917;<br>1.55</td>
 
     </tr>
     
     <tr class="match" data-league="Professional Football League" data-home="CA Sarmiento (Junin)" data-away="Club Estudiantes de La Plata">
-        <td class="team" data-match-index="4"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">CA Sarmiento (Junin)</div><div class="home-team-logo"><img width="14" height="18" src="./new_logos/club-atletico-sarmiento-junin-_12454.png" alt="CA Sarmiento (Junin) logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>2:0</strong></div><div class="away-team-logo"><img width="14" height="18" src="./new_logos/club-estudiantes-de-la-plata_288.png" alt="Club Estudiantes de La Plata logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>Club Estudiantes de La Plata</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Paradela</li><li class="li-collaps">&#127973; Mauri</li></ul></div></div><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> 3.3</div><div class="li-collaps">&#127973&#127973; &#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Altamirano</li><li class="li-collaps">&#127973; Carrillo</li><li class="li-collaps">&#127973; Ascacíbar</li><li class="li-collaps">&#127973; Meza</li><li class="li-collaps">&#127973; Benedetti</li><li class="li-collaps">&#127973; Flores</li></ul></div></div></td>
-        <td class="certainty">-0.46 vs -0.41</td>
-        <td class="total-color">9%</td>
-        <td class="correct">0</td>
-        <td class="gp">&#9917;<br>1.14</td>
+        <td class="team" data-match-index="4"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>CA Sarmiento (Junin)</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./new_logos/club-atletico-sarmiento-junin-_12454.png" alt="CA Sarmiento (Junin) logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>2:0</strong></div><div class="away-team-logo"><img width="14" height="18" src="./new_logos/club-estudiantes-de-la-plata_288.png" alt="Club Estudiantes de La Plata logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Club Estudiantes de La Plata</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> 1.47</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Paradela</li><li class="li-collaps">&#127973; Mauri</li></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#127973&#127973; &#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Altamirano</li><li class="li-collaps">&#127973; Carrillo</li><li class="li-collaps">&#127973; Ascacíbar</li><li class="li-collaps">&#127973; Meza</li><li class="li-collaps">&#127973; Benedetti</li><li class="li-collaps">&#127973; Flores</li></ul></div></div></td>
+        <td class="certainty">-0.45 vs -0.54</td>
+        <td class="total-color">5%</td>
+        <td class="correct">1</td>
+        <td class="gp">&#9917;<br>1.11</td>
 
     </tr>
     
     <tr class="match" data-league="Professional Football League" data-home="Club Atlético Tigre" data-away="Club Atlético Belgrano">
-        <td class="team" data-match-index="5"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Club Atlético Tigre</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./new_logos/club-atletico-tigre_11831.png" alt="Club Atlético Tigre logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>1:1</strong></div><div class="away-team-logo"><img width="14" height="18" src="./new_logos/ca-belgrano_2417.png" alt="Club Atlético Belgrano logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Club Atlético Belgrano</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> 5.2</div><div class="li-collaps">&#127973; &#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Protti</li><li class="li-collaps">&#127973; Flores</li><li class="li-collaps">&#127973; Alemán</li><li class="li-collaps">&#127973; Esquivel</li><li class="li-collaps">&#127973; Maroni</li></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#127973&#127973;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Passerini</li><li class="li-collaps">&#127973; Sánchez</li><li class="li-collaps">&#127973; García</li><li class="li-collaps">&#127973; Reyna</li><li class="li-collaps">&#127973; Marín</li></ul></div></div></td>
-        <td class="certainty">-0.46 vs -0.58</td>
+        <td class="team" data-match-index="5"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Club Atlético Tigre</strong></u></div></div><div class="home-team-logo"><img width="14" height="18" src="./new_logos/club-atletico-tigre_11831.png" alt="Club Atlético Tigre logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="score"><strong>1:1</strong></div><div class="away-team-logo"><img width="14" height="18" src="./new_logos/ca-belgrano_2417.png" alt="Club Atlético Belgrano logo"  style="vertical-align: middle; margin-top: 1px;"></div><div class="away-team">Club Atlético Belgrano</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> n/a</div><div class="li-collaps">&#127973; &#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Protti</li><li class="li-collaps">&#127973; Flores</li><li class="li-collaps">&#127973; Alemán</li><li class="li-collaps">&#127973; Esquivel</li><li class="li-collaps">&#127973; Maroni</li></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#127973&#127973;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Passerini</li><li class="li-collaps">&#127973; Sánchez</li><li class="li-collaps">&#127973; García</li><li class="li-collaps">&#127973; Reyna</li><li class="li-collaps">&#127973; Marín</li></ul></div></div></td>
+        <td class="certainty">-0.46 vs -0.88</td>
         <td class="total-color">4%</td>
         <td class="correct">0.5</td>
-        <td class="gp">&#9917;<br>1.45</td>
+        <td class="gp">&#9917;<br>1.43</td>
 
     </tr>
     
 </table>
 <div class="left">
-    Last updated 09:37:24 2024-06-15
+    Last updated 13:17:49 2024-06-15
 </div>
 
 <ul class="ul-bottom">
