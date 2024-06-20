@@ -5,9 +5,10 @@
 <div id="common-snippet">
     <ul style="background-color: #990000;">
         
-            <li><a href="index.html" style="color:white;" >All</a></li>
+            <li><a href="index.html" style="color:white; min-width: 150px" >All</a></li>
         
-        <select aria-label="State" class="select-wrapper_m" id="previousGameweeks_m" onchange="redirectToGameweek()">
+        <li>
+        <select style="min-width: 150px" aria-label="State" class="select-wrapper_m" id="previousGameweeks_m" onchange="redirectToGameweek()">
             <option value="" disabled selected>View History</option>
             <option value="May17-May19.html">17-19 May</option>
             <option value="May10-May13.html">10-13 May</option>
@@ -24,7 +25,8 @@
             <option value="Feb28-Mar4.html">1-4 Mar</option>
             <option value="Feb23-26.html">23-26 Feb</option>
             <option value="Feb16-19.html">16-19 Feb</option>
-        </select></li>
+        </select>
+        </li>
 <li><div class="day-nav">
     <h1>
         <button id="prevDay_m"><i class="fas fa-arrow-left" style="color:white;"></i></button>
