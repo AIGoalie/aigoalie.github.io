@@ -1,11 +1,19 @@
+
 <a href="index.html"> <header style="text-align: center">
     <img src="banner.webp" alt="Banner Image" width="50%" height="auto">
 </header></a>
-<div id="common-snippet" >
-    <ul style="background-color: #cccccc">
-        
-        <li><a href="index.html">Home</a></li>
-        
+<div id="common-snippet">
+    <ul style="background-color: #990000;">
+        <li><a class="active" id="all_tab" href="index.html" style="color:white;" >All</a></li>
+
+<li><div class="day-nav">
+    <h1>
+        <button id="prevDay"><i class="fas fa-arrow-left" ></i></button>
+        <a href="#" id="current_day"  style="color:white;" >Current Day</a>
+        <button id="nextDay"><i class="fas fa-arrow-right" ></i></button>
+    </h1>
+</div>
+</li>
         <li><select class="select-wrapper" id="previousGameweeks" onchange="redirectToGameweek()">
             <option value="" disabled selected>View History</option>
             <option value="index.html">Current</option>
@@ -25,7 +33,7 @@
             <option value="Feb23-26.html">23-26 Feb</option>
             <option value="Feb16-19.html">16-19 Feb</option>
         </select></li>
-        <li style="max-height:75px;"><a  class="paypal" href="https://www.paypal.com/donate/?hosted_button_id=97FSH2FUWA4VE" > <img style="margin-top: -25px;" src="donate_heart.png" alt="Donation button for AI Goalie football webpage through  paypal" width="150" height="150"> </a></li>
-        <li> <a class="contact" href="contact.html"> Contact <br>&#9993;</br> </a> </li>
+        <li ><a  href="https://www.paypal.com/donate/?hosted_button_id=97FSH2FUWA4VE" > <img style="margin-top: -52px;" src="donate_heart.png" alt="Donation button for AI Goalie football webpage through  paypal" width="150" height="150"> </a></li>
+        <li > <a  href="contact.html"  style="color:white;" > <strong> &#9993; Contact </strong></a> </li>
     </ul>
 </div>
