@@ -1530,10 +1530,13 @@ a {
     background-color: #e0e0e0;  /* Light grey for even rows */
 }
 
-
+#loadMoreBtn {
+    display: none; /* Hide initially */
+}
 
     </style>
 </head>
+
 <body class="body">
 <div class="desktop-body">
 <div>
@@ -1542,7 +1545,7 @@ a {
 </header></a>
 <div id="common-snippet">
     <ul style="background-color: #990000;">
-        <li><a class="active" id="all_tab" href="index.html" style="color:white;" >All</a></li>
+        <li><a class="active" id="all_tab" href="index.html" style="color:white;" >This week</a></li>
 
 <li><div class="day-nav">
     <h1>
@@ -1553,28 +1556,30 @@ a {
 </div>
 </li>
         <li><select class="select-wrapper" id="previousGameweeks" onchange="redirectToGameweek()">
-            <option value="" disabled selected>View History</option>
-            <option value="index.html">Current</option>
-            <option value="May17-May19.html">17-19 May</option>
-            <option value="May10-May13.html">10-13 May</option>
-            <option value="May3-May6.html">3-6 May</option>
-            <option value="Apr26-Apr30.html">26-30 Apr</option>
-            <option value="Apr23-Apr25.html">23-25 Apr</option>
-            <option value="Apr19-Apr22.html">19-22 Apr</option>
-            <option value="Apr12-Apr15.html">12-15 Apr</option>
-            <option value="Apr5-Apr8.html">5-8 Apr</option>
-            <option value="Apr2-Apr4.html">2-4 Apr</option>
-            <option value="Mar29-Apr1.html">29 Mar-1 Apr</option>
-            <option value="Mar15-Mar17.html">15-17 Mar</option>
-            <option value="Mar8-Mar11.html">8-11 Mar</option>
-            <option value="Feb28-Mar4.html">1-4 Mar</option>
-            <option value="Feb23-26.html">23-26 Feb</option>
-            <option value="Feb16-19.html">16-19 Feb</option>
+            <option value="" disabled selected>Previous Weeks</option>
+            
         </select></li>
         <li > <a  href="contact.html"  style="color:white;" > <strong> &#9993; Contact </strong></a> </li>
         <li ><a  href="https://www.paypal.com/donate/?hosted_button_id=97FSH2FUWA4VE" > <img style="margin-top: -57px;" src="donate_heart.png" alt="Donation button for AI Goalie football webpage through  paypal" width="150" height="150"> </a></li>
     </ul>
-</div></div>
+</div>
+
+<style>
+
+.text-bubble {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 300px; /* Adjust width as needed */
+       /* Add some basic styling for the table */
+            border-collapse: collapse;
+            table-layout: fixed;
+            margin: 0 auto; /* Add this line to center the table horizontally */
+
+}
+
+</style></div>
+    
 
 
     <div class="table-container">
@@ -1596,6 +1601,9 @@ a {
         <th>Alerts Away<span class="tooltip-info"> <sup><img width="12" height="12" alt="information icon" src="infoo.png"></sup>  <span class="tooltiptext"> <br>&#127973 = Considerable injuries</br><br>&#127973&#127973 = Major injuries</br><br>&#128201 = Dip in form</br> <br> Note, you may see injuries when expanding match but no alert here, meaning the model does not consider them important. </br></span> </span></th>
 
     </tr>
+    <tbody id="matchesContainer">
+        <!-- Match rows will be inserted here -->
+    </tbody>
     
     
     
@@ -1814,6 +1822,8 @@ a {
     
     
 </table>
+ <button id="loadMoreBtn" onclick="loadMoreMatches()">Show More</button>
+
 </div>
         <div class="table-container">
 
@@ -3794,7 +3804,7 @@ a {
 </table>
             </div>
 <div class="left" style="margin: 0 auto; border-collapse: collapse; width: 95%;">
-    Last updated 19:12:50 2024-06-28
+    Last updated 19:30:50 2024-06-28
 </div>
 <div class="center">
    <a href="privacy_policy.html"> Privacy Policy</a>  - 18+. Gamble Responsibly. -  <a href="disclaimer.html">Terms</a>
@@ -3804,32 +3814,25 @@ a {
 </div>
 
 <div class="mobile-body">
+        &nbsp;
 
+    <div class="container">
+        <div class="text-bubble">
+            You are viewing <span id="filenameDisplay"></span>!
+        </div>
+    </div>
+    &nbsp;
     <div>
 <a href="index.html"> <header style="text-align: center">
     <img src="banner.webp" alt="Banner Image" width="75%" height="auto">
 </header></a>
 <div id="common-snippet">
     <ul style="background-color: #990000;">
-            <li><a class="active" id="all_tab_m" href="index.html" style="color:white; min-width: 150px" >All</a></li>
+            <li><a class="active" id="all_tab_m" href="index.html" style="color:white; min-width: 150px" >This week</a></li>
         <li>
         <select style="min-width: 150px" aria-label="State" class="select-wrapper_m" id="previousGameweeks_m" onchange="redirectToGameweek()">
-            <option value="" disabled selected>View History</option>
-            <option value="May17-May19.html">17-19 May</option>
-            <option value="May10-May13.html">10-13 May</option>
-            <option value="May3-May6.html">3-6 May</option>
-            <option value="Apr26-Apr30.html">26-30 Apr</option>
-            <option value="Apr23-Apr25.html">23-25 Apr</option>
-            <option value="Apr19-Apr22.html">19-22 Apr</option>
-            <option value="Apr12-Apr15.html">12-15 Apr</option>
-            <option value="Apr5-Apr8.html">5-8 Apr</option>
-            <option value="Apr2-Apr4.html">2-4 Apr</option>
-            <option value="Mar29-Apr1.html">29 Mar-1 Apr</option>
-            <option value="Mar15-Mar17.html">15-17 Mar</option>
-            <option value="Mar8-Mar11.html">8-11 Mar</option>
-            <option value="Feb28-Mar4.html">1-4 Mar</option>
-            <option value="Feb23-26.html">23-26 Feb</option>
-            <option value="Feb16-19.html">16-19 Feb</option>
+            <option value="" disabled selected>Previous Weeks</option>
+            
         </select>
         </li>
 <li><div class="day-nav">
@@ -3850,7 +3853,22 @@ a {
 
     </ul>
 
-</div></div>
+</div>
+<style>
+
+.text-bubble {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 300px; /* Adjust width as needed */
+       /* Add some basic styling for the table */
+            border-collapse: collapse;
+            table-layout: fixed;
+            margin: 0 auto; /* Add this line to center the table horizontally */
+
+}
+
+</style></div>
 
 
 
@@ -4788,7 +4806,7 @@ a {
 </table>
         </div>
 <div class="left">
-    Last updated 19:12:50 2024-06-28
+    Last updated 19:30:50 2024-06-28
 </div>
 
 <ul class="ul-bottom">
@@ -4878,8 +4896,37 @@ a {
     display: none;
   }
 </style>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Assuming filename is correctly passed from your server-side template
+        const filename = "19.06.2024";  // Ensure you handle this server-side replacement correctly.
+
+        // Split the filename to extract the date range
+        const dateRange = filename.split('week-')[1];
+        const dates = dateRange.split('-');
+
+        // Function to correctly parse and format the date
+        function formatDate(dateStr) {
+            const parts = dateStr.split('.'); // Split DD.MM.YYYY into parts
+            // Create a new Date object, adjusting the month down by 1 as JavaScript months are 0-based
+            const date = new Date(parts[2], parts[1] - 1, parts[0]);
+            // Format the date into "Month Day, Year"
+            return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
+        }
+
+        // Parse and format dates
+        const formattedStartDate = formatDate(dates[0]);
+        const formattedEndDate = formatDate(dates[1]);
+
+        // Update the display in the span element
+        document.getElementById('filenameDisplay').textContent = `${formattedStartDate} to ${formattedEndDate}`;
+    });
+</script>
+
 
 <script>
+
+
 // Array to hold unique league/team names
 var uniqueLeagues = [];
 
@@ -5005,7 +5052,7 @@ function searchTable_m() {
 </script>
 <script>
          // Receive dates from Jinja rendering
-        const validDates = ['19.06.2024', '14.06.2024', '16.06.2024', '20.06.2024', '12.06.2024', '18.06.2024', '27.06.2024', '24.06.2024', '29.06.2024', '26.06.2024', '21.06.2024', '30.06.2024', '13.06.2024', '23.06.2024', '25.06.2024', '17.06.2024', '15.06.2024', '22.06.2024', '28.06.2024', '29.06.2024', '30.06.2024'];
+        const validDates = ['19.06.2024', '14.06.2024', 'week-21.06.2024-30.06.2024', '16.06.2024', '20.06.2024', '12.06.2024', '18.06.2024', '27.06.2024', '24.06.2024', '29.06.2024', 'week-14.06.2024-20.06.2024', '26.06.2024', '21.06.2024', '30.06.2024', '13.06.2024', '23.06.2024', '25.06.2024', '17.06.2024', '15.06.2024', '22.06.2024', '28.06.2024', '29.06.2024', '30.06.2024'];
         console.log(validDates)
         console.log(validDates)
 
@@ -5046,6 +5093,7 @@ function searchTable_m() {
 
         const linkElement = document.getElementById('current_day');
         const linkElement_m = document.getElementById('current_day_m');
+        console.log(displayDate.getTime() )
         if (displayDate.getTime() === today.getTime()) {
             linkElement.innerHTML = 'Today';
             linkElement_m.innerHTML = 'Today';
@@ -5055,6 +5103,9 @@ function searchTable_m() {
         }else if (displayDate.getTime() === yesterday.getTime()) {
             linkElement.innerHTML = 'Yesterday';
             linkElement_m.innerHTML = 'Yesterday';
+        }else if (isNaN(displayDate.getTime())) {
+            linkElement.innerHTML = 'Today';
+            linkElement_m.innerHTML = 'Today';
         } else {
             linkElement.innerHTML = formatDateLong(date);
             linkElement_m.innerHTML = formatDateLong(date);
