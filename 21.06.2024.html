@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
     <script defer src="https://cloud.umami.is/script.js" data-website-id="b54a5b83-5988-4a32-98bb-c710d8d8c165"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,6 +35,32 @@
 
     <style>
 
+        .slider-container {
+    width:50%;
+    margin: 20px auto; /* Top and bottom margin 20px, left and right auto centers it */
+}
+.irs {
+    margin-left: 6px;
+    margin-right: 6px;
+    height: 40px; /* Adjust the overall height of the slider */
+}
+
+.irs-line {
+    height: 6px; /* Adjust the height of the slider bar */
+    top: 25px;
+}
+
+.irs-bar {
+    height: 6px; /* Adjust the height of the selected range */
+    top: 25px;
+}
+
+.irs-handle {
+}
+
+.irs-from, .irs-to, .irs-single {
+    font-size: 14px; /* Adjust the font size of the labels */
+}
 
         .body {
   font-family: "Montserrat", sans-serif;
@@ -516,7 +545,7 @@ select {
         }
 
         @media screen and (max-width: 768px) {
-        th, td {
+                    th, td {
                  font-size: 10px;
         }
 
@@ -607,6 +636,19 @@ select {
 
         }
         @media screen and (max-width: 768px) {
+
+            .noUi-handle {
+    width: 20px;  /* Width of the handle */
+    height: 20px; /* Height of the handle */
+    right: -10px;  /* Horizontal positioning (half of width) */
+    top: -8px;    /* Vertical positioning */
+    border: 2px solid #3498db; /* Border of the handle */
+    background: #fff; /* Background color of the handle */
+    cursor: pointer;
+    border-radius: 50%; /* Makes the handle circular */
+    box-shadow: none;
+}
+
             th, td {
                 font-size: 10px;
             }
@@ -1500,6 +1542,8 @@ a {
     display: none; /* Hide initially */
 }
 
+
+
     </style>
 </head>
 
@@ -1832,6 +1876,10 @@ a {
     </div>
 </div>
 <div>&nbsp;</div>
+
+<div class="slider-container">
+    <input type="text" id="time-range-slider" name="time-range" value="" />
+</div>
         <div class="table-container">
 
     <div class="table-title-global">
@@ -1851,7 +1899,7 @@ a {
 
     </tr>
     
-<tr class="match" data-league="Copa América 2024" data-home="Argentina" data-away="Canada">
+<tr class="match" data-league="Copa América 2024" data-home="Argentina" data-away="Canada" data-time="01:00">
         <td class="date">Fri. 21 Jun.</td>
         <td class="team" data-match-index="0"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Argentina</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/argentinien_3437.png" alt="Argentina logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>2:0</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/kanada_3510.png" alt="Canada logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">Canada</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Messi</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div></td>
         <td class="certainty">1.05 vs -1.84</td>
@@ -1878,7 +1926,7 @@ a {
         </td>
     </tr>
     
-<tr class="match" data-league="Campeonato Brasileiro Série A" data-home="Sociedade Esportiva Palmeiras" data-away="Red Bull Bragantino">
+<tr class="match" data-league="Campeonato Brasileiro Série A" data-home="Sociedade Esportiva Palmeiras" data-away="Red Bull Bragantino" data-time="01:30">
         <td class="date">Fri. 21 Jun.</td>
         <td class="team" data-match-index="1"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Sociedade Esportiva Palmeiras</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/se-palmeiras-sao-paulo_1023.png" alt="Sociedade Esportiva Palmeiras logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>2:1</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/red-bull-bragantino_8793.png" alt="Red Bull Bragantino logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">Red Bull Bragantino</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Rodrigues</li><li class="li-collaps">&#127973; Lázaro</li><li class="li-collaps">&#127973; Rômulo</li><li class="li-collaps">&#127973; Endrick</li><li class="li-collaps">&#127973; Ríos</li><li class="li-collaps">&#127973; Gómez</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Hurtado</li></ul></div></div><div></div></td>
         <td class="certainty">0.96 vs -1.95</td>
@@ -1906,7 +1954,7 @@ a {
         </td>
     </tr>
     
-<tr class="match" data-league="Virsliga" data-home="FK Auda" data-away="FC RFS">
+<tr class="match" data-league="Virsliga" data-home="FK Auda" data-away="FC RFS" data-time="18:00">
         <td class="date">Fri. 21 Jun.</td>
         <td class="team" data-match-index="2"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">FK Auda</div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/auda-kekava_8606.png" alt="FK Auda logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>1:3</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/fk-rfs_33783.png" alt="FC RFS logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>FC RFS</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div></td>
         <td class="certainty">-1.0 vs 0.72</td>
@@ -1933,7 +1981,7 @@ a {
         </td>
     </tr>
     
-<tr class="match" data-league="Campeonato Brasileiro Série A" data-home="CR Flamengo" data-away="Esporte Clube Bahia">
+<tr class="match" data-league="Campeonato Brasileiro Série A" data-home="CR Flamengo" data-away="Esporte Clube Bahia" data-time="00:00">
         <td class="date">Fri. 21 Jun.</td>
         <td class="team" data-match-index="3"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>CR Flamengo</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/flamengo-rio-de-janeiro_614.png" alt="CR Flamengo logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>2:1</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/esporte-clube-bahia_10010.png" alt="Esporte Clube Bahia logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">Esporte Clube Bahia</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Jesus</li><li class="li-collaps">&#127973; Carlinhos</li><li class="li-collaps">&#127973; Everton</li><li class="li-collaps">&#127973; Carlinhos</li><li class="li-collaps">&#127973; Varela</li><li class="li-collaps">&#127973; Cruz</li><li class="li-collaps">&#127973; Arrascaeta</li><li class="li-collaps">&#127973; Pulgar</li><li class="li-collaps">&#127973; Viña</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Acevedo</li><li class="li-collaps">&#127973; Arias</li></ul></div></div><div></div></td>
         <td class="certainty">0.59 vs -1.65</td>
@@ -1961,7 +2009,7 @@ a {
         </td>
     </tr>
     
-<tr class="match" data-league="EURO 2024" data-home="Netherlands" data-away="France">
+<tr class="match" data-league="EURO 2024" data-home="Netherlands" data-away="France" data-time="20:00">
         <td class="date">Fri. 21 Jun.</td>
         <td class="team" data-match-index="4"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">Netherlands</div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/niederlande_3379.png" alt="Netherlands logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>0:0</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/frankreich_3377.png" alt="France logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>France</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Bergwijn</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div></td>
         <td class="certainty">-0.44 vs 0.42</td>
@@ -1988,7 +2036,7 @@ a {
         </td>
     </tr>
     
-<tr class="match" data-league="Pervaya Liga" data-home="FK Jetisay" data-away="FC Arys">
+<tr class="match" data-league="Pervaya Liga" data-home="FK Jetisay" data-away="FC Arys" data-time="13:00">
         <td class="date">Fri. 21 Jun.</td>
         <td class="team" data-match-index="5"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>FK Jetisay</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/fk-jetisay_107096.png" alt="FK Jetisay logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>2:1</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/fc-arys_98624.png" alt="FC Arys logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">FC Arys</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div></td>
         <td class="certainty">0.33 vs -1.05</td>
@@ -2015,7 +2063,7 @@ a {
         </td>
     </tr>
     
-<tr class="match" data-league="Vysheyshaya Liga" data-home="FK Gomel" data-away="Shakhter Soligorsk">
+<tr class="match" data-league="Vysheyshaya Liga" data-home="FK Gomel" data-away="Shakhter Soligorsk" data-time="18:00">
         <td class="date">Fri. 21 Jun.</td>
         <td class="team" data-match-index="6"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>FK Gomel</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/fk-gomel_10694.png" alt="FK Gomel logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>1:2</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/shakhtjor-soligorsk_10695.png" alt="Shakhter Soligorsk logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">Shakhter Soligorsk</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div></td>
         <td class="certainty">0.25 vs -1.06</td>
@@ -2042,7 +2090,7 @@ a {
         </td>
     </tr>
     
-<tr class="match" data-league="EURO 2024" data-home="Slovakia" data-away="Ukraine">
+<tr class="match" data-league="EURO 2024" data-home="Slovakia" data-away="Ukraine" data-time="14:00">
         <td class="date">Fri. 21 Jun.</td>
         <td class="team" data-match-index="7"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">Slovakia</div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/slowakei_3503.png" alt="Slovakia logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>1:2</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/ukraine_3699.png" alt="Ukraine logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>Ukraine</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div></td>
         <td class="certainty">-0.22 vs 0.22</td>
@@ -2070,7 +2118,7 @@ a {
         </td>
     </tr>
     
-<tr class="match" data-league="Pervaya Liga" data-home="FK Ulytau" data-away="FC Khan Tengri">
+<tr class="match" data-league="Pervaya Liga" data-home="FK Ulytau" data-away="FC Khan Tengri" data-time="13:00">
         <td class="date">Fri. 21 Jun.</td>
         <td class="team" data-match-index="8"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>FK Ulytau</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/fk-ulytau_107095.png" alt="FK Ulytau logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>0:2</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/fc-khan-tengri_98550.png" alt="FC Khan Tengri logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">FC Khan Tengri</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Moldakaraev</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div></td>
         <td class="certainty">0.15 vs -0.8</td>
@@ -2098,7 +2146,7 @@ a {
         </td>
     </tr>
     
-<tr class="match" data-league="Virsliga" data-home="BFC Daugavpils" data-away="FS Jelgava">
+<tr class="match" data-league="Virsliga" data-home="BFC Daugavpils" data-away="FS Jelgava" data-time="16:00">
         <td class="date">Fri. 21 Jun.</td>
         <td class="team" data-match-index="9"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>BFC Daugavpils</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/bfc-daugavpils_28931.png" alt="BFC Daugavpils logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>3:0</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/fk-jelgava_27118.png" alt="FS Jelgava logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">FS Jelgava</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div></td>
         <td class="certainty">0.15 vs -0.89</td>
@@ -2126,7 +2174,7 @@ a {
         </td>
     </tr>
     
-<tr class="match" data-league="EURO 2024" data-home="Poland" data-away="Austria">
+<tr class="match" data-league="EURO 2024" data-home="Poland" data-away="Austria" data-time="17:00">
         <td class="date">Fri. 21 Jun.</td>
         <td class="team" data-match-index="10"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">Poland</div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/polen_3442.png" alt="Poland logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>1:3</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/osterreich_3383.png" alt="Austria logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>Austria</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Kainz</li></ul></div></div><div></div></td>
         <td class="certainty">-0.12 vs 0.11</td>
@@ -2154,7 +2202,7 @@ a {
         </td>
     </tr>
     
-<tr class="match" data-league="National League - North" data-home="West Coast Rangers" data-away="Birkenhead United">
+<tr class="match" data-league="National League - North" data-home="West Coast Rangers" data-away="Birkenhead United" data-time="08:30">
         <td class="date">Fri. 21 Jun.</td>
         <td class="team" data-match-index="11"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">West Coast Rangers</div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/west-coast-rangers_88950.png" alt="West Coast Rangers logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>0:5</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/birkenhead-united_18003.png" alt="Birkenhead United logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>Birkenhead United</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div></td>
         <td class="certainty">-0.38 vs 0.09</td>
@@ -2181,7 +2229,7 @@ a {
         </td>
     </tr>
     
-<tr class="match" data-league="Campeonato Brasileiro Série B" data-home="Ceará Sporting Club" data-away="Sport Club do Recife">
+<tr class="match" data-league="Campeonato Brasileiro Série B" data-home="Ceará Sporting Club" data-away="Sport Club do Recife" data-time="01:30">
         <td class="date">Fri. 21 Jun.</td>
         <td class="team" data-match-index="12"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Ceará Sporting Club</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/ceara-sporting-club_2029.png" alt="Ceará Sporting Club logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>0:0</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/sport-club-do-recife_8718.png" alt="Sport Club do Recife logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">Sport Club do Recife</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Miguel</li><li class="li-collaps">&#127973; Cléber</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Renzo</li></ul></div></div><div></div></td>
         <td class="certainty">-0.06 vs -0.5</td>
@@ -2208,7 +2256,7 @@ a {
         </td>
     </tr>
     
-<tr class="match" data-league="Pervaya Liga" data-home="FC Turkistan" data-away="Altay Oskemen">
+<tr class="match" data-league="Pervaya Liga" data-home="FC Turkistan" data-away="Altay Oskemen" data-time="14:00">
         <td class="date">Fri. 21 Jun.</td>
         <td class="team" data-match-index="13"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>FC Turkistan</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/yassi-turkistan_89990.png" alt="FC Turkistan logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>1:2</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/altay-oskemen_118378.png" alt="Altay Oskemen logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">Altay Oskemen</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div></td>
         <td class="certainty">-0.13 vs -0.54</td>
@@ -2235,7 +2283,7 @@ a {
         </td>
     </tr>
     
-<tr class="match" data-league="Pervaya Liga" data-home="FK Ekibastuz" data-away="SD Family Astana">
+<tr class="match" data-league="Pervaya Liga" data-home="FK Ekibastuz" data-away="SD Family Astana" data-time="13:00">
         <td class="date">Fri. 21 Jun.</td>
         <td class="team" data-match-index="14"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>FK Ekibastuz</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/fk-ekibastuz_20933.png" alt="FK Ekibastuz logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>4:2</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/fc-didar-sydyqbek-nursultan_78498.png" alt="SD Family Astana logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">SD Family Astana</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div></td>
         <td class="certainty">-0.13 vs -0.62</td>
@@ -2263,7 +2311,7 @@ a {
         </td>
     </tr>
     
-<tr class="match" data-league="O'zbekiston Superligasi" data-home="Bunyodkor Tashkent" data-away="FC Olympic">
+<tr class="match" data-league="O'zbekiston Superligasi" data-home="Bunyodkor Tashkent" data-away="FC Olympic" data-time="14:00">
         <td class="date">Fri. 21 Jun.</td>
         <td class="team" data-match-index="15"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Bunyodkor Tashkent</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/bunyodkor-tashkent_19401.png" alt="Bunyodkor Tashkent logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>1:1</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/fk-olimpik_88020.png" alt="FC Olympic logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">FC Olympic</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div></td>
         <td class="certainty">-0.17 vs -0.54</td>
@@ -2291,7 +2339,7 @@ a {
         </td>
     </tr>
     
-<tr class="match" data-league="OFC Nations Cup 2024" data-home="Vanuatu" data-away="New Zealand">
+<tr class="match" data-league="OFC Nations Cup 2024" data-home="Vanuatu" data-away="New Zealand" data-time="05:00">
         <td class="date">Fri. 21 Jun.</td>
         <td class="team" data-match-index="16"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Vanuatu</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/vanuatu_15238.png" alt="Vanuatu logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>0:4</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/neuseeland_9171.png" alt="New Zealand logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">New Zealand</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div></td>
         <td class="certainty">-0.22 vs -0.58</td>
@@ -2318,7 +2366,7 @@ a {
         </td>
     </tr>
     
-<tr class="match" data-league="O'zbekiston Superligasi" data-home="FC OKMK Olmaliq" data-away="Pakhtakor Tashkent">
+<tr class="match" data-league="O'zbekiston Superligasi" data-home="FC OKMK Olmaliq" data-away="Pakhtakor Tashkent" data-time="16:00">
         <td class="date">Fri. 21 Jun.</td>
         <td class="team" data-match-index="17"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>FC OKMK Olmaliq</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/fk-agmk-olmaliq_31216.png" alt="FC OKMK Olmaliq logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>4:2</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/pakhtakor-tashkent_3718.png" alt="Pakhtakor Tashkent logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">Pakhtakor Tashkent</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div></td>
         <td class="certainty">-0.23 vs -0.24</td>
@@ -2346,7 +2394,7 @@ a {
         </td>
     </tr>
     
-<tr class="match" data-league="Vysheyshaya Liga" data-home="FK Smorgon" data-away="FK Slutsk">
+<tr class="match" data-league="Vysheyshaya Liga" data-home="FK Smorgon" data-away="FK Slutsk" data-time="16:00">
         <td class="date">Fri. 21 Jun.</td>
         <td class="team" data-match-index="18"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>FK Smorgon</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/fk-smorgon_17224.png" alt="FK Smorgon logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>4:1</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/fk-slutsk_27238.png" alt="FK Slutsk logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">FK Slutsk</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Mikhailov</li><li class="li-collaps">&#127973; Intsoen</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div></td>
         <td class="certainty">-0.39 vs -0.46</td>
@@ -2377,7 +2425,7 @@ a {
 </table>
             </div>
 <div class="left" style="margin: 0 auto; border-collapse: collapse; width: 95%;">
-    Last updated 15:00:53 2024-07-01
+    Last updated 15:42:58 2024-07-01
 </div>
 <div class="center">
    <a href="privacy_policy.html"> Privacy Policy</a>  - 18+. Gamble Responsibly. -  <a href="disclaimer.html">Terms</a>
@@ -2622,6 +2670,7 @@ a {
 
 
 
+
     <div class="search-dropdown-container">
     <div class="search-container">
     <input  type="text" id="searchInput_m" onkeyup="searchTable_m()" style="width:300px" placeholder="&#128269; Search for team or league, e.g. 'Euro 2024'">
@@ -2630,7 +2679,9 @@ a {
     </div>
 </div>
     </div>
-
+<div class="slider-container">
+    <input type="text" id="time-range-slider_m" name="time-range" value="" />
+</div>
             <div class="table-container">
 
     <div class="table-title-global">
@@ -2645,7 +2696,7 @@ a {
         <th onclick="sortTable_m(4)"style="font-size:8px;">Over<span class="tooltip-info"> <sup><img width="5" height="5" alt="information icon" src="infoo.png"></sup>  <span class="tooltiptext"> The minimum number of goals predicted by AIGoalie (click to sort). <br> &#9917; = over 0.5 <br> &#9917;&#9917; = over 1.5 <br> &#9917;&#9917;&#9917; = over 2.5 <br> ...  </span> </span></th>
     </tr>
     
-    <tr class="match" data-league="Copa América 2024" data-home="Argentina" data-away="Canada">
+    <tr class="match" data-league="Copa América 2024" data-home="Argentina" data-away="Canada" data-time="01:00">
         <td class="team" data-match-index="0"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Argentina</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/argentinien_3437.png" alt="Argentina logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>2:0</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/kanada_3510.png" alt="Canada logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">Canada</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> 1.16</div><div class="li-collaps">&nbsp;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Messi</li></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div></td>
         <td class="certainty">1.05 vs -1.84</td>
         <td class="total-color">71%</td>
@@ -2654,7 +2705,7 @@ a {
 
     </tr>
     
-    <tr class="match" data-league="Campeonato Brasileiro Série A" data-home="Sociedade Esportiva Palmeiras" data-away="Red Bull Bragantino">
+    <tr class="match" data-league="Campeonato Brasileiro Série A" data-home="Sociedade Esportiva Palmeiras" data-away="Red Bull Bragantino" data-time="01:30">
         <td class="team" data-match-index="1"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Sociedade Esportiva Palmeiras</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/se-palmeiras-sao-paulo_1023.png" alt="Sociedade Esportiva Palmeiras logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>2:1</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/red-bull-bragantino_8793.png" alt="Red Bull Bragantino logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">Red Bull Bragantino</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> n/a</div><div class="li-collaps">&#127973&#127973;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Rodrigues</li><li class="li-collaps">&#127973; Lázaro</li><li class="li-collaps">&#127973; Rômulo</li><li class="li-collaps">&#127973; Endrick</li><li class="li-collaps">&#127973; Ríos</li><li class="li-collaps">&#127973; Gómez</li></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Hurtado</li></ul></div></div></td>
         <td class="certainty">0.96 vs -1.95</td>
         <td class="total-color">68%</td>
@@ -2663,7 +2714,7 @@ a {
 
     </tr>
     
-    <tr class="match" data-league="Virsliga" data-home="FK Auda" data-away="FC RFS">
+    <tr class="match" data-league="Virsliga" data-home="FK Auda" data-away="FC RFS" data-time="18:00">
         <td class="team" data-match-index="2"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">FK Auda</div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/auda-kekava_8606.png" alt="FK Auda logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>1:3</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/fk-rfs_33783.png" alt="FC RFS logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>FC RFS</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> n/a</div><div class="li-collaps">&nbsp;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div></td>
         <td class="certainty">-1.0 vs 0.72</td>
         <td class="total-color">59%</td>
@@ -2672,7 +2723,7 @@ a {
 
     </tr>
     
-    <tr class="match" data-league="Campeonato Brasileiro Série A" data-home="CR Flamengo" data-away="Esporte Clube Bahia">
+    <tr class="match" data-league="Campeonato Brasileiro Série A" data-home="CR Flamengo" data-away="Esporte Clube Bahia" data-time="00:00">
         <td class="team" data-match-index="3"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>CR Flamengo</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/flamengo-rio-de-janeiro_614.png" alt="CR Flamengo logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>2:1</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/esporte-clube-bahia_10010.png" alt="Esporte Clube Bahia logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">Esporte Clube Bahia</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> n/a</div><div class="li-collaps">&#127973&#127973;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Jesus</li><li class="li-collaps">&#127973; Carlinhos</li><li class="li-collaps">&#127973; Everton</li><li class="li-collaps">&#127973; Carlinhos</li><li class="li-collaps">&#127973; Varela</li><li class="li-collaps">&#127973; Cruz</li><li class="li-collaps">&#127973; Arrascaeta</li><li class="li-collaps">&#127973; Pulgar</li><li class="li-collaps">&#127973; Viña</li></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Acevedo</li><li class="li-collaps">&#127973; Arias</li></ul></div></div></td>
         <td class="certainty">0.59 vs -1.65</td>
         <td class="total-color">53%</td>
@@ -2681,7 +2732,7 @@ a {
 
     </tr>
     
-    <tr class="match" data-league="EURO 2024" data-home="Netherlands" data-away="France">
+    <tr class="match" data-league="EURO 2024" data-home="Netherlands" data-away="France" data-time="20:00">
         <td class="team" data-match-index="4"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">Netherlands</div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/niederlande_3379.png" alt="Netherlands logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>0:0</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/frankreich_3377.png" alt="France logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>France</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&nbsp;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Bergwijn</li></ul></div></div><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> 2.28</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div></td>
         <td class="certainty">-0.44 vs 0.42</td>
         <td class="total-color">44%</td>
@@ -2690,7 +2741,7 @@ a {
 
     </tr>
     
-    <tr class="match" data-league="Pervaya Liga" data-home="FK Jetisay" data-away="FC Arys">
+    <tr class="match" data-league="Pervaya Liga" data-home="FK Jetisay" data-away="FC Arys" data-time="13:00">
         <td class="team" data-match-index="5"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>FK Jetisay</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/fk-jetisay_107096.png" alt="FK Jetisay logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>2:1</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/fc-arys_98624.png" alt="FC Arys logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">FC Arys</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> n/a</div><div class="li-collaps">&nbsp;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div></td>
         <td class="certainty">0.33 vs -1.05</td>
         <td class="total-color">37%</td>
@@ -2699,7 +2750,7 @@ a {
 
     </tr>
     
-    <tr class="match" data-league="Vysheyshaya Liga" data-home="FK Gomel" data-away="Shakhter Soligorsk">
+    <tr class="match" data-league="Vysheyshaya Liga" data-home="FK Gomel" data-away="Shakhter Soligorsk" data-time="18:00">
         <td class="team" data-match-index="6"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>FK Gomel</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/fk-gomel_10694.png" alt="FK Gomel logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>1:2</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/shakhtjor-soligorsk_10695.png" alt="Shakhter Soligorsk logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">Shakhter Soligorsk</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> n/a</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&nbsp;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div></td>
         <td class="certainty">0.25 vs -1.06</td>
         <td class="total-color">30%</td>
@@ -2708,7 +2759,7 @@ a {
 
     </tr>
     
-    <tr class="match" data-league="EURO 2024" data-home="Slovakia" data-away="Ukraine">
+    <tr class="match" data-league="EURO 2024" data-home="Slovakia" data-away="Ukraine" data-time="14:00">
         <td class="team" data-match-index="7"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">Slovakia</div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/slowakei_3503.png" alt="Slovakia logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>1:2</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/ukraine_3699.png" alt="Ukraine logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>Ukraine</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> 2.18</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div></td>
         <td class="certainty">-0.22 vs 0.22</td>
         <td class="total-color">27%</td>
@@ -2717,7 +2768,7 @@ a {
 
     </tr>
     
-    <tr class="match" data-league="Pervaya Liga" data-home="FK Ulytau" data-away="FC Khan Tengri">
+    <tr class="match" data-league="Pervaya Liga" data-home="FK Ulytau" data-away="FC Khan Tengri" data-time="13:00">
         <td class="team" data-match-index="8"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>FK Ulytau</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/fk-ulytau_107095.png" alt="FK Ulytau logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>0:2</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/fc-khan-tengri_98550.png" alt="FC Khan Tengri logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">FC Khan Tengri</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> n/a</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Moldakaraev</li></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div></td>
         <td class="certainty">0.15 vs -0.8</td>
         <td class="total-color">22%</td>
@@ -2726,7 +2777,7 @@ a {
 
     </tr>
     
-    <tr class="match" data-league="Virsliga" data-home="BFC Daugavpils" data-away="FS Jelgava">
+    <tr class="match" data-league="Virsliga" data-home="BFC Daugavpils" data-away="FS Jelgava" data-time="16:00">
         <td class="team" data-match-index="9"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>BFC Daugavpils</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/bfc-daugavpils_28931.png" alt="BFC Daugavpils logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>3:0</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/fk-jelgava_27118.png" alt="FS Jelgava logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">FS Jelgava</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> 2.32</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div></td>
         <td class="certainty">0.15 vs -0.89</td>
         <td class="total-color">22%</td>
@@ -2735,7 +2786,7 @@ a {
 
     </tr>
     
-    <tr class="match" data-league="EURO 2024" data-home="Poland" data-away="Austria">
+    <tr class="match" data-league="EURO 2024" data-home="Poland" data-away="Austria" data-time="17:00">
         <td class="team" data-match-index="10"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">Poland</div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/polen_3442.png" alt="Poland logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>1:3</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/osterreich_3383.png" alt="Austria logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>Austria</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> 2.16</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Kainz</li></ul></div></div></td>
         <td class="certainty">-0.12 vs 0.11</td>
         <td class="total-color">19%</td>
@@ -2744,7 +2795,7 @@ a {
 
     </tr>
     
-    <tr class="match" data-league="National League - North" data-home="West Coast Rangers" data-away="Birkenhead United">
+    <tr class="match" data-league="National League - North" data-home="West Coast Rangers" data-away="Birkenhead United" data-time="08:30">
         <td class="team" data-match-index="11"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">West Coast Rangers</div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/west-coast-rangers_88950.png" alt="West Coast Rangers logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>0:5</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/birkenhead-united_18003.png" alt="Birkenhead United logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>Birkenhead United</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> n/a</div><div class="li-collaps">&nbsp;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div></td>
         <td class="certainty">-0.38 vs 0.09</td>
         <td class="total-color">18%</td>
@@ -2753,7 +2804,7 @@ a {
 
     </tr>
     
-    <tr class="match" data-league="Campeonato Brasileiro Série B" data-home="Ceará Sporting Club" data-away="Sport Club do Recife">
+    <tr class="match" data-league="Campeonato Brasileiro Série B" data-home="Ceará Sporting Club" data-away="Sport Club do Recife" data-time="01:30">
         <td class="team" data-match-index="12"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Ceará Sporting Club</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/ceara-sporting-club_2029.png" alt="Ceará Sporting Club logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>0:0</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/sport-club-do-recife_8718.png" alt="Sport Club do Recife logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">Sport Club do Recife</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> 2.74</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Miguel</li><li class="li-collaps">&#127973; Cléber</li></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&nbsp;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Renzo</li></ul></div></div></td>
         <td class="certainty">-0.06 vs -0.5</td>
         <td class="total-color">9%</td>
@@ -2762,7 +2813,7 @@ a {
 
     </tr>
     
-    <tr class="match" data-league="Pervaya Liga" data-home="FC Turkistan" data-away="Altay Oskemen">
+    <tr class="match" data-league="Pervaya Liga" data-home="FC Turkistan" data-away="Altay Oskemen" data-time="14:00">
         <td class="team" data-match-index="13"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>FC Turkistan</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/yassi-turkistan_89990.png" alt="FC Turkistan logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>1:2</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/altay-oskemen_118378.png" alt="Altay Oskemen logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">Altay Oskemen</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> n/a</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&nbsp;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div></td>
         <td class="certainty">-0.13 vs -0.54</td>
         <td class="total-color">7%</td>
@@ -2771,7 +2822,7 @@ a {
 
     </tr>
     
-    <tr class="match" data-league="Pervaya Liga" data-home="FK Ekibastuz" data-away="SD Family Astana">
+    <tr class="match" data-league="Pervaya Liga" data-home="FK Ekibastuz" data-away="SD Family Astana" data-time="13:00">
         <td class="team" data-match-index="14"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>FK Ekibastuz</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/fk-ekibastuz_20933.png" alt="FK Ekibastuz logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>4:2</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/fc-didar-sydyqbek-nursultan_78498.png" alt="SD Family Astana logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">SD Family Astana</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> n/a</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div></td>
         <td class="certainty">-0.13 vs -0.62</td>
         <td class="total-color">7%</td>
@@ -2780,7 +2831,7 @@ a {
 
     </tr>
     
-    <tr class="match" data-league="O'zbekiston Superligasi" data-home="Bunyodkor Tashkent" data-away="FC Olympic">
+    <tr class="match" data-league="O'zbekiston Superligasi" data-home="Bunyodkor Tashkent" data-away="FC Olympic" data-time="14:00">
         <td class="team" data-match-index="15"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Bunyodkor Tashkent</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/bunyodkor-tashkent_19401.png" alt="Bunyodkor Tashkent logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>1:1</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/fk-olimpik_88020.png" alt="FC Olympic logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">FC Olympic</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> n/a</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div></td>
         <td class="certainty">-0.17 vs -0.54</td>
         <td class="total-color">7%</td>
@@ -2789,7 +2840,7 @@ a {
 
     </tr>
     
-    <tr class="match" data-league="OFC Nations Cup 2024" data-home="Vanuatu" data-away="New Zealand">
+    <tr class="match" data-league="OFC Nations Cup 2024" data-home="Vanuatu" data-away="New Zealand" data-time="05:00">
         <td class="team" data-match-index="16"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Vanuatu</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/vanuatu_15238.png" alt="Vanuatu logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>0:4</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/neuseeland_9171.png" alt="New Zealand logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">New Zealand</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> n/a</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&nbsp;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div></td>
         <td class="certainty">-0.22 vs -0.58</td>
         <td class="total-color">6%</td>
@@ -2798,7 +2849,7 @@ a {
 
     </tr>
     
-    <tr class="match" data-league="O'zbekiston Superligasi" data-home="FC OKMK Olmaliq" data-away="Pakhtakor Tashkent">
+    <tr class="match" data-league="O'zbekiston Superligasi" data-home="FC OKMK Olmaliq" data-away="Pakhtakor Tashkent" data-time="16:00">
         <td class="team" data-match-index="17"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>FC OKMK Olmaliq</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/fk-agmk-olmaliq_31216.png" alt="FC OKMK Olmaliq logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>4:2</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/pakhtakor-tashkent_3718.png" alt="Pakhtakor Tashkent logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">Pakhtakor Tashkent</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> n/a</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div></td>
         <td class="certainty">-0.23 vs -0.24</td>
         <td class="total-color">5%</td>
@@ -2807,7 +2858,7 @@ a {
 
     </tr>
     
-    <tr class="match" data-league="Vysheyshaya Liga" data-home="FK Smorgon" data-away="FK Slutsk">
+    <tr class="match" data-league="Vysheyshaya Liga" data-home="FK Smorgon" data-away="FK Slutsk" data-time="16:00">
         <td class="team" data-match-index="18"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>FK Smorgon</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/fk-smorgon_17224.png" alt="FK Smorgon logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>4:1</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/fk-slutsk_27238.png" alt="FK Slutsk logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">FK Slutsk</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> n/a</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Mikhailov</li><li class="li-collaps">&#127973; Intsoen</li></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div></td>
         <td class="certainty">-0.39 vs -0.46</td>
         <td class="total-color">2%</td>
@@ -2819,7 +2870,7 @@ a {
 </table>
         </div>
 <div class="left">
-    Last updated 15:00:53 2024-07-01
+    Last updated 15:42:58 2024-07-01
 </div>
 
 <ul class="ul-bottom">
@@ -2909,38 +2960,78 @@ a {
     display: none;
   }
 </style>
+
+
+</body>
+
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Assuming filename is correctly passed from your server-side template
-        const filename = "21.06.2024";  // Ensure you handle this server-side replacement correctly.
-
-        // if 'week' in filename skip
-        if (!filename.includes('week')) {
-            return;
+$(document).ready(function() {
+    $("#time-range-slider").ionRangeSlider({
+        type: "double",
+        min: 0,
+        max: 24,
+        from: 0,
+        to: 24,
+        step: 1,
+        prettify: function(num) {
+            return num + ":00";
+        },
+        onChange: function(data) {
+            filterTableByTime(data.from, data.to);
         }
-
-        // Split the filename to extract the date range
-        const dateRange = filename.split('week-')[1];
-        const dates = dateRange.split('-');
-
-        // Function to correctly parse and format the date
-        function formatDate(dateStr) {
-            const parts = dateStr.split('.'); // Split DD.MM.YYYY into parts
-            // Create a new Date object, adjusting the month down by 1 as JavaScript months are 0-based
-            const date = new Date(parts[2], parts[1] - 1, parts[0]);
-            // Format the date into "Month Day, Year"
-            return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
-        }
-
-        // Parse and format dates
-        const formattedStartDate = formatDate(dates[0]);
-        const formattedEndDate = formatDate(dates[1]);
-
-        // Update the display in the span element
-        document.getElementById('filenameDisplay').textContent = `${formattedStartDate} to ${formattedEndDate}`;
-        document.getElementById('filenameDisplay_m').textContent = `${formattedStartDate} to ${formattedEndDate}`;
     });
-</script>
+
+    function filterTableByTime(startHour, endHour) {
+        $('tr.match').each(function() {
+            var timeAttr = $(this).attr('data-time');
+            if (timeAttr) {
+                var matchHour = parseInt(timeAttr.split(':')[0]);
+                if (matchHour >= startHour && matchHour <= endHour) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            }
+        });
+    }
+});
+    </script>
+
+<script>
+$(document).ready(function() {
+    $("#time-range-slider_m").ionRangeSlider({
+        type: "double",
+        min: 0,
+        max: 24,
+        from: 0,
+        to: 24,
+        step: 1,
+        prettify: function(num) {
+            return num + ":00";
+        },
+        onChange: function(data) {
+            filterTableByTime(data.from, data.to);
+        }
+    });
+
+    function filterTableByTime(startHour, endHour) {
+        $('tr.match').each(function() {
+            var timeAttr = $(this).attr('data-time');
+            if (timeAttr) {
+                var matchHour = parseInt(timeAttr.split(':')[0]);
+                if (matchHour >= startHour && matchHour <= endHour) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            }
+        });
+    }
+});
+    </script>
+
+
+
 
 
 <script>
@@ -3234,5 +3325,49 @@ function searchTable_m() {
 
 </script>
 
-</body>
+
+<script>
+
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+        // Assuming filename is correctly passed from your server-side template
+        let filename = "21.06.2024";  // Ensure you handle this server-side replacement correctly.
+
+
+
+        // if 'week' in filename skip
+        if (!filename.includes('week') && !filename.includes('index')) {
+            return;
+        }
+
+        if (filename.includes('index')){
+            filename = document.getElementById('previousGameweeks').querySelectorAll('option')[1].value;
+        }
+
+
+
+        // Split the filename to extract the date range
+        const dateRange = filename.split('week-')[1];
+        const dates = dateRange.split('-');
+
+        // Function to correctly parse and format the date
+        function formatDate(dateStr) {
+            const parts = dateStr.split('.'); // Split DD.MM.YYYY into parts
+            // Create a new Date object, adjusting the month down by 1 as JavaScript months are 0-based
+            const date = new Date(parts[2], parts[1] - 1, parts[0]);
+            // Format the date into "Month Day, Year"
+            return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
+        }
+
+        // Parse and format dates
+        const formattedStartDate = formatDate(dates[0]);
+        const formattedEndDate = formatDate(dates[1]);
+        // Update the display in the span element
+        document.getElementById('filenameDisplay').textContent = `${formattedStartDate} to ${formattedEndDate}`;
+        document.getElementById('filenameDisplay_m').textContent = `${formattedStartDate} to ${formattedEndDate}`;
+    });
+
+</script>
+
 </html>

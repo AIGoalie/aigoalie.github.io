@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
     <script defer src="https://cloud.umami.is/script.js" data-website-id="b54a5b83-5988-4a32-98bb-c710d8d8c165"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,6 +35,32 @@
 
     <style>
 
+        .slider-container {
+    width:50%;
+    margin: 20px auto; /* Top and bottom margin 20px, left and right auto centers it */
+}
+.irs {
+    margin-left: 6px;
+    margin-right: 6px;
+    height: 40px; /* Adjust the overall height of the slider */
+}
+
+.irs-line {
+    height: 6px; /* Adjust the height of the slider bar */
+    top: 25px;
+}
+
+.irs-bar {
+    height: 6px; /* Adjust the height of the selected range */
+    top: 25px;
+}
+
+.irs-handle {
+}
+
+.irs-from, .irs-to, .irs-single {
+    font-size: 14px; /* Adjust the font size of the labels */
+}
 
         .body {
   font-family: "Montserrat", sans-serif;
@@ -516,7 +545,7 @@ select {
         }
 
         @media screen and (max-width: 768px) {
-        th, td {
+                    th, td {
                  font-size: 10px;
         }
 
@@ -607,6 +636,19 @@ select {
 
         }
         @media screen and (max-width: 768px) {
+
+            .noUi-handle {
+    width: 20px;  /* Width of the handle */
+    height: 20px; /* Height of the handle */
+    right: -10px;  /* Horizontal positioning (half of width) */
+    top: -8px;    /* Vertical positioning */
+    border: 2px solid #3498db; /* Border of the handle */
+    background: #fff; /* Background color of the handle */
+    cursor: pointer;
+    border-radius: 50%; /* Makes the handle circular */
+    box-shadow: none;
+}
+
             th, td {
                 font-size: 10px;
             }
@@ -1500,6 +1542,8 @@ a {
     display: none; /* Hide initially */
 }
 
+
+
     </style>
 </head>
 
@@ -1761,6 +1805,10 @@ a {
     </div>
 </div>
 <div>&nbsp;</div>
+
+<div class="slider-container">
+    <input type="text" id="time-range-slider" name="time-range" value="" />
+</div>
         <div class="table-container">
 
     <div class="table-title-global">
@@ -1780,7 +1828,7 @@ a {
 
     </tr>
     
-<tr class="match" data-league="EURO 2024" data-home="Austria" data-away="France">
+<tr class="match" data-league="EURO 2024" data-home="Austria" data-away="France" data-time="20:00">
         <td class="date">Mon. 17 Jun.</td>
         <td class="team" data-match-index="0"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">Austria</div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/osterreich_3383.png" alt="Austria logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>0:1</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/frankreich_3377.png" alt="France logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>France</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Kainz</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div></td>
         <td class="certainty">-1.19 vs 1.18</td>
@@ -1808,7 +1856,7 @@ a {
         </td>
     </tr>
     
-<tr class="match" data-league="EURO 2024" data-home="Belgium" data-away="Slovakia">
+<tr class="match" data-league="EURO 2024" data-home="Belgium" data-away="Slovakia" data-time="17:00">
         <td class="date">Mon. 17 Jun.</td>
         <td class="team" data-match-index="1"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Belgium</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/belgien_3382.png" alt="Belgium logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>0:1</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/slowakei_3503.png" alt="Slovakia logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">Slovakia</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Meunier</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div></td>
         <td class="certainty">0.63 vs -0.63</td>
@@ -1836,7 +1884,7 @@ a {
         </td>
     </tr>
     
-<tr class="match" data-league="EURO 2024" data-home="Romania" data-away="Ukraine">
+<tr class="match" data-league="EURO 2024" data-home="Romania" data-away="Ukraine" data-time="14:00">
         <td class="date">Mon. 17 Jun.</td>
         <td class="team" data-match-index="2"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">Romania</div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/rumanien_3447.png" alt="Romania logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>3:0</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/ukraine_3699.png" alt="Ukraine logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>Ukraine</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div></td>
         <td class="certainty">-0.32 vs 0.32</td>
@@ -1864,7 +1912,7 @@ a {
         </td>
     </tr>
     
-<tr class="match" data-league="Torneo Intermedio" data-home="CA Boston River" data-away="Cerro Largo FC">
+<tr class="match" data-league="Torneo Intermedio" data-home="CA Boston River" data-away="Cerro Largo FC" data-time="21:00">
         <td class="date">Mon. 17 Jun.</td>
         <td class="team" data-match-index="3"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>CA Boston River</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/ca-boston-river_18074.png" alt="CA Boston River logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score">21:00</div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/cerro-largo-fc_20189.png" alt="Cerro Largo FC logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">Cerro Largo FC</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Allala</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Furtado</li></ul></div></div><div></div></td>
         <td class="certainty">0.17 vs -1.05</td>
@@ -1891,7 +1939,7 @@ a {
         </td>
     </tr>
     
-<tr class="match" data-league="Superettan" data-home="Trelleborgs FF" data-away="IK Brage">
+<tr class="match" data-league="Superettan" data-home="Trelleborgs FF" data-away="IK Brage" data-time="18:00">
         <td class="date">Mon. 17 Jun.</td>
         <td class="team" data-match-index="4"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Trelleborgs FF</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/trelleborgs-ff_701.png" alt="Trelleborgs FF logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>1:0</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/ik-brage_3362.png" alt="IK Brage logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">IK Brage</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div></td>
         <td class="certainty">0.03 vs -0.77</td>
@@ -1919,7 +1967,7 @@ a {
         </td>
     </tr>
     
-<tr class="match" data-league="Liga de Ascenso - Fase Regular" data-home="Club Oriental" data-away="Colon FC de Uruguay">
+<tr class="match" data-league="Liga de Ascenso - Fase Regular" data-home="Club Oriental" data-away="Colon FC de Uruguay" data-time="00:30">
         <td class="date">Mon. 17 Jun.</td>
         <td class="team" data-match-index="5"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Club Oriental</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/club-oriental_45741.png" alt="Club Oriental logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>0:4</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/colon-fc-de-uruguay_18124.png" alt="Colon FC de Uruguay logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">Colon FC de Uruguay</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Tabárez</li><li class="li-collaps">&#127973; Innella</li></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Pimienta</li></ul></div></div><div></div></td>
         <td class="certainty">-0.03 vs -0.49</td>
@@ -1947,7 +1995,7 @@ a {
         </td>
     </tr>
     
-<tr class="match" data-league="O'zbekiston Superligasi" data-home="FC Olympic" data-away="FC OKMK Olmaliq">
+<tr class="match" data-league="O'zbekiston Superligasi" data-home="FC Olympic" data-away="FC OKMK Olmaliq" data-time="16:00">
         <td class="date">Mon. 17 Jun.</td>
         <td class="team" data-match-index="6"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">FC Olympic</div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/fk-olimpik_88020.png" alt="FC Olympic logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>0:1</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/fk-agmk-olmaliq_31216.png" alt="FC OKMK Olmaliq logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>FC OKMK Olmaliq</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div></td>
         <td class="certainty">-0.33 vs -0.25</td>
@@ -1975,7 +2023,7 @@ a {
         </td>
     </tr>
     
-<tr class="match" data-league="O'zbekiston Superligasi" data-home="Lokomotiv Tashkent" data-away="Dinamo Samarqand">
+<tr class="match" data-league="O'zbekiston Superligasi" data-home="Lokomotiv Tashkent" data-away="Dinamo Samarqand" data-time="16:00">
         <td class="date">Mon. 17 Jun.</td>
         <td class="team" data-match-index="7"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Lokomotiv Tashkent</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/lokomotiv-tashkent_15309.png" alt="Lokomotiv Tashkent logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>0:2</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/dinamo-samarkand_15300.png" alt="Dinamo Samarqand logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">Dinamo Samarqand</div></div><div class="collapsible-container"><div class="collapsible-content"><div></div><div></div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div><div class="collapsible-content"><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div></div></td>
         <td class="certainty">-0.28 vs -0.58</td>
@@ -2006,7 +2054,7 @@ a {
 </table>
             </div>
 <div class="left" style="margin: 0 auto; border-collapse: collapse; width: 95%;">
-    Last updated 15:00:53 2024-07-01
+    Last updated 15:42:58 2024-07-01
 </div>
 <div class="center">
    <a href="privacy_policy.html"> Privacy Policy</a>  - 18+. Gamble Responsibly. -  <a href="disclaimer.html">Terms</a>
@@ -2198,6 +2246,7 @@ a {
 
 
 
+
     <div class="search-dropdown-container">
     <div class="search-container">
     <input  type="text" id="searchInput_m" onkeyup="searchTable_m()" style="width:300px" placeholder="&#128269; Search for team or league, e.g. 'Euro 2024'">
@@ -2206,7 +2255,9 @@ a {
     </div>
 </div>
     </div>
-
+<div class="slider-container">
+    <input type="text" id="time-range-slider_m" name="time-range" value="" />
+</div>
             <div class="table-container">
 
     <div class="table-title-global">
@@ -2221,7 +2272,7 @@ a {
         <th onclick="sortTable_m(4)"style="font-size:8px;">Over<span class="tooltip-info"> <sup><img width="5" height="5" alt="information icon" src="infoo.png"></sup>  <span class="tooltiptext"> The minimum number of goals predicted by AIGoalie (click to sort). <br> &#9917; = over 0.5 <br> &#9917;&#9917; = over 1.5 <br> &#9917;&#9917;&#9917; = over 2.5 <br> ...  </span> </span></th>
     </tr>
     
-    <tr class="match" data-league="EURO 2024" data-home="Austria" data-away="France">
+    <tr class="match" data-league="EURO 2024" data-home="Austria" data-away="France" data-time="20:00">
         <td class="team" data-match-index="0"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">Austria</div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/osterreich_3383.png" alt="Austria logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>0:1</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/frankreich_3377.png" alt="France logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>France</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Kainz</li></ul></div></div><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> 1.62</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div></td>
         <td class="certainty">-1.19 vs 1.18</td>
         <td class="total-color">72%</td>
@@ -2230,7 +2281,7 @@ a {
 
     </tr>
     
-    <tr class="match" data-league="EURO 2024" data-home="Belgium" data-away="Slovakia">
+    <tr class="match" data-league="EURO 2024" data-home="Belgium" data-away="Slovakia" data-time="17:00">
         <td class="team" data-match-index="1"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Belgium</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/belgien_3382.png" alt="Belgium logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>0:1</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/slowakei_3503.png" alt="Slovakia logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">Slovakia</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> 1.52</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Meunier</li></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div></td>
         <td class="certainty">0.63 vs -0.63</td>
         <td class="total-color">55%</td>
@@ -2239,7 +2290,7 @@ a {
 
     </tr>
     
-    <tr class="match" data-league="EURO 2024" data-home="Romania" data-away="Ukraine">
+    <tr class="match" data-league="EURO 2024" data-home="Romania" data-away="Ukraine" data-time="14:00">
         <td class="team" data-match-index="2"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">Romania</div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/rumanien_3447.png" alt="Romania logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>3:0</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/ukraine_3699.png" alt="Ukraine logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>Ukraine</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> 1.93</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div></td>
         <td class="certainty">-0.32 vs 0.32</td>
         <td class="total-color">35%</td>
@@ -2248,7 +2299,7 @@ a {
 
     </tr>
     
-    <tr class="match" data-league="Torneo Intermedio" data-home="CA Boston River" data-away="Cerro Largo FC">
+    <tr class="match" data-league="Torneo Intermedio" data-home="CA Boston River" data-away="Cerro Largo FC" data-time="21:00">
         <td class="team" data-match-index="3"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>CA Boston River</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/ca-boston-river_18074.png" alt="CA Boston River logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score">21:00</div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/cerro-largo-fc_20189.png" alt="Cerro Largo FC logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">Cerro Largo FC</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> 2.6</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Allala</li></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&nbsp;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Furtado</li></ul></div></div></td>
         <td class="certainty">0.17 vs -1.05</td>
         <td class="total-color">24%</td>
@@ -2257,7 +2308,7 @@ a {
 
     </tr>
     
-    <tr class="match" data-league="Superettan" data-home="Trelleborgs FF" data-away="IK Brage">
+    <tr class="match" data-league="Superettan" data-home="Trelleborgs FF" data-away="IK Brage" data-time="18:00">
         <td class="team" data-match-index="4"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Trelleborgs FF</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/trelleborgs-ff_701.png" alt="Trelleborgs FF logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>1:0</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/ik-brage_3362.png" alt="IK Brage logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">IK Brage</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> 2.94</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div></td>
         <td class="certainty">0.03 vs -0.77</td>
         <td class="total-color">13%</td>
@@ -2266,7 +2317,7 @@ a {
 
     </tr>
     
-    <tr class="match" data-league="Liga de Ascenso - Fase Regular" data-home="Club Oriental" data-away="Colon FC de Uruguay">
+    <tr class="match" data-league="Liga de Ascenso - Fase Regular" data-home="Club Oriental" data-away="Colon FC de Uruguay" data-time="00:30">
         <td class="team" data-match-index="5"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Club Oriental</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/club-oriental_45741.png" alt="Club Oriental logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>0:4</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/colon-fc-de-uruguay_18124.png" alt="Colon FC de Uruguay logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">Colon FC de Uruguay</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> n/a</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Tabárez</li><li class="li-collaps">&#127973; Innella</li></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"><li class="li-collaps">&#127973; Pimienta</li></ul></div></div></td>
         <td class="certainty">-0.03 vs -0.49</td>
         <td class="total-color">9%</td>
@@ -2275,7 +2326,7 @@ a {
 
     </tr>
     
-    <tr class="match" data-league="O'zbekiston Superligasi" data-home="FC Olympic" data-away="FC OKMK Olmaliq">
+    <tr class="match" data-league="O'zbekiston Superligasi" data-home="FC Olympic" data-away="FC OKMK Olmaliq" data-time="16:00">
         <td class="team" data-match-index="6"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team">FC Olympic</div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/fk-olimpik_88020.png" alt="FC Olympic logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>0:1</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/fk-agmk-olmaliq_31216.png" alt="FC OKMK Olmaliq logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team"><div class="arrow-above-away"><u><strong>FC OKMK Olmaliq</strong></u></div></div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: green;">W</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> n/a</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div></td>
         <td class="certainty">-0.33 vs -0.25</td>
         <td class="total-color">5%</td>
@@ -2284,7 +2335,7 @@ a {
 
     </tr>
     
-    <tr class="match" data-league="O'zbekiston Superligasi" data-home="Lokomotiv Tashkent" data-away="Dinamo Samarqand">
+    <tr class="match" data-league="O'zbekiston Superligasi" data-home="Lokomotiv Tashkent" data-away="Dinamo Samarqand" data-time="16:00">
         <td class="team" data-match-index="7"><div class="container"><div class="ali-left"><span class="arrow"></span></div><div class="home-team"><div class="arrow-above-home"><u><strong>Lokomotiv Tashkent</strong></u></div></div><div class="home-team-logo"><img width="14" height="16" src="./new_logos/lokomotiv-tashkent_15309.png" alt="Lokomotiv Tashkent logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="score"><strong>0:2</strong></div><div class="away-team-logo"><img width="14" height="16" src="./new_logos/dinamo-samarkand_15300.png" alt="Dinamo Samarqand logo"  style="vertical-align: middle; margin-top: 1px; border-radius:8px;"></div><div class="away-team">Dinamo Samarqand</div></div><div class="collapsible-container"><div class="collapsible-content"><div class="li-collaps"><strong>Odd:</strong> n/a</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: red;">L</span></strong><strong><span style="color: #B8860B;">D</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div><div class="collapsible-content"><div class="li-collaps">&nbsp;</div><div class="li-collaps">&#128201;</div><div class="li-collaps"><strong>Form: </strong><strong><span style="color: red;">L</span></strong><strong><span style="color: green;">W</span></strong><strong><span style="color: #B8860B;">D</span></strong><strong><span style="color: red;">L</span></strong></div><div class="li-collaps><ul class="ul-colaps"></ul></div></div></td>
         <td class="certainty">-0.28 vs -0.58</td>
         <td class="total-color">4%</td>
@@ -2296,7 +2347,7 @@ a {
 </table>
         </div>
 <div class="left">
-    Last updated 15:00:53 2024-07-01
+    Last updated 15:42:58 2024-07-01
 </div>
 
 <ul class="ul-bottom">
@@ -2386,38 +2437,78 @@ a {
     display: none;
   }
 </style>
+
+
+</body>
+
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Assuming filename is correctly passed from your server-side template
-        const filename = "17.06.2024";  // Ensure you handle this server-side replacement correctly.
-
-        // if 'week' in filename skip
-        if (!filename.includes('week')) {
-            return;
+$(document).ready(function() {
+    $("#time-range-slider").ionRangeSlider({
+        type: "double",
+        min: 0,
+        max: 24,
+        from: 0,
+        to: 24,
+        step: 1,
+        prettify: function(num) {
+            return num + ":00";
+        },
+        onChange: function(data) {
+            filterTableByTime(data.from, data.to);
         }
-
-        // Split the filename to extract the date range
-        const dateRange = filename.split('week-')[1];
-        const dates = dateRange.split('-');
-
-        // Function to correctly parse and format the date
-        function formatDate(dateStr) {
-            const parts = dateStr.split('.'); // Split DD.MM.YYYY into parts
-            // Create a new Date object, adjusting the month down by 1 as JavaScript months are 0-based
-            const date = new Date(parts[2], parts[1] - 1, parts[0]);
-            // Format the date into "Month Day, Year"
-            return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
-        }
-
-        // Parse and format dates
-        const formattedStartDate = formatDate(dates[0]);
-        const formattedEndDate = formatDate(dates[1]);
-
-        // Update the display in the span element
-        document.getElementById('filenameDisplay').textContent = `${formattedStartDate} to ${formattedEndDate}`;
-        document.getElementById('filenameDisplay_m').textContent = `${formattedStartDate} to ${formattedEndDate}`;
     });
-</script>
+
+    function filterTableByTime(startHour, endHour) {
+        $('tr.match').each(function() {
+            var timeAttr = $(this).attr('data-time');
+            if (timeAttr) {
+                var matchHour = parseInt(timeAttr.split(':')[0]);
+                if (matchHour >= startHour && matchHour <= endHour) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            }
+        });
+    }
+});
+    </script>
+
+<script>
+$(document).ready(function() {
+    $("#time-range-slider_m").ionRangeSlider({
+        type: "double",
+        min: 0,
+        max: 24,
+        from: 0,
+        to: 24,
+        step: 1,
+        prettify: function(num) {
+            return num + ":00";
+        },
+        onChange: function(data) {
+            filterTableByTime(data.from, data.to);
+        }
+    });
+
+    function filterTableByTime(startHour, endHour) {
+        $('tr.match').each(function() {
+            var timeAttr = $(this).attr('data-time');
+            if (timeAttr) {
+                var matchHour = parseInt(timeAttr.split(':')[0]);
+                if (matchHour >= startHour && matchHour <= endHour) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            }
+        });
+    }
+});
+    </script>
+
+
+
 
 
 <script>
@@ -2711,5 +2802,49 @@ function searchTable_m() {
 
 </script>
 
-</body>
+
+<script>
+
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+        // Assuming filename is correctly passed from your server-side template
+        let filename = "17.06.2024";  // Ensure you handle this server-side replacement correctly.
+
+
+
+        // if 'week' in filename skip
+        if (!filename.includes('week') && !filename.includes('index')) {
+            return;
+        }
+
+        if (filename.includes('index')){
+            filename = document.getElementById('previousGameweeks').querySelectorAll('option')[1].value;
+        }
+
+
+
+        // Split the filename to extract the date range
+        const dateRange = filename.split('week-')[1];
+        const dates = dateRange.split('-');
+
+        // Function to correctly parse and format the date
+        function formatDate(dateStr) {
+            const parts = dateStr.split('.'); // Split DD.MM.YYYY into parts
+            // Create a new Date object, adjusting the month down by 1 as JavaScript months are 0-based
+            const date = new Date(parts[2], parts[1] - 1, parts[0]);
+            // Format the date into "Month Day, Year"
+            return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
+        }
+
+        // Parse and format dates
+        const formattedStartDate = formatDate(dates[0]);
+        const formattedEndDate = formatDate(dates[1]);
+        // Update the display in the span element
+        document.getElementById('filenameDisplay').textContent = `${formattedStartDate} to ${formattedEndDate}`;
+        document.getElementById('filenameDisplay_m').textContent = `${formattedStartDate} to ${formattedEndDate}`;
+    });
+
+</script>
+
 </html>
